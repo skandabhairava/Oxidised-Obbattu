@@ -1,11 +1,17 @@
 <script>
     import GameBoard from "./GameBoard.svelte";
     import Header from "./Header.svelte";
+
+    function handleGameWin(e) {
+        setTimeout(() => {
+            alert("Game Won, GG!!")
+        }, 200);
+    }
 </script>
 
 <main>
     <Header />
-    <GameBoard />
+    <GameBoard on:GAME_WON={handleGameWin} />
     <!-- {#if $gameState === "playing"}
         <GameBoard />
     {:else if $gameState === "lost"}
