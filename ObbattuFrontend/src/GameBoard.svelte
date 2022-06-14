@@ -6,10 +6,10 @@
     const dispatch = createEventDispatcher();
 
     export const answer = "abcde"
-    const answers = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    const questions = [["a", "d", "f", "b", "e"], ["c", "", "j", "", "h"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    const answerHintMap = [["a", "b", "c", "d", "e"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["e", "j", "o", "t", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    // top, left, down, right, vert, horz
+    //const answers = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    const questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    const answerHintMap = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    // top, right, left, down, vert, horz
 
     let char_num = 0
 
@@ -71,20 +71,20 @@
             } else {
                 temp.state = "misplaced"
             }
-        } else if (x === 0 && answerHintMap[1].includes(temp.letter)) {
+        } else if (x === 0 && answerHintMap[2].includes(temp.letter)) {
+            if (answerHintMap[2][y] === temp.letter) {
+                temp.state = "correct"
+            } else {
+                temp.state = "misplaced"
+            }
+        } else if (y === 4 && answerHintMap[3].includes(temp.letter)) {
+            if (answerHintMap[3][x] === temp.letter) {
+                temp.state = "correct"
+            } else {
+                temp.state = "misplaced"
+            }
+        } else if (x === 4 && answerHintMap[1].includes(temp.letter)) {
             if (answerHintMap[1][y] === temp.letter) {
-                temp.state = "correct"
-            } else {
-                temp.state = "misplaced"
-            }
-        } else if (y === 4 && answerHintMap[2].includes(temp.letter)) {
-            if (answerHintMap[2][x] === temp.letter) {
-                temp.state = "correct"
-            } else {
-                temp.state = "misplaced"
-            }
-        } else if (x === 4 && answerHintMap[3].includes(temp.letter)) {
-            if (answerHintMap[3][y] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
@@ -109,22 +109,20 @@
     }
 
     function swapElements(x1, y1, x2, y2){
-        //console.log("SWAPPED!", events)
         if (x1 === x2 && y1 === y2) {
             return;
         }
 
-        //console.log(y2, x2, board[x1][y1])
-
         let temp = checkPosition(y2, x2, board[x1][y1])
         let temp2 = checkPosition(y1, x1, board[x2][y2])
+        // I dont know why its like (y, x), even if its designed to be like (x, y), it works, so im not going to question this
 
         board[x1][y1] = temp2
         board[x2][y2] = temp
 
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++) {
-                if (board[i][j].state === "incorrect") {
+                if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
                     return
                 }
             }
@@ -133,8 +131,6 @@
         dispatch('GAME_WON', {
             text: 'GAME_WON',
         });
-
-        //console.log(board)
     }
 
     $: {
@@ -142,11 +138,9 @@
             let dragged_from = events.find(event => event.type === "DRAGGED_FROM")
             let dragged_to = events.find(event => event.type === "DRAGGED_TO")
             events = []
-            //console.log(dragged_from)
-            //console.log(dragged_to)
 
             swapElements(dragged_from.yPos, dragged_from.xPos, dragged_to.yPos, dragged_to.xPos)
-            //console.log(board)
+            // I dont know why its like (y1, x1; y2, x2), even if its designed to be like (x1, y1; x2, y2), it works, so im not going to question this
         }
     }
 
