@@ -7,11 +7,21 @@
             alert("Game Won, GG!!")
         }, 200);
     }
+
+    function handleGameLost(e) {
+        setTimeout(() => {
+            alert("Game LOST :(")
+        }, 200);
+    }
+
+    const questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    const answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+
 </script>
 
 <main>
     <Header />
-    <GameBoard on:GAME_WON={handleGameWin} />
+    <GameBoard on:GAME_WON={handleGameWin} on:GAME_LOST={handleGameLost} questions={questions} answers={answers} TOTAL_MOVES=2/>
     <!-- {#if $gameState === "playing"}
         <GameBoard />
     {:else if $gameState === "lost"}

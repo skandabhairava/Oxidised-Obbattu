@@ -11,10 +11,12 @@
 	--text-color: #1a1a1b;
 
 	--incorrect-bg: #787c7e;
+	--game-end-bg: #151515;
 	--correct-bg: #6aaa64;
 	--misplaced-bg: #c8b458;
 
 	--incorrect-shadow: #5a5b5c;
+	--game-end-shadow: #151515;
 	--correct-shadow: #548a4f;
 	--misplaced-shadow: #96863e;
 }

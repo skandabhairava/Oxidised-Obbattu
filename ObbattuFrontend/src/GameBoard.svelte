@@ -5,11 +5,12 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
-    export const answer = "abcde"
-    //const answers = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    const questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
-    const answerHintMap = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    // top, right, left, down, vert, horz
+    //export const answer = "abcde"
+    export let questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    export let answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    
+    export let TOTAL_MOVES = 20
+    $: MOVES = TOTAL_MOVES
 
     let char_num = 0
 
@@ -65,38 +66,38 @@
             return temp
         }
 
-        if (y === 0 && answerHintMap[0].includes(temp.letter)){
-            if (answerHintMap[0][x] === temp.letter) {
+        if (y === 0 && answers[0].includes(temp.letter)){
+            if (answers[0][x] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
             }
-        } else if (x === 0 && answerHintMap[2].includes(temp.letter)) {
-            if (answerHintMap[2][y] === temp.letter) {
+        } else if (x === 0 && answers[2].includes(temp.letter)) {
+            if (answers[2][y] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
             }
-        } else if (y === 4 && answerHintMap[3].includes(temp.letter)) {
-            if (answerHintMap[3][x] === temp.letter) {
+        } else if (y === 4 && answers[3].includes(temp.letter)) {
+            if (answers[3][x] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
             }
-        } else if (x === 4 && answerHintMap[1].includes(temp.letter)) {
-            if (answerHintMap[1][y] === temp.letter) {
+        } else if (x === 4 && answers[1].includes(temp.letter)) {
+            if (answers[1][y] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
             }
-        } else if (x === 2 && answerHintMap[4].includes(temp.letter)) {
-            if (answerHintMap[4][y] === temp.letter) {
+        } else if (x === 2 && answers[4].includes(temp.letter)) {
+            if (answers[4][y] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
             }
-        } else if (y === 2 && answerHintMap[5].includes(temp.letter)) {
-            if (answerHintMap[5][x] === temp.letter) {
+        } else if (y === 2 && answers[5].includes(temp.letter)) {
+            if (answers[5][x] === temp.letter) {
                 temp.state = "correct"
             } else {
                 temp.state = "misplaced"
@@ -109,9 +110,12 @@
     }
 
     function swapElements(x1, y1, x2, y2){
+
         if (x1 === x2 && y1 === y2) {
             return;
         }
+
+        MOVES -= 1;
 
         let temp = checkPosition(y2, x2, board[x1][y1])
         let temp2 = checkPosition(y1, x1, board[x2][y2])
@@ -123,15 +127,36 @@
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++) {
                 if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
+                    if (MOVES <= 0) {
+                        board = endGame(board)
+                        dispatch('GAME_LOST', {
+                            text: 'GAME LOST',
+                        });
+
+                        console.log(board)
+                    }
                     return
                 }
             }
         }
-
+        
+        board = endGame(board)
         dispatch('GAME_WON', {
-            text: 'GAME_WON',
+            text: 'GAME WON',
         });
     }
+
+    function endGame(board) {
+        for (let i = 0; i < board.length; i++){
+            for (let j = 0; j < board[i].length; j++) {
+                if (board[i][j].state != "blocked"){
+                    board[i][j].state = "game_end"
+                }
+            }
+        }
+
+        return board
+    } 
 
     $: {
         if (events.length >= 2) {
@@ -166,6 +191,9 @@
             {/each}
         {/key}
     </div>
+    <div class="moves-counter">
+        You have <b>{MOVES}</b> Moves available!
+    </div>
 </div>
 
 <style>
@@ -175,16 +203,31 @@
         align-items: center;
         flex-grow: 1;
         overflow: hidden;
+
+        flex-direction: column;
+
+        border: 5px solid pink;
+    }
+
+    .moves-counter {
+        /* display: flex; */
+        border: 5px solid red;
+        font-size: larger;
+        margin-top: 2.5em;
     }
 
     .game-board {
         width: 350px;
-        height: 420px;
+        height: 355px;
         display: grid;
-        grid-template-rows: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        /* grid-template-rows: auto; */
         grid-gap: 10px;
-        padding: 10px;
         box-sizing: border-box;
+
+        /* padding: 10px; */
+
+        /* border: 5px solid blueviolet; */
     }
 
     @media (max-width: 700px) {

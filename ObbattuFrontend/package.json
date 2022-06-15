@@ -20,6 +20,7 @@
     "svelte-dnd-action": "^0.9.18"
   },
   "dependencies": {
+    "canvas-confetti": "^1.5.1",
     "sirv-cli": "^2.0.0"
   }
 }

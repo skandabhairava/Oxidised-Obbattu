@@ -42,9 +42,11 @@
         items = e.detail.items;
 	}
 
+    $: disable = ((letter.state === "blocked") || (letter.state === "correct") || (letter.state === "game_end"))
+
     $: options = {
-		dropFromOthersDisabled: ((letter.state === "blocked") || (letter.state === "correct")),
-        dragDisabled: ((letter.state === "blocked") || (letter.state === "correct")),
+		dropFromOthersDisabled: disable,
+        dragDisabled: disable,
 		items,
 		dropTargetStyle: {},
 		flipDurationMs: 100
