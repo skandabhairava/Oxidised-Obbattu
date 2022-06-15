@@ -206,12 +206,12 @@
 
         flex-direction: column;
 
-        border: 5px solid pink;
+        /* border: 5px solid pink; */
     }
 
     .moves-counter {
         /* display: flex; */
-        border: 5px solid red;
+        /* border: 5px solid red; */
         font-size: larger;
         margin-top: 2.5em;
     }
