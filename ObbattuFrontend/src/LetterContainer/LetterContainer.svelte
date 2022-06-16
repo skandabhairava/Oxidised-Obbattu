@@ -42,7 +42,7 @@
         items = e.detail.items;
 	}
 
-    $: disable = ((letter.state === "blocked") || (letter.state === "correct") || (letter.state === "game_end"))
+    $: disable = ((letter.state === "blocked") || (letter.state === "correct") || (letter.state === "game_lost") || (letter.state === "game_won"))
 
     $: options = {
 		dropFromOthersDisabled: disable,

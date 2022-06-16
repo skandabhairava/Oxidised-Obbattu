@@ -2,40 +2,56 @@
     import Row from "./Row.svelte";
     import { Letter } from "./LetterContainer/letter";
 
+    import Content from "./ModalManager.svelte";
+    import Modal from "svelte-simple-modal";
+
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
     //export const answer = "abcde"
     export let questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
     export let answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    export let ans_to_show = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
     
     export let TOTAL_MOVES = 20
+
+    let GAME_PLAYING = true
+
     $: MOVES = TOTAL_MOVES
 
     let char_num = 0
 
-    function getRow(row_num) {
+    function getRow(row_num, ans = false) {
         let arr = []
         let state = "incorrect"
         for (let i = 0; i < 5; i++) {
-            if ((((i === 0) || (i === 4)) && ((row_num === 0) || (row_num === 4))) || ((i === 2) && (row_num === 2))) {
-                state = "correct"
-            } else if (questions[row_num][i] === ""){
-                state = "blocked"
+            if (ans === false){
+                if ((((i === 0) || (i === 4)) && ((row_num === 0) || (row_num === 4))) || ((i === 2) && (row_num === 2))) {
+                    state = "correct"
+                } else if (questions[row_num][i] === ""){
+                    state = "blocked"
+                } else {
+                    state = "incorrect"
+                }
+                arr.push(new Letter(char_num, questions[row_num][i], state))
             } else {
-                state = "incorrect"
+                if (questions[row_num][i] === "") {
+                    state = "blocked"
+                } else {
+                    state = "correct"
+                }
+                arr.push(new Letter(char_num, ans_to_show[row_num][i], state))
             }
-            arr.push(new Letter(char_num, questions[row_num][i], state))
             char_num++
         }
 
         return arr;
     }
 
-    function getBoard() {
+    function getBoard(ans = false) {
         let board = []
         for (let i = 0; i < 5; i++) {
-            board.push(getRow(i))
+            board.push(getRow(i, ans))
         }
         return board
     }
@@ -128,35 +144,42 @@
             for (let j = 0; j < board[i].length; j++) {
                 if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
                     if (MOVES <= 0) {
-                        board = endGame(board)
+                        board = endGame(board, false)
                         dispatch('GAME_LOST', {
                             text: 'GAME LOST',
                         });
 
-                        console.log(board)
+                        //console.log(board)
                     }
                     return
                 }
             }
         }
         
-        board = endGame(board)
+        board = endGame(board, true)
         dispatch('GAME_WON', {
             text: 'GAME WON',
         });
     }
 
-    function endGame(board) {
+    function endGame(board, won) {
+
+        GAME_PLAYING = false
+
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++) {
                 if (board[i][j].state != "blocked"){
-                    board[i][j].state = "game_end"
+                    if (won === true){
+                        board[i][j].state = "game_won"
+                    } else {
+                        board[i][j].state = "game_lost"
+                    }
                 }
             }
         }
 
         return board
-    } 
+    }
 
     $: {
         if (events.length >= 2) {
@@ -170,6 +193,7 @@
     }
 
     let board = getBoard()
+    let ans_board = getBoard(true)
 
     for (let i = 0; i < board.length; i++){
         for (let j = 0; j < board[i].length; j++) {
@@ -194,6 +218,11 @@
     <div class="moves-counter">
         You have <b>{MOVES}</b> Moves available!
     </div>
+    {#if GAME_PLAYING === false}
+        <Modal>
+            <Content board={ans_board}/>
+        </Modal>
+    {/if}
 </div>
 
 <style>
@@ -213,7 +242,7 @@
         /* display: flex; */
         /* border: 5px solid red; */
         font-size: larger;
-        margin-top: 2.5em;
+        margin-top: 2em;
     }
 
     .game-board {
@@ -233,7 +262,7 @@
     @media (max-width: 700px) {
         .game-board {
             width: 347px;
-            height: 414px;
+            height: 352px;
         }
     }
 </style>

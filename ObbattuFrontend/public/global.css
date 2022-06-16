@@ -65,7 +65,11 @@ label {
 	display: block;
 }
 
-input, button, select, textarea {
+.close {
+	cursor: pointer;
+}
+
+/* input, button, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	-webkit-padding: 0.4em 0;
@@ -78,22 +82,22 @@ input, button, select, textarea {
 
 input:disabled {
 	color: #ccc;
-}
+} */
 
-button {
+/* button {
 	color: var(--font-color);
 	background-color: var(--border-color);
 	outline: none;
-}
+} */
 
 button:disabled {
 	color: #999;
 }
 
-button:not(:disabled):active {
+/* button:not(:disabled):active {
 	background-color: #ddd;
-}
+} */
 
-button:focus {
+/* button:focus {
 	border-color: #666;
-}
+} */
