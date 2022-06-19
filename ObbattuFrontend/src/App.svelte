@@ -1,5 +1,5 @@
 <script>
-    import GameBoard from "./GameBoard.svelte";
+    import GameBoard from "./GameBoard/GameBoard.svelte";
     import Header from "./Header.svelte";
 
     import confetti from "canvas-confetti";

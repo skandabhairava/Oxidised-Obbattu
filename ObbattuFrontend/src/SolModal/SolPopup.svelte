@@ -1,6 +1,6 @@
 <script>
     export let board
-    import Row from "../Row.svelte";
+    import Row from "../GameBoard/Row.svelte";
 </script>
 
 <div class="main-popup">

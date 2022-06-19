@@ -1,5 +1,5 @@
 <script>
-    import LetterContainer from './LetterContainer/LetterContainer.svelte';
+    import LetterContainer from '../LetterContainer/LetterContainer.svelte';
     export let row_list;
     export let col;
 

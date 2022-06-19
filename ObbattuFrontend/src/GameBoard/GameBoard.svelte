@@ -1,8 +1,8 @@
 <script>
     import Row from "./Row.svelte";
-    import { Letter } from "./LetterContainer/letter";
+    import { Letter } from "../LetterContainer/letter";
 
-    import Content from "./SolModal/SolModalManager.svelte";
+    import Content from "../SolModal/SolModalManager.svelte";
     import Modal from "svelte-simple-modal";
 
     import { createEventDispatcher } from 'svelte';
