@@ -31,6 +31,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -5509,9 +5517,9 @@ var app = (function () {
     			t4 = space();
     			t5 = text(t5_value);
     			t6 = text(" remaining!");
-    			attr_dev(strong0, "class", "svelte-1tdry3a");
+    			attr_dev(strong0, "class", "svelte-1x2m1mo");
     			add_location(strong0, file$2, 230, 41, 7694);
-    			attr_dev(strong1, "class", "svelte-1tdry3a");
+    			attr_dev(strong1, "class", "svelte-1x2m1mo");
     			add_location(strong1, file$2, 230, 76, 7729);
     			attr_dev(p, "class", "moves-playing");
     			add_location(p, file$2, 230, 12, 7665);
@@ -5561,7 +5569,7 @@ var app = (function () {
     			strong = element("strong");
     			strong.textContent = "lost";
     			t2 = text(" the game");
-    			attr_dev(strong, "class", "svelte-1tdry3a");
+    			attr_dev(strong, "class", "svelte-1x2m1mo");
     			add_location(strong, file$2, 228, 19, 7600);
     			add_location(p, file$2, 228, 12, 7593);
     		},
@@ -5608,7 +5616,7 @@ var app = (function () {
     			t2 = space();
     			t3 = text(t3_value);
     			t4 = text(" available!");
-    			attr_dev(strong, "class", "svelte-1tdry3a");
+    			attr_dev(strong, "class", "svelte-1x2m1mo");
     			add_location(strong, file$2, 226, 24, 7467);
     			add_location(p, file$2, 226, 12, 7455);
     		},
@@ -5804,16 +5812,16 @@ var app = (function () {
     			if_block.c();
     			t5 = space();
     			create_component(modal.$$.fragment);
-    			attr_dev(strong, "class", "svelte-1tdry3a");
+    			attr_dev(strong, "class", "svelte-1x2m1mo");
     			add_location(strong, file$2, 212, 25, 7028);
     			add_location(p, file$2, 212, 8, 7011);
-    			attr_dev(div0, "class", "daily-obbattu-count svelte-1tdry3a");
+    			attr_dev(div0, "class", "daily-obbattu-count svelte-1x2m1mo");
     			add_location(div0, file$2, 211, 4, 6968);
-    			attr_dev(div1, "class", "game-board svelte-1tdry3a");
+    			attr_dev(div1, "class", "game-board svelte-1x2m1mo");
     			add_location(div1, file$2, 214, 4, 7083);
-    			attr_dev(div2, "class", "moves-counter svelte-1tdry3a");
+    			attr_dev(div2, "class", "moves-counter svelte-1x2m1mo");
     			add_location(div2, file$2, 224, 4, 7374);
-    			attr_dev(div3, "class", "board-container svelte-1tdry3a");
+    			attr_dev(div3, "class", "board-container svelte-1x2m1mo");
     			add_location(div3, file$2, 210, 0, 6933);
     		},
     		l: function claim(nodes) {
@@ -6272,31 +6280,47 @@ var app = (function () {
     function create_fragment$1(ctx) {
     	let div3;
     	let div0;
-    	let t0;
+    	let button0;
+    	let t1;
     	let div1;
     	let h1;
-    	let t2;
+    	let t3;
     	let div2;
+    	let button1;
+    	let img;
+    	let img_src_value;
 
     	const block = {
     		c: function create() {
     			div3 = element("div");
     			div0 = element("div");
-    			t0 = space();
+    			button0 = element("button");
+    			button0.textContent = "?";
+    			t1 = space();
     			div1 = element("div");
     			h1 = element("h1");
     			h1.textContent = "ಒಬ್ಬಟ್ಟು";
-    			t2 = space();
+    			t3 = space();
     			div2 = element("div");
+    			button1 = element("button");
+    			img = element("img");
+    			attr_dev(button0, "class", "help-button svelte-12aqof5");
+    			add_location(button0, file$1, 2, 8, 56);
     			attr_dev(div0, "class", "spacer");
     			add_location(div0, file$1, 1, 4, 26);
-    			attr_dev(h1, "class", "svelte-wpmbyq");
-    			add_location(h1, file$1, 3, 8, 87);
-    			attr_dev(div1, "class", "title svelte-wpmbyq");
-    			add_location(div1, file$1, 2, 4, 58);
+    			attr_dev(h1, "class", "svelte-12aqof5");
+    			add_location(h1, file$1, 7, 8, 165);
+    			attr_dev(div1, "class", "title svelte-12aqof5");
+    			add_location(div1, file$1, 6, 4, 136);
+    			if (!src_url_equal(img.src, img_src_value = "./stats.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "statistics");
+    			attr_dev(img, "class", "stats-img svelte-12aqof5");
+    			add_location(img, file$1, 11, 12, 273);
+    			attr_dev(button1, "class", "stats-button svelte-12aqof5");
+    			add_location(button1, file$1, 10, 8, 230);
     			attr_dev(div2, "class", "spacer");
-    			add_location(div2, file$1, 5, 4, 122);
-    			attr_dev(div3, "class", "header svelte-wpmbyq");
+    			add_location(div2, file$1, 9, 4, 200);
+    			attr_dev(div3, "class", "header svelte-12aqof5");
     			add_location(div3, file$1, 0, 0, 0);
     		},
     		l: function claim(nodes) {
@@ -6305,11 +6329,14 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
     			append_dev(div3, div0);
-    			append_dev(div3, t0);
+    			append_dev(div0, button0);
+    			append_dev(div3, t1);
     			append_dev(div3, div1);
     			append_dev(div1, h1);
-    			append_dev(div3, t2);
+    			append_dev(div3, t3);
     			append_dev(div3, div2);
+    			append_dev(div2, button1);
+    			append_dev(button1, img);
     		},
     		p: noop,
     		i: noop,
@@ -7005,7 +7032,7 @@ var app = (function () {
     			t = space();
     			create_component(gameboard.$$.fragment);
     			attr_dev(main, "class", "svelte-1djs3kh");
-    			add_location(main, file, 40, 0, 1703);
+    			add_location(main, file, 43, 0, 1748);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7047,7 +7074,7 @@ var app = (function () {
     	return block;
     }
 
-    const TOTAL_MOVES = 1;
+    const TOTAL_MOVES = 20;
 
     function randomInRange(min, max) {
     	return Math.random() * (max - min) + min;
@@ -7126,6 +7153,8 @@ var app = (function () {
     			},
     			250
     		);
+
+    		navigator.vibrate(200);
     	}
 
     	const writable_props = [];

@@ -299,5 +299,9 @@
             width: 347px;
             height: 352px;
         }
+
+        .moves-counter {
+            font-size: larger;
+        }
     }
 </style>
