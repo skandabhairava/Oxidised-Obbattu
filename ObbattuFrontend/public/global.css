@@ -28,6 +28,34 @@
 	/* border: 5px solid red; */
 }
 
+.help-button, .stats-button {
+	-webkit-padding: 0.4em 0;
+	padding: 0.7em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: large;
+	border: 0;
+	user-select: none;
+	/* text-transform: uppercase; */
+	border-radius: 5px;
+	color: var(--font-color);
+	background-color: rgb(65, 65, 65);
+
+	-webkit-tap-highlight-color: transparent;
+
+	cursor: pointer;
+	box-shadow: 0 4px var(--incorrect-bg);
+}
+
+.help-button:hover, .stats-button:hover {
+	background-color: rgb(57, 57, 57);
+}
+
+.help-button:active, .stats-button:active {
+	box-shadow: 0 2px var(--popup-bg-color);
+	transform: translateY(3px);
+}
+
 /* [data-theme="dark"] {
     --primary-color: #9A97F3;
     --secondary-color: #818cab;

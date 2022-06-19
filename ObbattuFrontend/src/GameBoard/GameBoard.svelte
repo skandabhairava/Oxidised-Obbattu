@@ -2,7 +2,7 @@
     import Row from "./Row.svelte";
     import { Letter } from "../LetterContainer/letter";
 
-    import Content from "../SolModal/SolModalManager.svelte";
+    import Content from "../Popups/SolModal/SolModalManager.svelte";
     import Modal from "svelte-simple-modal";
 
     import { createEventDispatcher } from 'svelte';
@@ -232,7 +232,7 @@
         {/if}
     </div>
     <Modal
-        classContent="modal"    
+        classContent="modal"
     >
         {#if GAME_STATE === "lost"}
             <Content board={ans_board}/>
