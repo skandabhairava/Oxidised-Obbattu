@@ -4,13 +4,13 @@
 
     import confetti from "canvas-confetti";
 
-    const duration = 5 * 1000;
+    const duration = 5 * 1000; //Fire work duration
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
     const questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
     const ans_to_show = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
     const answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    const TOTAL_MOVES = 20
+    const TOTAL_MOVES = 1
 
     function randomInRange(min, max) {
         return Math.random() * (max - min) + min;

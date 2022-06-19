@@ -11,25 +11,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .header > .spacer {
-        height: 20px;
-        width: 20px;
-        margin: 1rem;
+        /* border-bottom: 1px solid var(--border-color); */
     }
 
     .title {
-        display: flex;
+        /* display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 0;
-        margin-bottom: 0;
+        margin-bottom: 0; */
+        font-size: larger;
+        font-weight: 500;
+        letter-spacing: 5px;
     }
 
 
     .title>* {
-        margin-top: 0;
-        margin-bottom: .1rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 </style>

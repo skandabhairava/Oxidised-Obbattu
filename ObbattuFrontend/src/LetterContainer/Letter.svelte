@@ -28,7 +28,6 @@
         line-height: 2rem;
         color: var(--text-color);
         text-transform: uppercase;
-
         /* transition: background-color 1s linear; */
     }
 
@@ -58,48 +57,48 @@
         background-color: var(--misplaced-bg);
         box-shadow: 0px 5px 0px var(--misplaced-shadow);
     }
-
+    
     .correct {
         background-color: var(--correct-bg);
         box-shadow: 0px 5px 0px var(--correct-shadow);
     }
-
+    
     @keyframes rainbow-bg{
 		100%,0%{
-			background-color: rgb(113, 37, 37);
+            background-color: rgb(37, 116, 37);
 		}
 		8%{
-			background-color: rgb(131, 67, 2);
+            background-color: rgb(7, 116, 61);
 		}
 		16%{
-			background-color: rgb(111, 90, 37);
+            background-color: rgb(0, 139, 139);
 		}
 		25%{
-			background-color: rgb(78, 114, 41);
+            background-color: rgb(37, 77, 116);
 		}
 		33%{
-			background-color: rgb(37, 116, 37);
+            background-color: rgb(42, 42, 108);
 		}
 		41%{
-			background-color: rgb(7, 116, 61);
+            background-color: rgb(70, 34, 106);
 		}
 		50%{
-			background-color: rgb(0, 139, 139);
+            background-color: rgb(102, 37, 102);
 		}
 		58%{
-			background-color: rgb(37, 77, 116);
+            background-color: rgb(114, 26, 70);
 		}
 		66%{
-			background-color: rgb(42, 42, 108);
+            background-color: rgb(113, 37, 37);
 		}
 		75%{
-			background-color: rgb(70, 34, 106);
+            background-color: rgb(131, 67, 2);
 		}
 		83%{
-			background-color: rgb(102, 37, 102);
+            background-color: rgb(111, 90, 37);
 		}
 		91%{
-			background-color: rgb(114, 26, 70);
+            background-color: rgb(78, 114, 41);
 		}
     }
 </style>

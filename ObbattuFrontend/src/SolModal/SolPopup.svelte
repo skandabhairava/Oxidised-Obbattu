@@ -1,6 +1,6 @@
 <script>
     export let board
-    import Row from "./Row.svelte";
+    import Row from "../Row.svelte";
 </script>
 
 <div class="main-popup">
@@ -17,6 +17,9 @@
 <style>
     h1 {
         font-size: x-large;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: var(--font-color);
     }
 
     .main-popup {
@@ -25,7 +28,6 @@
         align-items: center;
         flex-grow: 1;
         overflow: hidden;
-
         flex-direction: column;
     }
 
@@ -52,5 +54,12 @@
         /* padding-bottom: 1em; */
 
         /* border: 5px solid blueviolet; */
+    }
+
+    @media (max-width: 700px) {
+        .game-board {
+            width: 260px;
+            height: 265px;
+        }
     }
 </style>

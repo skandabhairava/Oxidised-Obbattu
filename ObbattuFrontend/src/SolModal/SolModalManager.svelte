@@ -1,6 +1,6 @@
 <script>
     import { getContext } from 'svelte';
-    import Popup from './Popup.svelte';
+    import Popup from './SolPopup.svelte';
 
     export let board;
 

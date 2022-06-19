@@ -2,7 +2,7 @@
     import Row from "./Row.svelte";
     import { Letter } from "./LetterContainer/letter";
 
-    import Content from "./ModalManager.svelte";
+    import Content from "./SolModal/SolModalManager.svelte";
     import Modal from "svelte-simple-modal";
 
     import { createEventDispatcher } from 'svelte';
@@ -12,10 +12,10 @@
     export let questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
     export let answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
     export let ans_to_show = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    
     export let TOTAL_MOVES = 20
+    export let OBBATTU_COUNT = 0
 
-    let GAME_PLAYING = true
+    let GAME_STATE = "playing"
 
     $: MOVES = TOTAL_MOVES
 
@@ -35,7 +35,7 @@
                 }
                 arr.push(new Letter(char_num, questions[row_num][i], state))
             } else {
-                if (questions[row_num][i] === "") {
+                if (ans_to_show[row_num][i] === "") {
                     state = "blocked"
                 } else {
                     state = "correct"
@@ -162,9 +162,13 @@
         });
     }
 
-    function endGame(board, won) {
+    function endGame(board, won = false) {
 
-        GAME_PLAYING = false
+        if (won === false){
+            GAME_STATE = "lost"
+        } else {
+            GAME_STATE = "won"
+        }
 
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++) {
@@ -205,6 +209,9 @@
 </script>
 
 <div class="board-container">
+    <div class="daily-obbattu-count">
+        <p>daily obbattu <strong>#{OBBATTU_COUNT}</strong></p>
+    </div>
     <div class="game-board">
         {#key board}
             {#each board as row, i}
@@ -216,33 +223,61 @@
         {/key}
     </div>
     <div class="moves-counter">
-        You have <b>{MOVES}</b> Moves available!
+        {#if GAME_STATE === "playing"}
+            <p>You have <strong>{MOVES}</strong> {(MOVES === 1)?"Move":"Moves"} available!</p>
+        {:else if GAME_STATE === "lost"}
+            <p>You <strong>lost</strong> the game</p>
+        {:else}
+            <p class="moves-playing">You <strong>won</strong> the game with <strong>{MOVES}</strong> {(MOVES === 1)?"Move":"Moves"} remaining!</p>
+        {/if}
     </div>
-    {#if GAME_PLAYING === false}
-        <Modal>
+    <Modal
+        classContent="modal"    
+    >
+        {#if GAME_STATE === "lost"}
             <Content board={ans_board}/>
-        </Modal>
-    {/if}
+        {/if}
+    </Modal>
 </div>
 
 <style>
+
     .board-container {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-grow: 1;
         overflow: hidden;
-
         flex-direction: column;
-
         /* border: 5px solid pink; */
     }
 
+    strong {
+        color: var(--font-color);
+    }
+
+    .daily-obbattu-count {
+        letter-spacing: 4px;
+        font-size: large;
+        text-transform: uppercase;
+        color: var(--subtitle-color);
+    }
+
     .moves-counter {
-        /* display: flex; */
         /* border: 5px solid red; */
-        font-size: larger;
-        margin-top: 2em;
+        font-size: x-large;
+        margin-top: 3em;
+        /* border: 1px solid red; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 4em;
+
+        color: var(--subtitle-color);
+        background-color: var(--popup-bg-color);
+
+        /* text-align: center */
     }
 
     .game-board {

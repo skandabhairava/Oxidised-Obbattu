@@ -1,38 +1,40 @@
 :root {
-    --primary-color: #302AE6;
-    --secondary-color: #536390;
-    --font-color: #424242;
-    --bg-color: #fff;
-    --heading-color: #292922;
-	--border-color: #878a8c;
-	--empty-border-color: #d3d6da;
+    --font-color: #e8e8e8;
+    --bg-color: rgb(26, 26, 27);
+
+	--popup-bg-color: rgb(41,43,43);
+
+	--subtitle-color: rgb(102,102,102);
 	--guessed-letter-color: #ffffff;
-	--key-bg: #d3d6da;
-	--text-color: #1a1a1b;
 
-	--incorrect-bg: #787c7e;
-	--game-end-bg: #151515;
-	--correct-bg: #6aaa64;
-	--misplaced-bg: #c8b458;
+	--incorrect-bg: rgb(50,52,52);
+	--game-end-bg: #000000;
+	--correct-bg: rgb(58,139,56);
+	--misplaced-bg: rgb(226,152,37);
 
-	--incorrect-shadow: #5a5b5c;
-	--game-end-shadow: #151515;
-	--correct-shadow: #548a4f;
-	--misplaced-shadow: #96863e;
+	--incorrect-shadow: rgb(45,47,47);
+	--game-end-shadow: #000000;
+	--correct-shadow: rgb(52,125,50);
+	--misplaced-shadow: rgb(199, 136, 35);
 }
 
 :root {
-	--keyboard-height: 200px;
 	--game-max-width: 500px;
 }
 
-[data-theme="dark"] {
+.modal {
+	background-color: var(--popup-bg-color);
+	border-radius: 5px;
+	/* border: 5px solid red; */
+}
+
+/* [data-theme="dark"] {
     --primary-color: #9A97F3;
     --secondary-color: #818cab;
     --font-color: #e1e1ff;
     --bg-color: #161625;
     --heading-color: #818cab;
-}
+} */
 
 html, body {
 	position: relative;
@@ -45,25 +47,12 @@ body {
 	color: var(--font-color);
 	margin: 0;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: sans-serif, 'Baloo Tamma 2';
 }
 
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: rgb(0,80,160);
-}
-
-label {
+/* label {
 	display: block;
-}
+} */
 
 .close {
 	cursor: pointer;
