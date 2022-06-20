@@ -186,6 +186,14 @@ var app = (function () {
     function children(element) {
         return Array.from(element.childNodes);
     }
+    function set_style(node, key, value, important) {
+        if (value === null) {
+            node.style.removeProperty(key);
+        }
+        else {
+            node.style.setProperty(key, value, important ? 'important' : '');
+        }
+    }
     function toggle_class(element, name, toggle) {
         element.classList[toggle ? 'add' : 'remove'](name);
     }
@@ -6633,31 +6641,200 @@ var app = (function () {
     const file$3 = "src\\Popups\\StatPopup\\StatPopup.svelte";
 
     function create_fragment$3(ctx) {
-    	let div;
-    	let h1;
+    	let div9;
+    	let h10;
+    	let t1;
+    	let hr0;
+    	let t2;
+    	let div6;
+    	let div0;
+    	let p0;
+    	let t4;
+    	let div1;
+    	let p1;
+    	let t5;
+    	let t6;
+    	let div2;
+    	let p2;
+    	let t8;
+    	let div3;
+    	let p3;
+    	let t9;
+    	let t10;
+    	let div4;
+    	let p4;
+    	let t12;
+    	let div5;
+    	let p5;
+    	let t13;
+    	let t14;
+    	let hr1;
+    	let t15;
+    	let div7;
+    	let button;
+    	let img;
+    	let img_src_value;
+    	let t16;
+    	let h11;
+    	let t18;
+    	let div8;
+    	let h3;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			h1 = element("h1");
-    			h1.textContent = "Statistics";
-    			attr_dev(h1, "class", "svelte-10xf7xx");
-    			add_location(h1, file$3, 1, 4, 30);
-    			attr_dev(div, "class", "main-popup svelte-10xf7xx");
-    			add_location(div, file$3, 0, 0, 0);
+    			div9 = element("div");
+    			h10 = element("h1");
+    			h10.textContent = "Statistics";
+    			t1 = space();
+    			hr0 = element("hr");
+    			t2 = space();
+    			div6 = element("div");
+    			div0 = element("div");
+    			p0 = element("p");
+    			p0.textContent = "Played";
+    			t4 = space();
+    			div1 = element("div");
+    			p1 = element("p");
+    			t5 = text(/*GAMES_PLAYED*/ ctx[0]);
+    			t6 = space();
+    			div2 = element("div");
+    			p2 = element("p");
+    			p2.textContent = "Games Won";
+    			t8 = space();
+    			div3 = element("div");
+    			p3 = element("p");
+    			t9 = text(/*GAMES_WON*/ ctx[1]);
+    			t10 = space();
+    			div4 = element("div");
+    			p4 = element("p");
+    			p4.textContent = "Games Lost";
+    			t12 = space();
+    			div5 = element("div");
+    			p5 = element("p");
+    			t13 = text(/*GAMES_LOST*/ ctx[3]);
+    			t14 = space();
+    			hr1 = element("hr");
+    			t15 = space();
+    			div7 = element("div");
+    			button = element("button");
+    			img = element("img");
+    			t16 = space();
+    			h11 = element("h1");
+    			h11.textContent = "Delete Stats";
+    			t18 = space();
+    			div8 = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Re-open the popup to enable statistics";
+    			attr_dev(h10, "class", "svelte-1kfwlv");
+    			add_location(h10, file$3, 54, 4, 1269);
+    			attr_dev(hr0, "class", "svelte-1kfwlv");
+    			add_location(hr0, file$3, 55, 4, 1294);
+    			add_location(p0, file$3, 58, 12, 1369);
+    			attr_dev(div0, "class", "item left svelte-1kfwlv");
+    			add_location(div0, file$3, 57, 8, 1332);
+    			add_location(p1, file$3, 61, 12, 1446);
+    			attr_dev(div1, "class", "item right svelte-1kfwlv");
+    			add_location(div1, file$3, 60, 8, 1408);
+    			add_location(p2, file$3, 64, 12, 1530);
+    			attr_dev(div2, "class", "item left svelte-1kfwlv");
+    			add_location(div2, file$3, 63, 8, 1493);
+    			add_location(p3, file$3, 67, 12, 1610);
+    			attr_dev(div3, "class", "item right svelte-1kfwlv");
+    			add_location(div3, file$3, 66, 8, 1572);
+    			add_location(p4, file$3, 70, 12, 1691);
+    			attr_dev(div4, "class", "item left svelte-1kfwlv");
+    			add_location(div4, file$3, 69, 8, 1654);
+    			add_location(p5, file$3, 73, 12, 1772);
+    			attr_dev(div5, "class", "item right svelte-1kfwlv");
+    			add_location(div5, file$3, 72, 8, 1734);
+    			attr_dev(div6, "class", "dict svelte-1kfwlv");
+    			add_location(div6, file$3, 56, 4, 1304);
+    			attr_dev(hr1, "class", "svelte-1kfwlv");
+    			add_location(hr1, file$3, 76, 4, 1825);
+    			if (!src_url_equal(img.src, img_src_value = "./trash.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "delete stats");
+    			attr_dev(img, "class", "trash-img svelte-1kfwlv");
+    			add_location(img, file$3, 84, 12, 2008);
+    			attr_dev(h11, "class", "svelte-1kfwlv");
+    			add_location(h11, file$3, 85, 12, 2082);
+    			attr_dev(button, "class", "trash svelte-1kfwlv");
+    			add_location(button, file$3, 80, 8, 1919);
+    			set_style(div7, "display", /*deleted*/ ctx[2] === true ? "none" : "block");
+    			add_location(div7, file$3, 77, 4, 1835);
+    			add_location(h3, file$3, 91, 4, 2221);
+    			set_style(div8, "display", /*deleted*/ ctx[2] === false ? "none" : "block");
+    			add_location(div8, file$3, 88, 4, 2140);
+    			attr_dev(div9, "class", "main-popup svelte-1kfwlv");
+    			add_location(div9, file$3, 53, 0, 1239);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h1);
+    			insert_dev(target, div9, anchor);
+    			append_dev(div9, h10);
+    			append_dev(div9, t1);
+    			append_dev(div9, hr0);
+    			append_dev(div9, t2);
+    			append_dev(div9, div6);
+    			append_dev(div6, div0);
+    			append_dev(div0, p0);
+    			append_dev(div6, t4);
+    			append_dev(div6, div1);
+    			append_dev(div1, p1);
+    			append_dev(p1, t5);
+    			append_dev(div6, t6);
+    			append_dev(div6, div2);
+    			append_dev(div2, p2);
+    			append_dev(div6, t8);
+    			append_dev(div6, div3);
+    			append_dev(div3, p3);
+    			append_dev(p3, t9);
+    			append_dev(div6, t10);
+    			append_dev(div6, div4);
+    			append_dev(div4, p4);
+    			append_dev(div6, t12);
+    			append_dev(div6, div5);
+    			append_dev(div5, p5);
+    			append_dev(p5, t13);
+    			append_dev(div9, t14);
+    			append_dev(div9, hr1);
+    			append_dev(div9, t15);
+    			append_dev(div9, div7);
+    			append_dev(div7, button);
+    			append_dev(button, img);
+    			append_dev(button, t16);
+    			append_dev(button, h11);
+    			append_dev(div9, t18);
+    			append_dev(div9, div8);
+    			append_dev(div8, h3);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*trash*/ ctx[4], false, false, false);
+    				mounted = true;
+    			}
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*GAMES_PLAYED*/ 1) set_data_dev(t5, /*GAMES_PLAYED*/ ctx[0]);
+    			if (dirty & /*GAMES_WON*/ 2) set_data_dev(t9, /*GAMES_WON*/ ctx[1]);
+    			if (dirty & /*GAMES_LOST*/ 8) set_data_dev(t13, /*GAMES_LOST*/ ctx[3]);
+
+    			if (dirty & /*deleted*/ 4) {
+    				set_style(div7, "display", /*deleted*/ ctx[2] === true ? "none" : "block");
+    			}
+
+    			if (dirty & /*deleted*/ 4) {
+    				set_style(div8, "display", /*deleted*/ ctx[2] === false ? "none" : "block");
+    			}
+    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div9);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -6672,16 +6849,87 @@ var app = (function () {
     	return block;
     }
 
-    function instance$3($$self, $$props) {
+    function saveObject(key, obj) {
+    	window.localStorage.setItem(key, JSON.stringify(obj));
+    }
+
+    function getObj(key) {
+    	// console.log("Shits going on...")
+    	try {
+    		let json = JSON.parse(window.localStorage.getItem(key));
+
+    		// console.log("found item", json)
+    		return json;
+    	} catch {
+    		return null;
+    	}
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let GAMES_LOST;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('StatPopup', slots, []);
+    	let GAMES_PLAYED = 0;
+    	let GAMES_WON = 0;
+    	let deleted = false;
+
+    	function trash() {
+    		window.localStorage.removeItem("GAME_STATS");
+    		$$invalidate(0, GAMES_PLAYED = 0);
+    		$$invalidate(1, GAMES_WON = 0);
+    		$$invalidate(2, deleted = true);
+    	}
+
+    	let game_stats = getObj("GAME_STATS");
+
+    	// console.log("found stats", game_stats)
+    	function load() {
+    		if (game_stats === null) {
+    			game_stats = { GAMES_PLAYED: 0, GAMES_WON: 0 };
+    			saveObject("GAME_STATS", game_stats);
+    		} else {
+    			($$invalidate(0, GAMES_PLAYED = game_stats.GAMES_PLAYED), $$invalidate(1, GAMES_WON = game_stats.GAMES_WON));
+    		}
+    	}
+
+    	load();
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<StatPopup> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	$$self.$capture_state = () => ({
+    		GAMES_PLAYED,
+    		GAMES_WON,
+    		deleted,
+    		trash,
+    		saveObject,
+    		getObj,
+    		game_stats,
+    		load,
+    		GAMES_LOST
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('GAMES_PLAYED' in $$props) $$invalidate(0, GAMES_PLAYED = $$props.GAMES_PLAYED);
+    		if ('GAMES_WON' in $$props) $$invalidate(1, GAMES_WON = $$props.GAMES_WON);
+    		if ('deleted' in $$props) $$invalidate(2, deleted = $$props.deleted);
+    		if ('game_stats' in $$props) game_stats = $$props.game_stats;
+    		if ('GAMES_LOST' in $$props) $$invalidate(3, GAMES_LOST = $$props.GAMES_LOST);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*GAMES_PLAYED, GAMES_WON*/ 3) {
+    			$$invalidate(3, GAMES_LOST = GAMES_PLAYED - GAMES_WON);
+    		}
+    	};
+
+    	return [GAMES_PLAYED, GAMES_WON, deleted, GAMES_LOST, trash];
     }
 
     class StatPopup extends SvelteComponentDev {
@@ -7641,7 +7889,7 @@ var app = (function () {
     			t = space();
     			create_component(gameboard.$$.fragment);
     			attr_dev(main, "class", "svelte-1djs3kh");
-    			add_location(main, file, 43, 0, 1758);
+    			add_location(main, file, 69, 0, 2455);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7689,8 +7937,25 @@ var app = (function () {
     	return Math.random() * (max - min) + min;
     }
 
+    function incrementWonStat() {
+    	let obj = window.localStorage.getItem("GAME_STATS");
+    	if (obj === null) return;
+    	let json = JSON.parse(obj);
+    	json.GAMES_WON += 1;
+    	json.GAMES_PLAYED += 1;
+    	window.localStorage.setItem("GAME_STATS", JSON.stringify(json));
+    }
+
+    function incrementPlayedStat() {
+    	let obj = window.localStorage.getItem("GAME_STATS");
+    	if (obj === null) return;
+    	let json = JSON.parse(obj);
+    	json.GAMES_PLAYED += 1;
+    	window.localStorage.setItem("GAME_STATS", JSON.stringify(json));
+    }
+
     function handleGameLost(e) {
-    	
+    	incrementPlayedStat();
     }
 
     function instance($$self, $$props, $$invalidate) {
@@ -7732,6 +7997,8 @@ var app = (function () {
 
     	function handleGameWin(e) {
     		let animationEnd = Date.now() + duration;
+    		navigator.vibrate(200);
+    		incrementWonStat();
 
     		let interval = setInterval(
     			function () {
@@ -7762,8 +8029,6 @@ var app = (function () {
     			},
     			250
     		);
-
-    		navigator.vibrate(200);
     	}
 
     	const writable_props = [];
@@ -7783,6 +8048,8 @@ var app = (function () {
     		answers,
     		TOTAL_MOVES,
     		randomInRange,
+    		incrementWonStat,
+    		incrementPlayedStat,
     		handleGameWin,
     		handleGameLost
     	});

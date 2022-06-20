@@ -16,8 +16,35 @@
         return Math.random() * (max - min) + min;
     }
 
+    function incrementWonStat() {
+        let obj = window.localStorage.getItem("GAME_STATS")
+        if (obj === null) return
+        
+        let json = JSON.parse(obj)
+        
+        json.GAMES_WON += 1
+        json.GAMES_PLAYED += 1
+
+        window.localStorage.setItem("GAME_STATS", JSON.stringify(json))
+    }
+
+    function incrementPlayedStat() {
+        let obj = window.localStorage.getItem("GAME_STATS")
+        if (obj === null) return
+        
+        let json = JSON.parse(obj)
+        
+        json.GAMES_PLAYED += 1
+
+        window.localStorage.setItem("GAME_STATS", JSON.stringify(json))
+    }
+
     function handleGameWin(e) {
         let animationEnd = Date.now() + duration;
+
+        navigator.vibrate(200)
+        incrementWonStat()
+
         let interval = setInterval(function() {
             let timeLeft = animationEnd - Date.now();
 
@@ -31,12 +58,11 @@
             confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
             }
         , 250);
-
-        navigator.vibrate(200)
         
     }
 
     function handleGameLost(e) {
+        incrementPlayedStat()
     }
 
 </script>
