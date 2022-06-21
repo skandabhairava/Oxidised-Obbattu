@@ -27,15 +27,21 @@
                 <p>Made by</p>
             </div>
             <div class="item">
-                <a href="https://github.com/skandabhairava">Skanda M B</a>
+                <a target="_blank" href="https://github.com/skandabhairava">Skanda M B</a>
             </div>
             <div class="item">
                 <p>Inspired from</p>
             </div>
             <div class="item">
-                <a href="https://wafflegame.net/">WaffleGame</a>
-                <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>
-                <a href="https://wordalla.online/">Wordalla</a>
+                <a target="_blank" href="https://wafflegame.net/">WaffleGame</a>
+                <a target="_blank" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>
+                <a target="_blank" href="https://wordalla.online/">Wordalla</a>
+            </div>
+            <div class="item">
+                <p>Source code</p>
+            </div>
+            <div class="item">
+                <a target="_blank" href="https://github.com/skandabhairava/Oxidised-Obbattu">Github</a>
             </div>
         </div>
     </div>

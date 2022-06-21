@@ -243,11 +243,15 @@
 <style>
 
     .board-container {
+
+        /* border: 2px solid red; */
+        width: 100%;
+
         display: flex;
         justify-content: center;
         align-items: center;
         flex-grow: 1;
-        overflow: hidden;
+        /* overflow: hidden; */
         flex-direction: column;
         /* border: 5px solid pink; */
     }
