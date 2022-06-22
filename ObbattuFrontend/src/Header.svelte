@@ -5,7 +5,7 @@
     import Modal from "svelte-simple-modal";
 </script>
 
-<div class="header">
+<div class="flexx">
     <Modal classContent="modal">
         <HelpModal />
     </Modal>
@@ -18,12 +18,6 @@
 </div>
 
 <style>
-    .header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* border-bottom: 1px solid var(--border-color); */
-    }
     
     .title {
         /* display: flex;

@@ -29,6 +29,12 @@
 	border-radius: 10px;
 }
 
+.flexx {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 *::-webkit-scrollbar {
 	width: 10px;
 	background-color: rgba(0,0,0,0.1);

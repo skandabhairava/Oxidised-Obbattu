@@ -15,13 +15,13 @@
 
     //let questions
     let questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
-    let ans_to_show = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    let ansToShow = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
     let answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    let TOTAL_MOVES = 2
+    let TOTAL_MOVES = 1
 
-    $: show_loading = (questions === undefined || ans_to_show === undefined || answers === undefined)? true:false
+    $: show_loading = (questions === undefined || ansToShow === undefined || answers === undefined)? true:false
 
-    let show_timer = null // to show if timer or alert should be displayed
+    let reminderStatus = null // to show if timer or alert should be displayed
 
     // SET RESFRESH TIME HERE!
     const refreshTime = {
@@ -53,7 +53,7 @@
     }
 
     function refreshAlertCheck() {
-        if (show_timer === null) {
+        if (reminderStatus === null) {
             displayRefreshToast()
         }
     }
@@ -109,8 +109,8 @@
 
         navigator.vibrate(200)
         incrementWonStat()
-        if (show_timer === null) {
-            show_timer = "timer"
+        if (reminderStatus === null) {
+            reminderStatus = "timer"
         }
 
         let interval = setInterval(function() {
@@ -131,13 +131,15 @@
 
     function handleGameLost(e) {
         incrementPlayedStat()
-        if (show_timer === null) {
-            show_timer = "timer"
+        if (reminderStatus === null) {
+            reminderStatus = "timer"
         }
     }
 
     function refreshBoard(_) {
         console.log("refreshing board....")
+        
+        setTimeout(() => {reminderStatus = null}, 1000)
 
         refreshTimeout = setTimeout(
             refreshAlertCheck,
@@ -171,16 +173,18 @@
             on:GAME_LOST={handleGameLost} 
             questions={questions} 
             answers={answers} 
-            ans_to_show={ans_to_show} 
+            ans_to_show={ansToShow} 
             TOTAL_MOVES={TOTAL_MOVES}
         />
-        <div class="timer">
-            {#if show_timer === "timer"}
-                <Countdown endDate={getDurationTillMidnight} finishMsg="Refresh the page manually"/>
-            {/if}
-        </div>
+        {#if reminderStatus === "timer"}
+            <div class="timer notice flexx">
+                    <h2>Next Obbattu in</h2>
+                    <Countdown endDate={getDurationTillMidnight} finishMsg="Serving new Obbattu..." on:REFRESH_BOARD={refreshBoard}/>
+            </div>
+            <hr class="spacer">
+        {/if}
     {:else}
-        <div class="notice">
+        <div class="notice flexx">
             <h1>Generating a new game...</h1>
             <h3>Please wait...</h3>
             <div class="loadingio"><div class="ldio">
@@ -192,11 +196,40 @@
 <SvelteToast />
 
 <style>
+
+    hr {
+        width: 99%;
+        color: antiquewhite;
+    }
+
+    .spacer {
+        margin-top: 50px;
+        border: 1px solid var(--bg-color);
+    }
+
+    .timer {
+
+        font-size: x-large;
+        text-transform: uppercase;
+        font-family: monospace;
+        font-weight: bold;
+
+        margin-top: 50px;
+        padding-top: 0.5em;
+        padding-bottom: 1.65em;
+
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+
+        text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
+    }
+
     main {
         width: 100%;
         max-width: var(--game-max-width);
         margin: 0 auto;
         height: 100%;
+
         display: flex;
         flex-direction: column;
 
@@ -210,9 +243,6 @@
     }
 
     .notice{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         text-align: center;
         flex-direction: column;
     }

@@ -3,7 +3,7 @@
     import {Letter} from "../../LetterContainer/letter.js";
 </script>
 
-<div class="main-popup">
+<div class="main-popup flexx">
     <h1>Help</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida urna nec diam hendrerit egestas. Morbi non dictum dui. Fusce rutrum magna ante, vel fringilla magna euismod luctus. Vestibulum venenatis id nibh sed eleifend. Nulla accumsan risus ex. Donec ullamcorper, nibh in finibus egestas, nunc arcu viverra felis, a venenatis massa justo eu est. Nunc ac fermentum urna.</p>
     <hr>
@@ -84,15 +84,15 @@
 
     hr {
         width: 100%;
-        color: antiquewhite;
+        border-color: antiquewhite;
     }
 
     .main-popup {
         color: var(--font-color);
 
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         flex-grow: 1;
         overflow: hidden;
         flex-direction: column;

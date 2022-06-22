@@ -145,9 +145,7 @@
                 if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
                     if (MOVES <= 0) {
                         board = endGame(board, false)
-                        dispatch('GAME_LOST', {
-                            text: 'GAME LOST',
-                        });
+                        dispatch('GAME_LOST');
 
                         //console.log(board)
                     }
@@ -157,9 +155,7 @@
         }
         
         board = endGame(board, true)
-        dispatch('GAME_WON', {
-            text: 'GAME WON',
-        });
+        dispatch('GAME_WON');
     }
 
     function endGame(board, won = false) {
@@ -208,7 +204,7 @@
     //console.log(board)
 </script>
 
-<div class="board-container">
+<div class="board-container flexx">
     <div class="daily-obbattu-count">
         <p>daily obbattu <strong>#{OBBATTU_COUNT}</strong></p>
     </div>
@@ -222,7 +218,7 @@
             {/each}
         {/key}
     </div>
-    <div class="moves-counter">
+    <div class="moves-counter flexx">
         {#if GAME_STATE === "playing"}
             <p>You have <strong>{MOVES}</strong> {(MOVES === 1)?"Move":"Moves"} available!</p>
         {:else if GAME_STATE === "lost"}
@@ -247,9 +243,9 @@
         /* border: 2px solid red; */
         width: 100%;
 
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         flex-grow: 1;
         /* overflow: hidden; */
         flex-direction: column;
@@ -272,9 +268,9 @@
         font-size: x-large;
         margin-top: 3em;
         /* border: 1px solid red; */
-        display: flex;
+        /* display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center; */
         width: 100%;
         height: 4em;
 

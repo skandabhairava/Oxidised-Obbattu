@@ -3,9 +3,9 @@
     import Row from "../../GameBoard/Row.svelte";
 </script>
 
-<div class="main-popup">
+<div class="main-popup flexx">
     <h1>Solution</h1>
-    <div class="board-container">
+    <div class="board-container flexx">
         <div class="game-board">
             {#each board as row, i}
                 <Row row_list={row} col={i}/>
@@ -23,18 +23,18 @@
     }
 
     .main-popup {
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         flex-grow: 1;
         overflow: hidden;
         flex-direction: column;
     }
 
     .board-container {
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         flex-grow: 1;
         overflow: hidden;
         flex-direction: column;

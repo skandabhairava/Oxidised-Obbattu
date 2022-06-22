@@ -41,7 +41,7 @@
     load()
 </script>
 
-<div class="main-popup">
+<div class="main-popup flexx">
     <h1>Statistics</h1>
     <hr>
     <div class="dict">
@@ -95,7 +95,7 @@
 
     hr {
         width: 100%;
-        color: antiquewhite;
+        border-color: antiquewhite;
     }
 
     .item {
@@ -113,9 +113,9 @@
     .main-popup {
         color: var(--font-color);
 
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         flex-grow: 1;
         overflow: hidden;
         flex-direction: column;
