@@ -1,8 +1,12 @@
-export function saveObject(key, obj) {
+export function saveObj(key, obj) {
     window.localStorage.setItem(key, JSON.stringify(obj))
 }
 
-export function getObject(key) {
-    try {return JSON.parse(window.localStorage.getItem(key))}
-    catch {return null}
+export function getObj(key) {
+    try {
+        let json = JSON.parse(window.localStorage.getItem(key))
+        return json
+    } catch {
+        return null
+    }
 }

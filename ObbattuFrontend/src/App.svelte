@@ -10,18 +10,23 @@
 
     import confetti from "canvas-confetti";
 
+    import { saveObj, getObj } from "./storage";
+
     const duration = 5 * 1000; //Fire work duration
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    
+    let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    let OBBATTU_COUNT_from_server = 0
 
-    //let questions
-    let questions = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
-    let ansToShow = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    let answers = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    let TOTAL_MOVES = 1
+    let questions
+    let ansToShow
+    let answers
+    let TOTAL_MOVES = 20
 
-    $: show_loading = (questions === undefined || ansToShow === undefined || answers === undefined)? true:false
-
-    let reminderStatus = null // to show if timer or alert should be displayed
+    let moves = TOTAL_MOVES
+    let OBBATTU_COUNT = 0
 
     // SET RESFRESH TIME HERE!
     const refreshTime = {
@@ -30,11 +35,30 @@
         sec: 59,
     }
 
+    function timeout(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function QUERY_SERVER() {
+        
+        await timeout(2000)
+
+        questions = questions_from_server
+        ansToShow = ansToShow_from_server
+        answers = answers_from_server
+        OBBATTU_COUNT = OBBATTU_COUNT_from_server
+    }
+
+    $: show_loading = (questions === undefined || ansToShow === undefined || answers === undefined)? true : false
+
+    let reminderStatus = null // to show if timer or alert should be displayed
+
     function getDurationTillMidnight(duration = true) {
         let end_time = new Date()
         end_time.setHours(refreshTime.hour, refreshTime.min, refreshTime.sec)
         
         let now = new Date()
+
         let dur = end_time - now
 
         //return dur
@@ -42,6 +66,7 @@
         if (dur < 0) {
             end_time.setDate(end_time.getDate() + 1)
             dur = Math.abs(end_time - now)// + 86400000
+            console
         }
 
         //console.log(dur)
@@ -106,31 +131,43 @@
 
     function handleGameWin(e) {
         let animationEnd = Date.now() + duration;
+        
+        let increment = e.detail.extra
 
-        navigator.vibrate(200)
-        incrementWonStat()
+        //console.log("game won, but... extra?", increment)
+
         if (reminderStatus === null) {
             reminderStatus = "timer"
         }
 
-        let interval = setInterval(function() {
-            let timeLeft = animationEnd - Date.now();
-
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
-
-            let particleCount = 50 * (timeLeft / duration);
-            // since particles fall down, start a bit higher than random
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }
-        , 250);
+        if (increment === true) {
+            navigator.vibrate(200)
+            incrementWonStat()
+            let interval = setInterval(function() {
+                let timeLeft = animationEnd - Date.now();
+    
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+    
+                let particleCount = 50 * (timeLeft / duration);
+                // since particles fall down, start a bit higher than random
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                }
+            , 250);
+        }
+        
         
     }
 
     function handleGameLost(e) {
-        incrementPlayedStat()
+
+        let increment = e.detail.extra
+
+        if (increment === true) {
+            incrementPlayedStat()
+        }
         if (reminderStatus === null) {
             reminderStatus = "timer"
         }
@@ -140,6 +177,13 @@
         console.log("refreshing board....")
         
         setTimeout(() => {reminderStatus = null}, 1000)
+
+        window.localStorage.removeItem("GAME_META")
+        window.localStorage.removeItem("GAME_BOARD")
+
+        questions = undefined
+
+        load()
 
         refreshTimeout = setTimeout(
             refreshAlertCheck,
@@ -163,6 +207,63 @@
         })
     }
 
+    async function load() {
+
+        let now = new Date()
+        // now.setDate(25)
+
+        let board = getObj("GAME_BOARD")
+        let gameMeta = getObj("GAME_META")
+
+        if ((board === null) || (gameMeta === null)) {
+            // console.log("query started")
+            await QUERY_SERVER()
+            // console.log("query finished")
+            //QUERYING THE BACKEND SERVER HERE 
+
+            let timecreated = new Date()
+            timecreated.setHours(0, 0, 0)
+
+            let GAME_META = {
+                timecreated: timecreated,
+                ansToShow: ansToShow,
+                answers: answers,
+                count: OBBATTU_COUNT
+            }
+
+            saveObj("GAME_META", GAME_META)
+
+            let GAME_BOARD = {
+                questions: questions,
+                MOVES: TOTAL_MOVES,
+            }
+
+            moves = TOTAL_MOVES
+            saveObj("GAME_BOARD", GAME_BOARD)
+        } else {
+
+            let timeCreated = new Date(gameMeta.timecreated)
+
+            if ((now - timeCreated) > 86400000) {
+                console.log("new board... Bail loading old board")
+                //questions = questions_from_server
+                window.localStorage.removeItem("GAME_META")
+                window.localStorage.removeItem("GAME_BOARD")
+                return load()
+            }
+
+            questions = board.questions
+            moves = board.MOVES
+
+            ansToShow = gameMeta.ansToShow
+            answers = gameMeta.answers
+            OBBATTU_COUNT = gameMeta.count
+            // reminderStatus = "timer"
+        }
+    }
+
+    load()
+
 </script>
 
 <main>
@@ -174,7 +275,8 @@
             questions={questions} 
             answers={answers} 
             ans_to_show={ansToShow} 
-            TOTAL_MOVES={TOTAL_MOVES}
+            TOTAL_MOVES={moves}
+            OBBATTU_COUNT={OBBATTU_COUNT}
         />
         {#if reminderStatus === "timer"}
             <div class="timer notice flexx">

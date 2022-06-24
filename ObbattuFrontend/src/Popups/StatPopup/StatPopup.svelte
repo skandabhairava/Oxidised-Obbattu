@@ -24,6 +24,7 @@
 
     let game_stats = getObj("GAME_STATS")
     // console.log("found stats", game_stats)
+
     function load() {
         if (game_stats === null) {
             game_stats = {

@@ -5,6 +5,8 @@
     import Content from "../Popups/SolModal/SolModalManager.svelte";
     import Modal from "svelte-simple-modal";
 
+    import { saveObj, getObj } from "../storage.js";
+
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
@@ -125,6 +127,52 @@
         return temp
     }
 
+    function saveSnapshot() {
+        console.log("saving snapshot...")
+
+        let GAME_BOARD = {
+            questions: questions,
+            MOVES: MOVES,
+        }
+        saveObj("GAME_BOARD", GAME_BOARD)
+    }
+
+    function debounce(func, timeout = 300){
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+
+    let debounceSave = debounce(saveSnapshot, 500)
+    
+    function checkGameState(extra = true) {
+
+        //console.log("checking state...")
+        //console.log(board)
+
+        for (let i = 0; i < board.length; i++){
+            for (let j = 0; j < board[i].length; j++) {
+                if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
+                    if (MOVES <= 0) {
+                        board = endGame(board, false)
+                        dispatch('GAME_LOST', {extra: extra});
+                        saveSnapshot()
+                        //console.log(board)
+                    }
+                    return
+                }
+            }
+        }
+        
+        board = endGame(board, true)
+        dispatch('GAME_WON', {extra: extra});
+        
+        saveSnapshot()
+        //console.log("extra from checkGameState", extra)
+    }
+
     function swapElements(x1, y1, x2, y2){
 
         if (x1 === x2 && y1 === y2) {
@@ -140,22 +188,13 @@
         board[x1][y1] = temp2
         board[x2][y2] = temp
 
-        for (let i = 0; i < board.length; i++){
-            for (let j = 0; j < board[i].length; j++) {
-                if ((board[i][j].state === "incorrect") || (board[i][j].state === "misplaced")) {
-                    if (MOVES <= 0) {
-                        board = endGame(board, false)
-                        dispatch('GAME_LOST');
+        let questionsTemp = questions[x2][y2]
+        questions[x2][y2] = questions[x1][y1]
+        questions[x1][y1] = questionsTemp
 
-                        //console.log(board)
-                    }
-                    return
-                }
-            }
-        }
-        
-        board = endGame(board, true)
-        dispatch('GAME_WON');
+        debounceSave()
+
+        checkGameState()
     }
 
     function endGame(board, won = false) {
@@ -200,6 +239,11 @@
             checkPosition(j, i, board[i][j])
         }
     }
+
+    setTimeout(
+        () => checkGameState(false),
+        1
+    )
     
     //console.log(board)
 </script>
