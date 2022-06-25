@@ -69,7 +69,7 @@ lazy_static! {
     };
 }
 
-pub type Board = (String, String, String, String, String, String);
+pub type Board = ([String; 5], [String; 5], [String; 5], [String; 5], [String; 5], [String; 5]);
 
 //////////////////////////////////////////////////
 #[derive(Debug, Clone, PartialEq)]
@@ -110,7 +110,7 @@ where
 }
 
 #[allow(dead_code)]
-async fn split(mut word: String) -> Vec<String>{
+pub async fn split(mut word: String) -> Vec<String>{
     if word.ends_with("\n") {
         word = word[..word.len()-1].to_owned();
     }
@@ -426,12 +426,12 @@ pub async fn create_board() -> Board{
     }
 
     (
-        top.unwrap().result.unwrap(),
-        right.unwrap().result.unwrap(), 
-        left.unwrap().result.unwrap(),
-        down.unwrap().result.unwrap(),
-        vert.unwrap().result.unwrap(),
-        horz.unwrap().result.unwrap()
+        split(top.unwrap().result.unwrap()).await.try_into().unwrap(),
+        split(right.unwrap().result.unwrap()).await.try_into().unwrap(), 
+        split(left.unwrap().result.unwrap()).await.try_into().unwrap(),
+        split(down.unwrap().result.unwrap()).await.try_into().unwrap(),
+        split(vert.unwrap().result.unwrap()).await.try_into().unwrap(),
+        split(horz.unwrap().result.unwrap()).await.try_into().unwrap()
     )
 
 }

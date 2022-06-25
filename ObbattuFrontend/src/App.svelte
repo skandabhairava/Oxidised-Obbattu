@@ -15,10 +15,10 @@
     const duration = 5 * 1000; //Fire work duration
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
     
-    let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
-    let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    let OBBATTU_COUNT_from_server = 0
+    // let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    // let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    // let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    // let OBBATTU_COUNT_from_server = 0
 
     let questions
     let ansToShow
@@ -30,23 +30,41 @@
 
     // SET RESFRESH TIME HERE!
     const refreshTime = {
-        hour: 23,
-        min: 59,
-        sec: 59,
+        hour: 10,
+        min: 40,
+        sec: 0,
     }
 
-    function timeout(ms) {
+    /* function timeout(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    } */
 
     async function QUERY_SERVER() {
         
-        await timeout(2000)
+        let return_val
 
-        questions = questions_from_server
+        await fetch("/get-board")
+            .then(response => response.json())
+            .then(data => {
+                answers = data.answers
+                ansToShow = data.answers_to_show
+                questions = data.questions
+
+                console.log(data)
+
+                return_val = data
+            })
+            .catch(err => {
+                console.log("an err occured while setting data", err)
+                return_val = false
+            })
+
+            return return_val
+
+        /* questions = questions_from_server
         ansToShow = ansToShow_from_server
         answers = answers_from_server
-        OBBATTU_COUNT = OBBATTU_COUNT_from_server
+        OBBATTU_COUNT = OBBATTU_COUNT_from_server */
     }
 
     $: show_loading = (questions === undefined || ansToShow === undefined || answers === undefined)? true : false
@@ -217,24 +235,28 @@
 
         if ((board === null) || (gameMeta === null)) {
             // console.log("query started")
-            await QUERY_SERVER()
+            let result = await QUERY_SERVER()
             // console.log("query finished")
-            //QUERYING THE BACKEND SERVER HERE 
+            //QUERYING THE BACKEND SERVER HERE
+
+            if (result === false){
+                return
+            }
 
             let timecreated = new Date()
             timecreated.setHours(0, 0, 0)
 
             let GAME_META = {
                 timecreated: timecreated,
-                ansToShow: ansToShow,
-                answers: answers,
+                ansToShow: result.answers_to_show,
+                answers: result.answers,
                 count: OBBATTU_COUNT
             }
 
             saveObj("GAME_META", GAME_META)
 
             let GAME_BOARD = {
-                questions: questions,
+                questions: result.questions,
                 MOVES: TOTAL_MOVES,
             }
 
