@@ -30,9 +30,9 @@
 
     // SET RESFRESH TIME HERE!
     const refreshTime = {
-        hour: 10,
-        min: 40,
-        sec: 0,
+        hour: 23,
+        min: 59,
+        sec: 59,
     }
 
     /* function timeout(ms) {

@@ -1,13 +1,14 @@
 mod board_generator;
 use std::sync::Arc;
 
+use chrono::Utc;
+use chrono::Datelike;
+
 use rand::Rng;
 use std::convert::AsMut;
 use rocket::tokio::sync::Mutex;
 
 use board_generator::{Board, split};
-
-pub type BoardManagerPointer = Arc<Mutex<BoardManager>>;
 
 pub type GameManagerPointer = Arc<Mutex<GameManager>>;
 
@@ -40,14 +41,16 @@ pub struct GameManager{
 
 //////////////////////////////////////////
 #[allow(dead_code)]
+#[derive(Clone)]
 pub struct BoardManager{
     pub board: Board,
     pub answers: [[String; 5]; 6],
     pub answers_to_show: [[String; 5]; 5],
-    pub questions: [[String; 5]; 5]
+    pub questions: [[String; 5]; 5],
+    pub date: u16
 }
     impl BoardManager {
-        pub async fn new() -> BoardManagerPointer {
+        pub async fn new() -> Self {
 
             let generated_board: Board = (
                 split(String::from("ಪಕ್ವಮಾಡಿದ")).await.try_into().unwrap(), 
@@ -58,16 +61,21 @@ pub struct BoardManager{
                 split(String::from("ಮರೆತ್ತಿದ್ದಾರೆ")).await.try_into().unwrap()
                 );
 
-            let ans_to_show = Self::generate_answers_to_show(generated_board.clone());
+            Self::new_from(generated_board).await
+        }
 
-            let board = Self {
-                board: generated_board.clone(),
-                answers: Self::generate_answers(generated_board),
+        pub async fn new_from(board: Board) -> Self {
+            let ans_to_show = Self::generate_answers_to_show(board.clone());
+
+            let date = Utc::now().day() as u16;
+
+            Self {
+                board: board.clone(),
+                answers: Self::generate_answers(board),
                 answers_to_show: ans_to_show.clone(),
-                questions: Self::generate_questions(ans_to_show).await
-            };
-
-            Arc::new(Mutex::new( board ))
+                questions: Self::generate_questions(ans_to_show).await,
+                date
+            }
         }
 
         pub async fn set_new_board(&mut self, board: Board) {
