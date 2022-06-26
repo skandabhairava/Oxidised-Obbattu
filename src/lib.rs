@@ -1,10 +1,12 @@
 mod board_generator;
 use std::sync::Arc;
 
-use chrono::Utc;
-use chrono::Datelike;
+use chrono::{Utc, Duration, Datelike};
 
 use rand::Rng;
+//use rocket::Responder;
+use rocket::http::{Header, ContentType};
+use rocket::response::Responder;
 use std::convert::AsMut;
 use rocket::tokio::sync::Mutex;
 
@@ -13,21 +15,31 @@ use board_generator::{Board, split};
 pub type GameManagerPointer = Arc<Mutex<GameManager>>;
 
 //////////////////////////////////////////
+#[derive(Responder)]
+pub struct CacheResponder<T>
+{
+    inner: T,
+    header: Header<'static>,
+    content_type: ContentType
+}
+    impl<'r, 'o: 'r, T: Responder<'r, 'o>> CacheResponder<T>  {
+        pub fn new(inner: T, content_type: ContentType) -> Self {
+            Self {
+                inner,
+                header: Header::new("Cache-Control", "max-age=864000"),
+                content_type
+            }
+        }
+    }
+//////////////////////////////////////////
+
+//////////////////////////////////////////
 pub struct GameManager{
-    pub daily_count: u32,
     pub boards_played: u32
 }
     impl GameManager {
         pub async fn new() -> GameManagerPointer {
-            Arc::new(Mutex::new(Self { daily_count:0, boards_played: 0 }))
-        }
-
-        pub async fn increment_daily(&mut self) {
-            self.daily_count += 1;
-        }
-
-        pub async fn reset_daily(&mut self) {
-            self.daily_count = 0;
+            Arc::new(Mutex::new(Self { boards_played: 0 }))
         }
 
         pub async fn increment_played(&mut self) {
@@ -40,17 +52,18 @@ pub struct GameManager{
     }
 
 //////////////////////////////////////////
-#[allow(dead_code)]
+//#[allow(dead_code)]
 #[derive(Clone)]
 pub struct BoardManager{
     pub board: Board,
     pub answers: [[String; 5]; 6],
     pub answers_to_show: [[String; 5]; 5],
     pub questions: [[String; 5]; 5],
-    pub date: u16
+    pub date: u16,
+    pub daily_count: u32,
 }
     impl BoardManager {
-        pub async fn new() -> Self {
+        pub async fn new() -> Vec<Self> {
 
             let generated_board: Board = (
                 split(String::from("ಪಕ್ವಮಾಡಿದ")).await.try_into().unwrap(), 
@@ -59,22 +72,43 @@ pub struct BoardManager{
                 split(String::from("ದವರೆಲ್ಲರೂ")).await.try_into().unwrap(),
                 split(String::from("ಮಾಡುತ್ತಿದ್ದಾರೆ")).await.try_into().unwrap(),
                 split(String::from("ಮರೆತ್ತಿದ್ದಾರೆ")).await.try_into().unwrap()
-                );
+            );
+            let generated_board2: Board = (
+                split(String::from("ಹೊಡೆದಿದ್ದಾರೆ")).await.try_into().unwrap(), 
+                split(String::from("ರೆಚೀನನನ್ನೂ")).await.try_into().unwrap(), 
+                split(String::from("ಹೊರಬರುವ")).await.try_into().unwrap(),
+                split(String::from("ವರಿಗೆಇನ್ನೂ")).await.try_into().unwrap(),
+                split(String::from("ದಿನಗಳಿಗೆ")).await.try_into().unwrap(),
+                split(String::from("ಬಲಗಣ್ಣಿನ")).await.try_into().unwrap()
+            );
 
-            Self::new_from(generated_board).await
+            let mut ret = Self::new_from(generated_board, 0).await;
+            let mut ret2 = Self::new_from(generated_board2, 0).await;
+
+            ret.daily_count = 0;
+
+            if Utc::now() < Utc::now().date().and_hms(10, 0, 0) {
+                ret.date = (Utc::now() - Duration::days(1)).day() as u16;
+                ret2.date = Utc::now().day() as u16;
+            } else {
+                ret.date = Utc::now().day() as u16;
+            }
+
+            vec![ret, ret2]
         }
 
-        pub async fn new_from(board: Board) -> Self {
+        pub async fn new_from(board: Board, prev_count: u32) -> Self {
             let ans_to_show = Self::generate_answers_to_show(board.clone());
 
-            let date = Utc::now().day() as u16;
+            let date = (Utc::now() + Duration::days(1)).day() as u16;
 
             Self {
                 board: board.clone(),
                 answers: Self::generate_answers(board),
                 answers_to_show: ans_to_show.clone(),
                 questions: Self::generate_questions(ans_to_show).await,
-                date
+                date,
+                daily_count: prev_count + 1
             }
         }
 

@@ -745,7 +745,6 @@ dependencies = [
  "lazy_static",
  "rand",
  "rocket",
- "rocket-cache-response",
  "serde",
  "serde_json",
  "tokio-cron-scheduler",
@@ -1005,15 +1004,6 @@ dependencies = [
  "ubyte",
  "version_check",
  "yansi",
-]
-
-[[package]]
-name = "rocket-cache-response"
-version = "0.6.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d1c61bb828cb5ed810b76c1f3a61c2ca9fc21df8b150edbde564e823bb63d1c1"
-dependencies = [
- "rocket",
 ]
 
 [[package]]

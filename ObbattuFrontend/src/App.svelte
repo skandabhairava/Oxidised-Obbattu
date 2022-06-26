@@ -43,12 +43,14 @@
         
         let return_val
 
-        await fetch("/get-board")
+        let date = new Date().getDate()
+        await fetch("/get-board/" + date)
             .then(response => response.json())
             .then(data => {
                 answers = data.answers
                 ansToShow = data.answers_to_show
                 questions = data.questions
+                OBBATTU_COUNT = data.OBBATTU_COUNT
 
                 console.log(data)
 
@@ -250,7 +252,7 @@
                 timecreated: timecreated,
                 ansToShow: result.answers_to_show,
                 answers: result.answers,
-                count: OBBATTU_COUNT
+                count: result.OBBATTU_COUNT
             }
 
             saveObj("GAME_META", GAME_META)

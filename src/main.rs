@@ -8,15 +8,13 @@ use std::sync::Arc;
 
 use chrono::Utc;
 
-use obbattu_oxidised::{BoardManager, GameManager};
+use obbattu_oxidised::{BoardManager, GameManager, CacheResponder};
 use rocket::State;
 use rocket::fs::NamedFile;
-use rocket::response::content::{RawJson, RawHtml, RawCss, RawJavaScript};
-use rocket::tokio::fs::read_to_string;
-
-use rocket_cache_response::CacheResponse;
-
+use rocket::http::ContentType;
+use rocket::response::{content::{RawJson}};
 use rocket::tokio::sync::Mutex;
+
 use serde_json::{json, to_string};
 
 use tokio_cron_scheduler::{JobScheduler, Job};
@@ -26,83 +24,87 @@ type BoardVecPointer = Arc<Mutex<VecDeque<BoardManager>>>;
 #[get("/get-board/<date>")]
 async fn get_board(date: u16, board_state: &State<BoardVecPointer>) -> Result<RawJson<String>, RawJson<String>> {
     
-    // let time_1 = Local::now();
     let board_vec = board_state.lock().await;
     let board_vec_copy = board_vec.clone();
     drop(board_vec);
 
-    let mut board_copy = None;
-
     for board in board_vec_copy.into_iter() {
         if board.date == date {
-            board_copy = Some(board);
+            return Ok(RawJson(
+                to_string(
+                    &json!({
+                        "answers": board.answers,
+                        "answers_to_show": board.answers_to_show,
+                        "questions": board.questions,
+                        "OBBATTU_COUNT": board.daily_count,
+                    })
+                ).unwrap()
+            ));
         }
     }
 
-    if let None = board_copy {
-        return Err(
-            RawJson(
-                to_string(
-                    &json!({
-                        "answers": null,
-                        "answers_to_show": null,
-                        "questions": null
-                    })
-                ).unwrap()
-            )
-        );
-    } 
-
-    let board_copy = board_copy.unwrap();
-
-    Ok(RawJson(
-        to_string(
-            &json!({
-                "answers": board_copy.answers,
-                "answers_to_show": board_copy.answers_to_show,
-                "questions": board_copy.questions
-            })
-        ).unwrap()
-    ))
+    return Err(
+        RawJson(
+            to_string(
+                &json!({
+                    "answers": null,
+                    "answers_to_show": null,
+                    "questions": null,
+                    "OBBATTU_COUNT": null
+                })
+            ).unwrap()
+        )
+    );
 }
 
 #[get("/")]
-async fn index() -> CacheResponse<RawHtml<String>> {
-    CacheResponse::Public(RawHtml(
-        read_to_string(Path::new(".").join("ObbattuFrontend").join("public").join("index.html")).await.unwrap()
-    ), 432000, false)
+async fn index<'r>() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("index.html")).await.unwrap(),
+        ContentType::HTML
+    )
 }
 #[get("/global.css")]
-async fn global_css() -> RawCss<String> {
-    RawCss(
-        read_to_string(Path::new(".").join("ObbattuFrontend").join("public").join("global.css")).await.unwrap()
+async fn global_css() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("global.css")).await.unwrap(),
+        ContentType::CSS
     )
 }
 #[get("/build/bundle.css")]
-async fn bundled_css() -> RawCss<String> {
-    RawCss(
-        read_to_string(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.css")).await.unwrap()
+async fn bundled_css() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.css")).await.unwrap(),
+        ContentType::CSS
     )
 }
 #[get("/build/bundle.js")]
-async fn bundled_js() -> RawJavaScript<String> {
-    RawJavaScript(
-        read_to_string(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.js")).await.unwrap()
+async fn bundled_js() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.js")).await.unwrap(),
+        ContentType::JavaScript
     )
 }
 #[get("/build/bundle.js.map")]
-async fn bundled_js_map() -> RawJavaScript<String> {
-    RawJavaScript(
-        read_to_string(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.js.map")).await.unwrap()
+async fn bundled_js_map() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("build").join("bundle.js.map")).await.unwrap(),
+        ContentType::JavaScript
     )
 }
 #[get("/favicon.png")]
-async fn favicon() -> Option<NamedFile> {
-    NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("favicon.png")).await.ok()
+async fn favicon() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("favicon.png")).await.unwrap(),
+        ContentType::PNG
+    )
 }
 #[get("/stats.png")]
-async fn stats() -> Option<NamedFile> {
-    NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("stats.png")).await.ok()
+async fn stats() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("stats.png")).await.unwrap(),
+        ContentType::PNG
+    )
 }
 
 #[launch]
@@ -110,7 +112,7 @@ async fn rocket() -> _ {
 
     let mut sched = JobScheduler::new().unwrap();
 
-    let board_vec = Arc::new(Mutex::new(VecDeque::from([BoardManager::new().await])));
+    let board_vec = Arc::new(Mutex::new(VecDeque::from(BoardManager::new().await)));
     let game_state = GameManager::new().await;
 
     let board_vec_clone = board_vec.clone();
@@ -119,7 +121,6 @@ async fn rocket() -> _ {
     sched.add(Job::new_async("0 0 10 * * *", move |_uuid, _l| {
 
         let board_vec_clone = board_vec.clone();
-        let game_state_clone = game_state.clone();
 
         Box::pin( async {
             let time_1 = Utc::now();
@@ -127,9 +128,13 @@ async fn rocket() -> _ {
             println!(">> STARTING BOARD GENERATION\nUTC Time now: {}", time_1);
 
             let board = board_generator::create_board().await;
-            let new_board_manager = BoardManager::new_from(board).await;
 
             let mut locked = board_vec_clone.lock().await;
+            let mut prev_count = 0;
+            if let Some(count) = locked.back() {
+                prev_count = count.daily_count;
+            }
+            let new_board_manager = BoardManager::new_from(board, prev_count).await;
             locked.push_back(new_board_manager);
 
             if locked.len() > 2 {
@@ -138,11 +143,6 @@ async fn rocket() -> _ {
             // println!("{:#?}", locked.board);
             drop(locked);
             drop(board_vec_clone);
-
-            let mut locked = game_state_clone.lock().await;
-            locked.increment_daily().await;
-            drop(locked);
-            drop(game_state_clone);
 
             println!("Finished board generation...");
         })
