@@ -9,11 +9,13 @@ use std::sync::Arc;
 use chrono::Utc;
 
 use obbattu_oxidised::{BoardManager, GameManager, CacheResponder};
+
 use rocket::State;
 use rocket::fs::NamedFile;
 use rocket::http::ContentType;
 use rocket::response::{content::{RawJson}};
 use rocket::tokio::sync::Mutex;
+use rocket::fairing::AdHoc;
 
 use serde_json::{json, to_string};
 
@@ -140,30 +142,12 @@ async fn rocket() -> _ {
             if locked.len() > 2 {
                 locked.pop_front();
             }
-            // println!("{:#?}", locked.board);
             drop(locked);
             drop(board_vec_clone);
 
             println!("Finished board generation...");
         })
     }).unwrap()).unwrap();
-
-    /* let counter = Arc::new(Mutex::new(0));
-
-    sched.add(Job::new_async("1/2 * * * * *", move |_uuid, _l| {
-        let counter_clone = counter.clone();
-        Box::pin( async move {
-            let mut count = counter_clone.lock().await;
-            if *count == 60 {
-                *count = 0;
-            } else {
-                *count += 2;
-            }
-
-            println!("{}", *count);
-        })
-
-    }).unwrap()).unwrap(); */
 
     #[cfg(feature = "signal")]
     sched.shutdown_on_ctrl_c();
@@ -179,6 +163,22 @@ async fn rocket() -> _ {
     rocket::build()
         .manage(board_vec_clone.clone())
         .manage(game_state_clone)
+        .attach(AdHoc::on_shutdown("Saving board", |_| Box::pin(async move {
+            BoardManager::save(
+                &(board_vec_clone
+                                .clone()
+                                .lock()
+                                .await
+                                .iter()
+                                .map(|x| {
+                                        x.to_owned()
+                                    }
+                                )
+                                .collect::<Vec<BoardManager>>()
+                            )
+                        )
+                        .await
+        })))
         .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats])
 }
 

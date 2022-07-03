@@ -1,12 +1,14 @@
 mod board_generator;
+use std::path::Path;
 use std::sync::Arc;
 
 use chrono::{Utc, Duration, Datelike};
 
 use rand::Rng;
-//use rocket::Responder;
 use rocket::http::{Header, ContentType};
 use rocket::response::Responder;
+use rocket::tokio::fs;
+use serde::{Deserialize, Serialize};
 use std::convert::AsMut;
 use rocket::tokio::sync::Mutex;
 
@@ -53,7 +55,7 @@ pub struct GameManager{
 
 //////////////////////////////////////////
 //#[allow(dead_code)]
-#[derive(Clone)]
+#[derive(Clone, Deserialize, Serialize)]
 pub struct BoardManager{
     pub board: Board,
     pub answers: [[String; 5]; 6],
@@ -63,7 +65,34 @@ pub struct BoardManager{
     pub daily_count: u32,
 }
     impl BoardManager {
+
+        pub async fn save(vector_save: &Vec<Self>) {
+            fs::write(Path::new(".").join("board_save.json"), serde_json::to_string(&vector_save).unwrap()).await.unwrap();
+        }
+
+        pub async fn load() -> Option<Vec<Self>> {
+            if Path::new(".").join("board_save.json").exists() {
+                println!("Loading up old board.");
+                return serde_json::from_str(&fs::read_to_string(Path::new(".").join("board_save.json")).await.unwrap()).ok();
+            }
+            None
+        }
+
         pub async fn new() -> Vec<Self> {
+
+            let loaded = Self::load().await;
+            if let Some(mut vector_save) = loaded {
+
+                vector_save[0].daily_count = 0;
+                if Utc::now() < Utc::now().date().and_hms(10, 0, 0) {
+                    vector_save[0].date = (Utc::now() - Duration::days(1)).day() as u16;
+                    vector_save[1].date = Utc::now().day() as u16;
+                } else {
+                    vector_save[0].date = Utc::now().day() as u16;
+                }
+
+                return vector_save;
+            }
 
             let generated_board: Board = (
                 split(String::from("ಪಕ್ವಮಾಡಿದ")).await.try_into().unwrap(), 
@@ -94,7 +123,10 @@ pub struct BoardManager{
                 ret.date = Utc::now().day() as u16;
             }
 
-            vec![ret, ret2]
+            let save = vec![ret, ret2];
+            Self::save(&save).await;
+
+            save
         }
 
         pub async fn new_from(board: Board, prev_count: u32) -> Self {
@@ -177,7 +209,7 @@ fn sliice<A, T>(slice: &[T]) -> A
 where A: Sized + Default + AsMut<[T]>,
       T: Clone
 {
-let mut a = Default::default();
-<A as AsMut<[T]>>::as_mut(&mut a).clone_from_slice(slice);
-a
+    let mut a = Default::default();
+    <A as AsMut<[T]>>::as_mut(&mut a).clone_from_slice(slice);
+    a
 }
