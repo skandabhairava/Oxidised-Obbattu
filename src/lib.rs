@@ -67,12 +67,13 @@ pub struct BoardManager{
     impl BoardManager {
 
         pub async fn save(vector_save: &Vec<Self>) {
+            println!("Saving board...");
             fs::write(Path::new(".").join("board_save.json"), serde_json::to_string(&vector_save).unwrap()).await.unwrap();
         }
 
         pub async fn load() -> Option<Vec<Self>> {
             if Path::new(".").join("board_save.json").exists() {
-                println!("Loading up old board.");
+                println!("Loading up old board...");
                 return serde_json::from_str(&fs::read_to_string(Path::new(".").join("board_save.json")).await.unwrap()).ok();
             }
             None

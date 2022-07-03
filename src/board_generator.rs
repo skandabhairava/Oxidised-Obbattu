@@ -289,6 +289,8 @@ pub async fn create_board() -> Board{
     let mut vert: Option<FindOneCache> = None;
     let mut horz: Option<FindOneCache> = None;
 
+    let mut words: Vec<String> = vec![];
+
     while (top == None)
             || (right == None)
             || (left == None)
@@ -301,6 +303,7 @@ pub async fn create_board() -> Board{
         down = None;
         vert = None;
         horz = None;
+        words.pop();
 
         //let mut top_retry = false;
 
@@ -314,6 +317,7 @@ pub async fn create_board() -> Board{
 
         //println!("Top split... {:#?}", &top_split);
 
+        words.push(top.clone().unwrap().result.unwrap());
         for _right_tries in 0..tries{
 
             let mut right_retry = false;
@@ -328,16 +332,19 @@ pub async fn create_board() -> Board{
             //println!("Found right need to unpack...");
 
             if let Some(right) = right.clone() {
-                if let None = right.result {
-                    //println!("Continuing as right couldnt be unpacked");
-                    continue;
+                if right.result.is_none() {
+                    break;
+                }
+
+                if let Some(res) = right.result {
+                    if words.contains(&res) {
+                        continue;
+                    }
                 }
             }
-
-            //println!("Trying right out as.. {}", right.clone().unwrap().result.unwrap());
-
             let right_split = split(right.clone().unwrap().result.unwrap()).await;
 
+            words.push(right.clone().unwrap().result.unwrap());
             for _left_retries in 0..tries {
                 let mut left_retry = false;
 
@@ -348,13 +355,20 @@ pub async fn create_board() -> Board{
                 left = Some(find_one(left, Some(top_split[0].clone()), None, None).await);
 
                 if let Some(left) = left.clone() {
-                    if let None = left.result {
+                    if left.result.is_none() {
                         right_retry = true;
                         break;
+                    }
+
+                    if let Some(res) = left.result {
+                        if words.contains(&res) {
+                            continue;
+                        }
                     }
                 }
                 let left_split = split(left.clone().unwrap().result.unwrap()).await;
 
+                words.push(left.clone().unwrap().result.unwrap());
                 for _down_retries in 0..tries {
                     let mut down_retry = false;
 
@@ -364,13 +378,20 @@ pub async fn create_board() -> Board{
                     down = Some(find_one(down, Some(left_split[4].clone()), Some(right_split[4].clone()), None).await);
 
                     if let Some(down) = down.clone() {
-                        if let None = down.result {
+                        if down.result.is_none() {
                             left_retry = true;
                             break;
+                        }
+
+                        if let Some(res) = down.result {
+                            if words.contains(&res) {
+                                continue;
+                            }
                         }
                     }
                     let down_split = split(down.clone().unwrap().result.unwrap()).await;
 
+                    words.push(down.clone().unwrap().result.unwrap());
                     for _vert_retries in 0..tries {
                         let mut vert_retry = false;
 
@@ -379,46 +400,67 @@ pub async fn create_board() -> Board{
                         vert = Some(find_one(vert, Some(top_split[2].clone()), Some(down_split[2].clone()), None).await);
 
                         if let Some(vert) = vert.clone() {
-                            if let None = vert.result {
+                            if vert.result.is_none()  {
                                 down_retry = true;
                                 break;
+                            }
+
+                            if let Some(res) = vert.result {
+                                if words.contains(&res) {
+                                    continue;
+                                }
                             }
                         }
                         let vert_split = split(vert.clone().unwrap().result.unwrap()).await;
 
+                        words.push(vert.clone().unwrap().result.unwrap());
                         for _horz_tries in 0..tries {
 
                             horz = Some(find_one(horz, Some(left_split[2].clone()), Some(right_split[2].clone()), Some(vert_split[2].clone())).await);
 
                             if let Some(horz) = horz.clone() {
-                                if let None = horz.result {
+                                if horz.result.is_none() {
                                     vert_retry = true;
                                     break;
+                                }
+
+                                if let Some(res) = horz.result {
+                                    if words.contains(&res) {
+                                        continue;
+                                    }
                                 }
                             }
 
                             //println!("horz chosen as.. {}", horz.clone().unwrap().result.unwrap());
-
+                            //words.push(horz.clone().unwrap().result.unwrap());
                             break;
                         }
 
-                        if !vert_retry {
+                        if vert_retry {
+                            words.pop();
+                        } else {
                             break;
                         }
                     }
 
-                    if !down_retry {
+                    if down_retry {
+                        words.pop();
+                    } else {
                         break;
                     }
                 }
 
-                if !left_retry {
+                if left_retry {
+                    words.pop();
+                } else {
                     break;
                 }
 
             }
 
-            if !right_retry {
+            if right_retry {
+                words.pop();
+            } else {
                 break;
             }
         }
