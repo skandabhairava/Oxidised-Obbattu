@@ -1,29 +1,18 @@
-mod board_generator;
-
 #[allow(unused_imports)]
 #[macro_use] extern crate rocket;
-use std::path::Path;
-use std::collections::VecDeque;
-use std::sync::Arc;
 
-use chrono::Utc;
-
+mod board_generator;
 use obbattu_oxidised::{BoardManager, GameManager, CacheResponder};
 
-use rocket::State;
-use rocket::fs::NamedFile;
-use rocket::http::ContentType;
-use rocket::response::{content::{RawJson}};
-use rocket::tokio::sync::Mutex;
-use rocket::fairing::AdHoc;
-
+use std::{path::Path, collections::VecDeque, sync::Arc};
+use chrono::Utc;
+use rocket::{State, fs::NamedFile, http::ContentType, tokio::sync::Mutex, fairing::AdHoc, response::{content::{RawJson}}};
 use serde_json::{json, to_string};
-
 use tokio_cron_scheduler::{JobScheduler, Job};
 
 type BoardVecPointer = Arc<Mutex<VecDeque<BoardManager>>>;
 
-#[get("/boards")]
+/* #[get("/boards")]
 async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
     let board_vec = board_state.lock().await;
     RawJson(to_string(&board_vec.clone()
@@ -34,7 +23,7 @@ async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
                             )
                             .collect::<Vec<BoardManager>>()
             ).unwrap())
-}
+} */
 
 #[get("/get-board/<date>")]
 async fn get_board(date: u16, board_state: &State<BoardVecPointer>) -> Result<RawJson<String>, RawJson<String>> {
@@ -133,7 +122,7 @@ async fn rocket() -> _ {
     let board_vec_clone = board_vec.clone();
     let game_state_clone = game_state.clone();
 
-    sched.add(Job::new_async("0 41 11 * * *", move |_uuid, _l| {
+    sched.add(Job::new_async("0 0 10 * * *", move |_uuid, _l| {
 
         let board_vec_clone = board_vec.clone();
 
@@ -192,20 +181,5 @@ async fn rocket() -> _ {
                         )
                         .await
         })))
-        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats, boards])
+        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats])
 }
-
-
-/* #[rocket::main]
-async fn main() {
-    //let utc_time_rn = Utc::now().naive_utc();
-
-    //let earliest_offset = FixedOffset::east(14 * 3600);
-    //let datetime: DateTime<FixedOffset> = earliest_offset.from_utc_datetime(&utc_time_rn);
-
-    println!("{:#?}", board_generator::create_board().await);
-} */
-
-/* fn main() {
-    println!("{:#?}", sync_board_generator::create_board());
-} */

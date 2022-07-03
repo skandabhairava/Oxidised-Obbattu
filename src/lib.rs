@@ -1,18 +1,10 @@
 mod board_generator;
-use std::path::Path;
-use std::sync::Arc;
-
-use chrono::{Utc, Duration, Datelike};
-
-use rand::Rng;
-use rocket::http::{Header, ContentType};
-use rocket::response::Responder;
-use rocket::tokio::fs;
-use serde::{Deserialize, Serialize};
-use std::convert::AsMut;
-use rocket::tokio::sync::Mutex;
-
 use board_generator::{Board, split};
+
+use std::{path::Path, sync::Arc, convert::AsMut};
+use chrono::{Utc, Duration, Datelike};
+use rand::Rng;
+use rocket::{response::Responder, tokio::{fs, sync::Mutex}, http::{Header, ContentType}, serde::{Deserialize, Serialize}};
 
 pub type GameManagerPointer = Arc<Mutex<GameManager>>;
 

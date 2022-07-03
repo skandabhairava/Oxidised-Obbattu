@@ -1,7 +1,8 @@
+/// THIS MODULE IS UNUSED
+/// THIS MODULE IS AN EXACT REPLICA OF "board_generator.rs" BUT WITHOUT ASYNC
+
 use lazy_static::lazy_static;
 use std::{collections::{HashMap, HashSet}, io::{self, BufRead}, fs::File, path::Path};
-
-//use rocket::tokio::{io::{self, AsyncBufReadExt}, fs::File};
 use unicode_segmentation::UnicodeSegmentation;
 use rand::{Rng, seq::SliceRandom};
 
