@@ -1,7 +1,10 @@
 #[macro_use] extern crate rocket;
 
 mod board_generator;
+//use local_ip_address::list_afinet_netifas;
 use obbattu_oxidised::{BoardManager, GameManager, CacheResponder};
+use rocket::Config;
+use std::net::{IpAddr, Ipv4Addr};
 
 use std::{path::Path, collections::VecDeque, sync::Arc};
 use chrono::Utc;
@@ -161,7 +164,16 @@ async fn rocket() -> _ {
 
     sched.start().unwrap();
 
-    rocket::build()
+    /* let ifas = list_afinet_netifas().unwrap();
+    if let Some((_, ipaddr)) = ifas.iter().find(|(name, ipaddr)| (*name).to_lowercase().contains("wi") && matches!(ipaddr, IpAddr::V4(_))){
+        println!("Connect to 'http://{:?}:1845'", ipaddr);   
+    } */
+
+    let mut conf = Config::release_default();
+    conf.address = IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0));
+    conf.port = 1845;
+
+    rocket::custom(conf)
         .manage(board_vec_clone.clone())
         .manage(game_state_clone)
         .attach(AdHoc::on_shutdown("Saving board", |_| Box::pin(async move {
