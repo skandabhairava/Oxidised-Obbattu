@@ -37,6 +37,17 @@ async fn played_counter(solved: bool, game_state: &State<GameManagerPointer>) {
     }
 }
 
+#[get("/game_stats")]
+async fn game_stats(game_state: &State<GameManagerPointer>) -> Result<String, String> {
+    let locked = game_state.lock().await;
+    let res = serde_json::to_string(&*locked);
+    if let Ok(res_str) = res {
+        return Ok(res_str);
+    }
+
+    Err(String::from("Could not convert stats to string"))
+}
+
 #[get("/get-board/<date>")]
 async fn get_board(date: u16, board_state: &State<BoardVecPointer>) -> Result<RawJson<String>, RawJson<String>> {
     
@@ -114,6 +125,10 @@ async fn favicon() -> CacheResponder<NamedFile> {
         NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("favicon.png")).await.unwrap(),
         ContentType::PNG
     )
+}
+#[get("/favicon.ico")]
+async fn favicon_ico() -> CacheResponder<NamedFile> {
+    favicon().await
 }
 #[get("/stats.png")]
 async fn stats() -> CacheResponder<NamedFile> {
@@ -210,5 +225,5 @@ async fn rocket() -> _ {
                 )
             ).await;
         })))
-        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats, played_counter])
+        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, stats, played_counter, game_stats])
 }

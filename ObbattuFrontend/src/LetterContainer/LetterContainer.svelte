@@ -58,11 +58,6 @@
     use:dndzone={options} 
     on:consider={handleDndConsider} 
     on:finalize={handleDndFinalize}
-    on:click={
-        () => {
-            console.log(xPos, yPos, letter.letter)
-        }
-    }
     >
     {#each items as tile(tile.id)}
         <Letter letter={tile}/>

@@ -128,7 +128,7 @@
     }
 
     function saveSnapshot() {
-        console.log("saving snapshot...")
+        //console.log("saving snapshot...")
 
         let GAME_BOARD = {
             questions: questions,

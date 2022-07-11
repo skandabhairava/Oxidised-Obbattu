@@ -52,7 +52,7 @@
                 questions = data.questions
                 OBBATTU_COUNT = data.OBBATTU_COUNT
 
-                console.log(data)
+                //console.log(data)
 
                 return_val = data
             })
@@ -112,7 +112,7 @@
         return Math.random() * (max - min) + min;
     }
 
-    function incrementWonStat() {
+    async function incrementWonStat() {
         let obj = window.localStorage.getItem("GAME_STATS")
         let json
 
@@ -130,7 +130,7 @@
 
         window.localStorage.setItem("GAME_STATS", JSON.stringify(json))
 
-        fetch("/played/true")
+        await fetch("/played/true")
     }
 
     function incrementPlayedStat() {
@@ -183,7 +183,7 @@
         
     }
 
-    function handleGameLost(e) {
+    async function handleGameLost(e) {
 
         let increment = e.detail.extra
 
@@ -194,11 +194,11 @@
             reminderStatus = "timer"
         }
 
-        fetch("/played/false")
+        await fetch("/played/false")
     }
 
     function refreshBoard(_) {
-        console.log("refreshing board....")
+        //console.log("refreshing board....")
         
         setTimeout(() => {reminderStatus = null}, 1000)
 
@@ -275,7 +275,7 @@
             let timeCreated = new Date(gameMeta.timecreated)
 
             if ((now - timeCreated) > 86400000) {
-                console.log("new board... Bail loading old board")
+                //console.log("new board... Bail loading old board")
                 //questions = questions_from_server
                 window.localStorage.removeItem("GAME_META")
                 window.localStorage.removeItem("GAME_BOARD")
