@@ -27,6 +27,15 @@ async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
             ).unwrap())
 } */
 
+#[get("/robots.txt")]
+async fn robots() -> CacheResponder<String> {
+    CacheResponder::new(String::from("User-agent: *
+Disallow: /game_stats/
+Disallow: /get-board/
+Disallow: /played/
+"), ContentType::Text)
+}
+
 #[get("/played/<solved>")]
 async fn played_counter(solved: bool, game_state: &State<GameManagerPointer>) {
     let mut locked = game_state.lock().await;
@@ -225,5 +234,8 @@ async fn rocket() -> _ {
                 )
             ).await;
         })))
-        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, stats, played_counter, game_stats])
+        .mount("/", routes![get_board, index, //UI board and elements
+                                    global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, //HTML and other elements
+                                    stats, played_counter, game_stats, robots //Stats and SEO related
+                                ])
 }
