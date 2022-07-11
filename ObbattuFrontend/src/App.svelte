@@ -129,6 +129,8 @@
         json.GAMES_PLAYED += 1
 
         window.localStorage.setItem("GAME_STATS", JSON.stringify(json))
+
+        fetch("/played/true")
     }
 
     function incrementPlayedStat() {
@@ -191,6 +193,8 @@
         if (reminderStatus === null) {
             reminderStatus = "timer"
         }
+
+        fetch("/played/false")
     }
 
     function refreshBoard(_) {
@@ -203,7 +207,7 @@
 
         questions = undefined
 
-        load()
+        load(true)
 
         refreshTimeout = setTimeout(
             refreshAlertCheck,
@@ -227,10 +231,12 @@
         })
     }
 
-    async function load() {
+    async function load(time_wait = false) {
 
         let now = new Date()
-        // now.setDate(25)
+        if (time_wait === true) {
+            now = new Date(now.getTime() + (2*60000))
+        }
 
         let board = getObj("GAME_BOARD")
         let gameMeta = getObj("GAME_META")

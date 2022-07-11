@@ -2,7 +2,7 @@
 
 mod board_generator;
 //use local_ip_address::list_afinet_netifas;
-use obbattu_oxidised::{BoardManager, GameManager, CacheResponder};
+use obbattu_oxidised::{BoardManager, GameManager, CacheResponder, GameManagerPointer};
 use rocket::Config;
 use std::net::{IpAddr, Ipv4Addr};
 
@@ -26,6 +26,16 @@ async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
                             .collect::<Vec<BoardManager>>()
             ).unwrap())
 } */
+
+#[get("/played/<solved>")]
+async fn played_counter(solved: bool, game_state: &State<GameManagerPointer>) {
+    let mut locked = game_state.lock().await;
+    if solved == true{
+        locked.increment_won().await;
+    } else {
+        locked.increment_played().await;
+    }
+}
 
 #[get("/get-board/<date>")]
 async fn get_board(date: u16, board_state: &State<BoardVecPointer>) -> Result<RawJson<String>, RawJson<String>> {
@@ -175,22 +185,30 @@ async fn rocket() -> _ {
 
     rocket::custom(conf)
         .manage(board_vec_clone.clone())
-        .manage(game_state_clone)
+        .manage(game_state_clone.clone())
         .attach(AdHoc::on_shutdown("Saving board", |_| Box::pin(async move {
             BoardManager::save(
-                &(board_vec_clone
-                                .clone()
-                                .lock()
-                                .await
-                                .iter()
-                                .map(|x| {
-                                        x.to_owned()
-                                    }
-                                )
-                                .collect::<Vec<BoardManager>>()
-                            )
-                        )
-                        .await
+    &(board_vec_clone
+                    .clone()
+                    .lock()
+                    .await
+                    .iter()
+                    .map(|x| {
+                            x.to_owned()
+                        }
+                    )
+                    .collect::<Vec<BoardManager>>()
+                )
+            )
+            .await;
+
+            GameManager::save(
+                &*(game_state_clone
+                    .clone()
+                    .lock()
+                    .await
+                )
+            ).await;
         })))
-        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats])
+        .mount("/", routes![get_board, index, global_css, bundled_css, bundled_js, favicon, bundled_js_map, stats, played_counter])
 }

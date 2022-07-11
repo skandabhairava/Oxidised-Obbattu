@@ -28,20 +28,45 @@ pub struct CacheResponder<T>
 //////////////////////////////////////////
 
 //////////////////////////////////////////
+#[derive(Clone, Deserialize, Serialize)]
 pub struct GameManager{
-    pub boards_played: u32
+    pub boards_played: u32,
+    pub boards_won: u32
 }
     impl GameManager {
         pub async fn new() -> GameManagerPointer {
-            Arc::new(Mutex::new(Self { boards_played: 0 }))
+
+            let loaded = Self::load().await;
+            if let Some(game_manager) = loaded {
+                return Arc::new(Mutex::new(game_manager)); 
+            }
+
+            let save = Self { boards_played: 0, boards_won: 0 };
+            Self::save(&save).await;
+
+            Arc::new(Mutex::new(save))
         }
 
         pub async fn increment_played(&mut self) {
             self.boards_played += 1;
         }
 
-        pub async fn reset_played(&mut self) {
-            self.boards_played = 0;
+        pub async fn increment_won(&mut self) {
+            self.boards_played += 1;
+            self.boards_won += 1;
+        }
+
+        pub async fn save(&self) {
+            println!("Saving game stats...");
+            fs::write(Path::new(".").join("game_stats.json"), serde_json::to_string(&self).unwrap()).await.unwrap();
+        }
+
+        pub async fn load() -> Option<Self> {
+            if Path::new(".").join("game_stats.json").exists() {
+                println!("Loading up game stats...");
+                return serde_json::from_str(&fs::read_to_string(Path::new(".").join("game_stats.json")).await.unwrap()).ok();
+            }
+            None
         }
     }
 

@@ -1,3 +1,4 @@
 /target
 **/node_modules/
 **/board_save.json
+**/game_stats.json
