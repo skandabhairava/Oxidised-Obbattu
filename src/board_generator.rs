@@ -276,7 +276,7 @@ async fn get_random_word(prev_result: Option<RandomCache>) -> Option<RandomCache
 }
 
 
-#[allow(dead_code)]
+#[allow(dead_code)] // idk why rust-analyzer gives a warning, when i use this function in lib/main.rs
 pub async fn create_board() -> Board{
     let tries = 400;
 
