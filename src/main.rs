@@ -205,7 +205,7 @@ async fn rocket() -> _ {
 
     let mut conf = Config::release_default();
     conf.address = IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0));
-    conf.port = 1845;
+    conf.port = 80;
 
     rocket::custom(conf)
         .manage(board_vec_clone.clone())
