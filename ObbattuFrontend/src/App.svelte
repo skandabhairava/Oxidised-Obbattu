@@ -133,7 +133,7 @@
         await fetch("/played/true")
     }
 
-    function incrementPlayedStat() {
+    async function incrementPlayedStat() {
         let obj = window.localStorage.getItem("GAME_STATS")
         let json
 
@@ -149,9 +149,11 @@
         json.GAMES_PLAYED += 1
 
         window.localStorage.setItem("GAME_STATS", JSON.stringify(json))
+
+        await fetch("/played/false")
     }
 
-    function handleGameWin(e) {
+    async function handleGameWin(e) {
         let animationEnd = Date.now() + duration;
         
         let increment = e.detail.extra
@@ -163,8 +165,11 @@
         }
 
         if (increment === true) {
+
+            console.log("YAY, You won the game. Thanks a lot for playing Obbattu. It means a lot to me :D")
+
             navigator.vibrate(200)
-            incrementWonStat()
+            await incrementWonStat()
             let interval = setInterval(function() {
                 let timeLeft = animationEnd - Date.now();
     
@@ -188,13 +193,12 @@
         let increment = e.detail.extra
 
         if (increment === true) {
-            incrementPlayedStat()
+            console.log("Aww :(. You Lost. Thanks a lot for playing Obbattu. It means a lot to me :D")
+            await incrementPlayedStat()
         }
         if (reminderStatus === null) {
             reminderStatus = "timer"
         }
-
-        await fetch("/played/false")
     }
 
     function refreshBoard(_) {
