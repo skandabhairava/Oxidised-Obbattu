@@ -33,6 +33,8 @@ async fn robots() -> CacheResponder<String> {
 Disallow: /game_stats/
 Disallow: /get-board/
 Disallow: /played/
+
+# Whoah, no one looks in here! What u doing here?
 "), ContentType::Text)
 }
 

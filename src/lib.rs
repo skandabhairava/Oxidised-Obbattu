@@ -27,6 +27,10 @@ pub struct CacheResponder<T>
     }
 //////////////////////////////////////////
 
+// This program saves 2 extra files locally "board_save.json", which stores 2 recent boards
+// "game_stats.json" is used to store statistics of players
+// Yes, this is also an EsterEg
+
 //////////////////////////////////////////
 #[derive(Clone, Deserialize, Serialize)]
 pub struct GameManager{

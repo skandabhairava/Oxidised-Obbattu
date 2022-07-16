@@ -1,4 +1,4 @@
-/// THIS MODULE IS UNUSED
+/// THIS MODULE IS UNUSED, is this an EsterEg, ig u can consider it one
 /// THIS MODULE IS AN EXACT REPLICA OF "board_generator.rs" BUT WITHOUT ASYNC
 
 use lazy_static::lazy_static;
@@ -6,13 +6,12 @@ use std::{collections::{HashMap, HashSet}, io::{self, BufRead}, fs::File, path::
 use unicode_segmentation::UnicodeSegmentation;
 use rand::{Rng, seq::SliceRandom};
 
-#[allow(dead_code)]
 const KANNADA_OTTAKSHARAS: [&str; 34] = ["ಕ್", "ಖ್", "ಗ್", "ಘ್", "ಙ್", "ಚ್", "ಛ್", "ಜ್", "ಝ್", "ಞ್", "ಟ್", "ಠ್", "ಡ್", "ಢ್", "ಣ್", "ತ್", "ಥ್", "ದ್", "ಧ್", "ನ್", "ಪ್", "ಫ್", "ಬ್", "ಭ್", "ಮ್", "ಯ್", "ರ್", "ಲ್", "ವ್", "ಶ್", "ಷ್", "ಸ್", "ಹ್", "ಳ್"];
 
-#[allow(dead_code)]
 const SHORTENED_LINES: u16 = 20113;
 lazy_static! {
     static ref LINE_RANGE: HashMap<&'static str, (u16, u16)> = {
+
         let mut m = HashMap::new();
         m.insert("ಅ", (0, 1197));
         m.insert("ಆ", (1197, 1742));
@@ -79,7 +78,6 @@ pub struct FindOneCache{
     result: Option<String>
 }
     impl FindOneCache {
-        #[allow(dead_code)]
         fn new(original_list: Vec<String>, crossed_out: Vec<String>, result: Option<String>) -> Self{
             Self { original_list, crossed_out, result }
         }
@@ -92,7 +90,6 @@ pub struct RandomCache{
     result: Option<String>
 }
     impl RandomCache {
-        #[allow(dead_code)]
         fn new(crossed_out: Vec<u16>, result: Option<String>) -> Self {
             Self { crossed_out, result}
         }
@@ -100,7 +97,6 @@ pub struct RandomCache{
 //////////////////////////////////////////////////
 
 /// Iterator which reads a file line by line
-#[allow(dead_code)]
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where
     P: AsRef<Path>
@@ -109,7 +105,6 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
-#[allow(dead_code)]
 fn split(mut word: String) -> Vec<String>{
     if word.ends_with("\n") {
         word = word[..word.len()-1].to_owned();
@@ -131,7 +126,6 @@ fn split(mut word: String) -> Vec<String>{
     collect_list
 }
 
-#[allow(dead_code)]
 fn find(starts_with: Option<String>, ends_with: Option<String>, middle_char: Option<String>) -> Vec<String> {
     let mut range_line: (u16, u16) = (0, 20113);
 
@@ -195,7 +189,6 @@ fn find(starts_with: Option<String>, ends_with: Option<String>, middle_char: Opt
     vec![]
 }
 
-#[allow(dead_code)]
 fn find_one(prev_result: Option<FindOneCache>, starts_with: Option<String>, ends_with: Option<String>, middle_char: Option<String>) -> FindOneCache {
 
     #[allow(unused_assignments)]
@@ -237,8 +230,6 @@ fn find_one(prev_result: Option<FindOneCache>, starts_with: Option<String>, ends
     FindOneCache::new(list_choose, vec![chosen.clone()], Some(chosen))
 }
 
-
-#[allow(dead_code)]
 fn get_random_word(prev_result: Option<RandomCache>) -> Option<RandomCache>{
     
     let line_no = if let Some(prev_result) = &prev_result{
@@ -278,8 +269,6 @@ fn get_random_word(prev_result: Option<RandomCache>) -> Option<RandomCache>{
     None
 }
 
-
-#[allow(dead_code)]
 pub fn create_board() -> Board{
     let tries = 400;
 

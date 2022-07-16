@@ -411,6 +411,8 @@ pub async fn create_board() -> Board{
                         }
                         let vert_split = split(vert.clone().unwrap().result.unwrap()).await;
 
+                        //Anyone who understands this mess, ur a genius.
+
                         words.push(vert.clone().unwrap().result.unwrap());
                         for _horz_tries in 0..tries {
 

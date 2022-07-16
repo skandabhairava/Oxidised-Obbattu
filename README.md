@@ -36,6 +36,8 @@
 
 - I'm mostly a programmer. I use windows as my daily OS, but when I needed to host the backend server on the VM, I needed to know how to work with VM instances, Linux, and other VPS stuff. I learnt a lot about hosting services, and how DNS records are written to connect to the hosted server ip. I also learnt a lot about Linux OS.
 
+<!-- Whoah, who knew you could hide stuff in READMEs. TIL -->
+
 ## Helpers/Testers
 - Myself
 - My Father
