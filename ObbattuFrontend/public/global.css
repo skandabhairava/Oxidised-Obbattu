@@ -16,9 +16,7 @@
 	--game-end-shadow: #000000;
 	--correct-shadow: rgb(52,125,50);
 	--misplaced-shadow: rgb(199, 136, 35);
-}
 
-:root {
 	--game-max-width: 500px;
 }
 

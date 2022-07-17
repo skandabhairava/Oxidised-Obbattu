@@ -5,7 +5,7 @@
 
 <div class="main-popup flexx">
     <h1>ಆಟದ ಬಗ್ಗೆ</h1>
-    <p>ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ. ನಿಮ್ಮ ಅನಿಸಿಕೆಗಳನ್ನು "skandabhairava@gmail.com"ಗೆ ಕಳಿಸಿ</p>
+    <p>ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ. ನಿಮ್ಮ ಅನಿಸಿಕೆಗಳನ್ನು "skandabhairava@gmail.com"ಗೆ ಕಳಿಸಿ.</p>
     <hr>
     <div class="limit-letter">
         <LetterComponenet letter={new Letter(undefined, "ಅ", "correct")}/>
@@ -27,21 +27,21 @@
                 <p>ಮಾಡಿದ್ದು</p>
             </div>
             <div class="item">
-                <a target="_blank" href="https://github.com/skandabhairava">ಸ್ಕಂದ ಭೈರವ</a>
+                <a class="a-tag" target="_blank" href="https://github.com/skandabhairava">ಸ್ಕಂದ ಭೈರವ</a>
             </div>
             <div class="item">
                 <p>ಸ್ಫೂರ್ತಿ</p>
             </div>
             <div class="item">
-                <a target="_blank" href="https://wafflegame.net/">WaffleGame</a>
-                <a target="_blank" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>
-                <a target="_blank" href="https://wordalla.online/">Wordalla</a>
+                <a class="a-tag" target="_blank" href="https://wafflegame.net/">WaffleGame</a>
+                <a class="a-tag" target="_blank" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>
+                <a class="a-tag" target="_blank" href="https://wordalla.online/">Wordalla</a>
             </div>
             <div class="item">
                 <p>ಮೂಲ ಕೋಡ್</p>
             </div>
             <div class="item">
-                <a target="_blank" href="https://github.com/skandabhairava/Oxidised-Obbattu">Github</a>
+                <a class="a-tag" target="_blank" href="https://github.com/skandabhairava/Oxidised-Obbattu">Github</a>
             </div>
         </div>
     </div>
@@ -56,6 +56,10 @@
         display: grid;
         grid-template-columns: 100% 100%;
         /* padding: 20px; */
+    }
+
+    .a-tag {
+        color: var(--misplaced-bg);
     }
 
     .item {
