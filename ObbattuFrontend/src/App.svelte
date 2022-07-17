@@ -314,7 +314,7 @@
         />
         {#if reminderStatus === "timer"}
             <div class="timer notice flexx">
-                    <h2>Next Obbattu in</h2>
+                    <h2>ಮುಂದಿನ ಒಬ್ಬಟ್ಟು</h2>
                     <Countdown endDate={getDurationTillMidnight} finishMsg="Serving new Obbattu..." on:REFRESH_BOARD={refreshBoard}/>
             </div>
             <hr class="spacer">

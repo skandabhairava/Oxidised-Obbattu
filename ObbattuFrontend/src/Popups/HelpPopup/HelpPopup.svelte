@@ -4,33 +4,39 @@
 </script>
 
 <div class="main-popup flexx">
-    <h1>Help</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida urna nec diam hendrerit egestas. Morbi non dictum dui. Fusce rutrum magna ante, vel fringilla magna euismod luctus. Vestibulum venenatis id nibh sed eleifend. Nulla accumsan risus ex. Donec ullamcorper, nibh in finibus egestas, nunc arcu viverra felis, a venenatis massa justo eu est. Nunc ac fermentum urna.</p>
+    <h1>ಆಟದ ಬಗ್ಗೆ</h1>
+    <p>ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ.</p>
     <hr>
     <div class="limit-letter">
         <LetterComponenet letter={new Letter(undefined, "a", "correct")}/>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida urna nec diam hendrerit egestas. Morbi non dictum dui. </p>
+    <p>ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇದೆ. ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರಗಳನ್ನು ಬಿಟ್ಟು ಬೇರೆ ಅಕ್ಷರಗಳನ್ನು ಬೇರೆ ಜಾಗಕ್ಕೆ ಚಲಿಸಬಹುದು.</p>
     <div class="limit-letter">
         <LetterComponenet letter={new Letter(undefined, "a", "misplaced")}/>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida urna nec diam hendrerit egestas. Morbi non dictum dui. </p>
+    <p>ಹಳದಿ ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಇದೆ ಆದರೆ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇಲ್ಲ. </p>
     <div class="limit-letter">
         <LetterComponenet letter={new Letter(undefined, "a", "incorrect")}/>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida urna nec diam hendrerit egestas. Morbi non dictum dui. </p>
+    <p>ಬೂದು ಬಣ್ಣದ ಅಕ್ಷರಗಳು ಪದದಲ್ಲಿಲ್ಲ. </p>
     <hr>
     <h1>Credits</h1>
     <div class="credits">
         <div class="dict">
             <div class="item">
-                <p>Made by</p>
+                <p>ಮಾಡಿದ್ದು</p>
             </div>
             <div class="item">
                 <a target="_blank" href="https://github.com/skandabhairava">Skanda M B</a>
             </div>
             <div class="item">
-                <p>Inspired from</p>
+                <p>ಅನುವಾದಿಸಿದ್ದಾರೆ</p>
+            </div>
+            <div class="item">
+                <a target="_blank" href="https://twitter.com/mandya_manju">Manjunath MN</a>
+            </div>
+            <div class="item">
+                <p>ಸ್ಫೂರ್ತಿ</p>
             </div>
             <div class="item">
                 <a target="_blank" href="https://wafflegame.net/">WaffleGame</a>
@@ -38,7 +44,7 @@
                 <a target="_blank" href="https://wordalla.online/">Wordalla</a>
             </div>
             <div class="item">
-                <p>Source code</p>
+                <p>ಮೂಲ ಕೋಡ್</p>
             </div>
             <div class="item">
                 <a target="_blank" href="https://github.com/skandabhairava/Oxidised-Obbattu">Github</a>
