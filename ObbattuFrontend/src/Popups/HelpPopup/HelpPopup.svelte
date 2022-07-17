@@ -27,13 +27,7 @@
                 <p>ಮಾಡಿದ್ದು</p>
             </div>
             <div class="item">
-                <a target="_blank" href="https://github.com/skandabhairava">Skanda M B</a>
-            </div>
-            <div class="item">
-                <p>ಅನುವಾದಿಸಿದ್ದಾರೆ</p>
-            </div>
-            <div class="item">
-                <a target="_blank" href="https://twitter.com/mandya_manju">Manjunath MN</a>
+                <a target="_blank" href="https://github.com/skandabhairava">ಸ್ಕಂದ ಭೈರವ</a>
             </div>
             <div class="item">
                 <p>ಸ್ಫೂರ್ತಿ</p>
