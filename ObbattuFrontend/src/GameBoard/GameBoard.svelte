@@ -264,11 +264,11 @@
     </div>
     <div class="moves-counter flexx">
         {#if GAME_STATE === "playing"}
-            <p>ಬಾಕಿ ಇರುವ ಚಲನೆಗಳು ಕೆಳಗೆ ತೋರಿಸಲಾಗಿದೆ <strong>{MOVES}</strong>!</p>
+            <p>ಬಾಕಿ ಇರುವ ಚಲನೆಗಳು <strong>{MOVES}</strong>!</p>
         {:else if GAME_STATE === "lost"}
-            <p><strong>{MOVES}</strong> ಚಲನೆಗಳು ಉಳಿದಿರುವಾಗ ಆಟವನ್ನು <strong>ಕಳೆದುಕೊಂಡಿದ್ದೀರಿ</strong> the game</p>
+            <p>ಆಟವನ್ನು <strong>ಕಳೆದುಕೊಂಡಿದ್ದೀರಿ</strong></p>
         {:else}
-            <p><strong>{MOVES}</strong> ಚಲನೆಗಳು ಉಳಿದಿರುವಾಗ ಆಟವನ್ನು <strong>ಗೆದ್ದಿದ್ದೀರಿwon</strong>!</p>
+            <p><strong>{MOVES}</strong> ಚಲನೆಗಳು ಉಳಿದಿರುವಾಗ ಆಟವನ್ನು <strong>ಗೆದ್ದಿದ್ದೀರಿ</strong>!</p>
         {/if}
     </div>
     <Modal

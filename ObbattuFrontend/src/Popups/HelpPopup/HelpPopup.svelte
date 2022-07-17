@@ -8,15 +8,15 @@
     <p>ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ.</p>
     <hr>
     <div class="limit-letter">
-        <LetterComponenet letter={new Letter(undefined, "a", "correct")}/>
+        <LetterComponenet letter={new Letter(undefined, "ಅ", "correct")}/>
     </div>
     <p>ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇದೆ. ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರಗಳನ್ನು ಬಿಟ್ಟು ಬೇರೆ ಅಕ್ಷರಗಳನ್ನು ಬೇರೆ ಜಾಗಕ್ಕೆ ಚಲಿಸಬಹುದು.</p>
     <div class="limit-letter">
-        <LetterComponenet letter={new Letter(undefined, "a", "misplaced")}/>
+        <LetterComponenet letter={new Letter(undefined, "ಅ", "misplaced")}/>
     </div>
     <p>ಹಳದಿ ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಇದೆ ಆದರೆ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇಲ್ಲ. </p>
     <div class="limit-letter">
-        <LetterComponenet letter={new Letter(undefined, "a", "incorrect")}/>
+        <LetterComponenet letter={new Letter(undefined, "ಅ", "incorrect")}/>
     </div>
     <p>ಬೂದು ಬಣ್ಣದ ಅಕ್ಷರಗಳು ಪದದಲ್ಲಿಲ್ಲ. </p>
     <hr>
