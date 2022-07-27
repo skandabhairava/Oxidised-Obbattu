@@ -477,7 +477,7 @@ pub async fn create_board() -> Board{
         split(left.unwrap().result.unwrap()).await.try_into().unwrap(),
         split(down.unwrap().result.unwrap()).await.try_into().unwrap(),
         split(vert.unwrap().result.unwrap()).await.try_into().unwrap(),
-        split(horz.unwrap().result.unwrap()).await.try_into().unwrap() //["ಬೆಸುಗೆಗ"] 
+        split(horz.unwrap().result.unwrap()).await.try_into().unwrap()
     )
 
 }

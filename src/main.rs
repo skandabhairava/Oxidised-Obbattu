@@ -160,7 +160,7 @@ async fn rocket() -> _ {
     let board_vec_clone = board_vec.clone();
     let game_state_clone = game_state.clone();
 
-    sched.add(Job::new_async("0 1 14 * * *", move |_uuid, _l| {
+    sched.add(Job::new_async("0 0 10 * * *", move |_uuid, _l| {
 
         let board_vec_clone = board_vec.clone();
 
