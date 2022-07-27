@@ -12,56 +12,56 @@ const SHORTENED_LINES: u16 = 20113;
 lazy_static! {
     static ref LINE_RANGE: HashMap<&'static str, (u16, u16)> = {
         let mut m = HashMap::new();
-        m.insert("ಅ", (0, 1197));
-        m.insert("ಆ", (1197, 1742));
-        m.insert("ಇ", (1742, 2194));
-        m.insert("ಈ", (2194, 2231));
-        m.insert("ಉ", (2231, 2529));
-        m.insert("ಊ", (2529, 2576));
-        m.insert("ಋ", (2576, 2577));
-        m.insert("ಎ", (2577, 3004));
-        m.insert("ಏ", (3004, 3095));
-        m.insert("ಐ", (3095, 3137));
-        m.insert("ಒ", (3137, 3438));
-        m.insert("ಓ", (3438, 3508));
-        m.insert("ಔ", (3508, 3516));
+        m.insert("ಅ", (0, 3421));
+        m.insert("ಆ", (3421, 4236));
+        m.insert("ಇ", (4236, 4533));
+        m.insert("ಈ", (4533, 4570));
+        m.insert("ಉ", (4570, 5332));
+        m.insert("ಊ", (5332, 5400));
+        m.insert("ಋ", (5400, 5422));
+        m.insert("ಎ", (5422, 5756));
+        m.insert("ಏ", (5756, 5870));
+        m.insert("ಐ", (5870, 5899));
+        m.insert("ಒ", (5899, 6256));
+        m.insert("ಓ", (6256, 6318));
+        m.insert("ಔ", (6318, 6341));
 
-        m.insert("ಕ", (3516, 5887));
-        m.insert("ಖ", (5887, 5905));
-        m.insert("ಗ", (5905, 6460));
-        m.insert("ಘ", (6460, 6493));
+        m.insert("ಕ", (6341, 9892));
+        m.insert("ಖ", (9892, 10031));
+        m.insert("ಗ", (10031, 11238));
+        m.insert("ಘ", (11238, 11305));
 
-        m.insert("ಚ", (6493, 6702));
-        m.insert("ಛ", (6702, 6705));
-        m.insert("ಜ", (6705, 7023));
-        m.insert("ಝ", (7023, 7026));
+        m.insert("ಚ", (11305, 11939));
+        m.insert("ಛ", (11939, 11982));
+        m.insert("ಜ", (11982, 12508));
+        m.insert("ಝ", (12508, 12522));
 
-        m.insert("ಟ",(7026, 7038));
-        m.insert("ಠ", (7038, 7041));
-        m.insert("ಡ", (7041, 7060));
-        m.insert("ಣ", (7060, 7063));
+        m.insert("ಟ",(12522, 12551));
+        m.insert("ಠ", (12551, 12575));
+        m.insert("ಡ", (12575, 12666));
+        //m.insert("ಣ", (12666, 7063));
 
-        m.insert("ತ", (7063, 8163));
-        m.insert("ಥ", (8163, 8166));
-        m.insert("ದ", (8166, 8989));
-        m.insert("ಧ", (8989, 9068));
-        m.insert("ನ", (9068, 10418));
+        m.insert("ತ", (12666, 13578));
+        m.insert("ಥ", (13578, 13591));
+        m.insert("ದ", (13591, 14350));
+        m.insert("ಧ", (13591, 14518));
+        m.insert("ನ", (14518, 15753));
 
-        m.insert("ಪ", (10418, 11420));
-        m.insert("ಫ", (11420, 11488));
-        m.insert("ಬ", (11488, 12847));
-        m.insert("ಭ", (12847, 13040));
-        m.insert("ಮ", (13040, 14600));
+        m.insert("ಪ", (15753, 17810));
+        m.insert("ಫ", (17810, 17855));
+        m.insert("ಬ", (17855, 18979));
+        m.insert("ಭ", (18979, 19256));
+        m.insert("ಮ", (19256, 20895));
 
-        m.insert("ಯ", (14600, 15162));
-        m.insert("ರ", (15162, 15493));
-        m.insert("ಲ", (15493, 15654));
-        m.insert("ಳ", (15654, 15661));
-        m.insert("ವ", (15661, 16401));
-        m.insert("ಶ", (16401, 16770));
-        m.insert("ಷ", (16770, 16779));
-        m.insert("ಸ", (16779, 18386));
-        m.insert("ಹ", (18386, 20113));
+        m.insert("ಯ", (20895, 20987));
+        m.insert("ರ", (20987, 21366));
+        m.insert("ಲ", (21366, 21598));
+        //m.insert("ಳ", (21598, 15661));
+        m.insert("ವ", (21598, 22688));
+        m.insert("ಶ", (22688, 23120));
+        m.insert("ಷ", (23120, 23138));
+        m.insert("ಸ", (23138, 24966));
+        m.insert("ಹ", (24966, 25895));
 
         m
     };
@@ -126,6 +126,10 @@ pub async fn split(mut word: String) -> Vec<String>{
         buffer = "".to_owned();
     }
 
+    if &buffer != "" {
+        collect_list.push(buffer);
+    }
+
     collect_list
 }
 
@@ -150,7 +154,7 @@ async fn find(starts_with: Option<String>, ends_with: Option<String>, middle_cha
         range_line = (rand::thread_rng().gen_range(0..(100 + 1)), rand::thread_rng().gen_range(0..(200 + 20113 + 1)))
     }
 
-    if let Ok(mut lines) = read_lines(Path::new("word-list").join("shortened_list.txt")).await {
+    if let Ok(mut lines) = read_lines(Path::new("word-list").join("short_valid_words.txt")).await {
 
         let mut words: Vec<String> = vec![];
         let mut i: usize = 0;
@@ -248,7 +252,7 @@ async fn get_random_word(prev_result: Option<RandomCache>) -> Option<RandomCache
         rand::thread_rng().gen_range(0..SHORTENED_LINES + 1)
     };
 
-    if let Ok(mut lines) = read_lines(Path::new("word-list").join("shortened_list.txt")).await {
+    if let Ok(mut lines) = read_lines(Path::new("word-list").join("short_valid_words.txt")).await {
 
         let mut i:usize = 0;
 
@@ -473,7 +477,7 @@ pub async fn create_board() -> Board{
         split(left.unwrap().result.unwrap()).await.try_into().unwrap(),
         split(down.unwrap().result.unwrap()).await.try_into().unwrap(),
         split(vert.unwrap().result.unwrap()).await.try_into().unwrap(),
-        split(horz.unwrap().result.unwrap()).await.try_into().unwrap()
+        split(horz.unwrap().result.unwrap()).await.try_into().unwrap() //["ಬೆಸುಗೆಗ"] 
     )
 
 }

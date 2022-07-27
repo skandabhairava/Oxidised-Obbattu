@@ -14,7 +14,7 @@ use tokio_cron_scheduler::{JobScheduler, Job};
 
 type BoardVecPointer = Arc<Mutex<VecDeque<BoardManager>>>;
 
-/* #[get("/boards")]
+#[get("/boards")]
 async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
     let board_vec = board_state.lock().await;
     RawJson(to_string(&board_vec.clone()
@@ -25,7 +25,7 @@ async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
                             )
                             .collect::<Vec<BoardManager>>()
             ).unwrap())
-} */
+}
 
 #[get("/robots.txt")]
 async fn robots() -> CacheResponder<String> {
@@ -160,7 +160,7 @@ async fn rocket() -> _ {
     let board_vec_clone = board_vec.clone();
     let game_state_clone = game_state.clone();
 
-    sched.add(Job::new_async("0 0 10 * * *", move |_uuid, _l| {
+    sched.add(Job::new_async("0 1 14 * * *", move |_uuid, _l| {
 
         let board_vec_clone = board_vec.clone();
 
@@ -238,6 +238,7 @@ async fn rocket() -> _ {
         })))
         .mount("/", routes![get_board, index, //UI board and elements
                                     global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, //HTML and other elements
-                                    stats, played_counter, game_stats, robots //Stats and SEO related
+                                    stats, played_counter, game_stats, robots, //Stats and SEO related
+                                    boards
                                 ])
 }
