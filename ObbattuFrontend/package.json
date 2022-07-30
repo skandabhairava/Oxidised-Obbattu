@@ -22,6 +22,7 @@
     "svelte-dnd-action": "^0.9.18"
   },
   "dependencies": {
+    "@pwabuilder/pwainstall": "^1.6.7",
     "canvas-confetti": "^1.5.1",
     "sirv-cli": "^2.0.0",
     "svelte-simple-modal": "^1.4.0"

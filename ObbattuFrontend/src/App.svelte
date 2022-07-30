@@ -15,10 +15,10 @@
     const duration = 5 * 1000; //Fire work duration
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
     
-    // let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
-    // let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
-    // let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
-    // let OBBATTU_COUNT_from_server = 0
+    let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    let OBBATTU_COUNT_from_server = 0
 
     let questions
     let ansToShow
@@ -61,12 +61,12 @@
                 return_val = false
             })
 
-            return return_val
+            //return return_val
 
-        /* questions = questions_from_server
+        questions = questions_from_server
         ansToShow = ansToShow_from_server
         answers = answers_from_server
-        OBBATTU_COUNT = OBBATTU_COUNT_from_server */
+        OBBATTU_COUNT = OBBATTU_COUNT_from_server
     }
 
     $: show_loading = (questions === undefined || ansToShow === undefined || answers === undefined)? true : false

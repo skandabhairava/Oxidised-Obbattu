@@ -20,7 +20,7 @@ pub struct CacheResponder<T>
         pub fn new(inner: T, content_type: ContentType) -> Self {
             Self {
                 inner,
-                header: Header::new("Cache-Control", "max-age=864000"),
+                header: Header::new("Cache-Control", "max-age=259200"),
                 content_type
             }
         }

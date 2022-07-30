@@ -1,0 +1,25 @@
+{
+    "name": "ಒಬ್ಬಟ್ಟು",
+    "short_name": "Obbattu",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "./obbattu.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "./obbattu-big.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#2596BE",
+    "theme_color": "#2596BE"
+}

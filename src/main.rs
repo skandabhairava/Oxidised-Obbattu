@@ -14,7 +14,7 @@ use tokio_cron_scheduler::{JobScheduler, Job};
 
 type BoardVecPointer = Arc<Mutex<VecDeque<BoardManager>>>;
 
-#[get("/boards")]
+/* #[get("/boards")]
 async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
     let board_vec = board_state.lock().await;
     RawJson(to_string(&board_vec.clone()
@@ -25,7 +25,7 @@ async fn boards(board_state: &State<BoardVecPointer>) -> RawJson<String>{
                             )
                             .collect::<Vec<BoardManager>>()
             ).unwrap())
-}
+} */
 
 #[get("/robots.txt")]
 async fn robots() -> CacheResponder<String> {
@@ -137,6 +137,34 @@ async fn favicon() -> CacheResponder<NamedFile> {
         ContentType::PNG
     )
 }
+#[get("/manifest.webmanifest")]
+async fn manifest() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("manifest.webmanifest")).await.unwrap(),
+        ContentType::JSON
+    )
+}
+#[get("/service-worker.js")]
+async fn service_worker() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("service-worker.js")).await.unwrap(),
+        ContentType::JavaScript
+    )
+}
+#[get("/obbattu.png")]
+async fn icon_small() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("obbattu.png")).await.unwrap(),
+        ContentType::PNG
+    )
+}
+#[get("/obbattu-big.png")]
+async fn icon_big() -> CacheResponder<NamedFile> {
+    CacheResponder::new(
+        NamedFile::open(Path::new(".").join("ObbattuFrontend").join("public").join("obbattu-big.png")).await.unwrap(),
+        ContentType::PNG
+    )
+}
 #[get("/favicon.ico")]
 async fn favicon_ico() -> CacheResponder<NamedFile> {
     favicon().await
@@ -239,6 +267,7 @@ async fn rocket() -> _ {
         .mount("/", routes![get_board, index, //UI board and elements
                                     global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, //HTML and other elements
                                     stats, played_counter, game_stats, robots, //Stats and SEO related
-                                    boards
+                                    manifest, service_worker, icon_small, icon_big,
+                                    //boards
                                 ])
 }
