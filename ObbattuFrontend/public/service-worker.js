@@ -2,7 +2,7 @@
 // Cache Name
 const CACHE_NAME = "static-cache-v1";
 // Cache Files
-const FILES_TO_CACHE = ["./index.html", "./global.css", "./stats.png", "./build/bundle.css", "./build/bundle.js"];
+const FILES_TO_CACHE = ["/index.html", "/global.css", "/stats.png", "/build/bundle.css", "/build/bundle.js"];
 // install
 self.addEventListener("install", (evt) => {
   console.log("[ServiceWorker] Install");
@@ -41,7 +41,7 @@ self.addEventListener("fetch", (evt) => {
   evt.respondWith(
     fetch(evt.request).catch(() => {
       return caches.open(CACHE_NAME).then((cache) => {
-        return cache.match("offline.html");
+        return cache.match("index.html");
       });
     })
   );
