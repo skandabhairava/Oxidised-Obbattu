@@ -4,7 +4,7 @@ mod board_generator;
 //use local_ip_address::list_afinet_netifas;
 use obbattu_oxidised::{BoardManager, GameManager, CacheResponder, GameManagerPointer};
 use rocket::Config;
-use std::net::{IpAddr, Ipv4Addr};
+//use std::net::{IpAddr, Ipv4Addr};
 
 use std::{path::Path, collections::VecDeque, sync::Arc};
 use chrono::Utc;
@@ -234,8 +234,7 @@ async fn rocket() -> _ {
     } */
 
     let mut conf = Config::release_default();
-    conf.address = IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0));
-    conf.port = 80;
+    conf.port = 1337;
 
     rocket::custom(conf)
         .manage(board_vec_clone.clone())
