@@ -105,7 +105,7 @@ pub struct BoardManager{
             let loaded = Self::load().await;
             if let Some(mut vector_save) = loaded {
 
-                vector_save[0].daily_count = 0;
+                //vector_save[0].daily_count = 0;
                 if Utc::now() < Utc::now().date().and_hms(10, 0, 0) {
                     vector_save[0].date = (Utc::now() - Duration::days(1)).day() as u16;
                     vector_save[1].date = Utc::now().day() as u16;
