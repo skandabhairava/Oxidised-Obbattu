@@ -3,5 +3,6 @@ export class Letter {
         this.id = id
         this.letter = letter;
         this.state = state;
+        this.game_state = state
     }
 }

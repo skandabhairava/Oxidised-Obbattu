@@ -5,7 +5,7 @@
     import Content from "../Popups/SolModal/SolModalManager.svelte";
     import Modal from "svelte-simple-modal";
 
-    import { saveObj, getObj } from "../storage.js";
+    import { saveObj } from "../storage.js";
 
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
@@ -209,15 +209,48 @@
             for (let j = 0; j < board[i].length; j++) {
                 if (board[i][j].state != "blocked"){
                     if (won === true){
-                        board[i][j].state = "game_won"
+                        board[i][j].game_state = "game_won"
                     } else {
-                        board[i][j].state = "game_lost"
+                        board[i][j].game_state = "game_lost"
                     }
                 }
             }
         }
 
         return board
+    }
+
+    function shareButton() {
+
+        let mainText = "DAILY OBBATTU #" + OBBATTU_COUNT + "\n\n"
+        let board_emoji = ""
+
+        if (GAME_STATE === "won") {
+            board_emoji = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n"
+        } else {
+            for (let i = 0; i < board.length; i++) {
+                for (let j = 0; j < board[i].length; j++) {
+                    if (board[i][j].state === "incorrect") {
+                        board_emoji += "⬛"
+                    } else if (board[i][j].state === "misplaced") {
+                        board_emoji += "🟨"
+                    } else if (board[i][j].state === "correct") {
+                        board_emoji += "🟩"
+                    } else {
+                        board_emoji += "⬜"
+                    }
+                }
+                board_emoji += "\n"
+            }
+        }
+
+        mainText += board_emoji + "\nPlay today's game on https://obbattu.xyz"
+
+        navigator.clipboard.writeText(mainText)
+        navigator.share({
+            title: 'Obbattu',
+            text: mainText
+        })
     }
 
     $: {
@@ -277,10 +310,38 @@
         {#if GAME_STATE === "lost"}
             <Content board={ans_board}/>
         {/if}
+        {#if GAME_STATE != "playing"}
+            <button 
+                on:click={shareButton}
+                class="share-btn"
+            >
+                share
+        </button>
+        {/if}
     </Modal>
 </div>
 
 <style>
+
+    .share-btn {
+        margin-top: 2em;
+        background-color: var(--correct-bg);
+        color: var(--guessed-letter-color);
+        -webkit-padding: 0.4em 0;
+        padding: 1em;
+        padding-left: 1.75em;
+        padding-right: 1.75em;
+        font-size: large;
+        border: 0;
+        user-select: none;
+        text-transform: uppercase;
+        /* margin: 0 0 0.5em 0; */
+    }
+
+    .share-btn:hover {
+        background-color: var(--correct-shadow);
+        cursor: pointer;
+    }
 
     .board-container {
 

@@ -3,8 +3,8 @@
 </script>
 
 <div class="letter"
-  class:game_lost={letter.state === "game_lost"}
-  class:game_won={letter.state === "game_won"}
+  class:game_lost={letter.game_state === "game_lost"}
+  class:game_won={letter.game_state === "game_won"}
   class:incorrect={letter.state === "incorrect"}
   class:misplaced={letter.state === "misplaced"}
   class:correct={letter.state === "correct"}>
@@ -44,13 +44,14 @@
     }
 
     .game_lost {
-        background-color: var(--game-end-bg);
-        box-shadow: 0px 5px 0px var(--game-end-shadow);
+        background-color: var(--game-end-bg) !important;
+        box-shadow: 0px 5px 0px var(--game-end-shadow) !important;
     }
 
     .game_won {
-        animation: rainbow-bg 10s linear;
-		animation-iteration-count: infinite;
+        animation: rainbow-bg 10s linear !important;
+	  animation-iteration-count: infinite !important;
+        box-shadow: 0px 0px 0px #000 !important;
     }
 
     .misplaced {

@@ -12,7 +12,7 @@
 
     import { saveObj, getObj } from "./storage";
 
-    const duration = 5 * 1000; //Fire work duration
+    const duration = 5000; //Fire work duration
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
     
     /* let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]

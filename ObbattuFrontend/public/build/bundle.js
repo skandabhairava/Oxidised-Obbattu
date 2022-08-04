@@ -1,2 +1,10358 @@
-var app=function(){"use strict";function t(){}const e=t=>t;function n(t,e){for(const n in e)t[n]=e[n];return t}function o(t){return t()}function r(){return Object.create(null)}function s(t){t.forEach(o)}function i(t){return"function"==typeof t}function l(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function a(e,n,o){e.$$.on_destroy.push(function(e,...n){if(null==e)return t;const o=e.subscribe(...n);return o.unsubscribe?()=>o.unsubscribe():o}(n,o))}function c(t,e,o,r){return t[1]&&r?n(o.ctx.slice(),t[1](r(e))):o.ctx}function d(t){return null==t?"":t}const u="undefined"!=typeof window;let f=u?()=>window.performance.now():()=>Date.now(),g=u?t=>requestAnimationFrame(t):t;const p=new Set;function h(t){p.forEach((e=>{e.c(t)||(p.delete(e),e.f())})),0!==p.size&&g(h)}function m(t){let e;return 0===p.size&&g(h),{promise:new Promise((n=>{p.add(e={c:t,f:n})})),abort(){p.delete(e)}}}function y(t,e){t.appendChild(e)}function w(t){if(!t)return document;const e=t.getRootNode?t.getRootNode():t.ownerDocument;return e&&e.host?e:t.ownerDocument}function v(t){const e=E("style");return function(t,e){y(t.head||t,e)}(w(t),e),e.sheet}function b(t,e,n){t.insertBefore(e,n||null)}function $(t){t.parentNode.removeChild(t)}function x(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}function E(t){return document.createElement(t)}function T(t){return document.createTextNode(t)}function O(){return T(" ")}function M(){return T("")}function C(t,e,n,o){return t.addEventListener(e,n,o),()=>t.removeEventListener(e,n,o)}function A(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}function _(t,e){e=""+e,t.wholeText!==e&&(t.data=e)}function D(t,e,n){t.classList[n?"add":"remove"](e)}function S(t,e,{bubbles:n=!1,cancelable:o=!1}={}){const r=document.createEvent("CustomEvent");return r.initCustomEvent(t,n,o,e),r}class k{constructor(t=!1){this.is_svg=!1,this.is_svg=t,this.e=this.n=null}c(t){this.h(t)}m(t,e,n=null){var o;this.e||(this.is_svg?this.e=(o=e.nodeName,document.createElementNS("http://www.w3.org/2000/svg",o)):this.e=E(e.nodeName),this.t=e,this.c(t)),this.i(n)}h(t){this.e.innerHTML=t,this.n=Array.from(this.e.childNodes)}i(t){for(let e=0;e<this.n.length;e+=1)b(this.t,this.n[e],t)}p(t){this.d(),this.h(t),this.i(this.a)}d(){this.n.forEach($)}}const B=new Map;let L,W=0;function I(t,e,n,o,r,s,i,l=0){const a=16.666/o;let c="{\n";for(let t=0;t<=1;t+=a){const o=e+(n-e)*s(t);c+=100*t+`%{${i(o,1-o)}}\n`}const d=c+`100% {${i(n,1-n)}}\n}`,u=`__svelte_${function(t){let e=5381,n=t.length;for(;n--;)e=(e<<5)-e^t.charCodeAt(n);return e>>>0}(d)}_${l}`,f=w(t),{stylesheet:g,rules:p}=B.get(f)||function(t,e){const n={stylesheet:v(e),rules:{}};return B.set(t,n),n}(f,t);p[u]||(p[u]=!0,g.insertRule(`@keyframes ${u} ${d}`,g.cssRules.length));const h=t.style.animation||"";return t.style.animation=`${h?`${h}, `:""}${u} ${o}ms linear ${r}ms 1 both`,W+=1,u}function P(t,e){const n=(t.style.animation||"").split(", "),o=n.filter(e?t=>t.indexOf(e)<0:t=>-1===t.indexOf("__svelte")),r=n.length-o.length;r&&(t.style.animation=o.join(", "),W-=r,W||g((()=>{W||(B.forEach((t=>{const{stylesheet:e}=t;let n=e.cssRules.length;for(;n--;)e.deleteRule(n);t.rules={}})),B.clear())})))}function N(t,e){const n=t.getBoundingClientRect();if(e.left!==n.left||e.top!==n.top){const o=getComputedStyle(t),r="none"===o.transform?"":o.transform;t.style.transform=`${r} translate(${e.left-n.left}px, ${e.top-n.top}px)`}}function j(t){L=t}function R(){if(!L)throw new Error("Function called outside component initialization");return L}function z(t){R().$$.on_destroy.push(t)}function F(){const t=R();return(e,n,{cancelable:o=!1}={})=>{const r=t.$$.callbacks[e];if(r){const s=S(e,n,{cancelable:o});return r.slice().forEach((e=>{e.call(t,s)})),!s.defaultPrevented}return!0}}function G(t,e){return R().$$.context.set(t,e),e}function q(t){return R().$$.context.get(t)}function H(t,e){const n=t.$$.callbacks[e.type];n&&n.slice().forEach((t=>t.call(this,e)))}const U=[],Y=[],V=[],Z=[],X=Promise.resolve();let J=!1;function K(t){V.push(t)}const Q=new Set;let tt,et=0;function nt(){const t=L;do{for(;et<U.length;){const t=U[et];et++,j(t),ot(t.$$)}for(j(null),U.length=0,et=0;Y.length;)Y.pop()();for(let t=0;t<V.length;t+=1){const e=V[t];Q.has(e)||(Q.add(e),e())}V.length=0}while(U.length);for(;Z.length;)Z.pop()();J=!1,Q.clear(),j(t)}function ot(t){if(null!==t.fragment){t.update(),s(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(K)}}function rt(){return tt||(tt=Promise.resolve(),tt.then((()=>{tt=null}))),tt}function st(t,e,n){t.dispatchEvent(S(`${e?"intro":"outro"}${n}`))}const it=new Set;let lt;function at(){lt={r:0,c:[],p:lt}}function ct(){lt.r||s(lt.c),lt=lt.p}function dt(t,e){t&&t.i&&(it.delete(t),t.i(e))}function ut(t,e,n,o){if(t&&t.o){if(it.has(t))return;it.add(t),lt.c.push((()=>{it.delete(t),o&&(n&&t.d(1),o())})),t.o(e)}else o&&o()}const ft={duration:0};function gt(n,o,r,l){let a=o(n,r),c=l?0:1,d=null,u=null,g=null;function p(){g&&P(n,g)}function h(t,e){const n=t.b-c;return e*=Math.abs(n),{a:c,b:t.b,d:n,duration:e,start:t.start,end:t.start+e,group:t.group}}function y(o){const{delay:r=0,duration:i=300,easing:l=e,tick:y=t,css:w}=a||ft,v={start:f()+r,b:o};o||(v.group=lt,lt.r+=1),d||u?u=v:(w&&(p(),g=I(n,c,o,i,r,l,w)),o&&y(0,1),d=h(v,i),K((()=>st(n,o,"start"))),m((t=>{if(u&&t>u.start&&(d=h(u,i),u=null,st(n,d.b,"start"),w&&(p(),g=I(n,c,d.b,d.duration,0,l,a.css))),d)if(t>=d.end)y(c=d.b,1-c),st(n,d.b,"end"),u||(d.b?p():--d.group.r||s(d.group.c)),d=null;else if(t>=d.start){const e=t-d.start;c=d.a+d.d*l(e/d.duration),y(c,1-c)}return!(!d&&!u)})))}return{run(t){i(a)?rt().then((()=>{a=a(),y(t)})):y(t)},end(){p(),d=u=null}}}const pt="undefined"!=typeof window?window:"undefined"!=typeof globalThis?globalThis:global;function ht(t,e){ut(t,1,1,(()=>{e.delete(t.key)}))}function mt(t,e){t.f(),ht(t,e)}function yt(t,e,n,o,r,s,i,l,a,c,d,u){let f=t.length,g=s.length,p=f;const h={};for(;p--;)h[t[p].key]=p;const m=[],y=new Map,w=new Map;for(p=g;p--;){const t=u(r,s,p),l=n(t);let a=i.get(l);a?o&&a.p(t,e):(a=c(l,t),a.c()),y.set(l,m[p]=a),l in h&&w.set(l,Math.abs(p-h[l]))}const v=new Set,b=new Set;function $(t){dt(t,1),t.m(l,d),i.set(t.key,t),d=t.first,g--}for(;f&&g;){const e=m[g-1],n=t[f-1],o=e.key,r=n.key;e===n?(d=e.first,f--,g--):y.has(r)?!i.has(o)||v.has(o)?$(e):b.has(r)?f--:w.get(o)>w.get(r)?(b.add(o),$(e)):(v.add(r),f--):(a(n,i),f--)}for(;f--;){const e=t[f];y.has(e.key)||a(e,i)}for(;g;)$(m[g-1]);return m}function wt(t){t&&t.c()}function vt(t,e,n,r){const{fragment:l,on_mount:a,on_destroy:c,after_update:d}=t.$$;l&&l.m(e,n),r||K((()=>{const e=a.map(o).filter(i);c?c.push(...e):s(e),t.$$.on_mount=[]})),d.forEach(K)}function bt(t,e){const n=t.$$;null!==n.fragment&&(s(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function $t(t,e){-1===t.$$.dirty[0]&&(U.push(t),J||(J=!0,X.then(nt)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function xt(e,n,o,i,l,a,c,d=[-1]){const u=L;j(e);const f=e.$$={fragment:null,ctx:null,props:a,update:t,not_equal:l,bound:r(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(n.context||(u?u.$$.context:[])),callbacks:r(),dirty:d,skip_bound:!1,root:n.target||u.$$.root};c&&c(f.root);let g=!1;if(f.ctx=o?o(e,n.props||{},((t,n,...o)=>{const r=o.length?o[0]:n;return f.ctx&&l(f.ctx[t],f.ctx[t]=r)&&(!f.skip_bound&&f.bound[t]&&f.bound[t](r),g&&$t(e,t)),n})):[],f.update(),g=!0,s(f.before_update),f.fragment=!!i&&i(f.ctx),n.target){if(n.hydrate){const t=function(t){return Array.from(t.childNodes)}(n.target);f.fragment&&f.fragment.l(t),t.forEach($)}else f.fragment&&f.fragment.c();n.intro&&dt(e.$$.fragment),vt(e,n.target,n.anchor,n.customElement),nt()}j(u)}class Et{$destroy(){bt(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}function Tt(t){let e,n=t[0].letter+"";return{c(){e=T(n)},m(t,n){b(t,e,n)},p(t,o){1&o&&n!==(n=t[0].letter+"")&&_(e,n)},d(t){t&&$(e)}}}function Ot(e){let n,o=e[0].letter&&Tt(e);return{c(){n=E("div"),o&&o.c(),A(n,"class","letter svelte-15bka85"),D(n,"game_lost","game_lost"===e[0].state),D(n,"game_won","game_won"===e[0].state),D(n,"incorrect","incorrect"===e[0].state),D(n,"misplaced","misplaced"===e[0].state),D(n,"correct","correct"===e[0].state)},m(t,e){b(t,n,e),o&&o.m(n,null)},p(t,[e]){t[0].letter?o?o.p(t,e):(o=Tt(t),o.c(),o.m(n,null)):o&&(o.d(1),o=null),1&e&&D(n,"game_lost","game_lost"===t[0].state),1&e&&D(n,"game_won","game_won"===t[0].state),1&e&&D(n,"incorrect","incorrect"===t[0].state),1&e&&D(n,"misplaced","misplaced"===t[0].state),1&e&&D(n,"correct","correct"===t[0].state)},i:t,o:t,d(t){t&&$(n),o&&o.d()}}}function Mt(t,e,n){let{letter:o}=e;return t.$$set=t=>{"letter"in t&&n(0,o=t.letter)},[o]}class Ct extends Et{constructor(t){super(),xt(this,t,Mt,Ot,l,{letter:0})}}function At(t,e,n){t.dispatchEvent(new CustomEvent("finalize",{detail:{items:e,info:n}}))}function _t(t,e,n){t.dispatchEvent(new CustomEvent("consider",{detail:{items:e,info:n}}))}const Dt="draggedEntered",St="draggedLeft",kt="draggedOverIndex",Bt="draggedLeftDocument",Lt="leftForAnother",Wt="outsideOfAny";function It(t,e,n){t.dispatchEvent(new CustomEvent(Dt,{detail:{indexObj:e,draggedEl:n}}))}function Pt(t,e,n){t.dispatchEvent(new CustomEvent(St,{detail:{draggedEl:e,type:Lt,theOtherDz:n}}))}function Nt(t,e,n){t.dispatchEvent(new CustomEvent(kt,{detail:{indexObj:e,draggedEl:n}}))}const jt="dragStarted",Rt=Dt,zt="dragEnteredAnother",Ft=kt,Gt=St,qt="draggedLeftAll",Ht="droppedIntoZone",Ut="droppedIntoAnother",Yt="droppedOutsideOfAny",Vt="dragStopped",Zt="pointer",Xt="keyboard",Jt="isDndShadowItem",Kt="data-is-dnd-shadow-item",Qt="id:dnd-shadow-placeholder-0000";let te="id",ee=0;function ne(){ee++}function oe(){if(0===ee)throw new Error("Bug! trying to decrement when there are no dropzones");ee--}const re="undefined"==typeof window;function se(t){let e;const n=t.getBoundingClientRect(),o=getComputedStyle(t),r=o.transform;if(r){let s,i,l,a;if(r.startsWith("matrix3d("))e=r.slice(9,-1).split(/, /),s=+e[0],i=+e[5],l=+e[12],a=+e[13];else{if(!r.startsWith("matrix("))return n;e=r.slice(7,-1).split(/, /),s=+e[0],i=+e[3],l=+e[4],a=+e[5]}const c=o.transformOrigin,d=n.x-l-(1-s)*parseFloat(c),u=n.y-a-(1-i)*parseFloat(c.slice(c.indexOf(" ")+1)),f=s?n.width/s:t.offsetWidth,g=i?n.height/i:t.offsetHeight;return{x:d,y:u,width:f,height:g,top:u,right:d+f,bottom:u+g,left:d}}return n}function ie(t){const e=se(t);return{top:e.top+window.scrollY,bottom:e.bottom+window.scrollY,left:e.left+window.scrollX,right:e.right+window.scrollX}}function le(t){const e=t.getBoundingClientRect();return{top:e.top+window.scrollY,bottom:e.bottom+window.scrollY,left:e.left+window.scrollX,right:e.right+window.scrollX}}function ae(t){return{x:(t.left+t.right)/2,y:(t.top+t.bottom)/2}}function ce(t,e){return t.y<=e.bottom&&t.y>=e.top&&t.x>=e.left&&t.x<=e.right}function de(t){return ae(le(t))}function ue(t,e){return ce(de(t),ie(e))}function fe(t,e){const n=de(t),o=de(e);return r=n,s=o,Math.sqrt(Math.pow(r.x-s.x,2)+Math.pow(r.y-s.y,2));var r,s}let ge;function pe(){ge=new Map}function he(t){ge.delete(t)}function me(t,e){if(!ue(t,e))return null;const n=e.children;if(0===n.length)return{index:0,isProximityBased:!0};const o=function(t){const e=Array.from(t.children).findIndex((t=>t.getAttribute(Kt)));if(e>=0)return ge.has(t)||ge.set(t,new Map),ge.get(t).set(e,ie(t.children[e])),e}(e);for(let r=0;r<n.length;r++)if(ue(t,n[r])){const n=ge.has(e)&&ge.get(e).get(r);return n&&!ce(de(t),n)?{index:o,isProximityBased:!1}:{index:r,isProximityBased:!1}}let r,s=Number.MAX_VALUE;for(let e=0;e<n.length;e++){const o=fe(t,n[e]);o<s&&(s=o,r=e)}return{index:r,isProximityBased:!0}}pe();function ye(){let t;function e(){t={directionObj:void 0,stepPx:0}}function n(e){const{directionObj:o,stepPx:r}=t;o&&(e.scrollBy(o.x*r,o.y*r),window.requestAnimationFrame((()=>n(e))))}function o(t){return 25-t}return e(),{scrollIfNeeded:function(r,s){if(!s)return!1;const i=function(t,e){const n=le(e);return ce(t,n)?{top:t.y-n.top,bottom:n.bottom-t.y,left:t.x-n.left,right:Math.min(n.right,document.documentElement.clientWidth)-t.x}:null}(r,s);if(null===i)return e(),!1;const l=!!t.directionObj;let[a,c]=[!1,!1];return s.scrollHeight>s.clientHeight&&(i.bottom<25?(a=!0,t.directionObj={x:0,y:1},t.stepPx=o(i.bottom)):i.top<25&&(a=!0,t.directionObj={x:0,y:-1},t.stepPx=o(i.top)),!l&&a)||s.scrollWidth>s.clientWidth&&(i.right<25?(c=!0,t.directionObj={x:1,y:0},t.stepPx=o(i.right)):i.left<25&&(c=!0,t.directionObj={x:-1,y:0},t.stepPx=o(i.left)),!l&&c)?(n(s),!0):(e(),!1)},resetScrolling:e}}function we(t){return JSON.stringify(t,null,2)}function ve(t){if(!t)throw new Error("cannot get depth of a falsy node");return be(t,0)}function be(t,e=0){return t.parentElement?be(t.parentElement,e+1):e-1}const{scrollIfNeeded:$e,resetScrolling:xe}=ye();let Ee;function Te(t,e,n=200){let o,r,s,i=!1;const l=Array.from(e).sort(((t,e)=>ve(e)-ve(t)));!function e(){const a=de(t),c=$e(a,o);if(!c&&s&&Math.abs(s.x-a.x)<10&&Math.abs(s.y-a.y)<10)return void(Ee=window.setTimeout(e,n));if(function(t){const e=le(t);return e.right<0||e.left>document.documentElement.scrollWidth||e.bottom<0||e.top>document.documentElement.scrollHeight}(t))return void function(t){window.dispatchEvent(new CustomEvent(Bt,{detail:{draggedEl:t}}))}(t);s=a;let d=!1;for(const e of l){c&&he(o);const n=me(t,e);if(null===n)continue;const{index:s}=n;d=!0,e!==o?(o&&Pt(o,t,e),It(e,n,t),o=e):s!==r&&(Nt(e,n,t),r=s);break}!d&&i&&o?(!function(t,e){t.dispatchEvent(new CustomEvent(St,{detail:{draggedEl:e,type:Wt}}))}(o,t),o=void 0,r=void 0,i=!1):i=!0,Ee=window.setTimeout(e,n)}()}let Oe;function Me(t){const e=t.touches?t.touches[0]:t;Oe={x:e.clientX,y:e.clientY}}const{scrollIfNeeded:Ce,resetScrolling:Ae}=ye();let _e;function De(){if(Oe){Ce(Oe,document.documentElement)&&pe()}_e=window.setTimeout(De,300)}function Se(t){return`${t} 0.2s ease`}function ke(t,e,n,o,r){const s=e.getBoundingClientRect(),i=t.getBoundingClientRect(),l=s.width-i.width,a=s.height-i.height;if(l||a){const e={left:(n-i.left)/i.width,top:(o-i.top)/i.height};t.style.height=`${s.height}px`,t.style.width=`${s.width}px`,t.style.left=parseFloat(t.style.left)-e.left*l+"px",t.style.top=parseFloat(t.style.top)-e.top*a+"px"}Be(e,t),r()}function Be(t,e){const n=window.getComputedStyle(t);Array.from(n).filter((t=>t.startsWith("background")||t.startsWith("padding")||t.startsWith("font")||t.startsWith("text")||t.startsWith("align")||t.startsWith("justify")||t.startsWith("display")||t.startsWith("flex")||t.startsWith("border")||"opacity"===t||"color"===t||"list-style-type"===t)).forEach((t=>e.style.setProperty(t,n.getPropertyValue(t),n.getPropertyPriority(t))))}function Le(t,e){t.draggable=!1,t.ondragstart=()=>!1,e?(t.style.userSelect="",t.style.WebkitUserSelect="",t.style.cursor=""):(t.style.userSelect="none",t.style.WebkitUserSelect="none",t.style.cursor="grab")}function We(t){t.style.display="none",t.style.position="fixed",t.style.zIndex="-5"}function Ie(t,e=(()=>{}),n=(()=>[])){t.forEach((t=>{const o=e(t);Object.keys(o).forEach((e=>{t.style[e]=o[e]})),n(t).forEach((e=>t.classList.add(e)))}))}function Pe(t,e=(()=>{}),n=(()=>[])){t.forEach((t=>{const o=e(t);Object.keys(o).forEach((e=>{t.style[e]=""})),n(t).forEach((e=>t.classList.contains(e)&&t.classList.remove(e)))}))}const Ne={outline:"rgba(255, 255, 102, 0.7) solid 2px"};let je,Re,ze,Fe,Ge,qe,He,Ue,Ye,Ve,Ze,Xe=!1,Je=!1,Ke=!1,Qe=[];const tn=new Map,en=new Map,nn=new WeakMap;function on(t,e){tn.get(e).delete(t),oe(),0===tn.get(e).size&&tn.delete(e)}function rn(){window.addEventListener("mousemove",Me),window.addEventListener("touchmove",Me),De();const t=tn.get(Fe);for(const e of t)e.addEventListener(Dt,an),e.addEventListener(St,cn),e.addEventListener(kt,dn);window.addEventListener(Bt,fn);const e=Math.max(100,...Array.from(t.keys()).map((t=>en.get(t).dropAnimationDurationMs)));Te(Re,t,1.07*e)}function sn(){window.removeEventListener("mousemove",Me),window.removeEventListener("touchmove",Me),Oe=void 0,window.clearTimeout(_e),Ae();const t=tn.get(Fe);for(const e of t)e.removeEventListener(Dt,an),e.removeEventListener(St,cn),e.removeEventListener(kt,dn);window.removeEventListener(Bt,fn),clearTimeout(Ee),xe(),pe()}function ln(t){return t.findIndex((t=>!!t.isDndShadowItem&&t.id!==Qt))}function an(t){let{items:e,dropFromOthersDisabled:n}=en.get(t.currentTarget);if(n&&t.currentTarget!==Ge)return;if(Ke=!1,e=e.filter((t=>t.id!==He.id)),Ge!==t.currentTarget){const t=en.get(Ge).items.filter((t=>!t.isDndShadowItem));_t(Ge,t,{trigger:zt,id:ze.id,source:Zt})}else{const t=function(t){return t.findIndex((t=>t.id===Qt))}(e);-1!==t&&e.splice(t,1)}const{index:o,isProximityBased:r}=t.detail.indexObj,s=r&&o===t.currentTarget.children.length-1?o+1:o;Ue=t.currentTarget,e.splice(s,0,He),_t(t.currentTarget,e,{trigger:Rt,id:ze.id,source:Zt})}function cn(t){if(!Xe)return;const{items:e,dropFromOthersDisabled:n}=en.get(t.currentTarget);if(n&&t.currentTarget!==Ge&&t.currentTarget!==Ue)return;const o=ln(e),r=e.splice(o,1)[0];Ue=void 0;const{type:s,theOtherDz:i}=t.detail;if(s===Wt||s===Lt&&i!==Ge&&en.get(i).dropFromOthersDisabled){Ke=!0,Ue=Ge;const t=en.get(Ge).items;t.splice(qe,0,r),_t(Ge,t,{trigger:qt,id:ze.id,source:Zt})}_t(t.currentTarget,e,{trigger:Gt,id:ze.id,source:Zt})}function dn(t){const{items:e,dropFromOthersDisabled:n}=en.get(t.currentTarget);if(n&&t.currentTarget!==Ge)return;Ke=!1;const{index:o}=t.detail.indexObj,r=ln(e);e.splice(r,1),e.splice(o,0,He),_t(t.currentTarget,e,{trigger:Ft,id:ze.id,source:Zt})}function un(t){t.preventDefault();const e=t.touches?t.touches[0]:t;Ve={x:e.clientX,y:e.clientY},Re.style.transform=`translate3d(${Ve.x-Ye.x}px, ${Ve.y-Ye.y}px, 0)`}function fn(){Je=!0,window.removeEventListener("mousemove",un),window.removeEventListener("touchmove",un),window.removeEventListener("mouseup",fn),window.removeEventListener("touchend",fn),sn(),function(t){t.style.cursor="grab"}(Re),Ue||(Ue=Ge);let{items:t,type:e}=en.get(Ue);Pe(tn.get(e),(t=>en.get(t).dropTargetStyle),(t=>en.get(t).dropTargetClasses));let n=ln(t);-1===n&&(n=qe),t=t.map((t=>t.isDndShadowItem?ze:t)),function(t,e){const n=se(Ue.children[t]),o={x:n.left-parseFloat(Re.style.left),y:n.top-parseFloat(Re.style.top)},{dropAnimationDurationMs:r}=en.get(Ue),s=`transform ${r}ms ease`;Re.style.transition=Re.style.transition?Re.style.transition+","+s:s,Re.style.transform=`translate3d(${o.x}px, ${o.y}px, 0)`,window.setTimeout(e,r)}(n,(function(){var e;Ze(),At(Ue,t,{trigger:Ke?Yt:Ht,id:ze.id,source:Zt}),Ue!==Ge&&At(Ge,en.get(Ge).items,{trigger:Ut,id:ze.id,source:Zt}),(e=Ue.children[n]).style.visibility="",e.removeAttribute(Kt),function(){Re.remove(),je.remove(),Qe.length&&(Qe.forEach((({dz:t,destroy:e})=>{e(),t.remove()})),Qe=[]);Re=void 0,je=void 0,ze=void 0,Fe=void 0,Ge=void 0,qe=void 0,He=void 0,Ue=void 0,Ye=void 0,Ve=void 0,Xe=!1,Je=!1,Ze=void 0,Ke=!1}()}))}function gn(t,e){let n=!1;const o={items:void 0,type:void 0,flipDurationMs:0,dragDisabled:!1,morphDisabled:!1,dropFromOthersDisabled:!1,dropTargetStyle:Ne,dropTargetClasses:[],transformDraggedElement:()=>{},centreDraggedOnCursor:!1};let r=new Map;function s(){window.removeEventListener("mousemove",l),window.removeEventListener("touchmove",l),window.removeEventListener("mouseup",i),window.removeEventListener("touchend",i)}function i(){s(),je=void 0,Ye=void 0,Ve=void 0}function l(t){t.preventDefault();const e=t.touches?t.touches[0]:t;Ve={x:e.clientX,y:e.clientY},(Math.abs(Ve.x-Ye.x)>=3||Math.abs(Ve.y-Ye.y)>=3)&&(s(),function(){Xe=!0;const t=r.get(je);qe=t,Ge=je.parentElement;const e=Ge.getRootNode(),n=e.body||e,{items:s,type:i,centreDraggedOnCursor:l}=o;ze={...s[t]},Fe=i,He={...ze,[Jt]:!0};const a={...He,[te]:Qt};function c(){Re.parentElement?window.requestAnimationFrame(c):(n.appendChild(Re),Re.focus(),rn(),We(je),n.appendChild(je))}Re=function(t,e){const n=t.getBoundingClientRect(),o=function(t){const e=t.cloneNode(!0),n=[],o="SELECT"===t.tagName,r=o?[t]:[...t.querySelectorAll("select")];for(const t of r)n.push(t.value);if(r.length<=0)return e;const s=o?[e]:[...e.querySelectorAll("select")];for(let t=0;t<s.length;t++){const e=s[t],o=n[t],r=e.querySelector(`option[value="${o}"`);r&&r.setAttribute("selected",!0)}return e}(t);Be(t,o),o.id="dnd-action-dragged-el",o.style.position="fixed";let r=n.top,s=n.left;if(o.style.top=`${r}px`,o.style.left=`${s}px`,e){const t=ae(n);r-=t.y-e.y,s-=t.x-e.x,window.setTimeout((()=>{o.style.top=`${r}px`,o.style.left=`${s}px`}),0)}return o.style.margin="0",o.style.boxSizing="border-box",o.style.height=`${n.height}px`,o.style.width=`${n.width}px`,o.style.transition=`${Se("top")}, ${Se("left")}, ${Se("background-color")}, ${Se("opacity")}, ${Se("color")} `,window.setTimeout((()=>o.style.transition+=`, ${Se("width")}, ${Se("height")}`),0),o.style.zIndex="9999",o.style.cursor="grabbing",o}(je,l&&Ve),window.requestAnimationFrame(c),Ie(Array.from(tn.get(o.type)).filter((t=>t===Ge||!en.get(t).dropFromOthersDisabled)),(t=>en.get(t).dropTargetStyle),(t=>en.get(t).dropTargetClasses)),s.splice(t,1,a),Ze=function(t){const e=t.style.minHeight;t.style.minHeight=window.getComputedStyle(t).getPropertyValue("height");const n=t.style.minWidth;return t.style.minWidth=window.getComputedStyle(t).getPropertyValue("width"),function(){t.style.minHeight=e,t.style.minWidth=n}}(Ge),_t(Ge,s,{trigger:jt,id:ze.id,source:Zt}),window.addEventListener("mousemove",un,{passive:!1}),window.addEventListener("touchmove",un,{passive:!1,capture:!1}),window.addEventListener("mouseup",fn,{passive:!1}),window.addEventListener("touchend",fn,{passive:!1})}())}function a(t){if(t.target!==t.currentTarget&&(void 0!==t.target.value||t.target.isContentEditable))return;if(t.button)return;if(Xe)return;t.stopPropagation();const e=t.touches?t.touches[0]:t;Ye={x:e.clientX,y:e.clientY},Ve={...Ye},je=t.currentTarget,window.addEventListener("mousemove",l,{passive:!1}),window.addEventListener("touchmove",l,{passive:!1,capture:!1}),window.addEventListener("mouseup",i,{passive:!1}),window.addEventListener("touchend",i,{passive:!1})}function c({items:e,flipDurationMs:s=0,type:i="--any--",dragDisabled:l=!1,morphDisabled:c=!1,dropFromOthersDisabled:d=!1,dropTargetStyle:u=Ne,dropTargetClasses:f=[],transformDraggedElement:g=(()=>{}),centreDraggedOnCursor:p=!1}){var h,m;function y(t,e){return en.get(t)?en.get(t)[e]:o[e]}o.dropAnimationDurationMs=s,o.type&&i!==o.type&&on(t,o.type),o.type=i,h=t,m=i,tn.has(m)||tn.set(m,new Set),tn.get(m).has(h)||(tn.get(m).add(h),ne()),o.items=[...e],o.dragDisabled=l,o.morphDisabled=c,o.transformDraggedElement=g,o.centreDraggedOnCursor=p,!n||!Xe||Je||function(t,e){if(Object.keys(t).length!==Object.keys(e).length)return!1;for(const n in t)if(!{}.hasOwnProperty.call(e,n)||e[n]!==t[n])return!1;return!0}(u,o.dropTargetStyle)&&function(t,e){if(t.length!==e.length)return!1;for(let n=0;n<t.length;n++)if(t[n]!==e[n])return!1;return!0}(f,o.dropTargetClasses)||(Pe([t],(()=>o.dropTargetStyle),(()=>f)),Ie([t],(()=>u),(()=>f))),o.dropTargetStyle=u,o.dropTargetClasses=[...f],n&&Xe&&o.dropFromOthersDisabled!==d&&(d?Pe([t],(t=>y(t,"dropTargetStyle")),(t=>y(t,"dropTargetClasses"))):Ie([t],(t=>y(t,"dropTargetStyle")),(t=>y(t,"dropTargetClasses")))),o.dropFromOthersDisabled=d,en.set(t,o);const w=ln(o.items);for(let e=0;e<t.children.length;e++){const s=t.children[e];Le(s,l),e!==w?(s.removeEventListener("mousedown",nn.get(s)),s.removeEventListener("touchstart",nn.get(s)),l||(s.addEventListener("mousedown",a),s.addEventListener("touchstart",a),nn.set(s,a)),r.set(s,e),n||(n=!0)):(c||ke(Re,s,Ve.x,Ve.y,(()=>o.transformDraggedElement(Re,ze,e))),(v=s).style.visibility="hidden",v.setAttribute(Kt,"true"))}var v}return c(e),{update:t=>{c(t)},destroy:()=>{function e(){on(t,en.get(t).type),en.delete(t)}var n,o;Xe?(n=t,o=e,Qe.push({dz:n,destroy:o}),window.requestAnimationFrame((()=>{We(n),document.body.appendChild(n)}))):e()}}}const pn={DND_ZONE_ACTIVE:"dnd-zone-active",DND_ZONE_DRAG_DISABLED:"dnd-zone-drag-disabled"},hn={[pn.DND_ZONE_ACTIVE]:"Tab to one the items and press space-bar or enter to start dragging it",[pn.DND_ZONE_DRAG_DISABLED]:"This is a disabled drag and drop list"};let mn;function yn(){mn||(mn=document.createElement("div"),mn.id="dnd-action-aria-alert",mn.style.position="fixed",mn.style.bottom="0",mn.style.left="0",mn.style.zIndex="-5",mn.style.opacity="0",mn.style.height="0",mn.style.width="0",mn.setAttribute("role","alert"),document.body.prepend(mn),Object.entries(hn).forEach((([t,e])=>document.body.prepend(function(t,e){const n=document.createElement("div");return n.id=t,n.innerHTML=`<p>${e}</p>`,n.style.display="none",n.style.position="fixed",n.style.zIndex="-5",n}(t,e)))))}function wn(t){if(re)return;mn||yn(),mn.innerHTML="";const e=document.createTextNode(t);mn.appendChild(e),mn.style.display="none",mn.style.display="inline"}const vn={outline:"rgba(255, 255, 102, 0.7) solid 2px"};let bn,$n,xn,En,Tn=!1,On="",Mn="";const Cn=new WeakSet,An=new WeakMap,_n=new WeakMap,Dn=new Map,Sn=new Map,kn=new Map;let Bn;function Ln(t,e){0===kn.size&&(Bn=re?null:("complete"===document.readyState?yn():window.addEventListener("DOMContentLoaded",yn),{...pn}),window.addEventListener("keydown",In),window.addEventListener("click",Pn)),kn.has(e)||kn.set(e,new Set),kn.get(e).has(t)||(kn.get(e).add(t),ne())}function Wn(t,e){$n===t&&Rn(),kn.get(e).delete(t),oe(),0===kn.get(e).size&&kn.delete(e),0===kn.size&&(window.removeEventListener("keydown",In),window.removeEventListener("click",Pn),Bn=void 0,!re&&mn&&(Object.keys(hn).forEach((t=>document.getElementById(t)?.remove())),mn.remove(),mn=void 0))}function In(t){if(Tn&&"Escape"===t.key)Rn()}function Pn(){Tn&&(Cn.has(document.activeElement)||Rn())}function Nn(t){if(!Tn)return;const e=t.currentTarget;if(e===$n)return;On=e.getAttribute("aria-label")||"";const{items:n}=Sn.get($n),o=n.find((t=>t.id===En)),r=n.indexOf(o),s=n.splice(r,1)[0],{items:i,autoAriaDisabled:l}=Sn.get(e);e.getBoundingClientRect().top<$n.getBoundingClientRect().top||e.getBoundingClientRect().left<$n.getBoundingClientRect().left?(i.push(s),l||wn(`Moved item ${Mn} to the end of the list ${On}`)):(i.unshift(s),l||wn(`Moved item ${Mn} to the beginning of the list ${On}`));At($n,n,{trigger:Ut,id:En,source:Xt}),At(e,i,{trigger:Ht,id:En,source:Xt}),$n=e}function jn(){Dn.forEach((({update:t},e)=>t(Sn.get(e))))}function Rn(t=!0){Sn.get($n).autoAriaDisabled||wn(`Stopped dragging item ${Mn}`),Cn.has(document.activeElement)&&document.activeElement.blur(),t&&_t($n,Sn.get($n).items,{trigger:Vt,id:En,source:Xt}),Pe(kn.get(bn),(t=>Sn.get(t).dropTargetStyle),(t=>Sn.get(t).dropTargetClasses)),xn=null,En=null,Mn="",bn=null,$n=null,On="",Tn=!1,jn()}function zn(t,e){const n={items:void 0,type:void 0,dragDisabled:!1,zoneTabIndex:0,dropFromOthersDisabled:!1,dropTargetStyle:vn,dropTargetClasses:[],autoAriaDisabled:!1};function o(t,e,n){t.length<=1||t.splice(n,1,t.splice(e,1,t[n])[0])}function r(e){switch(e.key){case"Enter":case" ":if((void 0!==e.target.disabled||e.target.href||e.target.isContentEditable)&&!Cn.has(e.target))return;e.preventDefault(),e.stopPropagation(),Tn?Rn():s(e);break;case"ArrowDown":case"ArrowRight":{if(!Tn)return;e.preventDefault(),e.stopPropagation();const{items:r}=Sn.get(t),s=Array.from(t.children),i=s.indexOf(e.currentTarget);i<s.length-1&&(n.autoAriaDisabled||wn(`Moved item ${Mn} to position ${i+2} in the list ${On}`),o(r,i,i+1),At(t,r,{trigger:Ht,id:En,source:Xt}));break}case"ArrowUp":case"ArrowLeft":{if(!Tn)return;e.preventDefault(),e.stopPropagation();const{items:r}=Sn.get(t),s=Array.from(t.children).indexOf(e.currentTarget);s>0&&(n.autoAriaDisabled||wn(`Moved item ${Mn} to position ${s} in the list ${On}`),o(r,s,s-1),At(t,r,{trigger:Ht,id:En,source:Xt}));break}}}function s(e){!function(e){const{items:n}=Sn.get(t),o=Array.from(t.children),r=o.indexOf(e);xn=e,xn.tabIndex=0,En=n[r].id,Mn=o[r].getAttribute("aria-label")||""}(e.currentTarget),$n=t,bn=n.type,Tn=!0;const o=Array.from(kn.get(n.type)).filter((t=>t===$n||!Sn.get(t).dropFromOthersDisabled));if(Ie(o,(t=>Sn.get(t).dropTargetStyle),(t=>Sn.get(t).dropTargetClasses)),!n.autoAriaDisabled){let t=`Started dragging item ${Mn}. Use the arrow keys to move it within its list ${On}`;o.length>1&&(t+=", or tab to another list in order to move the item into it"),wn(t)}_t(t,Sn.get(t).items,{trigger:jt,id:En,source:Xt}),jn()}function i(t){Tn&&t.currentTarget!==xn&&(t.stopPropagation(),Rn(!1),s(t))}function l({items:e=[],type:o="--any--",dragDisabled:s=!1,zoneTabIndex:l=0,dropFromOthersDisabled:a=!1,dropTargetStyle:c=vn,dropTargetClasses:d=[],autoAriaDisabled:u=!1}){n.items=[...e],n.dragDisabled=s,n.dropFromOthersDisabled=a,n.zoneTabIndex=l,n.dropTargetStyle=c,n.dropTargetClasses=d,n.autoAriaDisabled=u,n.type&&o!==n.type&&Wn(t,n.type),n.type=o,Ln(t,o),u||(t.setAttribute("aria-disabled",s),t.setAttribute("role","list"),t.setAttribute("aria-describedby",s?Bn.DND_ZONE_DRAG_DISABLED:Bn.DND_ZONE_ACTIVE)),Sn.set(t,n),t.tabIndex=Tn?t===$n||xn.contains(t)||n.dropFromOthersDisabled||$n&&n.type!==Sn.get($n).type?-1:0:n.zoneTabIndex,t.addEventListener("focus",Nn);for(let e=0;e<t.children.length;e++){const o=t.children[e];Cn.add(o),o.tabIndex=Tn?-1:0,u||o.setAttribute("role","listitem"),o.removeEventListener("keydown",An.get(o)),o.removeEventListener("click",_n.get(o)),s||(o.addEventListener("keydown",r),An.set(o,r),o.addEventListener("click",i),_n.set(o,i)),Tn&&n.items[e].id===En&&(xn=o,xn.tabIndex=0,o.focus())}}l(e);const a={update:t=>{l(t)},destroy:()=>{Wn(t,n.type),Sn.delete(t),Dn.delete(t)}};return Dn.set(t,a),a}function Fn(t,e){Gn(e);const n=gn(t,e),o=zn(t,e);return{update:t=>{Gn(t),n.update(t),o.update(t)},destroy:()=>{n.destroy(),o.destroy()}}}function Gn(t){const{items:e,flipDurationMs:n,type:o,dragDisabled:r,morphDisabled:s,dropFromOthersDisabled:i,zoneTabIndex:l,dropTargetStyle:a,dropTargetClasses:c,transformDraggedElement:d,autoAriaDisabled:u,centreDraggedOnCursor:f,...g}=t;if(Object.keys(g).length>0&&console.warn("dndzone will ignore unknown options",g),!e)throw new Error("no 'items' key provided to dndzone");const p=e.find((t=>!{}.hasOwnProperty.call(t,te)));if(p)throw new Error(`missing 'id' property for item ${we(p)}`);if(c&&!Array.isArray(c))throw new Error(`dropTargetClasses should be an array but instead it is a ${typeof c}, ${we(c)}`);if(l&&(h=l,isNaN(h)||(0|(m=parseFloat(h)))!==m))throw new Error(`zoneTabIndex should be a number but instead it is a ${typeof l}, ${we(l)}`);var h,m}function qn(t,e,n){const o=t.slice();return o[9]=e[n],o}function Hn(t,e){let n,o,r;return o=new Ct({props:{letter:e[9]}}),{key:t,first:null,c(){n=M(),wt(o.$$.fragment),this.first=n},m(t,e){b(t,n,e),vt(o,t,e),r=!0},p(t,n){e=t;const r={};1&n&&(r.letter=e[9]),o.$set(r)},i(t){r||(dt(o.$$.fragment,t),r=!0)},o(t){ut(o.$$.fragment,t),r=!1},d(t){t&&$(n),bt(o,t)}}}function Un(e){let n,o,r,l,a,c=[],d=new Map,u=e[0];const f=t=>t[9].id;for(let t=0;t<u.length;t+=1){let n=qn(e,u,t),o=f(n);d.set(o,c[t]=Hn(o,n))}return{c(){n=E("div");for(let t=0;t<c.length;t+=1)c[t].c();A(n,"class","letter svelte-1e4oktc")},m(s,d){b(s,n,d);for(let t=0;t<c.length;t+=1)c[t].m(n,null);var u;r=!0,l||(a=[(u=o=Fn.call(null,n,e[1]),u&&i(u.destroy)?u.destroy:t),C(n,"consider",e[2]),C(n,"finalize",e[3])],l=!0)},p(t,[e]){1&e&&(u=t[0],at(),c=yt(c,e,f,1,t,u,d,n,ht,Hn,null,qn),ct()),o&&i(o.update)&&2&e&&o.update.call(null,t[1])},i(t){if(!r){for(let t=0;t<u.length;t+=1)dt(c[t]);r=!0}},o(t){for(let t=0;t<c.length;t+=1)ut(c[t]);r=!1},d(t){t&&$(n);for(let t=0;t<c.length;t+=1)c[t].d();l=!1,s(a)}}}function Yn(t,e,n){let o,r;const s=F();let{letter:i}=e,{xPos:l}=e,{yPos:a}=e,c=[i];return t.$$set=t=>{"letter"in t&&n(4,i=t.letter),"xPos"in t&&n(5,l=t.xPos),"yPos"in t&&n(6,a=t.yPos)},t.$$.update=()=>{16&t.$$.dirty&&n(7,o="blocked"===i.state||"correct"===i.state||"game_lost"===i.state||"game_won"===i.state),129&t.$$.dirty&&n(1,r={dropFromOthersDisabled:o,dragDisabled:o,items:c,dropTargetStyle:{},flipDurationMs:100})},[c,r,function(t){n(0,c=t.detail.items)},function(t){const{info:{trigger:e}}=t.detail;e===Ut&&s("DRAGGED_FROM",{type:"DRAGGED_FROM",text:"Item has been dragged from x, y",xPos:l,yPos:a}),c.length!=t.detail.items&&s("DRAGGED_TO",{type:"DRAGGED_TO",text:"Item has been dragged to x, y",xPos:l,yPos:a}),n(0,c=t.detail.items)},i,l,a,o]}class Vn extends Et{constructor(t){super(),xt(this,t,Yn,Un,l,{letter:4,xPos:5,yPos:6})}}function Zn(t,e,n){const o=t.slice();return o[4]=e[n],o[6]=n,o}function Xn(t,e){let n,o,r;return o=new Vn({props:{letter:e[4],xPos:e[6],yPos:e[1]}}),o.$on("DRAGGED_FROM",e[2]),o.$on("DRAGGED_TO",e[3]),{key:t,first:null,c(){n=M(),wt(o.$$.fragment),this.first=n},m(t,e){b(t,n,e),vt(o,t,e),r=!0},p(t,n){e=t;const r={};1&n&&(r.letter=e[4]),1&n&&(r.xPos=e[6]),2&n&&(r.yPos=e[1]),o.$set(r)},i(t){r||(dt(o.$$.fragment,t),r=!0)},o(t){ut(o.$$.fragment,t),r=!1},d(t){t&&$(n),bt(o,t)}}}function Jn(t){let e,n,o=[],r=new Map,s=t[0];const i=t=>t[4].id;for(let e=0;e<s.length;e+=1){let n=Zn(t,s,e),l=i(n);r.set(l,o[e]=Xn(l,n))}return{c(){e=E("div");for(let t=0;t<o.length;t+=1)o[t].c();A(e,"class","row svelte-1bu2qfp")},m(t,r){b(t,e,r);for(let t=0;t<o.length;t+=1)o[t].m(e,null);n=!0},p(t,[n]){3&n&&(s=t[0],at(),o=yt(o,n,i,1,t,s,r,e,ht,Xn,null,Zn),ct())},i(t){if(!n){for(let t=0;t<s.length;t+=1)dt(o[t]);n=!0}},o(t){for(let t=0;t<o.length;t+=1)ut(o[t]);n=!1},d(t){t&&$(e);for(let t=0;t<o.length;t+=1)o[t].d()}}}function Kn(t,e,n){let{row_list:o}=e,{col:r}=e;return t.$$set=t=>{"row_list"in t&&n(0,o=t.row_list),"col"in t&&n(1,r=t.col)},[o,r,function(e){H.call(this,t,e)},function(e){H.call(this,t,e)}]}class Qn extends Et{constructor(t){super(),xt(this,t,Kn,Jn,l,{row_list:0,col:1})}}class to{constructor(t,e,n="incorrect"){this.id=t,this.letter=e,this.state=n}}function eo(t,e,n){const o=t.slice();return o[1]=e[n],o[3]=n,o}function no(t){let e,n;return e=new Qn({props:{row_list:t[1],col:t[3]}}),{c(){wt(e.$$.fragment)},m(t,o){vt(e,t,o),n=!0},p(t,n){const o={};1&n&&(o.row_list=t[1]),e.$set(o)},i(t){n||(dt(e.$$.fragment,t),n=!0)},o(t){ut(e.$$.fragment,t),n=!1},d(t){bt(e,t)}}}function oo(t){let e,n,o,r,s,i,l=t[0],a=[];for(let e=0;e<l.length;e+=1)a[e]=no(eo(t,l,e));const c=t=>ut(a[t],1,1,(()=>{a[t]=null}));return{c(){e=E("div"),n=E("h1"),n.textContent="Solution",o=O(),r=E("div"),s=E("div");for(let t=0;t<a.length;t+=1)a[t].c();A(n,"class","svelte-1br9232"),A(s,"class","game-board svelte-1br9232"),A(r,"class","board-container flexx svelte-1br9232"),A(e,"class","main-popup flexx svelte-1br9232")},m(t,l){b(t,e,l),y(e,n),y(e,o),y(e,r),y(r,s);for(let t=0;t<a.length;t+=1)a[t].m(s,null);i=!0},p(t,[e]){if(1&e){let n;for(l=t[0],n=0;n<l.length;n+=1){const o=eo(t,l,n);a[n]?(a[n].p(o,e),dt(a[n],1)):(a[n]=no(o),a[n].c(),dt(a[n],1),a[n].m(s,null))}for(at(),n=l.length;n<a.length;n+=1)c(n);ct()}},i(t){if(!i){for(let t=0;t<l.length;t+=1)dt(a[t]);i=!0}},o(t){a=a.filter(Boolean);for(let t=0;t<a.length;t+=1)ut(a[t]);i=!1},d(t){t&&$(e),x(a,t)}}}function ro(t,e,n){let{board:o}=e;return t.$$set=t=>{"board"in t&&n(0,o=t.board)},[o]}class so extends Et{constructor(t){super(),xt(this,t,ro,oo,l,{board:0})}}function io(e){let n,o,r;return{c(){n=E("button"),n.textContent="show solution",A(n,"class","show-sol-button svelte-for4t0")},m(t,s){b(t,n,s),o||(r=C(n,"click",e[0]),o=!0)},p:t,i:t,o:t,d(t){t&&$(n),o=!1,r()}}}function lo(t,e,n){let{board:o}=e;const{open:r}=q("simple-modal");return t.$$set=t=>{"board"in t&&n(1,o=t.board)},[()=>r(so,{board:o}),o]}class ao extends Et{constructor(t){super(),xt(this,t,lo,io,l,{board:1})}}function co(t){const e=t-1;return e*e*e+1}function uo(t,{delay:n=0,duration:o=400,easing:r=e}={}){const s=+getComputedStyle(t).opacity;return{delay:n,duration:o,easing:r,css:t=>"opacity: "+t*s}}function fo(t,{delay:e=0,duration:n=400,easing:o=co,x:r=0,y:s=0,opacity:i=0}={}){const l=getComputedStyle(t),a=+l.opacity,c="none"===l.transform?"":l.transform,d=a*(1-i);return{delay:e,duration:n,easing:o,css:(t,e)=>`\n\t\t\ttransform: ${c} translate(${(1-t)*r}px, ${(1-t)*s}px);\n\t\t\topacity: ${a-d*e}`}}const{window:go}=pt;function po(t){let e,n,o,r,l,a,c,u,f,g,p,h,m,w,v,x,T,M=t[1].closeButton&&ho(t);var _=t[2];return _&&(a=new _({})),{c(){e=E("div"),n=E("div"),o=E("div"),M&&M.c(),r=O(),l=E("div"),a&&wt(a.$$.fragment),A(l,"class",c=d(t[1].classContent)+" svelte-g4wg3a"),A(l,"style",t[9]),D(l,"content",!t[0]),A(o,"class",u=d(t[1].classWindow)+" svelte-g4wg3a"),A(o,"role","dialog"),A(o,"aria-modal","true"),A(o,"aria-label",f=t[1].ariaLabelledBy?null:t[1].ariaLabel||null),A(o,"aria-labelledby",g=t[1].ariaLabelledBy||null),A(o,"style",t[8]),D(o,"window",!t[0]),A(n,"class",h=d(t[1].classWindowWrap)+" svelte-g4wg3a"),A(n,"style",t[7]),D(n,"wrap",!t[0]),A(e,"class",m=d(t[1].classBg)+" svelte-g4wg3a"),A(e,"style",t[6]),D(e,"bg",!t[0])},m(s,c){b(s,e,c),y(e,n),y(n,o),M&&M.m(o,null),y(o,r),y(o,l),a&&vt(a,l,null),t[49](o),t[50](n),t[51](e),v=!0,x||(T=[C(o,"introstart",(function(){i(t[13])&&t[13].apply(this,arguments)})),C(o,"outrostart",(function(){i(t[14])&&t[14].apply(this,arguments)})),C(o,"introend",(function(){i(t[15])&&t[15].apply(this,arguments)})),C(o,"outroend",(function(){i(t[16])&&t[16].apply(this,arguments)})),C(e,"mousedown",t[20]),C(e,"mouseup",t[21])],x=!0)},p(s,i){if((t=s)[1].closeButton?M?(M.p(t,i),2&i[0]&&dt(M,1)):(M=ho(t),M.c(),dt(M,1),M.m(o,r)):M&&(at(),ut(M,1,1,(()=>{M=null})),ct()),_!==(_=t[2])){if(a){at();const t=a;ut(t.$$.fragment,1,0,(()=>{bt(t,1)})),ct()}_?(a=new _({}),wt(a.$$.fragment),dt(a.$$.fragment,1),vt(a,l,null)):a=null}(!v||2&i[0]&&c!==(c=d(t[1].classContent)+" svelte-g4wg3a"))&&A(l,"class",c),(!v||512&i[0])&&A(l,"style",t[9]),3&i[0]&&D(l,"content",!t[0]),(!v||2&i[0]&&u!==(u=d(t[1].classWindow)+" svelte-g4wg3a"))&&A(o,"class",u),(!v||2&i[0]&&f!==(f=t[1].ariaLabelledBy?null:t[1].ariaLabel||null))&&A(o,"aria-label",f),(!v||2&i[0]&&g!==(g=t[1].ariaLabelledBy||null))&&A(o,"aria-labelledby",g),(!v||256&i[0])&&A(o,"style",t[8]),3&i[0]&&D(o,"window",!t[0]),(!v||2&i[0]&&h!==(h=d(t[1].classWindowWrap)+" svelte-g4wg3a"))&&A(n,"class",h),(!v||128&i[0])&&A(n,"style",t[7]),3&i[0]&&D(n,"wrap",!t[0]),(!v||2&i[0]&&m!==(m=d(t[1].classBg)+" svelte-g4wg3a"))&&A(e,"class",m),(!v||64&i[0])&&A(e,"style",t[6]),3&i[0]&&D(e,"bg",!t[0])},i(n){v||(dt(M),a&&dt(a.$$.fragment,n),K((()=>{p||(p=gt(o,t[12],t[1].transitionWindowProps,!0)),p.run(1)})),K((()=>{w||(w=gt(e,t[11],t[1].transitionBgProps,!0)),w.run(1)})),v=!0)},o(n){ut(M),a&&ut(a.$$.fragment,n),p||(p=gt(o,t[12],t[1].transitionWindowProps,!1)),p.run(0),w||(w=gt(e,t[11],t[1].transitionBgProps,!1)),w.run(0),v=!1},d(n){n&&$(e),M&&M.d(),a&&bt(a),t[49](null),n&&p&&p.end(),t[50](null),t[51](null),n&&w&&w.end(),x=!1,s(T)}}}function ho(t){let e,n,o,r,s;const i=[yo,mo],l=[];function a(t,n){return 2&n[0]&&(e=null),null==e&&(e=!!t[17](t[1].closeButton)),e?0:1}return n=a(t,[-1,-1,-1]),o=l[n]=i[n](t),{c(){o.c(),r=M()},m(t,e){l[n].m(t,e),b(t,r,e),s=!0},p(t,e){let s=n;n=a(t,e),n===s?l[n].p(t,e):(at(),ut(l[s],1,1,(()=>{l[s]=null})),ct(),o=l[n],o?o.p(t,e):(o=l[n]=i[n](t),o.c()),dt(o,1),o.m(r.parentNode,r))},i(t){s||(dt(o),s=!0)},o(t){ut(o),s=!1},d(t){l[n].d(t),t&&$(r)}}}function mo(e){let n,o,r,s;return{c(){n=E("button"),A(n,"class",o=d(e[1].classCloseButton)+" svelte-g4wg3a"),A(n,"aria-label","Close modal"),A(n,"style",e[10]),D(n,"close",!e[0])},m(t,o){b(t,n,o),r||(s=C(n,"click",e[18]),r=!0)},p(t,e){2&e[0]&&o!==(o=d(t[1].classCloseButton)+" svelte-g4wg3a")&&A(n,"class",o),1024&e[0]&&A(n,"style",t[10]),3&e[0]&&D(n,"close",!t[0])},i:t,o:t,d(t){t&&$(n),r=!1,s()}}}function yo(t){let e,n,o;var r=t[1].closeButton;function s(t){return{props:{onClose:t[18]}}}return r&&(e=new r(s(t))),{c(){e&&wt(e.$$.fragment),n=M()},m(t,r){e&&vt(e,t,r),b(t,n,r),o=!0},p(t,o){if(r!==(r=t[1].closeButton)){if(e){at();const t=e;ut(t.$$.fragment,1,0,(()=>{bt(t,1)})),ct()}r?(e=new r(s(t)),wt(e.$$.fragment),dt(e.$$.fragment,1),vt(e,n.parentNode,n)):e=null}},i(t){o||(e&&dt(e.$$.fragment,t),o=!0)},o(t){e&&ut(e.$$.fragment,t),o=!1},d(t){t&&$(n),e&&bt(e,t)}}}function wo(t){let e,n,o,r,s=t[2]&&po(t);const i=t[48].default,l=function(t,e,n,o){if(t){const r=c(t,e,n,o);return t[0](r)}}(i,t,t[47],null);return{c(){s&&s.c(),e=O(),l&&l.c()},m(i,a){s&&s.m(i,a),b(i,e,a),l&&l.m(i,a),n=!0,o||(r=C(go,"keydown",t[19]),o=!0)},p(t,o){t[2]?s?(s.p(t,o),4&o[0]&&dt(s,1)):(s=po(t),s.c(),dt(s,1),s.m(e.parentNode,e)):s&&(at(),ut(s,1,1,(()=>{s=null})),ct()),l&&l.p&&(!n||65536&o[1])&&function(t,e,n,o,r,s){if(r){const i=c(e,n,o,s);t.p(i,r)}}(l,i,t,t[47],n?function(t,e,n,o){if(t[2]&&o){const r=t[2](o(n));if(void 0===e.dirty)return r;if("object"==typeof r){const t=[],n=Math.max(e.dirty.length,r.length);for(let o=0;o<n;o+=1)t[o]=e.dirty[o]|r[o];return t}return e.dirty|r}return e.dirty}(i,t[47],o,null):function(t){if(t.ctx.length>32){const e=[],n=t.ctx.length/32;for(let t=0;t<n;t++)e[t]=-1;return e}return-1}(t[47]),null)},i(t){n||(dt(s),dt(l,t),n=!0)},o(t){ut(s),ut(l,t),n=!1},d(t){s&&s.d(t),t&&$(e),l&&l.d(t),o=!1,r()}}}function vo(t,e,n){let{$$slots:o={},$$scope:r}=e;const s=F(),i=G,l=t=>t.tabIndex>=0&&!t.hidden&&!t.disabled&&"none"!==t.style.display&&"hidden"!==t.type&&Boolean(t.offsetWidth||t.offsetHeight||t.getClientRects().length);let{isTabbable:a=l}=e,{show:c=null}=e,{key:d="simple-modal"}=e,{ariaLabel:u=null}=e,{ariaLabelledBy:f=null}=e,{closeButton:g=!0}=e,{closeOnEsc:p=!0}=e,{closeOnOuterClick:h=!0}=e,{styleBg:m={}}=e,{styleWindowWrap:y={}}=e,{styleWindow:w={}}=e,{styleContent:v={}}=e,{styleCloseButton:b={}}=e,{classBg:$=null}=e,{classWindowWrap:x=null}=e,{classWindow:E=null}=e,{classContent:T=null}=e,{classCloseButton:O=null}=e,{unstyled:M=!1}=e,{setContext:C=i}=e,{transitionBg:A=uo}=e,{transitionBgProps:_={duration:250}}=e,{transitionWindow:D=A}=e,{transitionWindowProps:S=_}=e,{disableFocusTrap:k=!1}=e;const B={ariaLabel:u,ariaLabelledBy:f,closeButton:g,closeOnEsc:p,closeOnOuterClick:h,styleBg:m,styleWindowWrap:y,styleWindow:w,styleContent:v,styleCloseButton:b,classBg:$,classWindowWrap:x,classWindow:E,classContent:T,classCloseButton:O,transitionBg:A,transitionBgProps:_,transitionWindow:D,transitionWindowProps:S,disableFocusTrap:k,isTabbable:a,unstyled:M};let L,W,I,P,N,j,q,H,U,V,Z,X,J,K,Q,tt={...B},et=null;const nt=t=>t?Object.keys(t).reduce(((e,n)=>`${e}; ${(t=>t.replace(/([a-zA-Z])(?=[A-Z])/g,"$1-").toLowerCase())(n)}: ${t[n]}`),""):"",ot=t=>!!(t&&t.constructor&&t.call&&t.apply),rt=()=>{};let st=rt,it=rt,lt=rt,at=rt;const ct=(t,e={},o={},r={})=>{n(2,et=function(t,e={}){return function(n){return new t({...n,props:{...e,...n.props}})}}(t,e)),n(1,tt={...B,...o}),n(6,N=nt(Object.assign({},{width:window.innerWidth,height:window.innerHeight},tt.styleBg))),n(7,j=nt(tt.styleWindowWrap)),n(8,q=nt(tt.styleWindow)),n(9,H=nt(tt.styleContent)),n(10,U=nt(tt.styleCloseButton)),n(11,V=tt.transitionBg),n(12,Z=tt.transitionWindow),ut(),n(13,st=t=>{r.onOpen&&r.onOpen(t),s("open"),s("opening")}),n(14,it=t=>{r.onClose&&r.onClose(t),s("close"),s("closing")}),n(15,lt=t=>{r.onOpened&&r.onOpened(t),s("opened")}),n(16,at=t=>{r.onClosed&&r.onClosed(t),s("closed")})},dt=(t={})=>{et&&(n(14,it=t.onClose||it),n(16,at=t.onClosed||at),n(2,et=null),ft())},ut=()=>{P=window.scrollY,X=document.body.style.position,J=document.body.style.overflow,K=document.body.style.width,document.body.style.position="fixed",document.body.style.top=`-${P}px`,document.body.style.overflow="hidden",document.body.style.width="100%"},ft=()=>{document.body.style.position=X||"",document.body.style.top="",document.body.style.overflow=J||"",document.body.style.width=K||"",window.scrollTo(0,P)};C(d,{open:ct,close:dt});let gt=!1;var pt;return z((()=>{gt&&dt()})),pt=()=>{n(46,gt=!0)},R().$$.on_mount.push(pt),t.$$set=t=>{"isTabbable"in t&&n(22,a=t.isTabbable),"show"in t&&n(23,c=t.show),"key"in t&&n(24,d=t.key),"ariaLabel"in t&&n(25,u=t.ariaLabel),"ariaLabelledBy"in t&&n(26,f=t.ariaLabelledBy),"closeButton"in t&&n(27,g=t.closeButton),"closeOnEsc"in t&&n(28,p=t.closeOnEsc),"closeOnOuterClick"in t&&n(29,h=t.closeOnOuterClick),"styleBg"in t&&n(30,m=t.styleBg),"styleWindowWrap"in t&&n(31,y=t.styleWindowWrap),"styleWindow"in t&&n(32,w=t.styleWindow),"styleContent"in t&&n(33,v=t.styleContent),"styleCloseButton"in t&&n(34,b=t.styleCloseButton),"classBg"in t&&n(35,$=t.classBg),"classWindowWrap"in t&&n(36,x=t.classWindowWrap),"classWindow"in t&&n(37,E=t.classWindow),"classContent"in t&&n(38,T=t.classContent),"classCloseButton"in t&&n(39,O=t.classCloseButton),"unstyled"in t&&n(0,M=t.unstyled),"setContext"in t&&n(40,C=t.setContext),"transitionBg"in t&&n(41,A=t.transitionBg),"transitionBgProps"in t&&n(42,_=t.transitionBgProps),"transitionWindow"in t&&n(43,D=t.transitionWindow),"transitionWindowProps"in t&&n(44,S=t.transitionWindowProps),"disableFocusTrap"in t&&n(45,k=t.disableFocusTrap),"$$scope"in t&&n(47,r=t.$$scope)},t.$$.update=()=>{8388608&t.$$.dirty[0]|32768&t.$$.dirty[1]&&gt&&(ot(c)?ct(c):dt())},[M,tt,et,L,W,I,N,j,q,H,U,V,Z,st,it,lt,at,ot,dt,t=>{if(tt.closeOnEsc&&et&&"Escape"===t.key&&(t.preventDefault(),dt()),et&&"Tab"===t.key&&!tt.disableFocusTrap){const e=I.querySelectorAll("*"),n=Array.from(e).filter(tt.isTabbable).sort(((t,e)=>t.tabIndex-e.tabIndex));let o=n.indexOf(document.activeElement);-1===o&&t.shiftKey&&(o=0),o+=n.length+(t.shiftKey?-1:1),o%=n.length,n[o].focus(),t.preventDefault()}},t=>{!tt.closeOnOuterClick||t.target!==L&&t.target!==W||(Q=t.target)},t=>{tt.closeOnOuterClick&&t.target===Q&&(t.preventDefault(),dt())},a,c,d,u,f,g,p,h,m,y,w,v,b,$,x,E,T,O,C,A,_,D,S,k,gt,r,o,function(t){Y[t?"unshift":"push"]((()=>{I=t,n(5,I)}))},function(t){Y[t?"unshift":"push"]((()=>{W=t,n(4,W)}))},function(t){Y[t?"unshift":"push"]((()=>{L=t,n(3,L)}))}]}class bo extends Et{constructor(t){super(),xt(this,t,vo,wo,l,{isTabbable:22,show:23,key:24,ariaLabel:25,ariaLabelledBy:26,closeButton:27,closeOnEsc:28,closeOnOuterClick:29,styleBg:30,styleWindowWrap:31,styleWindow:32,styleContent:33,styleCloseButton:34,classBg:35,classWindowWrap:36,classWindow:37,classContent:38,classCloseButton:39,unstyled:0,setContext:40,transitionBg:41,transitionBgProps:42,transitionWindow:43,transitionWindowProps:44,disableFocusTrap:45},null,[-1,-1,-1])}}function $o(t,e){window.localStorage.setItem(t,JSON.stringify(e))}function xo(t){try{return JSON.parse(window.localStorage.getItem(t))}catch{return null}}function Eo(t,e,n){const o=t.slice();return o[21]=e[n],o[23]=n,o}function To(t){let e,n;return e=new Qn({props:{row_list:t[21],col:t[23]}}),e.$on("DRAGGED_FROM",t[4]),e.$on("DRAGGED_TO",t[4]),{c(){wt(e.$$.fragment)},m(t,o){vt(e,t,o),n=!0},p(t,n){const o={};4&n&&(o.row_list=t[21]),e.$set(o)},i(t){n||(dt(e.$$.fragment,t),n=!0)},o(t){ut(e.$$.fragment,t),n=!1},d(t){bt(e,t)}}}function Oo(t){let e,n,o=t[2],r=[];for(let e=0;e<o.length;e+=1)r[e]=To(Eo(t,o,e));const s=t=>ut(r[t],1,1,(()=>{r[t]=null}));return{c(){for(let t=0;t<r.length;t+=1)r[t].c();e=M()},m(t,o){for(let e=0;e<r.length;e+=1)r[e].m(t,o);b(t,e,o),n=!0},p(t,n){if(20&n){let i;for(o=t[2],i=0;i<o.length;i+=1){const s=Eo(t,o,i);r[i]?(r[i].p(s,n),dt(r[i],1)):(r[i]=To(s),r[i].c(),dt(r[i],1),r[i].m(e.parentNode,e))}for(at(),i=o.length;i<r.length;i+=1)s(i);ct()}},i(t){if(!n){for(let t=0;t<o.length;t+=1)dt(r[t]);n=!0}},o(t){r=r.filter(Boolean);for(let t=0;t<r.length;t+=1)ut(r[t]);n=!1},d(t){x(r,t),t&&$(e)}}}function Mo(t){let e,n,o,r,s,i;return{c(){e=E("p"),n=E("strong"),o=T(t[3]),r=T(" ಚಲನೆಗಳು ಉಳಿದಿರುವಾಗ ಆಟವನ್ನು "),s=E("strong"),s.textContent="ಗೆದ್ದಿದ್ದೀರಿ",i=T("!"),A(n,"class","svelte-knnife"),A(s,"class","svelte-knnife")},m(t,l){b(t,e,l),y(e,n),y(n,o),y(e,r),y(e,s),y(e,i)},p(t,e){8&e&&_(o,t[3])},d(t){t&&$(e)}}}function Co(e){let n;return{c(){n=E("p"),n.innerHTML='ಆಟವನ್ನು <strong class="svelte-knnife">ಕಳೆದುಕೊಂಡಿದ್ದೀರಿ</strong>'},m(t,e){b(t,n,e)},p:t,d(t){t&&$(n)}}}function Ao(t){let e,n,o,r,s;return{c(){e=E("p"),n=T("ಬಾಕಿ ಇರುವ ಚಲನೆಗಳು "),o=E("strong"),r=T(t[3]),s=T("!"),A(o,"class","svelte-knnife")},m(t,i){b(t,e,i),y(e,n),y(e,o),y(o,r),y(e,s)},p(t,e){8&e&&_(r,t[3])},d(t){t&&$(e)}}}function _o(e){let n,o;return n=new ao({props:{board:e[5]}}),{c(){wt(n.$$.fragment)},m(t,e){vt(n,t,e),o=!0},p:t,i(t){o||(dt(n.$$.fragment,t),o=!0)},o(t){ut(n.$$.fragment,t),o=!1},d(t){bt(n,t)}}}function Do(t){let e,n,o="lost"===t[1]&&_o(t);return{c(){o&&o.c(),e=M()},m(t,r){o&&o.m(t,r),b(t,e,r),n=!0},p(t,n){"lost"===t[1]?o?(o.p(t,n),2&n&&dt(o,1)):(o=_o(t),o.c(),dt(o,1),o.m(e.parentNode,e)):o&&(at(),ut(o,1,1,(()=>{o=null})),ct())},i(t){n||(dt(o),n=!0)},o(t){ut(o),n=!1},d(t){o&&o.d(t),t&&$(e)}}}function So(e){let n,o,r,s,i,a,c,d,u,f,g,p,h,m,w=e[2],v=Oo(e);function x(t,e){return"playing"===t[1]?Ao:"lost"===t[1]?Co:Mo}let M=x(e),C=M(e);return h=new bo({props:{classContent:"modal",$$slots:{default:[Do]},$$scope:{ctx:e}}}),{c(){n=E("div"),o=E("div"),r=E("p"),s=T("daily obbattu "),i=E("strong"),a=T("#"),c=T(e[0]),d=O(),u=E("div"),v.c(),f=O(),g=E("div"),C.c(),p=O(),wt(h.$$.fragment),A(i,"class","svelte-knnife"),A(o,"class","daily-obbattu-count svelte-knnife"),A(u,"class","game-board svelte-knnife"),A(g,"class","moves-counter flexx svelte-knnife"),A(n,"class","board-container flexx svelte-knnife")},m(t,e){b(t,n,e),y(n,o),y(o,r),y(r,s),y(r,i),y(i,a),y(i,c),y(n,d),y(n,u),v.m(u,null),y(n,f),y(n,g),C.m(g,null),y(n,p),vt(h,n,null),m=!0},p(e,[n]){(!m||1&n)&&_(c,e[0]),4&n&&l(w,w=e[2])?(at(),ut(v,1,1,t),ct(),v=Oo(e),v.c(),dt(v,1),v.m(u,null)):v.p(e,n),M===(M=x(e))&&C?C.p(e,n):(C.d(1),C=M(e),C&&(C.c(),C.m(g,null)));const o={};16777218&n&&(o.$$scope={dirty:n,ctx:e}),h.$set(o)},i(t){m||(dt(v),dt(h.$$.fragment,t),m=!0)},o(t){ut(v),ut(h.$$.fragment,t),m=!1},d(t){t&&$(n),v.d(t),C.d(),bt(h)}}}function ko(t,e,n){let o;const r=F();let{questions:s=[["a","d","f","t","e"],["o","","j","","h"],["c","r","m","p","k"],["w","","l","","b"],["u","x","n","v","y"]]}=e,{answers:i=[["a","b","c","d","e"],["e","j","o","t","y"],["a","f","k","p","u"],["u","v","w","x","y"],["c","h","m","r","w"],["k","l","m","n","o"]]}=e,{ans_to_show:l=[["a","b","c","d","e"],["f","","h","","j"],["k","l","m","n","o"],["p","","r","","t"],["u","v","w","x","y"]]}=e,{TOTAL_MOVES:a=20}=e,{OBBATTU_COUNT:c=0}=e,d="playing",u=0;function f(t,e=!1){let n=[],o="incorrect";for(let r=0;r<5;r++)!1===e?(o=(0===r||4===r)&&(0===t||4===t)||2===r&&2===t?"correct":""===s[t][r]?"blocked":"incorrect",n.push(new to(u,s[t][r],o))):(o=""===l[t][r]?"blocked":"correct",n.push(new to(u,l[t][r],o))),u++;return n}function g(t=!1){let e=[];for(let n=0;n<5;n++)e.push(f(n,t));return e}let p=[];function h(t,e,n){return"blocked"===n.state||(0===e&&i[0].includes(n.letter)?i[0][t]===n.letter?n.state="correct":n.state="misplaced":0===t&&i[2].includes(n.letter)?i[2][e]===n.letter?n.state="correct":n.state="misplaced":4===e&&i[3].includes(n.letter)?i[3][t]===n.letter?n.state="correct":n.state="misplaced":4===t&&i[1].includes(n.letter)?i[1][e]===n.letter?n.state="correct":n.state="misplaced":2===t&&i[4].includes(n.letter)?i[4][e]===n.letter?n.state="correct":n.state="misplaced":2===e&&i[5].includes(n.letter)?i[5][t]===n.letter?n.state="correct":n.state="misplaced":n.state="incorrect"),n}function m(){$o("GAME_BOARD",{questions:s,MOVES:o})}let y=function(t,e=300){let n;return(...o)=>{clearTimeout(n),n=setTimeout((()=>{t.apply(this,o)}),e)}}(m,500);function w(t=!0){for(let e=0;e<b.length;e++)for(let s=0;s<b[e].length;s++)if("incorrect"===b[e][s].state||"misplaced"===b[e][s].state)return void(o<=0&&(n(2,b=v(b,!1)),r("GAME_LOST",{extra:t}),m()));n(2,b=v(b,!0)),r("GAME_WON",{extra:t}),m()}function v(t,e=!1){n(1,d=!1===e?"lost":"won");for(let n=0;n<t.length;n++)for(let o=0;o<t[n].length;o++)"blocked"!=t[n][o].state&&(t[n][o].state=!0===e?"game_won":"game_lost");return t}let b=g(),$=g(!0);for(let t=0;t<b.length;t++)for(let e=0;e<b[t].length;e++)h(e,t,b[t][e]);return setTimeout((()=>w(!1)),1),t.$$set=t=>{"questions"in t&&n(6,s=t.questions),"answers"in t&&n(7,i=t.answers),"ans_to_show"in t&&n(8,l=t.ans_to_show),"TOTAL_MOVES"in t&&n(9,a=t.TOTAL_MOVES),"OBBATTU_COUNT"in t&&n(0,c=t.OBBATTU_COUNT)},t.$$.update=()=>{if(512&t.$$.dirty&&n(3,o=a),1024&t.$$.dirty&&p.length>=2){let t=p.find((t=>"DRAGGED_FROM"===t.type)),e=p.find((t=>"DRAGGED_TO"===t.type));n(10,p=[]),function(t,e,r,i){if(t===r&&e===i)return;n(3,o-=1);let l=h(i,r,b[t][e]),a=h(e,t,b[r][i]);n(2,b[t][e]=a,b),n(2,b[r][i]=l,b);let c=s[r][i];n(6,s[r][i]=s[t][e],s),n(6,s[t][e]=c,s),y(),w()}(t.yPos,t.xPos,e.yPos,e.xPos)}},[c,d,b,o,function(t){for(let e=0;e<p.length;e++)if(p[e].type===t.detail.type)return void n(10,p=[]);n(10,p=[...p,t.detail]),setTimeout((()=>{p.length>0&&n(10,p=[])}),500)},$,s,i,l,a,p]}class Bo extends Et{constructor(t){super(),xt(this,t,ko,So,l,{questions:6,answers:7,ans_to_show:8,TOTAL_MOVES:9,OBBATTU_COUNT:0})}}function Lo(e){let n,o,r,s,i,l,a,c,d,u,f,g,p,h,m,w,v,x,T,M,C,_,D,S,k,B,L,W;return d=new Ct({props:{letter:new to(void 0,"ಅ","correct")}}),h=new Ct({props:{letter:new to(void 0,"ಅ","misplaced")}}),T=new Ct({props:{letter:new to(void 0,"ಅ","incorrect")}}),{c(){n=E("div"),o=E("h1"),o.textContent="ಆಟದ ಬಗ್ಗೆ",r=O(),s=E("p"),s.textContent='ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ. ನಿಮ್ಮ ಅನಿಸಿಕೆಗಳನ್ನು "skandabhairava@gmail.com"ಗೆ ಕಳಿಸಿ.',i=O(),l=E("hr"),a=O(),c=E("div"),wt(d.$$.fragment),u=O(),f=E("p"),f.textContent="ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇದೆ. ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರಗಳನ್ನು ಬಿಟ್ಟು ಬೇರೆ ಅಕ್ಷರಗಳನ್ನು ಬೇರೆ ಜಾಗಕ್ಕೆ ಚಲಿಸಬಹುದು.",g=O(),p=E("div"),wt(h.$$.fragment),m=O(),w=E("p"),w.textContent="ಹಳದಿ ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಇದೆ ಆದರೆ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇಲ್ಲ.",v=O(),x=E("div"),wt(T.$$.fragment),M=O(),C=E("p"),C.textContent="ಬೂದು ಬಣ್ಣದ ಅಕ್ಷರಗಳು ಪದದಲ್ಲಿಲ್ಲ.",_=O(),D=E("hr"),S=O(),k=E("h1"),k.textContent="Credits",B=O(),L=E("div"),L.innerHTML='<div class="dict svelte-1egjh85"><div class="item svelte-1egjh85"><p>ಮಾಡಿದ್ದು</p></div> \n            <div class="item svelte-1egjh85"><a class="a-tag svelte-1egjh85" target="_blank" href="https://github.com/skandabhairava">ಸ್ಕಂದ ಭೈರವ</a></div> \n            <div class="item svelte-1egjh85"><p>ಸ್ಫೂರ್ತಿ</p></div> \n            <div class="item svelte-1egjh85"><a class="a-tag svelte-1egjh85" target="_blank" href="https://wafflegame.net/">WaffleGame</a> \n                <a class="a-tag svelte-1egjh85" target="_blank" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> \n                <a class="a-tag svelte-1egjh85" target="_blank" href="https://wordalla.online/">Wordalla</a></div> \n            <div class="item svelte-1egjh85"><p>ಮೂಲ ಕೋಡ್</p></div> \n            <div class="item svelte-1egjh85"><a class="a-tag svelte-1egjh85" target="_blank" href="https://github.com/skandabhairava/Oxidised-Obbattu">Github</a></div></div>',A(o,"class","svelte-1egjh85"),A(l,"class","svelte-1egjh85"),A(c,"class","limit-letter svelte-1egjh85"),A(p,"class","limit-letter svelte-1egjh85"),A(x,"class","limit-letter svelte-1egjh85"),A(D,"class","svelte-1egjh85"),A(k,"class","svelte-1egjh85"),A(L,"class","credits"),A(n,"class","main-popup flexx svelte-1egjh85")},m(t,e){b(t,n,e),y(n,o),y(n,r),y(n,s),y(n,i),y(n,l),y(n,a),y(n,c),vt(d,c,null),y(n,u),y(n,f),y(n,g),y(n,p),vt(h,p,null),y(n,m),y(n,w),y(n,v),y(n,x),vt(T,x,null),y(n,M),y(n,C),y(n,_),y(n,D),y(n,S),y(n,k),y(n,B),y(n,L),W=!0},p:t,i(t){W||(dt(d.$$.fragment,t),dt(h.$$.fragment,t),dt(T.$$.fragment,t),W=!0)},o(t){ut(d.$$.fragment,t),ut(h.$$.fragment,t),ut(T.$$.fragment,t),W=!1},d(t){t&&$(n),bt(d),bt(h),bt(T)}}}class Wo extends Et{constructor(t){super(),xt(this,t,null,Lo,l,{})}}function Io(e){let n,o,r;return{c(){n=E("button"),n.textContent="?",A(n,"class","help-button svelte-1cragtd")},m(t,s){b(t,n,s),o||(r=C(n,"click",e[0]),o=!0)},p:t,i:t,o:t,d(t){t&&$(n),o=!1,r()}}}function Po(t){const{open:e}=q("simple-modal");return[()=>e(Wo,{})]}class No extends Et{constructor(t){super(),xt(this,t,Po,Io,l,{})}}function jo(e){let n,o,r,s,i,l,a,c,d,u,f,g,p,h,m,w,v,x,M,C,D,S,k;return{c(){n=E("div"),o=E("h1"),o.textContent="Statistics",r=O(),s=E("hr"),i=O(),l=E("div"),a=E("div"),a.innerHTML="<p>Played</p>",c=O(),d=E("div"),u=E("p"),f=T(e[0]),g=O(),p=E("div"),p.innerHTML="<p>Games Won</p>",h=O(),m=E("div"),w=E("p"),v=T(e[1]),x=O(),M=E("div"),M.innerHTML="<p>Games Lost</p>",C=O(),D=E("div"),S=E("p"),k=T(e[2]),A(o,"class","svelte-lon2u1"),A(s,"class","svelte-lon2u1"),A(a,"class","item left svelte-lon2u1"),A(d,"class","item right svelte-lon2u1"),A(p,"class","item left svelte-lon2u1"),A(m,"class","item right svelte-lon2u1"),A(M,"class","item left svelte-lon2u1"),A(D,"class","item right svelte-lon2u1"),A(l,"class","dict svelte-lon2u1"),A(n,"class","main-popup flexx svelte-lon2u1")},m(t,e){b(t,n,e),y(n,o),y(n,r),y(n,s),y(n,i),y(n,l),y(l,a),y(l,c),y(l,d),y(d,u),y(u,f),y(l,g),y(l,p),y(l,h),y(l,m),y(m,w),y(w,v),y(l,x),y(l,M),y(l,C),y(l,D),y(D,S),y(S,k)},p(t,[e]){1&e&&_(f,t[0]),2&e&&_(v,t[1]),4&e&&_(k,t[2])},i:t,o:t,d(t){t&&$(n)}}}function Ro(t,e,n){let o,r=0,s=0,i=function(t){try{return JSON.parse(window.localStorage.getItem(t))}catch{return null}}("GAME_STATS");var l,a;return null===i?(i={GAMES_PLAYED:0,GAMES_WON:0},l="GAME_STATS",a=i,window.localStorage.setItem(l,JSON.stringify(a))):(n(0,r=i.GAMES_PLAYED),n(1,s=i.GAMES_WON)),t.$$.update=()=>{3&t.$$.dirty&&n(2,o=r-s)},[r,s,o]}class zo extends Et{constructor(t){super(),xt(this,t,Ro,jo,l,{})}}function Fo(e){let n,o,r;return{c(){n=E("button"),n.innerHTML='<img src="./stats.png" alt="statistics" class="stats-img svelte-1maplsy"/>',A(n,"class","stats-button svelte-1maplsy")},m(t,s){b(t,n,s),o||(r=C(n,"click",e[0]),o=!0)},p:t,i:t,o:t,d(t){t&&$(n),o=!1,r()}}}function Go(t){const{open:e}=q("simple-modal");return[()=>e(zo,{})]}class qo extends Et{constructor(t){super(),xt(this,t,Go,Fo,l,{})}}function Ho(t){let e,n;return e=new No({}),{c(){wt(e.$$.fragment)},m(t,o){vt(e,t,o),n=!0},i(t){n||(dt(e.$$.fragment,t),n=!0)},o(t){ut(e.$$.fragment,t),n=!1},d(t){bt(e,t)}}}function Uo(t){let e,n;return e=new qo({}),{c(){wt(e.$$.fragment)},m(t,o){vt(e,t,o),n=!0},i(t){n||(dt(e.$$.fragment,t),n=!0)},o(t){ut(e.$$.fragment,t),n=!1},d(t){bt(e,t)}}}function Yo(t){let e,n,o,r,s,i,l;return n=new bo({props:{classContent:"modal",$$slots:{default:[Ho]},$$scope:{ctx:t}}}),i=new bo({props:{classContent:"modal",$$slots:{default:[Uo]},$$scope:{ctx:t}}}),{c(){e=E("div"),wt(n.$$.fragment),o=O(),r=E("div"),r.innerHTML='<h1 class="svelte-qlj59i">ಒಬ್ಬಟ್ಟು</h1>',s=O(),wt(i.$$.fragment),A(r,"class","title svelte-qlj59i"),A(e,"class","flexx")},m(t,a){b(t,e,a),vt(n,e,null),y(e,o),y(e,r),y(e,s),vt(i,e,null),l=!0},p(t,[e]){const o={};1&e&&(o.$$scope={dirty:e,ctx:t}),n.$set(o);const r={};1&e&&(r.$$scope={dirty:e,ctx:t}),i.$set(r)},i(t){l||(dt(n.$$.fragment,t),dt(i.$$.fragment,t),l=!0)},o(t){ut(n.$$.fragment,t),ut(i.$$.fragment,t),l=!1},d(t){t&&$(e),bt(n),bt(i)}}}class Vo extends Et{constructor(t){super(),xt(this,t,null,Yo,l,{})}}function Zo(t,{from:e,to:n},o={}){const r=getComputedStyle(t),s="none"===r.transform?"":r.transform,[l,a]=r.transformOrigin.split(" ").map(parseFloat),c=e.left+e.width*l/n.width-(n.left+l),d=e.top+e.height*a/n.height-(n.top+a),{delay:u=0,duration:f=(t=>120*Math.sqrt(t)),easing:g=co}=o;return{delay:u,duration:i(f)?f(Math.sqrt(c*c+d*d)):f,easing:g,css:(t,o)=>{const r=o*c,i=o*d,l=t+o*e.width/n.width,a=t+o*e.height/n.height;return`transform: ${s} translate(${r}px, ${i}px) scale(${l}, ${a});`}}}const Xo=[];function Jo(e,n=t){let o;const r=new Set;function s(t){if(l(e,t)&&(e=t,o)){const t=!Xo.length;for(const t of r)t[1](),Xo.push(t,e);if(t){for(let t=0;t<Xo.length;t+=2)Xo[t][0](Xo[t+1]);Xo.length=0}}}return{set:s,update:function(t){s(t(e))},subscribe:function(i,l=t){const a=[i,l];return r.add(a),1===r.size&&(o=n(s)||t),i(e),()=>{r.delete(a),0===r.size&&(o(),o=null)}}}}const Ko={duration:4e3,initial:1,next:0,pausable:!1,dismissable:!0,reversed:!1,intro:{x:256}},Qo=(()=>{const{subscribe:t,update:e}=Jo([]);let n=0;const o={},r=t=>t instanceof Object;return{subscribe:t,push:(t,s={})=>{const i={target:"default",...r(t)?t:{...s,msg:t}},l=o[i.target]||{},a={...Ko,...l,...i,theme:{...l.theme,...i.theme},classes:[...l.classes||[],...i.classes||[]],id:++n};return e((t=>a.reversed?[...t,a]:[a,...t])),n},pop:t=>{e((e=>{if(!e.length||0===t)return[];if(r(t))return e.filter((e=>t(e)));const n=t||Math.max(...e.map((t=>t.id)));return e.filter((t=>t.id!==n))}))},set:(t,n={})=>{const o=r(t)?{...t}:{...n,id:t};e((t=>{const e=t.findIndex((t=>t.id===o.id));return e>-1&&(t[e]={...t[e],...o}),t}))},_init:(t="default",e={})=>(o[t]=e,o)}})();function tr(t){return"[object Date]"===Object.prototype.toString.call(t)}function er(t,e){if(t===e||t!=t)return()=>t;const n=typeof t;if(n!==typeof e||Array.isArray(t)!==Array.isArray(e))throw new Error("Cannot interpolate values of different type");if(Array.isArray(t)){const n=e.map(((e,n)=>er(t[n],e)));return t=>n.map((e=>e(t)))}if("object"===n){if(!t||!e)throw new Error("Object cannot be null");if(tr(t)&&tr(e)){t=t.getTime();const n=(e=e.getTime())-t;return e=>new Date(t+e*n)}const n=Object.keys(e),o={};return n.forEach((n=>{o[n]=er(t[n],e[n])})),t=>{const e={};return n.forEach((n=>{e[n]=o[n](t)})),e}}if("number"===n){const n=e-t;return e=>t+e*n}throw new Error(`Cannot interpolate ${n} values`)}function nr(e){let n,o,r=e[0].msg+"";return{c(){n=new k(!1),o=M(),n.a=o},m(t,e){n.m(r,t,e),b(t,o,e)},p(t,e){1&e&&r!==(r=t[0].msg+"")&&n.p(r)},i:t,o:t,d(t){t&&$(o),t&&n.d()}}}function or(t){let e,o,r;const s=[t[6]()];var i=t[0].component.src;function l(t){let e={};for(let t=0;t<s.length;t+=1)e=n(e,s[t]);return{props:e}}return i&&(e=new i(l())),{c(){e&&wt(e.$$.fragment),o=M()},m(t,n){e&&vt(e,t,n),b(t,o,n),r=!0},p(t,n){const r=64&n?function(t,e){const n={},o={},r={$$scope:1};let s=t.length;for(;s--;){const i=t[s],l=e[s];if(l){for(const t in i)t in l||(o[t]=1);for(const t in l)r[t]||(n[t]=l[t],r[t]=1);t[s]=l}else for(const t in i)r[t]=1}for(const t in o)t in n||(n[t]=void 0);return n}(s,[(a=t[6](),"object"==typeof a&&null!==a?a:{})]):{};var a;if(i!==(i=t[0].component.src)){if(e){at();const t=e;ut(t.$$.fragment,1,0,(()=>{bt(t,1)})),ct()}i?(e=new i(l()),wt(e.$$.fragment),dt(e.$$.fragment,1),vt(e,o.parentNode,o)):e=null}else i&&e.$set(r)},i(t){r||(e&&dt(e.$$.fragment,t),r=!0)},o(t){e&&ut(e.$$.fragment,t),r=!1},d(t){t&&$(o),e&&bt(e,t)}}}function rr(e){let n,o,r;return{c(){n=E("div"),n.textContent="✕",A(n,"class","_toastBtn pe svelte-5er0t9"),A(n,"role","button"),A(n,"tabindex","-1")},m(t,s){b(t,n,s),o||(r=C(n,"click",e[3]),o=!0)},p:t,d(t){t&&$(n),o=!1,r()}}}function sr(t){let e,n,o,r,i,l,a,c,d,u;const f=[or,nr],g=[];function p(t,e){return t[0].component?0:1}o=p(t),r=g[o]=f[o](t);let h=t[0].dismissable&&rr(t);return{c(){e=E("div"),n=E("div"),r.c(),i=O(),h&&h.c(),l=O(),a=E("progress"),A(n,"role","status"),A(n,"class","_toastMsg svelte-5er0t9"),D(n,"pe",t[0].component),A(a,"class","_toastBar svelte-5er0t9"),a.value=t[1],A(e,"class","_toastItem svelte-5er0t9"),D(e,"pe",t[0].pausable)},m(r,s){b(r,e,s),y(e,n),g[o].m(n,null),y(e,i),h&&h.m(e,null),y(e,l),y(e,a),c=!0,d||(u=[C(e,"mouseenter",t[4]),C(e,"mouseleave",t[5])],d=!0)},p(t,[s]){let i=o;o=p(t),o===i?g[o].p(t,s):(at(),ut(g[i],1,1,(()=>{g[i]=null})),ct(),r=g[o],r?r.p(t,s):(r=g[o]=f[o](t),r.c()),dt(r,1),r.m(n,null)),1&s&&D(n,"pe",t[0].component),t[0].dismissable?h?h.p(t,s):(h=rr(t),h.c(),h.m(e,l)):h&&(h.d(1),h=null),(!c||2&s)&&(a.value=t[1]),1&s&&D(e,"pe",t[0].pausable)},i(t){c||(dt(r),c=!0)},o(t){ut(r),c=!1},d(t){t&&$(e),g[o].d(),h&&h.d(),d=!1,s(u)}}}function ir(t,o,r){let s,{item:i}=o;const l=function(t,o={}){const r=Jo(t);let s,i=t;function l(l,a){if(null==t)return r.set(t=l),Promise.resolve();i=l;let c=s,d=!1,{delay:u=0,duration:g=400,easing:p=e,interpolate:h=er}=n(n({},o),a);if(0===g)return c&&(c.abort(),c=null),r.set(t=i),Promise.resolve();const y=f()+u;let w;return s=m((e=>{if(e<y)return!0;d||(w=h(t,l),"function"==typeof g&&(g=g(t,l)),d=!0),c&&(c.abort(),c=null);const n=e-y;return n>g?(r.set(t=l),!1):(r.set(t=w(p(n/g))),!0)})),s.promise}return{set:l,update:(e,n)=>l(e(i,t),n),subscribe:r.subscribe}}(i.initial,{duration:i.duration,easing:e});a(t,l,(t=>r(1,s=t)));const c=()=>Qo.pop(i.id),d=()=>{1!==s&&0!==s||c()};let u=i.initial,g=u,p=!1;return z((()=>{"function"==typeof i.onpop&&i.onpop(i.id)})),t.$$set=t=>{"item"in t&&r(0,i=t.item)},t.$$.update=()=>{1&t.$$.dirty&&void 0!==i.progress&&r(0,i.next=i.progress,i),131&t.$$.dirty&&u!==i.next&&(r(7,u=i.next),g=s,p=!1,l.set(u).then(d))},[i,s,l,c,()=>{i.pausable&&!p&&s!==u&&(l.set(s,{duration:0}),p=!0)},()=>{if(p){const t=i.duration,e=t-t*((s-g)/(u-g));l.set(u,{duration:e}).then(d),p=!1}},()=>{const{props:t={},sendIdTo:e}=i.component;return e&&(t[e]=i.id),t},u]}class lr extends Et{constructor(t){super(),xt(this,t,ir,sr,l,{item:0})}}function ar(t,e,n){const o=t.slice();return o[5]=e[n],o}function cr(n,o){let r,l,a,c,u,g,p,h,w,v=t;return l=new lr({props:{item:o[5]}}),{key:n,first:null,c(){r=E("li"),wt(l.$$.fragment),a=O(),A(r,"class",c=d(o[5].classes.join(" "))+" svelte-yh90az"),A(r,"style",u=o[1](o[5].theme)),this.first=r},m(t,e){b(t,r,e),vt(l,r,null),y(r,a),w=!0},p(t,e){o=t;const n={};1&e&&(n.item=o[5]),l.$set(n),(!w||1&e&&c!==(c=d(o[5].classes.join(" "))+" svelte-yh90az"))&&A(r,"class",c),(!w||1&e&&u!==(u=o[1](o[5].theme)))&&A(r,"style",u)},r(){h=r.getBoundingClientRect()},f(){!function(t){const e=getComputedStyle(t);if("absolute"!==e.position&&"fixed"!==e.position){const{width:n,height:o}=e,r=t.getBoundingClientRect();t.style.position="absolute",t.style.width=n,t.style.height=o,N(t,r)}}(r),v(),N(r,h)},a(){v(),v=function(n,o,r,s){if(!o)return t;const i=n.getBoundingClientRect();if(o.left===i.left&&o.right===i.right&&o.top===i.top&&o.bottom===i.bottom)return t;const{delay:l=0,duration:a=300,easing:c=e,start:d=f()+l,end:u=d+a,tick:g=t,css:p}=r(n,{from:o,to:i},s);let h,y=!0,w=!1;function v(){p&&P(n,h),y=!1}return m((t=>{if(!w&&t>=d&&(w=!0),w&&t>=u&&(g(1,0),v()),!y)return!1;if(w){const e=0+1*c((t-d)/a);g(e,1-e)}return!0})),p&&(h=I(n,0,1,a,l,c,p)),l||(w=!0),g(0,1),v}(r,h,Zo,{duration:200})},i(n){w||(dt(l.$$.fragment,n),K((()=>{p&&p.end(1),g=function(n,o,r){let s,l,a=o(n,r),c=!1,d=0;function u(){s&&P(n,s)}function g(){const{delay:o=0,duration:r=300,easing:i=e,tick:g=t,css:p}=a||ft;p&&(s=I(n,0,1,r,o,i,p,d++)),g(0,1);const h=f()+o,y=h+r;l&&l.abort(),c=!0,K((()=>st(n,!0,"start"))),l=m((t=>{if(c){if(t>=y)return g(1,0),st(n,!0,"end"),u(),c=!1;if(t>=h){const e=i((t-h)/r);g(e,1-e)}}return c}))}let p=!1;return{start(){p||(p=!0,P(n),i(a)?(a=a(),rt().then(g)):g())},invalidate(){p=!1},end(){c&&(u(),c=!1)}}}(r,fo,o[5].intro),g.start()})),w=!0)},o(n){ut(l.$$.fragment,n),g&&g.invalidate(),p=function(n,o,r){let l,a=o(n,r),c=!0;const d=lt;function u(){const{delay:o=0,duration:r=300,easing:i=e,tick:u=t,css:g}=a||ft;g&&(l=I(n,1,0,r,o,i,g));const p=f()+o,h=p+r;K((()=>st(n,!1,"start"))),m((t=>{if(c){if(t>=h)return u(0,1),st(n,!1,"end"),--d.r||s(d.c),!1;if(t>=p){const e=i((t-p)/r);u(1-e,e)}}return c}))}return d.r+=1,i(a)?rt().then((()=>{a=a(),u()})):u(),{end(t){t&&a.tick&&a.tick(1,0),c&&(l&&P(n,l),c=!1)}}}(r,uo,{}),w=!1},d(t){t&&$(r),bt(l),t&&p&&p.end()}}}function dr(t){let e,n,o=[],r=new Map,s=t[0];const i=t=>t[5].id;for(let e=0;e<s.length;e+=1){let n=ar(t,s,e),l=i(n);r.set(l,o[e]=cr(l,n))}return{c(){e=E("ul");for(let t=0;t<o.length;t+=1)o[t].c();A(e,"class","_toastContainer svelte-yh90az")},m(t,r){b(t,e,r);for(let t=0;t<o.length;t+=1)o[t].m(e,null);n=!0},p(t,[n]){if(3&n){s=t[0],at();for(let t=0;t<o.length;t+=1)o[t].r();o=yt(o,n,i,1,t,s,r,e,mt,cr,null,ar);for(let t=0;t<o.length;t+=1)o[t].a();ct()}},i(t){if(!n){for(let t=0;t<s.length;t+=1)dt(o[t]);n=!0}},o(t){for(let t=0;t<o.length;t+=1)ut(o[t]);n=!1},d(t){t&&$(e);for(let t=0;t<o.length;t+=1)o[t].d()}}}function ur(t,e,n){let o;a(t,Qo,(t=>n(4,o=t)));let r,{options:s={}}=e,{target:i="default"}=e;return t.$$set=t=>{"options"in t&&n(2,s=t.options),"target"in t&&n(3,i=t.target)},t.$$.update=()=>{12&t.$$.dirty&&Qo._init(i,s),24&t.$$.dirty&&n(0,r=o.filter((t=>t.target===i)))},[r,t=>Object.keys(t).reduce(((e,n)=>`${e}${n}:${t[n]};`),""),s,i,o]}class fr extends Et{constructor(t){super(),xt(this,t,ur,dr,l,{options:2,target:3})}}function gr(e){let n,o,r,s,i,l;return{c(){n=E("div"),o=E("h3"),o.textContent="New Obbattu Has been served",r=O(),s=E("button"),s.textContent="Refresh",A(s,"class","buttn svelte-1qcmkrb"),A(n,"class","main svelte-1qcmkrb")},m(t,a){b(t,n,a),y(n,o),y(n,r),y(n,s),i||(l=C(s,"click",e[0]),i=!0)},p:t,i:t,o:t,d(t){t&&$(n),i=!1,l()}}}function pr(t,e,n){let{toastId:o}=e;return t.$$set=t=>{"toastId"in t&&n(1,o=t.toastId)},[function(){Qo.pop(o)},o]}class hr extends Et{constructor(t){super(),xt(this,t,pr,gr,l,{toastId:1})}}function mr(t){let e;return{c(){e=T(t[0])},m(t,n){b(t,e,n)},p(t,n){1&n&&_(e,t[0])},d(t){t&&$(e)}}}function yr(t){let e,n,o,r,s,i,l,a,c=1===t[4].length?"0":"",d=1===t[3].length?"0":"",u=1===t[2].length?"0":"";return{c(){e=T(c),n=T(t[4]),o=T(":"),r=T(d),s=T(t[3]),i=T(":"),l=T(u),a=T(t[2])},m(t,c){b(t,e,c),b(t,n,c),b(t,o,c),b(t,r,c),b(t,s,c),b(t,i,c),b(t,l,c),b(t,a,c)},p(t,o){16&o&&c!==(c=1===t[4].length?"0":"")&&_(e,c),16&o&&_(n,t[4]),8&o&&d!==(d=1===t[3].length?"0":"")&&_(r,d),8&o&&_(s,t[3]),4&o&&u!==(u=1===t[2].length?"0":"")&&_(l,u),4&o&&_(a,t[2])},d(t){t&&$(e),t&&$(n),t&&$(o),t&&$(r),t&&$(s),t&&$(i),t&&$(l),t&&$(a)}}}function wr(e){let n;function o(t,e){return!1===t[1]?yr:mr}let r=o(e),s=r(e);return{c(){n=E("div"),s.c(),A(n,"class","timer")},m(t,e){b(t,n,e),s.m(n,null)},p(t,[e]){r===(r=o(t))&&s?s.p(t,e):(s.d(1),s=r(t),s&&(s.c(),s.m(n,null)))},i:t,o:t,d(t){t&&$(n),s.d()}}}function vr(t,e,n){let o,r,s;const i=F();let{endDate:l}=e,{finishMsg:a}=e;l=l();let c=!1,d=setInterval((()=>{n(5,l-=1e3);let t=Math.floor(l/36e5%24),e=Math.floor(Math.abs(l/6e4%60)),a=Math.floor(Math.abs(l/1e3%60));if(l<=0)return clearInterval(d),n(1,c=!0),void i("REFRESH_BOARD");n(4,o=Math.abs(t).toString()),n(3,r=e.toString()),n(2,s=a.toString())}),1e3);return t.$$set=t=>{"endDate"in t&&n(5,l=t.endDate),"finishMsg"in t&&n(0,a=t.finishMsg)},t.$$.update=()=>{32&t.$$.dirty&&n(4,o=Math.floor(l/36e5%24).toString()),32&t.$$.dirty&&n(3,r=Math.floor(Math.abs(l/6e4%60)).toString()),32&t.$$.dirty&&n(2,s=Math.floor(Math.abs(l/1e3%60)).toString())},[a,c,s,r,o,l]}class br extends Et{constructor(t){super(),xt(this,t,vr,wr,l,{endDate:5,finishMsg:0})}}var $r={};!function t(e,n,o,r){var s=!!(e.Worker&&e.Blob&&e.Promise&&e.OffscreenCanvas&&e.OffscreenCanvasRenderingContext2D&&e.HTMLCanvasElement&&e.HTMLCanvasElement.prototype.transferControlToOffscreen&&e.URL&&e.URL.createObjectURL);function i(){}function l(t){var o=n.exports.Promise,r=void 0!==o?o:e.Promise;return"function"==typeof r?new r(t):(t(i,i),null)}var a,c,d,u,f,g,p,h,m,y=(d=Math.floor(1e3/60),u={},f=0,"function"==typeof requestAnimationFrame&&"function"==typeof cancelAnimationFrame?(a=function(t){var e=Math.random();return u[e]=requestAnimationFrame((function n(o){f===o||f+d-1<o?(f=o,delete u[e],t()):u[e]=requestAnimationFrame(n)})),e},c=function(t){u[t]&&cancelAnimationFrame(u[t])}):(a=function(t){return setTimeout(t,d)},c=function(t){return clearTimeout(t)}),{frame:a,cancel:c}),w=(h={},function(){if(g)return g;if(!o&&s){var e=["var CONFETTI, SIZE = {}, module = {};","("+t.toString()+")(this, module, true, SIZE);","onmessage = function(msg) {","  if (msg.data.options) {","    CONFETTI(msg.data.options).then(function () {","      if (msg.data.callback) {","        postMessage({ callback: msg.data.callback });","      }","    });","  } else if (msg.data.reset) {","    CONFETTI.reset();","  } else if (msg.data.resize) {","    SIZE.width = msg.data.resize.width;","    SIZE.height = msg.data.resize.height;","  } else if (msg.data.canvas) {","    SIZE.width = msg.data.canvas.width;","    SIZE.height = msg.data.canvas.height;","    CONFETTI = module.exports.create(msg.data.canvas);","  }","}"].join("\n");try{g=new Worker(URL.createObjectURL(new Blob([e])))}catch(t){return void 0!==typeof console&&"function"==typeof console.warn&&console.warn("🎊 Could not load worker",t),null}!function(t){function e(e,n){t.postMessage({options:e||{},callback:n})}t.init=function(e){var n=e.transferControlToOffscreen();t.postMessage({canvas:n},[n])},t.fire=function(n,o,r){if(p)return e(n,null),p;var s=Math.random().toString(36).slice(2);return p=l((function(o){function i(e){e.data.callback===s&&(delete h[s],t.removeEventListener("message",i),p=null,r(),o())}t.addEventListener("message",i),e(n,s),h[s]=i.bind(null,{data:{callback:s}})}))},t.reset=function(){for(var e in t.postMessage({reset:!0}),h)h[e](),delete h[e]}}(g)}return g}),v={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,drift:0,ticks:200,x:.5,y:.5,shapes:["square","circle"],zIndex:100,colors:["#26ccff","#a25afd","#ff5e7e","#88ff5a","#fcff42","#ffa62d","#ff36ff"],disableForReducedMotion:!1,scalar:1};function b(t,e,n){return function(t,e){return e?e(t):t}(t&&null!=t[e]?t[e]:v[e],n)}function $(t){return t<0?0:Math.floor(t)}function x(t){return parseInt(t,16)}function E(t){return t.map(T)}function T(t){var e=String(t).replace(/[^0-9a-f]/gi,"");return e.length<6&&(e=e[0]+e[0]+e[1]+e[1]+e[2]+e[2]),{r:x(e.substring(0,2)),g:x(e.substring(2,4)),b:x(e.substring(4,6))}}function O(t){t.width=document.documentElement.clientWidth,t.height=document.documentElement.clientHeight}function M(t){var e=t.getBoundingClientRect();t.width=e.width,t.height=e.height}function C(t,e,n,s,i){var a,c,d=e.slice(),u=t.getContext("2d"),f=l((function(e){function l(){a=c=null,u.clearRect(0,0,s.width,s.height),i(),e()}a=y.frame((function e(){!o||s.width===r.width&&s.height===r.height||(s.width=t.width=r.width,s.height=t.height=r.height),s.width||s.height||(n(t),s.width=t.width,s.height=t.height),u.clearRect(0,0,s.width,s.height),d=d.filter((function(t){return function(t,e){e.x+=Math.cos(e.angle2D)*e.velocity+e.drift,e.y+=Math.sin(e.angle2D)*e.velocity+e.gravity,e.wobble+=e.wobbleSpeed,e.velocity*=e.decay,e.tiltAngle+=.1,e.tiltSin=Math.sin(e.tiltAngle),e.tiltCos=Math.cos(e.tiltAngle),e.random=Math.random()+2,e.wobbleX=e.x+10*e.scalar*Math.cos(e.wobble),e.wobbleY=e.y+10*e.scalar*Math.sin(e.wobble);var n=e.tick++/e.totalTicks,o=e.x+e.random*e.tiltCos,r=e.y+e.random*e.tiltSin,s=e.wobbleX+e.random*e.tiltCos,i=e.wobbleY+e.random*e.tiltSin;return t.fillStyle="rgba("+e.color.r+", "+e.color.g+", "+e.color.b+", "+(1-n)+")",t.beginPath(),"circle"===e.shape?t.ellipse?t.ellipse(e.x,e.y,Math.abs(s-o)*e.ovalScalar,Math.abs(i-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI):function(t,e,n,o,r,s,i,l,a){t.save(),t.translate(e,n),t.rotate(s),t.scale(o,r),t.arc(0,0,1,i,l,a),t.restore()}(t,e.x,e.y,Math.abs(s-o)*e.ovalScalar,Math.abs(i-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI):(t.moveTo(Math.floor(e.x),Math.floor(e.y)),t.lineTo(Math.floor(e.wobbleX),Math.floor(r)),t.lineTo(Math.floor(s),Math.floor(i)),t.lineTo(Math.floor(o),Math.floor(e.wobbleY))),t.closePath(),t.fill(),e.tick<e.totalTicks}(u,t)})),d.length?a=y.frame(e):l()})),c=l}));return{addFettis:function(t){return d=d.concat(t),f},canvas:t,promise:f,reset:function(){a&&y.cancel(a),c&&c()}}}function A(t,n){var o,r=!t,i=!!b(n||{},"resize"),a=b(n,"disableForReducedMotion",Boolean),c=s&&!!b(n||{},"useWorker")?w():null,d=r?O:M,u=!(!t||!c)&&!!t.__confetti_initialized,f="function"==typeof matchMedia&&matchMedia("(prefers-reduced-motion)").matches;function g(e,n,r){for(var s,i,l,a,c,u=b(e,"particleCount",$),f=b(e,"angle",Number),g=b(e,"spread",Number),p=b(e,"startVelocity",Number),h=b(e,"decay",Number),m=b(e,"gravity",Number),y=b(e,"drift",Number),w=b(e,"colors",E),v=b(e,"ticks",Number),x=b(e,"shapes"),T=b(e,"scalar"),O=function(t){var e=b(t,"origin",Object);return e.x=b(e,"x",Number),e.y=b(e,"y",Number),e}(e),M=u,A=[],_=t.width*O.x,D=t.height*O.y;M--;)A.push((s={x:_,y:D,angle:f,spread:g,startVelocity:p,color:w[M%w.length],shape:x[(a=0,c=x.length,Math.floor(Math.random()*(c-a))+a)],ticks:v,decay:h,gravity:m,drift:y,scalar:T},i=void 0,l=void 0,i=s.angle*(Math.PI/180),l=s.spread*(Math.PI/180),{x:s.x,y:s.y,wobble:10*Math.random(),wobbleSpeed:Math.min(.11,.1*Math.random()+.05),velocity:.5*s.startVelocity+Math.random()*s.startVelocity,angle2D:-i+(.5*l-Math.random()*l),tiltAngle:(.5*Math.random()+.25)*Math.PI,color:s.color,shape:s.shape,tick:0,totalTicks:s.ticks,decay:s.decay,drift:s.drift,random:Math.random()+2,tiltSin:0,tiltCos:0,wobbleX:0,wobbleY:0,gravity:3*s.gravity,ovalScalar:.6,scalar:s.scalar}));return o?o.addFettis(A):(o=C(t,A,d,n,r)).promise}function p(n){var s=a||b(n,"disableForReducedMotion",Boolean),p=b(n,"zIndex",Number);if(s&&f)return l((function(t){t()}));r&&o?t=o.canvas:r&&!t&&(t=function(t){var e=document.createElement("canvas");return e.style.position="fixed",e.style.top="0px",e.style.left="0px",e.style.pointerEvents="none",e.style.zIndex=t,e}(p),document.body.appendChild(t)),i&&!u&&d(t);var h={width:t.width,height:t.height};function m(){if(c){var e={getBoundingClientRect:function(){if(!r)return t.getBoundingClientRect()}};return d(e),void c.postMessage({resize:{width:e.width,height:e.height}})}h.width=h.height=null}function y(){o=null,i&&e.removeEventListener("resize",m),r&&t&&(document.body.removeChild(t),t=null,u=!1)}return c&&!u&&c.init(t),u=!0,c&&(t.__confetti_initialized=!0),i&&e.addEventListener("resize",m,!1),c?c.fire(n,h,y):g(n,h,y)}return p.reset=function(){c&&c.reset(),o&&o.reset()},p}function _(){return m||(m=A(null,{useWorker:!0,resize:!0})),m}n.exports=function(){return _().apply(this,arguments)},n.exports.reset=function(){_().reset()},n.exports.create=A}(function(){return"undefined"!=typeof window?window:"undefined"!=typeof self?self:this||{}}(),$r,!1);var xr=$r.exports;function Er(e){let n;return{c(){n=E("div"),n.innerHTML='<h1 class="svelte-19i2ufz">Generating a new game...</h1> \n            <h3>Please wait...</h3> \n            <div class="loadingio svelte-19i2ufz"><div class="ldio svelte-19i2ufz"><div class="svelte-19i2ufz"></div><div class="svelte-19i2ufz"></div><div class="svelte-19i2ufz"></div><div class="svelte-19i2ufz"></div></div></div>',A(n,"class","notice flexx svelte-19i2ufz")},m(t,e){b(t,n,e)},p:t,i:t,o:t,d(t){t&&$(n)}}}function Tr(t){let e,n,o,r;e=new Bo({props:{questions:t[0],answers:t[2],ans_to_show:t[1],TOTAL_MOVES:t[3],OBBATTU_COUNT:t[4]}}),e.$on("GAME_WON",t[8]),e.$on("GAME_LOST",t[9]);let s="timer"===t[5]&&Or(t);return{c(){wt(e.$$.fragment),n=O(),s&&s.c(),o=M()},m(t,i){vt(e,t,i),b(t,n,i),s&&s.m(t,i),b(t,o,i),r=!0},p(t,n){const r={};1&n&&(r.questions=t[0]),4&n&&(r.answers=t[2]),2&n&&(r.ans_to_show=t[1]),8&n&&(r.TOTAL_MOVES=t[3]),16&n&&(r.OBBATTU_COUNT=t[4]),e.$set(r),"timer"===t[5]?s?(s.p(t,n),32&n&&dt(s,1)):(s=Or(t),s.c(),dt(s,1),s.m(o.parentNode,o)):s&&(at(),ut(s,1,1,(()=>{s=null})),ct())},i(t){r||(dt(e.$$.fragment,t),dt(s),r=!0)},o(t){ut(e.$$.fragment,t),ut(s),r=!1},d(t){bt(e,t),t&&$(n),s&&s.d(t),t&&$(o)}}}function Or(e){let n,o,r,s,i,l,a;return s=new br({props:{endDate:e[7],finishMsg:"Serving new Obbattu..."}}),s.$on("REFRESH_BOARD",e[10]),{c(){n=E("div"),o=E("h2"),o.textContent="ಮುಂದಿನ ಒಬ್ಬಟ್ಟು",r=O(),wt(s.$$.fragment),i=O(),l=E("hr"),A(n,"class","timer notice flexx svelte-19i2ufz"),A(l,"class","spacer svelte-19i2ufz")},m(t,e){b(t,n,e),y(n,o),y(n,r),vt(s,n,null),b(t,i,e),b(t,l,e),a=!0},p:t,i(t){a||(dt(s.$$.fragment,t),a=!0)},o(t){ut(s.$$.fragment,t),a=!1},d(t){t&&$(n),bt(s),t&&$(i),t&&$(l)}}}function Mr(t){let e,n,o,r,s,i,l,a;n=new Vo({});const c=[Tr,Er],d=[];function u(t,e){return!1===t[6]?0:1}return r=u(t),s=d[r]=c[r](t),l=new fr({}),{c(){e=E("main"),wt(n.$$.fragment),o=O(),s.c(),i=O(),wt(l.$$.fragment),A(e,"class","svelte-19i2ufz")},m(t,s){b(t,e,s),vt(n,e,null),y(e,o),d[r].m(e,null),b(t,i,s),vt(l,t,s),a=!0},p(t,[n]){let o=r;r=u(t),r===o?d[r].p(t,n):(at(),ut(d[o],1,1,(()=>{d[o]=null})),ct(),s=d[r],s?s.p(t,n):(s=d[r]=c[r](t),s.c()),dt(s,1),s.m(e,null))},i(t){a||(dt(n.$$.fragment,t),dt(s),dt(l.$$.fragment,t),a=!0)},o(t){ut(n.$$.fragment,t),ut(s),ut(l.$$.fragment,t),a=!1},d(t){t&&$(e),bt(n),d[r].d(),t&&$(i),bt(l,t)}}}$r.exports.create;function Cr(t,e){return Math.random()*(e-t)+t}function Ar(t,e,n){let o;const r={startVelocity:30,spread:360,ticks:60,zIndex:0};let s,i,l,a=20,c=0;const d=23,u=59,f=59;let g=null;function p(t=!0){let e=new Date;e.setHours(d,u,f);let n=new Date,o=e-n;return o<0&&(e.setDate(e.getDate()+1),o=Math.abs(e-n)),!0===t?o:e}function h(){null===g&&Qo.push({component:{src:hr,sendIdTo:"toastId"},dismissable:!0,initial:0,onpop:m})}function m(t){setTimeout((()=>{n(5,g=null)}),1e3),window.localStorage.removeItem("GAME_META"),window.localStorage.removeItem("GAME_BOARD"),n(0,s=void 0),y(!0),setTimeout(h,p())}async function y(t=!1){let e=new Date;!0===t&&(e=new Date(e.getTime()+12e4));let o=xo("GAME_BOARD"),r=xo("GAME_META");if(null===o||null===r){let t=await async function(){let t,e=(new Date).getDate();return await fetch("/get-board/"+e).then((t=>t.json())).then((e=>{n(2,l=e.answers),n(1,i=e.answers_to_show),n(0,s=e.questions),n(4,c=e.OBBATTU_COUNT),t=e})).catch((e=>{console.log("an err occured while setting data",e),t=!1})),t}();if(!1===t)return;let e=new Date;e.setHours(0,0,0),$o("GAME_META",{timecreated:e,ansToShow:t.answers_to_show,answers:t.answers,count:t.OBBATTU_COUNT});let o={questions:t.questions,MOVES:20};n(3,a=20),$o("GAME_BOARD",o)}else{if(e-new Date(r.timecreated)>864e5)return window.localStorage.removeItem("GAME_META"),window.localStorage.removeItem("GAME_BOARD"),y();n(0,s=o.questions),n(3,a=o.MOVES),n(1,i=r.ansToShow),n(2,l=r.answers),n(4,c=r.count)}}return setTimeout(h,p()),y(),t.$$.update=()=>{7&t.$$.dirty&&n(6,o=void 0===s||void 0===i||void 0===l)},[s,i,l,a,c,g,o,p,async function(t){let e=Date.now()+5e3,o=t.detail.extra;if(null===g&&n(5,g="timer"),!0===o){console.log("YAY, You won the game. Thanks a lot for playing Obbattu. It means a lot to me :D"),navigator.vibrate(200),await async function(){let t,e=window.localStorage.getItem("GAME_STATS");t=null===e?{GAMES_PLAYED:0,GAMES_WON:0}:JSON.parse(e),t.GAMES_WON+=1,t.GAMES_PLAYED+=1,window.localStorage.setItem("GAME_STATS",JSON.stringify(t)),await fetch("/played/true")}();let t=setInterval((function(){let n=e-Date.now();if(n<=0)return clearInterval(t);let o=n/5e3*50;xr(Object.assign({},r,{particleCount:o,origin:{x:Cr(.1,.3),y:Math.random()-.2}})),xr(Object.assign({},r,{particleCount:o,origin:{x:Cr(.7,.9),y:Math.random()-.2}}))}),250)}},async function(t){!0===t.detail.extra&&(console.log("Aww :(. You Lost. Thanks a lot for playing Obbattu. It means a lot to me :D"),await async function(){let t,e=window.localStorage.getItem("GAME_STATS");t=null===e?{GAMES_PLAYED:0,GAMES_WON:0}:JSON.parse(e),t.GAMES_PLAYED+=1,window.localStorage.setItem("GAME_STATS",JSON.stringify(t)),await fetch("/played/false")}()),null===g&&n(5,g="timer")},m]}const _r=new class extends Et{constructor(t){super(),xt(this,t,Ar,Mr,l,{})}}({target:document.body,props:{}});return"serviceWorker"in navigator&&navigator.serviceWorker.register("./service-worker.js").then((t=>console.log("Service worker registered",t))).catch((t=>console.log("err occurred while loading service worker",t))),_r}();
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function assign(tar, src) {
+        // @ts-ignore
+        for (const k in src)
+            tar[k] = src[k];
+        return tar;
+    }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+    function validate_store(store, name) {
+        if (store != null && typeof store.subscribe !== 'function') {
+            throw new Error(`'${name}' is not a store with a 'subscribe' method`);
+        }
+    }
+    function subscribe(store, ...callbacks) {
+        if (store == null) {
+            return noop;
+        }
+        const unsub = store.subscribe(...callbacks);
+        return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+    }
+    function component_subscribe(component, store, callback) {
+        component.$$.on_destroy.push(subscribe(store, callback));
+    }
+    function create_slot(definition, ctx, $$scope, fn) {
+        if (definition) {
+            const slot_ctx = get_slot_context(definition, ctx, $$scope, fn);
+            return definition[0](slot_ctx);
+        }
+    }
+    function get_slot_context(definition, ctx, $$scope, fn) {
+        return definition[1] && fn
+            ? assign($$scope.ctx.slice(), definition[1](fn(ctx)))
+            : $$scope.ctx;
+    }
+    function get_slot_changes(definition, $$scope, dirty, fn) {
+        if (definition[2] && fn) {
+            const lets = definition[2](fn(dirty));
+            if ($$scope.dirty === undefined) {
+                return lets;
+            }
+            if (typeof lets === 'object') {
+                const merged = [];
+                const len = Math.max($$scope.dirty.length, lets.length);
+                for (let i = 0; i < len; i += 1) {
+                    merged[i] = $$scope.dirty[i] | lets[i];
+                }
+                return merged;
+            }
+            return $$scope.dirty | lets;
+        }
+        return $$scope.dirty;
+    }
+    function update_slot_base(slot, slot_definition, ctx, $$scope, slot_changes, get_slot_context_fn) {
+        if (slot_changes) {
+            const slot_context = get_slot_context(slot_definition, ctx, $$scope, get_slot_context_fn);
+            slot.p(slot_context, slot_changes);
+        }
+    }
+    function get_all_dirty_from_scope($$scope) {
+        if ($$scope.ctx.length > 32) {
+            const dirty = [];
+            const length = $$scope.ctx.length / 32;
+            for (let i = 0; i < length; i++) {
+                dirty[i] = -1;
+            }
+            return dirty;
+        }
+        return -1;
+    }
+    function null_to_empty(value) {
+        return value == null ? '' : value;
+    }
+    function action_destroyer(action_result) {
+        return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop$1(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root && root.host) {
+            return root;
+        }
+        return node.ownerDocument;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element.sheet;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
+    function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, bubbles, cancelable, detail);
+        return e;
+    }
+    class HtmlTag {
+        constructor(is_svg = false) {
+            this.is_svg = false;
+            this.is_svg = is_svg;
+            this.e = this.n = null;
+        }
+        c(html) {
+            this.h(html);
+        }
+        m(html, target, anchor = null) {
+            if (!this.e) {
+                if (this.is_svg)
+                    this.e = svg_element(target.nodeName);
+                else
+                    this.e = element(target.nodeName);
+                this.t = target;
+                this.c(html);
+            }
+            this.i(anchor);
+        }
+        h(html) {
+            this.e.innerHTML = html;
+            this.n = Array.from(this.e.childNodes);
+        }
+        i(anchor) {
+            for (let i = 0; i < this.n.length; i += 1) {
+                insert(this.t, this.n[i], anchor);
+            }
+        }
+        p(html) {
+            this.d();
+            this.h(html);
+            this.i(this.a);
+        }
+        d() {
+            this.n.forEach(detach);
+        }
+    }
+
+    // we need to store the information for multiple documents because a Svelte application could also contain iframes
+    // https://github.com/sveltejs/svelte/issues/3624
+    const managed_styles = new Map();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_style_information(doc, node) {
+        const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+        managed_styles.set(doc, info);
+        return info;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+        if (!rules[name]) {
+            rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            managed_styles.forEach(info => {
+                const { stylesheet } = info;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                info.rules = {};
+            });
+            managed_styles.clear();
+        });
+    }
+
+    function create_animation(node, from, fn, params) {
+        if (!from)
+            return noop;
+        const to = node.getBoundingClientRect();
+        if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
+            return noop;
+        const { delay = 0, duration = 300, easing = identity, 
+        // @ts-ignore todo: should this be separated from destructuring? Or start/end added to public api and documentation?
+        start: start_time = now() + delay, 
+        // @ts-ignore todo:
+        end = start_time + duration, tick = noop, css } = fn(node, { from, to }, params);
+        let running = true;
+        let started = false;
+        let name;
+        function start() {
+            if (css) {
+                name = create_rule(node, 0, 1, duration, delay, easing, css);
+            }
+            if (!delay) {
+                started = true;
+            }
+        }
+        function stop() {
+            if (css)
+                delete_rule(node, name);
+            running = false;
+        }
+        loop$1(now => {
+            if (!started && now >= start_time) {
+                started = true;
+            }
+            if (started && now >= end) {
+                tick(1, 0);
+                stop();
+            }
+            if (!running) {
+                return false;
+            }
+            if (started) {
+                const p = now - start_time;
+                const t = 0 + 1 * easing(p / duration);
+                tick(t, 1 - t);
+            }
+            return true;
+        });
+        start();
+        tick(0, 1);
+        return stop;
+    }
+    function fix_position(node) {
+        const style = getComputedStyle(node);
+        if (style.position !== 'absolute' && style.position !== 'fixed') {
+            const { width, height } = style;
+            const a = node.getBoundingClientRect();
+            node.style.position = 'absolute';
+            node.style.width = width;
+            node.style.height = height;
+            add_transform(node, a);
+        }
+    }
+    function add_transform(node, a) {
+        const b = node.getBoundingClientRect();
+        if (a.left !== b.left || a.top !== b.top) {
+            const style = getComputedStyle(node);
+            const transform = style.transform === 'none' ? '' : style.transform;
+            node.style.transform = `${transform} translate(${a.left - b.left}px, ${a.top - b.top}px)`;
+        }
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function beforeUpdate(fn) {
+        get_current_component().$$.before_update.push(fn);
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
+    }
+    function onDestroy(fn) {
+        get_current_component().$$.on_destroy.push(fn);
+    }
+    function createEventDispatcher() {
+        const component = get_current_component();
+        return (type, detail, { cancelable = false } = {}) => {
+            const callbacks = component.$$.callbacks[type];
+            if (callbacks) {
+                // TODO are there situations where events could be dispatched
+                // in a server (non-DOM) environment?
+                const event = custom_event(type, detail, { cancelable });
+                callbacks.slice().forEach(fn => {
+                    fn.call(component, event);
+                });
+                return !event.defaultPrevented;
+            }
+            return true;
+        };
+    }
+    function setContext(key, context) {
+        get_current_component().$$.context.set(key, context);
+        return context;
+    }
+    function getContext(key) {
+        return get_current_component().$$.context.get(key);
+    }
+    function getAllContexts() {
+        return get_current_component().$$.context;
+    }
+    function hasContext(key) {
+        return get_current_component().$$.context.has(key);
+    }
+    // TODO figure out if we still want to support
+    // shorthand events, or if we want to implement
+    // a real bubbling mechanism
+    function bubble(component, event) {
+        const callbacks = component.$$.callbacks[event.type];
+        if (callbacks) {
+            // @ts-ignore
+            callbacks.slice().forEach(fn => fn.call(this, event));
+        }
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function tick() {
+        schedule_update();
+        return resolved_promise;
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    // flush() calls callbacks in this order:
+    // 1. All beforeUpdate callbacks, in order: parents before children
+    // 2. All bind:this callbacks, in reverse order: children before parents.
+    // 3. All afterUpdate callbacks, in order: parents before children. EXCEPT
+    //    for afterUpdates called during the initial onMount, which are called in
+    //    reverse order: children before parents.
+    // Since callbacks might update component values, which could trigger another
+    // call to flush(), the following steps guard against this:
+    // 1. During beforeUpdate, any updated components will be added to the
+    //    dirty_components array and will cause a reentrant call to flush(). Because
+    //    the flush index is kept outside the function, the reentrant call will pick
+    //    up where the earlier call left off and go through all dirty components. The
+    //    current_component value is saved and restored so that the reentrant call will
+    //    not interfere with the "parent" flush() call.
+    // 2. bind:this callbacks cannot trigger new flush() calls.
+    // 3. During afterUpdate, any updated components will NOT have their afterUpdate
+    //    callback called a second time; the seen_callbacks set, outside the flush()
+    //    function, guarantees this behavior.
+    const seen_callbacks = new Set();
+    let flushidx = 0; // Do *not* move this inside the flush() function
+    function flush() {
+        const saved_component = current_component;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (flushidx < dirty_components.length) {
+                const component = dirty_components[flushidx];
+                flushidx++;
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            flushidx = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        seen_callbacks.clear();
+        set_current_component(saved_component);
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+        else if (callback) {
+            callback();
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_in_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = false;
+        let animation_name;
+        let task;
+        let uid = 0;
+        function cleanup() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 0, 1, duration, delay, easing, css, uid++);
+            tick(0, 1);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            if (task)
+                task.abort();
+            running = true;
+            add_render_callback(() => dispatch(node, true, 'start'));
+            task = loop$1(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(1, 0);
+                        dispatch(node, true, 'end');
+                        cleanup();
+                        return running = false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(t, 1 - t);
+                    }
+                }
+                return running;
+            });
+        }
+        let started = false;
+        return {
+            start() {
+                if (started)
+                    return;
+                started = true;
+                delete_rule(node);
+                if (is_function(config)) {
+                    config = config();
+                    wait().then(go);
+                }
+                else {
+                    go();
+                }
+            },
+            invalidate() {
+                started = false;
+            },
+            end() {
+                if (running) {
+                    cleanup();
+                    running = false;
+                }
+            }
+        };
+    }
+    function create_out_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = true;
+        let animation_name;
+        const group = outros;
+        group.r += 1;
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 1, 0, duration, delay, easing, css);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            add_render_callback(() => dispatch(node, false, 'start'));
+            loop$1(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(0, 1);
+                        dispatch(node, false, 'end');
+                        if (!--group.r) {
+                            // this will result in `end()` being called,
+                            // so we don't need to clean up here
+                            run_all(group.c);
+                        }
+                        return false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(1 - t, t);
+                    }
+                }
+                return running;
+            });
+        }
+        if (is_function(config)) {
+            wait().then(() => {
+                // @ts-ignore
+                config = config();
+                go();
+            });
+        }
+        else {
+            go();
+        }
+        return {
+            end(reset) {
+                if (reset && config.tick) {
+                    config.tick(1, 0);
+                }
+                if (running) {
+                    if (animation_name)
+                        delete_rule(node, animation_name);
+                    running = false;
+                }
+            }
+        };
+    }
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = (program.b - t);
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop$1(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+    function outro_and_destroy_block(block, lookup) {
+        transition_out(block, 1, 1, () => {
+            lookup.delete(block.key);
+        });
+    }
+    function fix_and_outro_and_destroy_block(block, lookup) {
+        block.f();
+        outro_and_destroy_block(block, lookup);
+    }
+    function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                block.p(child_ctx, dirty);
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        return new_blocks;
+    }
+    function validate_each_keys(ctx, list, get_context, get_key) {
+        const keys = new Set();
+        for (let i = 0; i < list.length; i++) {
+            const key = get_key(get_context(ctx, list, i));
+            if (keys.has(key)) {
+                throw new Error('Cannot have duplicate keys in a keyed each');
+            }
+            keys.add(key);
+        }
+    }
+
+    function get_spread_update(levels, updates) {
+        const update = {};
+        const to_null_out = {};
+        const accounted_for = { $$scope: 1 };
+        let i = levels.length;
+        while (i--) {
+            const o = levels[i];
+            const n = updates[i];
+            if (n) {
+                for (const key in o) {
+                    if (!(key in n))
+                        to_null_out[key] = 1;
+                }
+                for (const key in n) {
+                    if (!accounted_for[key]) {
+                        update[key] = n[key];
+                        accounted_for[key] = 1;
+                    }
+                }
+                levels[i] = n;
+            }
+            else {
+                for (const key in o) {
+                    accounted_for[key] = 1;
+                }
+            }
+        }
+        for (const key in to_null_out) {
+            if (!(key in update))
+                update[key] = undefined;
+        }
+        return update;
+    }
+    function get_spread_object(spread_props) {
+        return typeof spread_props === 'object' && spread_props !== null ? spread_props : {};
+    }
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor, customElement) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback(() => {
+                const new_on_destroy = on_mount.map(run).filter(is_function);
+                if (on_destroy) {
+                    on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, append_styles, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false,
+            root: options.target || parent_component.$$.root
+        };
+        append_styles && append_styles($$.root);
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor, options.customElement);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.49.0' }, detail), { bubbles: true }));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev('SvelteDOMSetData', { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    /**
+     * Base class for Svelte components with some minor dev-enhancements. Used when dev=true.
+     */
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+    /**
+     * Base class to create strongly typed Svelte components.
+     * This only exists for typing purposes and should be used in `.d.ts` files.
+     *
+     * ### Example:
+     *
+     * You have component library on npm called `component-library`, from which
+     * you export a component called `MyComponent`. For Svelte+TypeScript users,
+     * you want to provide typings. Therefore you create a `index.d.ts`:
+     * ```ts
+     * import { SvelteComponentTyped } from "svelte";
+     * export class MyComponent extends SvelteComponentTyped<{foo: string}> {}
+     * ```
+     * Typing this makes it possible for IDEs like VS Code with the Svelte extension
+     * to provide intellisense and to use the component like this in a Svelte file
+     * with TypeScript:
+     * ```svelte
+     * <script lang="ts">
+     * 	import { MyComponent } from "component-library";
+     * </script>
+     * <MyComponent foo={'bar'} />
+     * ```
+     *
+     * #### Why not make this part of `SvelteComponent(Dev)`?
+     * Because
+     * ```ts
+     * class ASubclassOfSvelteComponent extends SvelteComponent<{foo: string}> {}
+     * const component: typeof SvelteComponent = ASubclassOfSvelteComponent;
+     * ```
+     * will throw a type error, so we need to separate the more strictly typed class.
+     */
+    class SvelteComponentTyped extends SvelteComponentDev {
+        constructor(options) {
+            super(options);
+        }
+    }
+
+    /* src\LetterContainer\Letter.svelte generated by Svelte v3.49.0 */
+
+    const file$g = "src\\LetterContainer\\Letter.svelte";
+
+    // (11:4) {#if letter.letter}
+    function create_if_block$5(ctx) {
+    	let t_value = /*letter*/ ctx[0].letter + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*letter*/ 1 && t_value !== (t_value = /*letter*/ ctx[0].letter + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$5.name,
+    		type: "if",
+    		source: "(11:4) {#if letter.letter}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$g(ctx) {
+    	let div;
+    	let if_block = /*letter*/ ctx[0].letter && create_if_block$5(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if (if_block) if_block.c();
+    			attr_dev(div, "class", "letter svelte-we6obl");
+    			toggle_class(div, "game_lost", /*letter*/ ctx[0].game_state === "game_lost");
+    			toggle_class(div, "game_won", /*letter*/ ctx[0].game_state === "game_won");
+    			toggle_class(div, "incorrect", /*letter*/ ctx[0].state === "incorrect");
+    			toggle_class(div, "misplaced", /*letter*/ ctx[0].state === "misplaced");
+    			toggle_class(div, "correct", /*letter*/ ctx[0].state === "correct");
+    			add_location(div, file$g, 4, 0, 46);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if (if_block) if_block.m(div, null);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (/*letter*/ ctx[0].letter) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block$5(ctx);
+    					if_block.c();
+    					if_block.m(div, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (dirty & /*letter*/ 1) {
+    				toggle_class(div, "game_lost", /*letter*/ ctx[0].game_state === "game_lost");
+    			}
+
+    			if (dirty & /*letter*/ 1) {
+    				toggle_class(div, "game_won", /*letter*/ ctx[0].game_state === "game_won");
+    			}
+
+    			if (dirty & /*letter*/ 1) {
+    				toggle_class(div, "incorrect", /*letter*/ ctx[0].state === "incorrect");
+    			}
+
+    			if (dirty & /*letter*/ 1) {
+    				toggle_class(div, "misplaced", /*letter*/ ctx[0].state === "misplaced");
+    			}
+
+    			if (dirty & /*letter*/ 1) {
+    				toggle_class(div, "correct", /*letter*/ ctx[0].state === "correct");
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (if_block) if_block.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$g.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$g($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Letter', slots, []);
+    	let { letter } = $$props;
+    	const writable_props = ['letter'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Letter> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('letter' in $$props) $$invalidate(0, letter = $$props.letter);
+    	};
+
+    	$$self.$capture_state = () => ({ letter });
+
+    	$$self.$inject_state = $$props => {
+    		if ('letter' in $$props) $$invalidate(0, letter = $$props.letter);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [letter];
+    }
+
+    class Letter$1 extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$g, create_fragment$g, safe_not_equal, { letter: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Letter",
+    			options,
+    			id: create_fragment$g.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*letter*/ ctx[0] === undefined && !('letter' in props)) {
+    			console.warn("<Letter> was created without expected prop 'letter'");
+    		}
+    	}
+
+    	get letter() {
+    		throw new Error("<Letter>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set letter(value) {
+    		throw new Error("<Letter>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    // external events
+    const FINALIZE_EVENT_NAME = "finalize";
+    const CONSIDER_EVENT_NAME = "consider";
+
+    /**
+     * @typedef {Object} Info
+     * @property {string} trigger
+     * @property {string} id
+     * @property {string} source
+     * @param {Node} el
+     * @param {Array} items
+     * @param {Info} info
+     */
+    function dispatchFinalizeEvent(el, items, info) {
+        el.dispatchEvent(
+            new CustomEvent(FINALIZE_EVENT_NAME, {
+                detail: {items, info}
+            })
+        );
+    }
+
+    /**
+     * Dispatches a consider event
+     * @param {Node} el
+     * @param {Array} items
+     * @param {Info} info
+     */
+    function dispatchConsiderEvent(el, items, info) {
+        el.dispatchEvent(
+            new CustomEvent(CONSIDER_EVENT_NAME, {
+                detail: {items, info}
+            })
+        );
+    }
+
+    // internal events
+    const DRAGGED_ENTERED_EVENT_NAME = "draggedEntered";
+    const DRAGGED_LEFT_EVENT_NAME = "draggedLeft";
+    const DRAGGED_OVER_INDEX_EVENT_NAME = "draggedOverIndex";
+    const DRAGGED_LEFT_DOCUMENT_EVENT_NAME = "draggedLeftDocument";
+
+    const DRAGGED_LEFT_TYPES = {
+        LEFT_FOR_ANOTHER: "leftForAnother",
+        OUTSIDE_OF_ANY: "outsideOfAny"
+    };
+
+    function dispatchDraggedElementEnteredContainer(containerEl, indexObj, draggedEl) {
+        containerEl.dispatchEvent(
+            new CustomEvent(DRAGGED_ENTERED_EVENT_NAME, {
+                detail: {indexObj, draggedEl}
+            })
+        );
+    }
+
+    /**
+     * @param containerEl - the dropzone the element left
+     * @param draggedEl - the dragged element
+     * @param theOtherDz - the new dropzone the element entered
+     */
+    function dispatchDraggedElementLeftContainerForAnother(containerEl, draggedEl, theOtherDz) {
+        containerEl.dispatchEvent(
+            new CustomEvent(DRAGGED_LEFT_EVENT_NAME, {
+                detail: {draggedEl, type: DRAGGED_LEFT_TYPES.LEFT_FOR_ANOTHER, theOtherDz}
+            })
+        );
+    }
+
+    function dispatchDraggedElementLeftContainerForNone(containerEl, draggedEl) {
+        containerEl.dispatchEvent(
+            new CustomEvent(DRAGGED_LEFT_EVENT_NAME, {
+                detail: {draggedEl, type: DRAGGED_LEFT_TYPES.OUTSIDE_OF_ANY}
+            })
+        );
+    }
+    function dispatchDraggedElementIsOverIndex(containerEl, indexObj, draggedEl) {
+        containerEl.dispatchEvent(
+            new CustomEvent(DRAGGED_OVER_INDEX_EVENT_NAME, {
+                detail: {indexObj, draggedEl}
+            })
+        );
+    }
+    function dispatchDraggedLeftDocument(draggedEl) {
+        window.dispatchEvent(
+            new CustomEvent(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, {
+                detail: {draggedEl}
+            })
+        );
+    }
+
+    const TRIGGERS = {
+        DRAG_STARTED: "dragStarted",
+        DRAGGED_ENTERED: DRAGGED_ENTERED_EVENT_NAME,
+        DRAGGED_ENTERED_ANOTHER: "dragEnteredAnother",
+        DRAGGED_OVER_INDEX: DRAGGED_OVER_INDEX_EVENT_NAME,
+        DRAGGED_LEFT: DRAGGED_LEFT_EVENT_NAME,
+        DRAGGED_LEFT_ALL: "draggedLeftAll",
+        DROPPED_INTO_ZONE: "droppedIntoZone",
+        DROPPED_INTO_ANOTHER: "droppedIntoAnother",
+        DROPPED_OUTSIDE_OF_ANY: "droppedOutsideOfAny",
+        DRAG_STOPPED: "dragStopped"
+    };
+
+    const SOURCES = {
+        POINTER: "pointer",
+        KEYBOARD: "keyboard"
+    };
+
+    const SHADOW_ITEM_MARKER_PROPERTY_NAME = "isDndShadowItem";
+    const SHADOW_ELEMENT_ATTRIBUTE_NAME = "data-is-dnd-shadow-item";
+    const SHADOW_PLACEHOLDER_ITEM_ID = "id:dnd-shadow-placeholder-0000";
+    const DRAGGED_ELEMENT_ID = "dnd-action-dragged-el";
+
+    let ITEM_ID_KEY = "id";
+    let activeDndZoneCount = 0;
+    function incrementActiveDropZoneCount() {
+        activeDndZoneCount++;
+    }
+    function decrementActiveDropZoneCount() {
+        if (activeDndZoneCount === 0) {
+            throw new Error("Bug! trying to decrement when there are no dropzones");
+        }
+        activeDndZoneCount--;
+    }
+
+    const isOnServer = typeof window === "undefined";
+
+    // This is based off https://stackoverflow.com/questions/27745438/how-to-compute-getboundingclientrect-without-considering-transforms/57876601#57876601
+    // It removes the transforms that are potentially applied by the flip animations
+    /**
+     * Gets the bounding rect but removes transforms (ex: flip animation)
+     * @param {HTMLElement} el
+     * @return {{top: number, left: number, bottom: number, right: number}}
+     */
+    function getBoundingRectNoTransforms(el) {
+        let ta;
+        const rect = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        const tx = style.transform;
+
+        if (tx) {
+            let sx, sy, dx, dy;
+            if (tx.startsWith("matrix3d(")) {
+                ta = tx.slice(9, -1).split(/, /);
+                sx = +ta[0];
+                sy = +ta[5];
+                dx = +ta[12];
+                dy = +ta[13];
+            } else if (tx.startsWith("matrix(")) {
+                ta = tx.slice(7, -1).split(/, /);
+                sx = +ta[0];
+                sy = +ta[3];
+                dx = +ta[4];
+                dy = +ta[5];
+            } else {
+                return rect;
+            }
+
+            const to = style.transformOrigin;
+            const x = rect.x - dx - (1 - sx) * parseFloat(to);
+            const y = rect.y - dy - (1 - sy) * parseFloat(to.slice(to.indexOf(" ") + 1));
+            const w = sx ? rect.width / sx : el.offsetWidth;
+            const h = sy ? rect.height / sy : el.offsetHeight;
+            return {
+                x: x,
+                y: y,
+                width: w,
+                height: h,
+                top: y,
+                right: x + w,
+                bottom: y + h,
+                left: x
+            };
+        } else {
+            return rect;
+        }
+    }
+
+    /**
+     * Gets the absolute bounding rect (accounts for the window's scroll position and removes transforms)
+     * @param {HTMLElement} el
+     * @return {{top: number, left: number, bottom: number, right: number}}
+     */
+    function getAbsoluteRectNoTransforms(el) {
+        const rect = getBoundingRectNoTransforms(el);
+        return {
+            top: rect.top + window.scrollY,
+            bottom: rect.bottom + window.scrollY,
+            left: rect.left + window.scrollX,
+            right: rect.right + window.scrollX
+        };
+    }
+
+    /**
+     * Gets the absolute bounding rect (accounts for the window's scroll position)
+     * @param {HTMLElement} el
+     * @return {{top: number, left: number, bottom: number, right: number}}
+     */
+    function getAbsoluteRect(el) {
+        const rect = el.getBoundingClientRect();
+        return {
+            top: rect.top + window.scrollY,
+            bottom: rect.bottom + window.scrollY,
+            left: rect.left + window.scrollX,
+            right: rect.right + window.scrollX
+        };
+    }
+
+    /**
+     * finds the center :)
+     * @typedef {Object} Rect
+     * @property {number} top
+     * @property {number} bottom
+     * @property {number} left
+     * @property {number} right
+     * @param {Rect} rect
+     * @return {{x: number, y: number}}
+     */
+    function findCenter(rect) {
+        return {
+            x: (rect.left + rect.right) / 2,
+            y: (rect.top + rect.bottom) / 2
+        };
+    }
+
+    /**
+     * @typedef {Object} Point
+     * @property {number} x
+     * @property {number} y
+     * @param {Point} pointA
+     * @param {Point} pointB
+     * @return {number}
+     */
+    function calcDistance(pointA, pointB) {
+        return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+    }
+
+    /**
+     * @param {Point} point
+     * @param {Rect} rect
+     * @return {boolean|boolean}
+     */
+    function isPointInsideRect(point, rect) {
+        return point.y <= rect.bottom && point.y >= rect.top && point.x >= rect.left && point.x <= rect.right;
+    }
+
+    /**
+     * find the absolute coordinates of the center of a dom element
+     * @param el {HTMLElement}
+     * @returns {{x: number, y: number}}
+     */
+    function findCenterOfElement(el) {
+        return findCenter(getAbsoluteRect(el));
+    }
+
+    /**
+     * @param {HTMLElement} elA
+     * @param {HTMLElement} elB
+     * @return {boolean}
+     */
+    function isCenterOfAInsideB(elA, elB) {
+        const centerOfA = findCenterOfElement(elA);
+        const rectOfB = getAbsoluteRectNoTransforms(elB);
+        return isPointInsideRect(centerOfA, rectOfB);
+    }
+
+    /**
+     * @param {HTMLElement|ChildNode} elA
+     * @param {HTMLElement|ChildNode} elB
+     * @return {number}
+     */
+    function calcDistanceBetweenCenters(elA, elB) {
+        const centerOfA = findCenterOfElement(elA);
+        const centerOfB = findCenterOfElement(elB);
+        return calcDistance(centerOfA, centerOfB);
+    }
+
+    /**
+     * @param {HTMLElement} el - the element to check
+     * @returns {boolean} - true if the element in its entirety is off screen including the scrollable area (the normal dom events look at the mouse rather than the element)
+     */
+    function isElementOffDocument(el) {
+        const rect = getAbsoluteRect(el);
+        return rect.right < 0 || rect.left > document.documentElement.scrollWidth || rect.bottom < 0 || rect.top > document.documentElement.scrollHeight;
+    }
+
+    /**
+     * If the point is inside the element returns its distances from the sides, otherwise returns null
+     * @param {Point} point
+     * @param {HTMLElement} el
+     * @return {null|{top: number, left: number, bottom: number, right: number}}
+     */
+    function calcInnerDistancesBetweenPointAndSidesOfElement(point, el) {
+        const rect = getAbsoluteRect(el);
+        if (!isPointInsideRect(point, rect)) {
+            return null;
+        }
+        return {
+            top: point.y - rect.top,
+            bottom: rect.bottom - point.y,
+            left: point.x - rect.left,
+            // TODO - figure out what is so special about right (why the rect is too big)
+            right: Math.min(rect.right, document.documentElement.clientWidth) - point.x
+        };
+    }
+
+    let dzToShadowIndexToRect;
+
+    /**
+     * Resets the cache that allows for smarter "would be index" resolution. Should be called after every drag operation
+     */
+    function resetIndexesCache() {
+        dzToShadowIndexToRect = new Map();
+    }
+    resetIndexesCache();
+
+    /**
+     * Resets the cache that allows for smarter "would be index" resolution for a specific dropzone, should be called after the zone was scrolled
+     * @param {HTMLElement} dz
+     */
+    function resetIndexesCacheForDz(dz) {
+        dzToShadowIndexToRect.delete(dz);
+    }
+
+    /**
+     * Caches the coordinates of the shadow element when it's in a certain index in a certain dropzone.
+     * Helpful in order to determine "would be index" more effectively
+     * @param {HTMLElement} dz
+     * @return {number} - the shadow element index
+     */
+    function cacheShadowRect(dz) {
+        const shadowElIndex = Array.from(dz.children).findIndex(child => child.getAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME));
+        if (shadowElIndex >= 0) {
+            if (!dzToShadowIndexToRect.has(dz)) {
+                dzToShadowIndexToRect.set(dz, new Map());
+            }
+            dzToShadowIndexToRect.get(dz).set(shadowElIndex, getAbsoluteRectNoTransforms(dz.children[shadowElIndex]));
+            return shadowElIndex;
+        }
+        return undefined;
+    }
+
+    /**
+     * @typedef {Object} Index
+     * @property {number} index - the would be index
+     * @property {boolean} isProximityBased - false if the element is actually over the index, true if it is not over it but this index is the closest
+     */
+    /**
+     * Find the index for the dragged element in the list it is dragged over
+     * @param {HTMLElement} floatingAboveEl
+     * @param {HTMLElement} collectionBelowEl
+     * @returns {Index|null} -  if the element is over the container the Index object otherwise null
+     */
+    function findWouldBeIndex(floatingAboveEl, collectionBelowEl) {
+        if (!isCenterOfAInsideB(floatingAboveEl, collectionBelowEl)) {
+            return null;
+        }
+        const children = collectionBelowEl.children;
+        // the container is empty, floating element should be the first
+        if (children.length === 0) {
+            return {index: 0, isProximityBased: true};
+        }
+        const shadowElIndex = cacheShadowRect(collectionBelowEl);
+
+        // the search could be more efficient but keeping it simple for now
+        // a possible improvement: pass in the lastIndex it was found in and check there first, then expand from there
+        for (let i = 0; i < children.length; i++) {
+            if (isCenterOfAInsideB(floatingAboveEl, children[i])) {
+                const cachedShadowRect = dzToShadowIndexToRect.has(collectionBelowEl) && dzToShadowIndexToRect.get(collectionBelowEl).get(i);
+                if (cachedShadowRect) {
+                    if (!isPointInsideRect(findCenterOfElement(floatingAboveEl), cachedShadowRect)) {
+                        return {index: shadowElIndex, isProximityBased: false};
+                    }
+                }
+                return {index: i, isProximityBased: false};
+            }
+        }
+        // this can happen if there is space around the children so the floating element has
+        //entered the container but not any of the children, in this case we will find the nearest child
+        let minDistanceSoFar = Number.MAX_VALUE;
+        let indexOfMin = undefined;
+        // we are checking all of them because we don't know whether we are dealing with a horizontal or vertical container and where the floating element entered from
+        for (let i = 0; i < children.length; i++) {
+            const distance = calcDistanceBetweenCenters(floatingAboveEl, children[i]);
+            if (distance < minDistanceSoFar) {
+                minDistanceSoFar = distance;
+                indexOfMin = i;
+            }
+        }
+        return {index: indexOfMin, isProximityBased: true};
+    }
+
+    const SCROLL_ZONE_PX = 25;
+
+    function makeScroller() {
+        let scrollingInfo;
+        function resetScrolling() {
+            scrollingInfo = {directionObj: undefined, stepPx: 0};
+        }
+        resetScrolling();
+        // directionObj {x: 0|1|-1, y:0|1|-1} - 1 means down in y and right in x
+        function scrollContainer(containerEl) {
+            const {directionObj, stepPx} = scrollingInfo;
+            if (directionObj) {
+                containerEl.scrollBy(directionObj.x * stepPx, directionObj.y * stepPx);
+                window.requestAnimationFrame(() => scrollContainer(containerEl));
+            }
+        }
+        function calcScrollStepPx(distancePx) {
+            return SCROLL_ZONE_PX - distancePx;
+        }
+
+        /**
+         * If the pointer is next to the sides of the element to scroll, will trigger scrolling
+         * Can be called repeatedly with updated pointer and elementToScroll values without issues
+         * @return {boolean} - true if scrolling was needed
+         */
+        function scrollIfNeeded(pointer, elementToScroll) {
+            if (!elementToScroll) {
+                return false;
+            }
+            const distances = calcInnerDistancesBetweenPointAndSidesOfElement(pointer, elementToScroll);
+            if (distances === null) {
+                resetScrolling();
+                return false;
+            }
+            const isAlreadyScrolling = !!scrollingInfo.directionObj;
+            let [scrollingVertically, scrollingHorizontally] = [false, false];
+            // vertical
+            if (elementToScroll.scrollHeight > elementToScroll.clientHeight) {
+                if (distances.bottom < SCROLL_ZONE_PX) {
+                    scrollingVertically = true;
+                    scrollingInfo.directionObj = {x: 0, y: 1};
+                    scrollingInfo.stepPx = calcScrollStepPx(distances.bottom);
+                } else if (distances.top < SCROLL_ZONE_PX) {
+                    scrollingVertically = true;
+                    scrollingInfo.directionObj = {x: 0, y: -1};
+                    scrollingInfo.stepPx = calcScrollStepPx(distances.top);
+                }
+                if (!isAlreadyScrolling && scrollingVertically) {
+                    scrollContainer(elementToScroll);
+                    return true;
+                }
+            }
+            // horizontal
+            if (elementToScroll.scrollWidth > elementToScroll.clientWidth) {
+                if (distances.right < SCROLL_ZONE_PX) {
+                    scrollingHorizontally = true;
+                    scrollingInfo.directionObj = {x: 1, y: 0};
+                    scrollingInfo.stepPx = calcScrollStepPx(distances.right);
+                } else if (distances.left < SCROLL_ZONE_PX) {
+                    scrollingHorizontally = true;
+                    scrollingInfo.directionObj = {x: -1, y: 0};
+                    scrollingInfo.stepPx = calcScrollStepPx(distances.left);
+                }
+                if (!isAlreadyScrolling && scrollingHorizontally) {
+                    scrollContainer(elementToScroll);
+                    return true;
+                }
+            }
+            resetScrolling();
+            return false;
+        }
+
+        return {
+            scrollIfNeeded,
+            resetScrolling
+        };
+    }
+
+    /**
+     * @param {Object} object
+     * @return {string}
+     */
+    function toString(object) {
+        return JSON.stringify(object, null, 2);
+    }
+
+    /**
+     * Finds the depth of the given node in the DOM tree
+     * @param {HTMLElement} node
+     * @return {number} - the depth of the node
+     */
+    function getDepth(node) {
+        if (!node) {
+            throw new Error("cannot get depth of a falsy node");
+        }
+        return _getDepth(node, 0);
+    }
+    function _getDepth(node, countSoFar = 0) {
+        if (!node.parentElement) {
+            return countSoFar - 1;
+        }
+        return _getDepth(node.parentElement, countSoFar + 1);
+    }
+
+    /**
+     * A simple util to shallow compare objects quickly, it doesn't validate the arguments so pass objects in
+     * @param {Object} objA
+     * @param {Object} objB
+     * @return {boolean} - true if objA and objB are shallow equal
+     */
+    function areObjectsShallowEqual(objA, objB) {
+        if (Object.keys(objA).length !== Object.keys(objB).length) {
+            return false;
+        }
+        for (const keyA in objA) {
+            if (!{}.hasOwnProperty.call(objB, keyA) || objB[keyA] !== objA[keyA]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Shallow compares two arrays
+     * @param arrA
+     * @param arrB
+     * @return {boolean} - whether the arrays are shallow equal
+     */
+    function areArraysShallowEqualSameOrder(arrA, arrB) {
+        if (arrA.length !== arrB.length) {
+            return false;
+        }
+        for (let i = 0; i < arrA.length; i++) {
+            if (arrA[i] !== arrB[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    const INTERVAL_MS$1 = 200;
+    const TOLERANCE_PX = 10;
+    const {scrollIfNeeded: scrollIfNeeded$1, resetScrolling: resetScrolling$1} = makeScroller();
+    let next$1;
+
+    /**
+     * Tracks the dragged elements and performs the side effects when it is dragged over a drop zone (basically dispatching custom-events scrolling)
+     * @param {Set<HTMLElement>} dropZones
+     * @param {HTMLElement} draggedEl
+     * @param {number} [intervalMs = INTERVAL_MS]
+     */
+    function observe(draggedEl, dropZones, intervalMs = INTERVAL_MS$1) {
+        // initialization
+        let lastDropZoneFound;
+        let lastIndexFound;
+        let lastIsDraggedInADropZone = false;
+        let lastCentrePositionOfDragged;
+        // We are sorting to make sure that in case of nested zones of the same type the one "on top" is considered first
+        const dropZonesFromDeepToShallow = Array.from(dropZones).sort((dz1, dz2) => getDepth(dz2) - getDepth(dz1));
+
+        /**
+         * The main function in this module. Tracks where everything is/ should be a take the actions
+         */
+        function andNow() {
+            const currentCenterOfDragged = findCenterOfElement(draggedEl);
+            const scrolled = scrollIfNeeded$1(currentCenterOfDragged, lastDropZoneFound);
+            // we only want to make a new decision after the element was moved a bit to prevent flickering
+            if (
+                !scrolled &&
+                lastCentrePositionOfDragged &&
+                Math.abs(lastCentrePositionOfDragged.x - currentCenterOfDragged.x) < TOLERANCE_PX &&
+                Math.abs(lastCentrePositionOfDragged.y - currentCenterOfDragged.y) < TOLERANCE_PX
+            ) {
+                next$1 = window.setTimeout(andNow, intervalMs);
+                return;
+            }
+            if (isElementOffDocument(draggedEl)) {
+                dispatchDraggedLeftDocument(draggedEl);
+                return;
+            }
+
+            lastCentrePositionOfDragged = currentCenterOfDragged;
+            // this is a simple algorithm, potential improvement: first look at lastDropZoneFound
+            let isDraggedInADropZone = false;
+            for (const dz of dropZonesFromDeepToShallow) {
+                if (scrolled) resetIndexesCacheForDz(lastDropZoneFound);
+                const indexObj = findWouldBeIndex(draggedEl, dz);
+                if (indexObj === null) {
+                    // it is not inside
+                    continue;
+                }
+                const {index} = indexObj;
+                isDraggedInADropZone = true;
+                // the element is over a container
+                if (dz !== lastDropZoneFound) {
+                    lastDropZoneFound && dispatchDraggedElementLeftContainerForAnother(lastDropZoneFound, draggedEl, dz);
+                    dispatchDraggedElementEnteredContainer(dz, indexObj, draggedEl);
+                    lastDropZoneFound = dz;
+                } else if (index !== lastIndexFound) {
+                    dispatchDraggedElementIsOverIndex(dz, indexObj, draggedEl);
+                    lastIndexFound = index;
+                }
+                // we handle looping with the 'continue' statement above
+                break;
+            }
+            // the first time the dragged element is not in any dropzone we need to notify the last dropzone it was in
+            if (!isDraggedInADropZone && lastIsDraggedInADropZone && lastDropZoneFound) {
+                dispatchDraggedElementLeftContainerForNone(lastDropZoneFound, draggedEl);
+                lastDropZoneFound = undefined;
+                lastIndexFound = undefined;
+                lastIsDraggedInADropZone = false;
+            } else {
+                lastIsDraggedInADropZone = true;
+            }
+            next$1 = window.setTimeout(andNow, intervalMs);
+        }
+        andNow();
+    }
+
+    // assumption - we can only observe one dragged element at a time, this could be changed in the future
+    function unobserve() {
+        clearTimeout(next$1);
+        resetScrolling$1();
+        resetIndexesCache();
+    }
+
+    const INTERVAL_MS = 300;
+    let mousePosition;
+
+    /**
+     * Do not use this! it is visible for testing only until we get over the issue Cypress not triggering the mousemove listeners
+     * // TODO - make private (remove export)
+     * @param {{clientX: number, clientY: number}} e
+     */
+    function updateMousePosition(e) {
+        const c = e.touches ? e.touches[0] : e;
+        mousePosition = {x: c.clientX, y: c.clientY};
+    }
+    const {scrollIfNeeded, resetScrolling} = makeScroller();
+    let next;
+
+    function loop() {
+        if (mousePosition) {
+            const scrolled = scrollIfNeeded(mousePosition, document.documentElement);
+            if (scrolled) resetIndexesCache();
+        }
+        next = window.setTimeout(loop, INTERVAL_MS);
+    }
+
+    /**
+     * will start watching the mouse pointer and scroll the window if it goes next to the edges
+     */
+    function armWindowScroller() {
+        window.addEventListener("mousemove", updateMousePosition);
+        window.addEventListener("touchmove", updateMousePosition);
+        loop();
+    }
+
+    /**
+     * will stop watching the mouse pointer and won't scroll the window anymore
+     */
+    function disarmWindowScroller() {
+        window.removeEventListener("mousemove", updateMousePosition);
+        window.removeEventListener("touchmove", updateMousePosition);
+        mousePosition = undefined;
+        window.clearTimeout(next);
+        resetScrolling();
+    }
+
+    /**
+     * Fixes svelte issue when cloning node containing (or being) <select> which will loose it's value.
+     * Since svelte manages select value internally.
+     * @see https://github.com/sveltejs/svelte/issues/6717
+     * @see https://github.com/isaacHagoel/svelte-dnd-action/issues/306
+     * 
+     * @param {HTMLElement} el 
+     * @returns 
+     */
+    function svelteNodeClone(el) {
+      const cloned = el.cloneNode(true);
+
+      const values = [];
+      const elIsSelect = el.tagName === "SELECT";
+      const selects = elIsSelect ? [el] : [...el.querySelectorAll('select')];
+      for (const select of selects) {
+        values.push(select.value);
+      }
+
+      if (selects.length <= 0) {
+        return cloned;
+      }
+
+      const clonedSelects = elIsSelect ? [cloned] : [...cloned.querySelectorAll('select')];
+      for (let i = 0; i < clonedSelects.length; i++) {
+        const select = clonedSelects[i];
+        const value = values[i];
+        const optionEl = select.querySelector(`option[value="${value}"`);
+        if (optionEl) {
+          optionEl.setAttribute('selected', true);
+        }
+      }
+
+      return cloned;
+    }
+
+    const TRANSITION_DURATION_SECONDS = 0.2;
+
+    /**
+     * private helper function - creates a transition string for a property
+     * @param {string} property
+     * @return {string} - the transition string
+     */
+    function trs(property) {
+        return `${property} ${TRANSITION_DURATION_SECONDS}s ease`;
+    }
+    /**
+     * clones the given element and applies proper styles and transitions to the dragged element
+     * @param {HTMLElement} originalElement
+     * @param {Point} [positionCenterOnXY]
+     * @return {Node} - the cloned, styled element
+     */
+    function createDraggedElementFrom(originalElement, positionCenterOnXY) {
+        const rect = originalElement.getBoundingClientRect();
+        const draggedEl = svelteNodeClone(originalElement);
+        copyStylesFromTo(originalElement, draggedEl);
+        draggedEl.id = DRAGGED_ELEMENT_ID;
+        draggedEl.style.position = "fixed";
+        let elTopPx = rect.top;
+        let elLeftPx = rect.left;
+        draggedEl.style.top = `${elTopPx}px`;
+        draggedEl.style.left = `${elLeftPx}px`;
+        if (positionCenterOnXY) {
+            const center = findCenter(rect);
+            elTopPx -= center.y - positionCenterOnXY.y;
+            elLeftPx -= center.x - positionCenterOnXY.x;
+            window.setTimeout(() => {
+                draggedEl.style.top = `${elTopPx}px`;
+                draggedEl.style.left = `${elLeftPx}px`;
+            }, 0);
+        }
+        draggedEl.style.margin = "0";
+        // we can't have relative or automatic height and width or it will break the illusion
+        draggedEl.style.boxSizing = "border-box";
+        draggedEl.style.height = `${rect.height}px`;
+        draggedEl.style.width = `${rect.width}px`;
+        draggedEl.style.transition = `${trs("top")}, ${trs("left")}, ${trs("background-color")}, ${trs("opacity")}, ${trs("color")} `;
+        // this is a workaround for a strange browser bug that causes the right border to disappear when all the transitions are added at the same time
+        window.setTimeout(() => (draggedEl.style.transition += `, ${trs("width")}, ${trs("height")}`), 0);
+        draggedEl.style.zIndex = "9999";
+        draggedEl.style.cursor = "grabbing";
+
+        return draggedEl;
+    }
+
+    /**
+     * styles the dragged element to a 'dropped' state
+     * @param {HTMLElement} draggedEl
+     */
+    function moveDraggedElementToWasDroppedState(draggedEl) {
+        draggedEl.style.cursor = "grab";
+    }
+
+    /**
+     * Morphs the dragged element style, maintains the mouse pointer within the element
+     * @param {HTMLElement} draggedEl
+     * @param {HTMLElement} copyFromEl - the element the dragged element should look like, typically the shadow element
+     * @param {number} currentMouseX
+     * @param {number} currentMouseY
+     * @param {function} transformDraggedElement - function to transform the dragged element, does nothing by default.
+     */
+    function morphDraggedElementToBeLike(draggedEl, copyFromEl, currentMouseX, currentMouseY, transformDraggedElement) {
+        const newRect = copyFromEl.getBoundingClientRect();
+        const draggedElRect = draggedEl.getBoundingClientRect();
+        const widthChange = newRect.width - draggedElRect.width;
+        const heightChange = newRect.height - draggedElRect.height;
+        if (widthChange || heightChange) {
+            const relativeDistanceOfMousePointerFromDraggedSides = {
+                left: (currentMouseX - draggedElRect.left) / draggedElRect.width,
+                top: (currentMouseY - draggedElRect.top) / draggedElRect.height
+            };
+            draggedEl.style.height = `${newRect.height}px`;
+            draggedEl.style.width = `${newRect.width}px`;
+            draggedEl.style.left = `${parseFloat(draggedEl.style.left) - relativeDistanceOfMousePointerFromDraggedSides.left * widthChange}px`;
+            draggedEl.style.top = `${parseFloat(draggedEl.style.top) - relativeDistanceOfMousePointerFromDraggedSides.top * heightChange}px`;
+        }
+
+        /// other properties
+        copyStylesFromTo(copyFromEl, draggedEl);
+        transformDraggedElement();
+    }
+
+    /**
+     * @param {HTMLElement} copyFromEl
+     * @param {HTMLElement} copyToEl
+     */
+    function copyStylesFromTo(copyFromEl, copyToEl) {
+        const computedStyle = window.getComputedStyle(copyFromEl);
+        Array.from(computedStyle)
+            .filter(
+                s =>
+                    s.startsWith("background") ||
+                    s.startsWith("padding") ||
+                    s.startsWith("font") ||
+                    s.startsWith("text") ||
+                    s.startsWith("align") ||
+                    s.startsWith("justify") ||
+                    s.startsWith("display") ||
+                    s.startsWith("flex") ||
+                    s.startsWith("border") ||
+                    s === "opacity" ||
+                    s === "color" ||
+                    s === "list-style-type"
+            )
+            .forEach(s => copyToEl.style.setProperty(s, computedStyle.getPropertyValue(s), computedStyle.getPropertyPriority(s)));
+    }
+
+    /**
+     * makes the element compatible with being draggable
+     * @param {HTMLElement} draggableEl
+     * @param {boolean} dragDisabled
+     */
+    function styleDraggable(draggableEl, dragDisabled) {
+        draggableEl.draggable = false;
+        draggableEl.ondragstart = () => false;
+        if (!dragDisabled) {
+            draggableEl.style.userSelect = "none";
+            draggableEl.style.WebkitUserSelect = "none";
+            draggableEl.style.cursor = "grab";
+        } else {
+            draggableEl.style.userSelect = "";
+            draggableEl.style.WebkitUserSelect = "";
+            draggableEl.style.cursor = "";
+        }
+    }
+
+    /**
+     * Hides the provided element so that it can stay in the dom without interrupting
+     * @param {HTMLElement} dragTarget
+     */
+    function hideElement(dragTarget) {
+        dragTarget.style.display = "none";
+        dragTarget.style.position = "fixed";
+        dragTarget.style.zIndex = "-5";
+    }
+
+    /**
+     * styles the shadow element
+     * @param {HTMLElement} shadowEl
+     */
+    function decorateShadowEl(shadowEl) {
+        shadowEl.style.visibility = "hidden";
+        shadowEl.setAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME, "true");
+    }
+
+    /**
+     * undo the styles the shadow element
+     * @param {HTMLElement} shadowEl
+     */
+    function unDecorateShadowElement(shadowEl) {
+        shadowEl.style.visibility = "";
+        shadowEl.removeAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME);
+    }
+
+    /**
+     * will mark the given dropzones as visually active
+     * @param {Array<HTMLElement>} dropZones
+     * @param {Function} getStyles - maps a dropzone to a styles object (so the styles can be removed)
+     * @param {Function} getClasses - maps a dropzone to a classList
+     */
+    function styleActiveDropZones(dropZones, getStyles = () => {}, getClasses = () => []) {
+        dropZones.forEach(dz => {
+            const styles = getStyles(dz);
+            Object.keys(styles).forEach(style => {
+                dz.style[style] = styles[style];
+            });
+            getClasses(dz).forEach(c => dz.classList.add(c));
+        });
+    }
+
+    /**
+     * will remove the 'active' styling from given dropzones
+     * @param {Array<HTMLElement>} dropZones
+     * @param {Function} getStyles - maps a dropzone to a styles object
+     * @param {Function} getClasses - maps a dropzone to a classList
+     */
+    function styleInactiveDropZones(dropZones, getStyles = () => {}, getClasses = () => []) {
+        dropZones.forEach(dz => {
+            const styles = getStyles(dz);
+            Object.keys(styles).forEach(style => {
+                dz.style[style] = "";
+            });
+            getClasses(dz).forEach(c => dz.classList.contains(c) && dz.classList.remove(c));
+        });
+    }
+
+    /**
+     * will prevent the provided element from shrinking by setting its minWidth and minHeight to the current width and height values
+     * @param {HTMLElement} el
+     * @return {function(): void} - run this function to undo the operation and restore the original values
+     */
+    function preventShrinking(el) {
+        const originalMinHeight = el.style.minHeight;
+        el.style.minHeight = window.getComputedStyle(el).getPropertyValue("height");
+        const originalMinWidth = el.style.minWidth;
+        el.style.minWidth = window.getComputedStyle(el).getPropertyValue("width");
+        return function undo() {
+            el.style.minHeight = originalMinHeight;
+            el.style.minWidth = originalMinWidth;
+        };
+    }
+
+    const DEFAULT_DROP_ZONE_TYPE$1 = "--any--";
+    const MIN_OBSERVATION_INTERVAL_MS = 100;
+    const MIN_MOVEMENT_BEFORE_DRAG_START_PX = 3;
+    const DEFAULT_DROP_TARGET_STYLE$1 = {
+        outline: "rgba(255, 255, 102, 0.7) solid 2px"
+    };
+
+    let originalDragTarget;
+    let draggedEl;
+    let draggedElData;
+    let draggedElType;
+    let originDropZone;
+    let originIndex;
+    let shadowElData;
+    let shadowElDropZone;
+    let dragStartMousePosition;
+    let currentMousePosition;
+    let isWorkingOnPreviousDrag = false;
+    let finalizingPreviousDrag = false;
+    let unlockOriginDzMinDimensions;
+    let isDraggedOutsideOfAnyDz = false;
+    let scheduledForRemovalAfterDrop = [];
+
+    // a map from type to a set of drop-zones
+    const typeToDropZones$1 = new Map();
+    // important - this is needed because otherwise the config that would be used for everyone is the config of the element that created the event listeners
+    const dzToConfig$1 = new Map();
+    // this is needed in order to be able to cleanup old listeners and avoid stale closures issues (as the listener is defined within each zone)
+    const elToMouseDownListener = new WeakMap();
+
+    /* drop-zones registration management */
+    function registerDropZone$1(dropZoneEl, type) {
+        if (!typeToDropZones$1.has(type)) {
+            typeToDropZones$1.set(type, new Set());
+        }
+        if (!typeToDropZones$1.get(type).has(dropZoneEl)) {
+            typeToDropZones$1.get(type).add(dropZoneEl);
+            incrementActiveDropZoneCount();
+        }
+    }
+    function unregisterDropZone$1(dropZoneEl, type) {
+        typeToDropZones$1.get(type).delete(dropZoneEl);
+        decrementActiveDropZoneCount();
+        if (typeToDropZones$1.get(type).size === 0) {
+            typeToDropZones$1.delete(type);
+        }
+    }
+
+    /* functions to manage observing the dragged element and trigger custom drag-events */
+    function watchDraggedElement() {
+        armWindowScroller();
+        const dropZones = typeToDropZones$1.get(draggedElType);
+        for (const dz of dropZones) {
+            dz.addEventListener(DRAGGED_ENTERED_EVENT_NAME, handleDraggedEntered);
+            dz.addEventListener(DRAGGED_LEFT_EVENT_NAME, handleDraggedLeft);
+            dz.addEventListener(DRAGGED_OVER_INDEX_EVENT_NAME, handleDraggedIsOverIndex);
+        }
+        window.addEventListener(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, handleDrop$1);
+        // it is important that we don't have an interval that is faster than the flip duration because it can cause elements to jump bach and forth
+        const observationIntervalMs = Math.max(
+            MIN_OBSERVATION_INTERVAL_MS,
+            ...Array.from(dropZones.keys()).map(dz => dzToConfig$1.get(dz).dropAnimationDurationMs)
+        );
+        observe(draggedEl, dropZones, observationIntervalMs * 1.07);
+    }
+    function unWatchDraggedElement() {
+        disarmWindowScroller();
+        const dropZones = typeToDropZones$1.get(draggedElType);
+        for (const dz of dropZones) {
+            dz.removeEventListener(DRAGGED_ENTERED_EVENT_NAME, handleDraggedEntered);
+            dz.removeEventListener(DRAGGED_LEFT_EVENT_NAME, handleDraggedLeft);
+            dz.removeEventListener(DRAGGED_OVER_INDEX_EVENT_NAME, handleDraggedIsOverIndex);
+        }
+        window.removeEventListener(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, handleDrop$1);
+        unobserve();
+    }
+
+    // finds the initial placeholder that is placed there on drag start
+    function findShadowPlaceHolderIdx(items) {
+        return items.findIndex(item => item[ITEM_ID_KEY] === SHADOW_PLACEHOLDER_ITEM_ID);
+    }
+    function findShadowElementIdx(items) {
+        // checking that the id is not the placeholder's for Dragula like usecases
+        return items.findIndex(item => !!item[SHADOW_ITEM_MARKER_PROPERTY_NAME] && item[ITEM_ID_KEY] !== SHADOW_PLACEHOLDER_ITEM_ID);
+    }
+
+    /* custom drag-events handlers */
+    function handleDraggedEntered(e) {
+        let {items, dropFromOthersDisabled} = dzToConfig$1.get(e.currentTarget);
+        if (dropFromOthersDisabled && e.currentTarget !== originDropZone) {
+            return;
+        }
+        isDraggedOutsideOfAnyDz = false;
+        // this deals with another race condition. in rare occasions (super rapid operations) the list hasn't updated yet
+        items = items.filter(item => item[ITEM_ID_KEY] !== shadowElData[ITEM_ID_KEY]);
+
+        if (originDropZone !== e.currentTarget) {
+            const originZoneItems = dzToConfig$1.get(originDropZone).items;
+            const newOriginZoneItems = originZoneItems.filter(item => !item[SHADOW_ITEM_MARKER_PROPERTY_NAME]);
+            dispatchConsiderEvent(originDropZone, newOriginZoneItems, {
+                trigger: TRIGGERS.DRAGGED_ENTERED_ANOTHER,
+                id: draggedElData[ITEM_ID_KEY],
+                source: SOURCES.POINTER
+            });
+        } else {
+            const shadowPlaceHolderIdx = findShadowPlaceHolderIdx(items);
+            if (shadowPlaceHolderIdx !== -1) {
+                items.splice(shadowPlaceHolderIdx, 1);
+            }
+        }
+
+        const {index, isProximityBased} = e.detail.indexObj;
+        const shadowElIdx = isProximityBased && index === e.currentTarget.children.length - 1 ? index + 1 : index;
+        shadowElDropZone = e.currentTarget;
+        items.splice(shadowElIdx, 0, shadowElData);
+        dispatchConsiderEvent(e.currentTarget, items, {trigger: TRIGGERS.DRAGGED_ENTERED, id: draggedElData[ITEM_ID_KEY], source: SOURCES.POINTER});
+    }
+
+    function handleDraggedLeft(e) {
+        // dealing with a rare race condition on extremely rapid clicking and dropping
+        if (!isWorkingOnPreviousDrag) return;
+        const {items, dropFromOthersDisabled} = dzToConfig$1.get(e.currentTarget);
+        if (dropFromOthersDisabled && e.currentTarget !== originDropZone && e.currentTarget !== shadowElDropZone) {
+            return;
+        }
+        const shadowElIdx = findShadowElementIdx(items);
+        const shadowItem = items.splice(shadowElIdx, 1)[0];
+        shadowElDropZone = undefined;
+        const {type, theOtherDz} = e.detail;
+        if (
+            type === DRAGGED_LEFT_TYPES.OUTSIDE_OF_ANY ||
+            (type === DRAGGED_LEFT_TYPES.LEFT_FOR_ANOTHER && theOtherDz !== originDropZone && dzToConfig$1.get(theOtherDz).dropFromOthersDisabled)
+        ) {
+            isDraggedOutsideOfAnyDz = true;
+            shadowElDropZone = originDropZone;
+            const originZoneItems = dzToConfig$1.get(originDropZone).items;
+            originZoneItems.splice(originIndex, 0, shadowItem);
+            dispatchConsiderEvent(originDropZone, originZoneItems, {
+                trigger: TRIGGERS.DRAGGED_LEFT_ALL,
+                id: draggedElData[ITEM_ID_KEY],
+                source: SOURCES.POINTER
+            });
+        }
+        // for the origin dz, when the dragged is outside of any, this will be fired in addition to the previous. this is for simplicity
+        dispatchConsiderEvent(e.currentTarget, items, {
+            trigger: TRIGGERS.DRAGGED_LEFT,
+            id: draggedElData[ITEM_ID_KEY],
+            source: SOURCES.POINTER
+        });
+    }
+    function handleDraggedIsOverIndex(e) {
+        const {items, dropFromOthersDisabled} = dzToConfig$1.get(e.currentTarget);
+        if (dropFromOthersDisabled && e.currentTarget !== originDropZone) {
+            return;
+        }
+        isDraggedOutsideOfAnyDz = false;
+        const {index} = e.detail.indexObj;
+        const shadowElIdx = findShadowElementIdx(items);
+        items.splice(shadowElIdx, 1);
+        items.splice(index, 0, shadowElData);
+        dispatchConsiderEvent(e.currentTarget, items, {trigger: TRIGGERS.DRAGGED_OVER_INDEX, id: draggedElData[ITEM_ID_KEY], source: SOURCES.POINTER});
+    }
+
+    // Global mouse/touch-events handlers
+    function handleMouseMove(e) {
+        e.preventDefault();
+        const c = e.touches ? e.touches[0] : e;
+        currentMousePosition = {x: c.clientX, y: c.clientY};
+        draggedEl.style.transform = `translate3d(${currentMousePosition.x - dragStartMousePosition.x}px, ${
+        currentMousePosition.y - dragStartMousePosition.y
+    }px, 0)`;
+    }
+
+    function handleDrop$1() {
+        finalizingPreviousDrag = true;
+        // cleanup
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("touchmove", handleMouseMove);
+        window.removeEventListener("mouseup", handleDrop$1);
+        window.removeEventListener("touchend", handleDrop$1);
+        unWatchDraggedElement();
+        moveDraggedElementToWasDroppedState(draggedEl);
+
+        if (!shadowElDropZone) {
+            shadowElDropZone = originDropZone;
+        }
+        let {items, type} = dzToConfig$1.get(shadowElDropZone);
+        styleInactiveDropZones(
+            typeToDropZones$1.get(type),
+            dz => dzToConfig$1.get(dz).dropTargetStyle,
+            dz => dzToConfig$1.get(dz).dropTargetClasses
+        );
+        let shadowElIdx = findShadowElementIdx(items);
+        // the handler might remove the shadow element, ex: dragula like copy on drag
+        if (shadowElIdx === -1) shadowElIdx = originIndex;
+        items = items.map(item => (item[SHADOW_ITEM_MARKER_PROPERTY_NAME] ? draggedElData : item));
+        function finalizeWithinZone() {
+            unlockOriginDzMinDimensions();
+            dispatchFinalizeEvent(shadowElDropZone, items, {
+                trigger: isDraggedOutsideOfAnyDz ? TRIGGERS.DROPPED_OUTSIDE_OF_ANY : TRIGGERS.DROPPED_INTO_ZONE,
+                id: draggedElData[ITEM_ID_KEY],
+                source: SOURCES.POINTER
+            });
+            if (shadowElDropZone !== originDropZone) {
+                // letting the origin drop zone know the element was permanently taken away
+                dispatchFinalizeEvent(originDropZone, dzToConfig$1.get(originDropZone).items, {
+                    trigger: TRIGGERS.DROPPED_INTO_ANOTHER,
+                    id: draggedElData[ITEM_ID_KEY],
+                    source: SOURCES.POINTER
+                });
+            }
+            unDecorateShadowElement(shadowElDropZone.children[shadowElIdx]);
+            cleanupPostDrop();
+        }
+        animateDraggedToFinalPosition(shadowElIdx, finalizeWithinZone);
+    }
+
+    // helper function for handleDrop
+    function animateDraggedToFinalPosition(shadowElIdx, callback) {
+        const shadowElRect = getBoundingRectNoTransforms(shadowElDropZone.children[shadowElIdx]);
+        const newTransform = {
+            x: shadowElRect.left - parseFloat(draggedEl.style.left),
+            y: shadowElRect.top - parseFloat(draggedEl.style.top)
+        };
+        const {dropAnimationDurationMs} = dzToConfig$1.get(shadowElDropZone);
+        const transition = `transform ${dropAnimationDurationMs}ms ease`;
+        draggedEl.style.transition = draggedEl.style.transition ? draggedEl.style.transition + "," + transition : transition;
+        draggedEl.style.transform = `translate3d(${newTransform.x}px, ${newTransform.y}px, 0)`;
+        window.setTimeout(callback, dropAnimationDurationMs);
+    }
+
+    function scheduleDZForRemovalAfterDrop(dz, destroy) {
+        scheduledForRemovalAfterDrop.push({dz, destroy});
+        window.requestAnimationFrame(() => {
+            hideElement(dz);
+            document.body.appendChild(dz);
+        });
+    }
+    /* cleanup */
+    function cleanupPostDrop() {
+        draggedEl.remove();
+        originalDragTarget.remove();
+        if (scheduledForRemovalAfterDrop.length) {
+            scheduledForRemovalAfterDrop.forEach(({dz, destroy}) => {
+                destroy();
+                dz.remove();
+            });
+            scheduledForRemovalAfterDrop = [];
+        }
+        draggedEl = undefined;
+        originalDragTarget = undefined;
+        draggedElData = undefined;
+        draggedElType = undefined;
+        originDropZone = undefined;
+        originIndex = undefined;
+        shadowElData = undefined;
+        shadowElDropZone = undefined;
+        dragStartMousePosition = undefined;
+        currentMousePosition = undefined;
+        isWorkingOnPreviousDrag = false;
+        finalizingPreviousDrag = false;
+        unlockOriginDzMinDimensions = undefined;
+        isDraggedOutsideOfAnyDz = false;
+    }
+
+    function dndzone$2(node, options) {
+        let initialized = false;
+        const config = {
+            items: undefined,
+            type: undefined,
+            flipDurationMs: 0,
+            dragDisabled: false,
+            morphDisabled: false,
+            dropFromOthersDisabled: false,
+            dropTargetStyle: DEFAULT_DROP_TARGET_STYLE$1,
+            dropTargetClasses: [],
+            transformDraggedElement: () => {},
+            centreDraggedOnCursor: false
+        };
+        let elToIdx = new Map();
+
+        function addMaybeListeners() {
+            window.addEventListener("mousemove", handleMouseMoveMaybeDragStart, {passive: false});
+            window.addEventListener("touchmove", handleMouseMoveMaybeDragStart, {passive: false, capture: false});
+            window.addEventListener("mouseup", handleFalseAlarm, {passive: false});
+            window.addEventListener("touchend", handleFalseAlarm, {passive: false});
+        }
+        function removeMaybeListeners() {
+            window.removeEventListener("mousemove", handleMouseMoveMaybeDragStart);
+            window.removeEventListener("touchmove", handleMouseMoveMaybeDragStart);
+            window.removeEventListener("mouseup", handleFalseAlarm);
+            window.removeEventListener("touchend", handleFalseAlarm);
+        }
+        function handleFalseAlarm() {
+            removeMaybeListeners();
+            originalDragTarget = undefined;
+            dragStartMousePosition = undefined;
+            currentMousePosition = undefined;
+        }
+
+        function handleMouseMoveMaybeDragStart(e) {
+            e.preventDefault();
+            const c = e.touches ? e.touches[0] : e;
+            currentMousePosition = {x: c.clientX, y: c.clientY};
+            if (
+                Math.abs(currentMousePosition.x - dragStartMousePosition.x) >= MIN_MOVEMENT_BEFORE_DRAG_START_PX ||
+                Math.abs(currentMousePosition.y - dragStartMousePosition.y) >= MIN_MOVEMENT_BEFORE_DRAG_START_PX
+            ) {
+                removeMaybeListeners();
+                handleDragStart();
+            }
+        }
+        function handleMouseDown(e) {
+            // on safari clicking on a select element doesn't fire mouseup at the end of the click and in general this makes more sense
+            if (e.target !== e.currentTarget && (e.target.value !== undefined || e.target.isContentEditable)) {
+                return;
+            }
+            // prevents responding to any button but left click which equals 0 (which is falsy)
+            if (e.button) {
+                return;
+            }
+            if (isWorkingOnPreviousDrag) {
+                return;
+            }
+            e.stopPropagation();
+            const c = e.touches ? e.touches[0] : e;
+            dragStartMousePosition = {x: c.clientX, y: c.clientY};
+            currentMousePosition = {...dragStartMousePosition};
+            originalDragTarget = e.currentTarget;
+            addMaybeListeners();
+        }
+
+        function handleDragStart() {
+            isWorkingOnPreviousDrag = true;
+
+            // initialising globals
+            const currentIdx = elToIdx.get(originalDragTarget);
+            originIndex = currentIdx;
+            originDropZone = originalDragTarget.parentElement;
+            /** @type {ShadowRoot | HTMLDocument} */
+            const rootNode = originDropZone.getRootNode();
+            const originDropZoneRoot = rootNode.body || rootNode;
+            const {items, type, centreDraggedOnCursor} = config;
+            draggedElData = {...items[currentIdx]};
+            draggedElType = type;
+            shadowElData = {...draggedElData, [SHADOW_ITEM_MARKER_PROPERTY_NAME]: true};
+            // The initial shadow element. We need a different id at first in order to avoid conflicts and timing issues
+            const placeHolderElData = {...shadowElData, [ITEM_ID_KEY]: SHADOW_PLACEHOLDER_ITEM_ID};
+
+            // creating the draggable element
+            draggedEl = createDraggedElementFrom(originalDragTarget, centreDraggedOnCursor && currentMousePosition);
+            // We will keep the original dom node in the dom because touch events keep firing on it, we want to re-add it after the framework removes it
+            function keepOriginalElementInDom() {
+                if (!draggedEl.parentElement) {
+                    originDropZoneRoot.appendChild(draggedEl);
+                    // to prevent the outline from disappearing
+                    draggedEl.focus();
+                    watchDraggedElement();
+                    hideElement(originalDragTarget);
+                    originDropZoneRoot.appendChild(originalDragTarget);
+                } else {
+                    window.requestAnimationFrame(keepOriginalElementInDom);
+                }
+            }
+            window.requestAnimationFrame(keepOriginalElementInDom);
+
+            styleActiveDropZones(
+                Array.from(typeToDropZones$1.get(config.type)).filter(dz => dz === originDropZone || !dzToConfig$1.get(dz).dropFromOthersDisabled),
+                dz => dzToConfig$1.get(dz).dropTargetStyle,
+                dz => dzToConfig$1.get(dz).dropTargetClasses
+            );
+
+            // removing the original element by removing its data entry
+            items.splice(currentIdx, 1, placeHolderElData);
+            unlockOriginDzMinDimensions = preventShrinking(originDropZone);
+
+            dispatchConsiderEvent(originDropZone, items, {trigger: TRIGGERS.DRAG_STARTED, id: draggedElData[ITEM_ID_KEY], source: SOURCES.POINTER});
+
+            // handing over to global handlers - starting to watch the element
+            window.addEventListener("mousemove", handleMouseMove, {passive: false});
+            window.addEventListener("touchmove", handleMouseMove, {passive: false, capture: false});
+            window.addEventListener("mouseup", handleDrop$1, {passive: false});
+            window.addEventListener("touchend", handleDrop$1, {passive: false});
+        }
+
+        function configure({
+            items = undefined,
+            flipDurationMs: dropAnimationDurationMs = 0,
+            type: newType = DEFAULT_DROP_ZONE_TYPE$1,
+            dragDisabled = false,
+            morphDisabled = false,
+            dropFromOthersDisabled = false,
+            dropTargetStyle = DEFAULT_DROP_TARGET_STYLE$1,
+            dropTargetClasses = [],
+            transformDraggedElement = () => {},
+            centreDraggedOnCursor = false
+        }) {
+            config.dropAnimationDurationMs = dropAnimationDurationMs;
+            if (config.type && newType !== config.type) {
+                unregisterDropZone$1(node, config.type);
+            }
+            config.type = newType;
+            registerDropZone$1(node, newType);
+            config.items = [...items];
+            config.dragDisabled = dragDisabled;
+            config.morphDisabled = morphDisabled;
+            config.transformDraggedElement = transformDraggedElement;
+            config.centreDraggedOnCursor = centreDraggedOnCursor;
+
+            // realtime update for dropTargetStyle
+            if (
+                initialized &&
+                isWorkingOnPreviousDrag &&
+                !finalizingPreviousDrag &&
+                (!areObjectsShallowEqual(dropTargetStyle, config.dropTargetStyle) ||
+                    !areArraysShallowEqualSameOrder(dropTargetClasses, config.dropTargetClasses))
+            ) {
+                styleInactiveDropZones(
+                    [node],
+                    () => config.dropTargetStyle,
+                    () => dropTargetClasses
+                );
+                styleActiveDropZones(
+                    [node],
+                    () => dropTargetStyle,
+                    () => dropTargetClasses
+                );
+            }
+            config.dropTargetStyle = dropTargetStyle;
+            config.dropTargetClasses = [...dropTargetClasses];
+
+            // realtime update for dropFromOthersDisabled
+            function getConfigProp(dz, propName) {
+                return dzToConfig$1.get(dz) ? dzToConfig$1.get(dz)[propName] : config[propName];
+            }
+            if (initialized && isWorkingOnPreviousDrag && config.dropFromOthersDisabled !== dropFromOthersDisabled) {
+                if (dropFromOthersDisabled) {
+                    styleInactiveDropZones(
+                        [node],
+                        dz => getConfigProp(dz, "dropTargetStyle"),
+                        dz => getConfigProp(dz, "dropTargetClasses")
+                    );
+                } else {
+                    styleActiveDropZones(
+                        [node],
+                        dz => getConfigProp(dz, "dropTargetStyle"),
+                        dz => getConfigProp(dz, "dropTargetClasses")
+                    );
+                }
+            }
+            config.dropFromOthersDisabled = dropFromOthersDisabled;
+
+            dzToConfig$1.set(node, config);
+            const shadowElIdx = findShadowElementIdx(config.items);
+            for (let idx = 0; idx < node.children.length; idx++) {
+                const draggableEl = node.children[idx];
+                styleDraggable(draggableEl, dragDisabled);
+                if (idx === shadowElIdx) {
+                    if (!morphDisabled) {
+                        morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y, () =>
+                            config.transformDraggedElement(draggedEl, draggedElData, idx)
+                        );
+                    }
+                    decorateShadowEl(draggableEl);
+                    continue;
+                }
+                draggableEl.removeEventListener("mousedown", elToMouseDownListener.get(draggableEl));
+                draggableEl.removeEventListener("touchstart", elToMouseDownListener.get(draggableEl));
+                if (!dragDisabled) {
+                    draggableEl.addEventListener("mousedown", handleMouseDown);
+                    draggableEl.addEventListener("touchstart", handleMouseDown);
+                    elToMouseDownListener.set(draggableEl, handleMouseDown);
+                }
+                // updating the idx
+                elToIdx.set(draggableEl, idx);
+
+                if (!initialized) {
+                    initialized = true;
+                }
+            }
+        }
+        configure(options);
+
+        return {
+            update: newOptions => {
+                configure(newOptions);
+            },
+            destroy: () => {
+                function destroyDz() {
+                    unregisterDropZone$1(node, dzToConfig$1.get(node).type);
+                    dzToConfig$1.delete(node);
+                }
+                if (isWorkingOnPreviousDrag) {
+                    scheduleDZForRemovalAfterDrop(node, destroyDz);
+                } else {
+                   destroyDz();
+                }
+            }
+        };
+    }
+
+    const INSTRUCTION_IDs$1 = {
+        DND_ZONE_ACTIVE: "dnd-zone-active",
+        DND_ZONE_DRAG_DISABLED: "dnd-zone-drag-disabled"
+    };
+    const ID_TO_INSTRUCTION = {
+        [INSTRUCTION_IDs$1.DND_ZONE_ACTIVE]: "Tab to one the items and press space-bar or enter to start dragging it",
+        [INSTRUCTION_IDs$1.DND_ZONE_DRAG_DISABLED]: "This is a disabled drag and drop list"
+    };
+
+    const ALERT_DIV_ID = "dnd-action-aria-alert";
+    let alertsDiv;
+
+    function initAriaOnBrowser() {
+        if (alertsDiv) {
+            // it is already initialized
+            return;
+        }
+        // setting the dynamic alerts
+        alertsDiv = document.createElement("div");
+        (function initAlertsDiv() {
+            alertsDiv.id = ALERT_DIV_ID;
+            // tab index -1 makes the alert be read twice on chrome for some reason
+            //alertsDiv.tabIndex = -1;
+            alertsDiv.style.position = "fixed";
+            alertsDiv.style.bottom = "0";
+            alertsDiv.style.left = "0";
+            alertsDiv.style.zIndex = "-5";
+            alertsDiv.style.opacity = "0";
+            alertsDiv.style.height = "0";
+            alertsDiv.style.width = "0";
+            alertsDiv.setAttribute("role", "alert");
+        })();
+        document.body.prepend(alertsDiv);
+
+        // setting the instructions
+        Object.entries(ID_TO_INSTRUCTION).forEach(([id, txt]) => document.body.prepend(instructionToHiddenDiv(id, txt)));
+    }
+
+    /**
+     * Initializes the static aria instructions so they can be attached to zones
+     * @return {{DND_ZONE_ACTIVE: string, DND_ZONE_DRAG_DISABLED: string} | null} - the IDs for static aria instruction (to be used via aria-describedby) or null on the server
+     */
+    function initAria() {
+        if (isOnServer) return null;
+        if (document.readyState === "complete") {
+            initAriaOnBrowser();
+        } else {
+            window.addEventListener("DOMContentLoaded", initAriaOnBrowser);
+        }
+        return {...INSTRUCTION_IDs$1};
+    }
+
+    /**
+     * Removes all the artifacts (dom elements) added by this module
+     */
+    function destroyAria() {
+        if (isOnServer || !alertsDiv) return;
+        Object.keys(ID_TO_INSTRUCTION).forEach(id => document.getElementById(id)?.remove());
+        alertsDiv.remove();
+        alertsDiv = undefined;
+    }
+
+    function instructionToHiddenDiv(id, txt) {
+        const div = document.createElement("div");
+        div.id = id;
+        div.innerHTML = `<p>${txt}</p>`;
+        div.style.display = "none";
+        div.style.position = "fixed";
+        div.style.zIndex = "-5";
+        return div;
+    }
+
+    /**
+     * Will make the screen reader alert the provided text to the user
+     * @param {string} txt
+     */
+    function alertToScreenReader(txt) {
+        if (isOnServer) return;
+        if (!alertsDiv) {
+            initAriaOnBrowser();
+        }
+        alertsDiv.innerHTML = "";
+        const alertText = document.createTextNode(txt);
+        alertsDiv.appendChild(alertText);
+        // this is needed for Safari
+        alertsDiv.style.display = "none";
+        alertsDiv.style.display = "inline";
+    }
+
+    const DEFAULT_DROP_ZONE_TYPE = "--any--";
+    const DEFAULT_DROP_TARGET_STYLE = {
+        outline: "rgba(255, 255, 102, 0.7) solid 2px"
+    };
+
+    let isDragging = false;
+    let draggedItemType;
+    let focusedDz;
+    let focusedDzLabel = "";
+    let focusedItem;
+    let focusedItemId;
+    let focusedItemLabel = "";
+    const allDragTargets = new WeakSet();
+    const elToKeyDownListeners = new WeakMap();
+    const elToFocusListeners = new WeakMap();
+    const dzToHandles = new Map();
+    const dzToConfig = new Map();
+    const typeToDropZones = new Map();
+
+    /* TODO (potentially)
+     * what's the deal with the black border of voice-reader not following focus?
+     * maybe keep focus on the last dragged item upon drop?
+     */
+
+    let INSTRUCTION_IDs;
+
+    /* drop-zones registration management */
+    function registerDropZone(dropZoneEl, type) {
+        if (typeToDropZones.size === 0) {
+            INSTRUCTION_IDs = initAria();
+            window.addEventListener("keydown", globalKeyDownHandler);
+            window.addEventListener("click", globalClickHandler);
+        }
+        if (!typeToDropZones.has(type)) {
+            typeToDropZones.set(type, new Set());
+        }
+        if (!typeToDropZones.get(type).has(dropZoneEl)) {
+            typeToDropZones.get(type).add(dropZoneEl);
+            incrementActiveDropZoneCount();
+        }
+    }
+    function unregisterDropZone(dropZoneEl, type) {
+        if (focusedDz === dropZoneEl) {
+            handleDrop();
+        }
+        typeToDropZones.get(type).delete(dropZoneEl);
+        decrementActiveDropZoneCount();
+        if (typeToDropZones.get(type).size === 0) {
+            typeToDropZones.delete(type);
+        }
+        if (typeToDropZones.size === 0) {
+            window.removeEventListener("keydown", globalKeyDownHandler);
+            window.removeEventListener("click", globalClickHandler);
+            INSTRUCTION_IDs = undefined;
+            destroyAria();
+        }
+    }
+
+    function globalKeyDownHandler(e) {
+        if (!isDragging) return;
+        switch (e.key) {
+            case "Escape": {
+                handleDrop();
+                break;
+            }
+        }
+    }
+
+    function globalClickHandler() {
+        if (!isDragging) return;
+        if (!allDragTargets.has(document.activeElement)) {
+            handleDrop();
+        }
+    }
+
+    function handleZoneFocus(e) {
+        if (!isDragging) return;
+        const newlyFocusedDz = e.currentTarget;
+        if (newlyFocusedDz === focusedDz) return;
+
+        focusedDzLabel = newlyFocusedDz.getAttribute("aria-label") || "";
+        const {items: originItems} = dzToConfig.get(focusedDz);
+        const originItem = originItems.find(item => item[ITEM_ID_KEY] === focusedItemId);
+        const originIdx = originItems.indexOf(originItem);
+        const itemToMove = originItems.splice(originIdx, 1)[0];
+        const {items: targetItems, autoAriaDisabled} = dzToConfig.get(newlyFocusedDz);
+        if (
+            newlyFocusedDz.getBoundingClientRect().top < focusedDz.getBoundingClientRect().top ||
+            newlyFocusedDz.getBoundingClientRect().left < focusedDz.getBoundingClientRect().left
+        ) {
+            targetItems.push(itemToMove);
+            if (!autoAriaDisabled) {
+                alertToScreenReader(`Moved item ${focusedItemLabel} to the end of the list ${focusedDzLabel}`);
+            }
+        } else {
+            targetItems.unshift(itemToMove);
+            if (!autoAriaDisabled) {
+                alertToScreenReader(`Moved item ${focusedItemLabel} to the beginning of the list ${focusedDzLabel}`);
+            }
+        }
+        const dzFrom = focusedDz;
+        dispatchFinalizeEvent(dzFrom, originItems, {trigger: TRIGGERS.DROPPED_INTO_ANOTHER, id: focusedItemId, source: SOURCES.KEYBOARD});
+        dispatchFinalizeEvent(newlyFocusedDz, targetItems, {trigger: TRIGGERS.DROPPED_INTO_ZONE, id: focusedItemId, source: SOURCES.KEYBOARD});
+        focusedDz = newlyFocusedDz;
+    }
+
+    function triggerAllDzsUpdate() {
+        dzToHandles.forEach(({update}, dz) => update(dzToConfig.get(dz)));
+    }
+
+    function handleDrop(dispatchConsider = true) {
+        if (!dzToConfig.get(focusedDz).autoAriaDisabled) {
+            alertToScreenReader(`Stopped dragging item ${focusedItemLabel}`);
+        }
+        if (allDragTargets.has(document.activeElement)) {
+            document.activeElement.blur();
+        }
+        if (dispatchConsider) {
+            dispatchConsiderEvent(focusedDz, dzToConfig.get(focusedDz).items, {
+                trigger: TRIGGERS.DRAG_STOPPED,
+                id: focusedItemId,
+                source: SOURCES.KEYBOARD
+            });
+        }
+        styleInactiveDropZones(
+            typeToDropZones.get(draggedItemType),
+            dz => dzToConfig.get(dz).dropTargetStyle,
+            dz => dzToConfig.get(dz).dropTargetClasses
+        );
+        focusedItem = null;
+        focusedItemId = null;
+        focusedItemLabel = "";
+        draggedItemType = null;
+        focusedDz = null;
+        focusedDzLabel = "";
+        isDragging = false;
+        triggerAllDzsUpdate();
+    }
+    //////
+    function dndzone$1(node, options) {
+        const config = {
+            items: undefined,
+            type: undefined,
+            dragDisabled: false,
+            zoneTabIndex: 0,
+            dropFromOthersDisabled: false,
+            dropTargetStyle: DEFAULT_DROP_TARGET_STYLE,
+            dropTargetClasses: [],
+            autoAriaDisabled: false
+        };
+
+        function swap(arr, i, j) {
+            if (arr.length <= 1) return;
+            arr.splice(j, 1, arr.splice(i, 1, arr[j])[0]);
+        }
+
+        function handleKeyDown(e) {
+            switch (e.key) {
+                case "Enter":
+                case " ": {
+                    // we don't want to affect nested input elements or clickable elements
+                    if ((e.target.disabled !== undefined || e.target.href || e.target.isContentEditable) && !allDragTargets.has(e.target)) {
+                        return;
+                    }
+                    e.preventDefault(); // preventing scrolling on spacebar
+                    e.stopPropagation();
+                    if (isDragging) {
+                        // TODO - should this trigger a drop? only here or in general (as in when hitting space or enter outside of any zone)?
+                        handleDrop();
+                    } else {
+                        // drag start
+                        handleDragStart(e);
+                    }
+                    break;
+                }
+                case "ArrowDown":
+                case "ArrowRight": {
+                    if (!isDragging) return;
+                    e.preventDefault(); // prevent scrolling
+                    e.stopPropagation();
+                    const {items} = dzToConfig.get(node);
+                    const children = Array.from(node.children);
+                    const idx = children.indexOf(e.currentTarget);
+                    if (idx < children.length - 1) {
+                        if (!config.autoAriaDisabled) {
+                            alertToScreenReader(`Moved item ${focusedItemLabel} to position ${idx + 2} in the list ${focusedDzLabel}`);
+                        }
+                        swap(items, idx, idx + 1);
+                        dispatchFinalizeEvent(node, items, {trigger: TRIGGERS.DROPPED_INTO_ZONE, id: focusedItemId, source: SOURCES.KEYBOARD});
+                    }
+                    break;
+                }
+                case "ArrowUp":
+                case "ArrowLeft": {
+                    if (!isDragging) return;
+                    e.preventDefault(); // prevent scrolling
+                    e.stopPropagation();
+                    const {items} = dzToConfig.get(node);
+                    const children = Array.from(node.children);
+                    const idx = children.indexOf(e.currentTarget);
+                    if (idx > 0) {
+                        if (!config.autoAriaDisabled) {
+                            alertToScreenReader(`Moved item ${focusedItemLabel} to position ${idx} in the list ${focusedDzLabel}`);
+                        }
+                        swap(items, idx, idx - 1);
+                        dispatchFinalizeEvent(node, items, {trigger: TRIGGERS.DROPPED_INTO_ZONE, id: focusedItemId, source: SOURCES.KEYBOARD});
+                    }
+                    break;
+                }
+            }
+        }
+        function handleDragStart(e) {
+            setCurrentFocusedItem(e.currentTarget);
+            focusedDz = node;
+            draggedItemType = config.type;
+            isDragging = true;
+            const dropTargets = Array.from(typeToDropZones.get(config.type)).filter(dz => dz === focusedDz || !dzToConfig.get(dz).dropFromOthersDisabled);
+            styleActiveDropZones(
+                dropTargets,
+                dz => dzToConfig.get(dz).dropTargetStyle,
+                dz => dzToConfig.get(dz).dropTargetClasses
+            );
+            if (!config.autoAriaDisabled) {
+                let msg = `Started dragging item ${focusedItemLabel}. Use the arrow keys to move it within its list ${focusedDzLabel}`;
+                if (dropTargets.length > 1) {
+                    msg += `, or tab to another list in order to move the item into it`;
+                }
+                alertToScreenReader(msg);
+            }
+            dispatchConsiderEvent(node, dzToConfig.get(node).items, {trigger: TRIGGERS.DRAG_STARTED, id: focusedItemId, source: SOURCES.KEYBOARD});
+            triggerAllDzsUpdate();
+        }
+
+        function handleClick(e) {
+            if (!isDragging) return;
+            if (e.currentTarget === focusedItem) return;
+            e.stopPropagation();
+            handleDrop(false);
+            handleDragStart(e);
+        }
+        function setCurrentFocusedItem(draggableEl) {
+            const {items} = dzToConfig.get(node);
+            const children = Array.from(node.children);
+            const focusedItemIdx = children.indexOf(draggableEl);
+            focusedItem = draggableEl;
+            focusedItem.tabIndex = 0;
+            focusedItemId = items[focusedItemIdx][ITEM_ID_KEY];
+            focusedItemLabel = children[focusedItemIdx].getAttribute("aria-label") || "";
+        }
+
+        function configure({
+            items = [],
+            type: newType = DEFAULT_DROP_ZONE_TYPE,
+            dragDisabled = false,
+            zoneTabIndex = 0,
+            dropFromOthersDisabled = false,
+            dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
+            dropTargetClasses = [],
+            autoAriaDisabled = false
+        }) {
+            config.items = [...items];
+            config.dragDisabled = dragDisabled;
+            config.dropFromOthersDisabled = dropFromOthersDisabled;
+            config.zoneTabIndex = zoneTabIndex;
+            config.dropTargetStyle = dropTargetStyle;
+            config.dropTargetClasses = dropTargetClasses;
+            config.autoAriaDisabled = autoAriaDisabled;
+            if (config.type && newType !== config.type) {
+                unregisterDropZone(node, config.type);
+            }
+            config.type = newType;
+            registerDropZone(node, newType);
+            if (!autoAriaDisabled) {
+                node.setAttribute("aria-disabled", dragDisabled);
+                node.setAttribute("role", "list");
+                node.setAttribute("aria-describedby", dragDisabled ? INSTRUCTION_IDs.DND_ZONE_DRAG_DISABLED : INSTRUCTION_IDs.DND_ZONE_ACTIVE);
+            }
+            dzToConfig.set(node, config);
+
+            if (isDragging) {
+                node.tabIndex =
+                    node === focusedDz ||
+                    focusedItem.contains(node) ||
+                    config.dropFromOthersDisabled ||
+                    (focusedDz && config.type !== dzToConfig.get(focusedDz).type)
+                        ? -1
+                        : 0;
+            } else {
+                node.tabIndex = config.zoneTabIndex;
+            }
+
+            node.addEventListener("focus", handleZoneFocus);
+
+            for (let i = 0; i < node.children.length; i++) {
+                const draggableEl = node.children[i];
+                allDragTargets.add(draggableEl);
+                draggableEl.tabIndex = isDragging ? -1 : 0;
+                if (!autoAriaDisabled) {
+                    draggableEl.setAttribute("role", "listitem");
+                }
+                draggableEl.removeEventListener("keydown", elToKeyDownListeners.get(draggableEl));
+                draggableEl.removeEventListener("click", elToFocusListeners.get(draggableEl));
+                if (!dragDisabled) {
+                    draggableEl.addEventListener("keydown", handleKeyDown);
+                    elToKeyDownListeners.set(draggableEl, handleKeyDown);
+                    draggableEl.addEventListener("click", handleClick);
+                    elToFocusListeners.set(draggableEl, handleClick);
+                }
+                if (isDragging && config.items[i][ITEM_ID_KEY] === focusedItemId) {
+                    // if it is a nested dropzone, it was re-rendered and we need to refresh our pointer
+                    focusedItem = draggableEl;
+                    focusedItem.tabIndex = 0;
+                    // without this the element loses focus if it moves backwards in the list
+                    draggableEl.focus();
+                }
+            }
+        }
+        configure(options);
+
+        const handles = {
+            update: newOptions => {
+                configure(newOptions);
+            },
+            destroy: () => {
+                unregisterDropZone(node, config.type);
+                dzToConfig.delete(node);
+                dzToHandles.delete(node);
+            }
+        };
+        dzToHandles.set(node, handles);
+        return handles;
+    }
+
+    /**
+     * A custom action to turn any container to a dnd zone and all of its direct children to draggables
+     * Supports mouse, touch and keyboard interactions.
+     * Dispatches two events that the container is expected to react to by modifying its list of items,
+     * which will then feed back in to this action via the update function
+     *
+     * @typedef {object} Options
+     * @property {array} items - the list of items that was used to generate the children of the given node (the list used in the #each block
+     * @property {string} [type] - the type of the dnd zone. children dragged from here can only be dropped in other zones of the same type, default to a base type
+     * @property {number} [flipDurationMs] - if the list animated using flip (recommended), specifies the flip duration such that everything syncs with it without conflict, defaults to zero
+     * @property {boolean} [dragDisabled]
+     * @property {boolean} [morphDisabled] - whether dragged element should morph to zone dimensions
+     * @property {boolean} [dropFromOthersDisabled]
+     * @property {number} [zoneTabIndex] - set the tabindex of the list container when not dragging
+     * @property {object} [dropTargetStyle]
+     * @property {string[]} [dropTargetClasses]
+     * @property {function} [transformDraggedElement]
+     * @param {HTMLElement} node - the element to enhance
+     * @param {Options} options
+     * @return {{update: function, destroy: function}}
+     */
+    function dndzone(node, options) {
+        validateOptions(options);
+        const pointerZone = dndzone$2(node, options);
+        const keyboardZone = dndzone$1(node, options);
+        return {
+            update: newOptions => {
+                validateOptions(newOptions);
+                pointerZone.update(newOptions);
+                keyboardZone.update(newOptions);
+            },
+            destroy: () => {
+                pointerZone.destroy();
+                keyboardZone.destroy();
+            }
+        };
+    }
+
+    function validateOptions(options) {
+        /*eslint-disable*/
+        const {
+            items,
+            flipDurationMs,
+            type,
+            dragDisabled,
+            morphDisabled,
+            dropFromOthersDisabled,
+            zoneTabIndex,
+            dropTargetStyle,
+            dropTargetClasses,
+            transformDraggedElement,
+            autoAriaDisabled,
+            centreDraggedOnCursor,
+            ...rest
+        } = options;
+        /*eslint-enable*/
+        if (Object.keys(rest).length > 0) {
+            console.warn(`dndzone will ignore unknown options`, rest);
+        }
+        if (!items) {
+            throw new Error("no 'items' key provided to dndzone");
+        }
+        const itemWithMissingId = items.find(item => !{}.hasOwnProperty.call(item, ITEM_ID_KEY));
+        if (itemWithMissingId) {
+            throw new Error(`missing '${ITEM_ID_KEY}' property for item ${toString(itemWithMissingId)}`);
+        }
+        if (dropTargetClasses && !Array.isArray(dropTargetClasses)) {
+            throw new Error(`dropTargetClasses should be an array but instead it is a ${typeof dropTargetClasses}, ${toString(dropTargetClasses)}`);
+        }
+        if (zoneTabIndex && !isInt(zoneTabIndex)) {
+            throw new Error(`zoneTabIndex should be a number but instead it is a ${typeof zoneTabIndex}, ${toString(zoneTabIndex)}`);
+        }
+    }
+
+    function isInt(value) {
+        return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value));
+    }
+
+    var svelte = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        SvelteComponent: SvelteComponentDev,
+        SvelteComponentTyped: SvelteComponentTyped,
+        afterUpdate: afterUpdate,
+        beforeUpdate: beforeUpdate,
+        createEventDispatcher: createEventDispatcher,
+        getAllContexts: getAllContexts,
+        getContext: getContext,
+        hasContext: hasContext,
+        onDestroy: onDestroy,
+        onMount: onMount,
+        setContext: setContext,
+        tick: tick
+    });
+
+    /* src\LetterContainer\LetterContainer.svelte generated by Svelte v3.49.0 */
+    const file$f = "src\\LetterContainer\\LetterContainer.svelte";
+
+    function get_each_context$4(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[9] = list[i];
+    	return child_ctx;
+    }
+
+    // (62:4) {#each items as tile(tile.id)}
+    function create_each_block$4(key_1, ctx) {
+    	let first;
+    	let letter_1;
+    	let current;
+
+    	letter_1 = new Letter$1({
+    			props: { letter: /*tile*/ ctx[9] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			first = empty();
+    			create_component(letter_1.$$.fragment);
+    			this.first = first;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, first, anchor);
+    			mount_component(letter_1, target, anchor);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const letter_1_changes = {};
+    			if (dirty & /*items*/ 1) letter_1_changes.letter = /*tile*/ ctx[9];
+    			letter_1.$set(letter_1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(letter_1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(letter_1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(first);
+    			destroy_component(letter_1, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$4.name,
+    		type: "each",
+    		source: "(62:4) {#each items as tile(tile.id)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$f(ctx) {
+    	let div;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let dndzone_action;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*items*/ ctx[0];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*tile*/ ctx[9].id;
+    	validate_each_keys(ctx, each_value, get_each_context$4, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context$4(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$4(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(div, "class", "letter svelte-1e4oktc");
+    			add_location(div, file$f, 55, 0, 1453);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					action_destroyer(dndzone_action = dndzone.call(null, div, /*options*/ ctx[1])),
+    					listen_dev(div, "consider", /*handleDndConsider*/ ctx[2], false, false, false),
+    					listen_dev(div, "finalize", /*handleDndFinalize*/ ctx[3], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*items*/ 1) {
+    				each_value = /*items*/ ctx[0];
+    				validate_each_argument(each_value);
+    				group_outros();
+    				validate_each_keys(ctx, each_value, get_each_context$4, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block$4, null, get_each_context$4);
+    				check_outros();
+    			}
+
+    			if (dndzone_action && is_function(dndzone_action.update) && dirty & /*options*/ 2) dndzone_action.update.call(null, /*options*/ ctx[1]);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$f.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$f($$self, $$props, $$invalidate) {
+    	let disable;
+    	let options;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('LetterContainer', slots, []);
+    	const dispatch = createEventDispatcher();
+    	let { letter } = $$props;
+    	let { xPos } = $$props;
+    	let { yPos } = $$props;
+    	let items = [letter];
+
+    	function handleDndConsider(e) {
+    		$$invalidate(0, items = e.detail.items);
+    	}
+
+    	function handleDndFinalize(e) {
+    		const { info: { trigger } } = e.detail;
+
+    		if (trigger === TRIGGERS.DROPPED_INTO_ANOTHER) {
+    			//console.log(`DROPPED_INTO_ANOTHER from ${xPos}, ${yPos}`); //starting container
+    			//console.log(e)
+    			dispatch('DRAGGED_FROM', {
+    				type: "DRAGGED_FROM",
+    				text: 'Item has been dragged from x, y',
+    				xPos,
+    				yPos
+    			});
+    		}
+
+    		if (items.length != e.detail.items) {
+    			dispatch('DRAGGED_TO', {
+    				type: "DRAGGED_TO",
+    				text: 'Item has been dragged to x, y',
+    				xPos,
+    				yPos
+    			});
+    		}
+
+    		$$invalidate(0, items = e.detail.items);
+    	}
+
+    	const writable_props = ['letter', 'xPos', 'yPos'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<LetterContainer> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('letter' in $$props) $$invalidate(4, letter = $$props.letter);
+    		if ('xPos' in $$props) $$invalidate(5, xPos = $$props.xPos);
+    		if ('yPos' in $$props) $$invalidate(6, yPos = $$props.yPos);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Letter: Letter$1,
+    		dndzone,
+    		TRIGGERS,
+    		createEventDispatcher,
+    		dispatch,
+    		letter,
+    		xPos,
+    		yPos,
+    		items,
+    		handleDndConsider,
+    		handleDndFinalize,
+    		disable,
+    		options
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('letter' in $$props) $$invalidate(4, letter = $$props.letter);
+    		if ('xPos' in $$props) $$invalidate(5, xPos = $$props.xPos);
+    		if ('yPos' in $$props) $$invalidate(6, yPos = $$props.yPos);
+    		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+    		if ('disable' in $$props) $$invalidate(7, disable = $$props.disable);
+    		if ('options' in $$props) $$invalidate(1, options = $$props.options);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*letter*/ 16) {
+    			$$invalidate(7, disable = letter.state === "blocked" || letter.state === "correct" || letter.game_state === "game_lost" || letter.game_state === "game_won");
+    		}
+
+    		if ($$self.$$.dirty & /*disable, items*/ 129) {
+    			$$invalidate(1, options = {
+    				dropFromOthersDisabled: disable,
+    				dragDisabled: disable,
+    				items,
+    				dropTargetStyle: {},
+    				flipDurationMs: 100
+    			});
+    		}
+    	};
+
+    	return [
+    		items,
+    		options,
+    		handleDndConsider,
+    		handleDndFinalize,
+    		letter,
+    		xPos,
+    		yPos,
+    		disable
+    	];
+    }
+
+    class LetterContainer extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$f, create_fragment$f, safe_not_equal, { letter: 4, xPos: 5, yPos: 6 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "LetterContainer",
+    			options,
+    			id: create_fragment$f.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*letter*/ ctx[4] === undefined && !('letter' in props)) {
+    			console.warn("<LetterContainer> was created without expected prop 'letter'");
+    		}
+
+    		if (/*xPos*/ ctx[5] === undefined && !('xPos' in props)) {
+    			console.warn("<LetterContainer> was created without expected prop 'xPos'");
+    		}
+
+    		if (/*yPos*/ ctx[6] === undefined && !('yPos' in props)) {
+    			console.warn("<LetterContainer> was created without expected prop 'yPos'");
+    		}
+    	}
+
+    	get letter() {
+    		throw new Error("<LetterContainer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set letter(value) {
+    		throw new Error("<LetterContainer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get xPos() {
+    		throw new Error("<LetterContainer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set xPos(value) {
+    		throw new Error("<LetterContainer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get yPos() {
+    		throw new Error("<LetterContainer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set yPos(value) {
+    		throw new Error("<LetterContainer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\GameBoard\Row.svelte generated by Svelte v3.49.0 */
+    const file$e = "src\\GameBoard\\Row.svelte";
+
+    function get_each_context$3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[4] = list[i];
+    	child_ctx[6] = i;
+    	return child_ctx;
+    }
+
+    // (10:4) {#each row_list as letter, i (letter.id)}
+    function create_each_block$3(key_1, ctx) {
+    	let first;
+    	let lettercontainer;
+    	let current;
+
+    	lettercontainer = new LetterContainer({
+    			props: {
+    				letter: /*letter*/ ctx[4],
+    				xPos: /*i*/ ctx[6],
+    				yPos: /*col*/ ctx[1]
+    			},
+    			$$inline: true
+    		});
+
+    	lettercontainer.$on("DRAGGED_FROM", /*DRAGGED_FROM_handler*/ ctx[2]);
+    	lettercontainer.$on("DRAGGED_TO", /*DRAGGED_TO_handler*/ ctx[3]);
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			first = empty();
+    			create_component(lettercontainer.$$.fragment);
+    			this.first = first;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, first, anchor);
+    			mount_component(lettercontainer, target, anchor);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const lettercontainer_changes = {};
+    			if (dirty & /*row_list*/ 1) lettercontainer_changes.letter = /*letter*/ ctx[4];
+    			if (dirty & /*row_list*/ 1) lettercontainer_changes.xPos = /*i*/ ctx[6];
+    			if (dirty & /*col*/ 2) lettercontainer_changes.yPos = /*col*/ ctx[1];
+    			lettercontainer.$set(lettercontainer_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(lettercontainer.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(lettercontainer.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(first);
+    			destroy_component(lettercontainer, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$3.name,
+    		type: "each",
+    		source: "(10:4) {#each row_list as letter, i (letter.id)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$e(ctx) {
+    	let div;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let current;
+    	let each_value = /*row_list*/ ctx[0];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*letter*/ ctx[4].id;
+    	validate_each_keys(ctx, each_value, get_each_context$3, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context$3(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$3(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(div, "class", "row svelte-1bu2qfp");
+    			add_location(div, file$e, 8, 0, 180);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*row_list, col*/ 3) {
+    				each_value = /*row_list*/ ctx[0];
+    				validate_each_argument(each_value);
+    				group_outros();
+    				validate_each_keys(ctx, each_value, get_each_context$3, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block$3, null, get_each_context$3);
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$e.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const flipDurationMs = 150;
+
+    function instance$e($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Row', slots, []);
+    	let { row_list } = $$props;
+    	let { col } = $$props;
+    	const writable_props = ['row_list', 'col'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Row> was created with unknown prop '${key}'`);
+    	});
+
+    	function DRAGGED_FROM_handler(event) {
+    		bubble.call(this, $$self, event);
+    	}
+
+    	function DRAGGED_TO_handler(event) {
+    		bubble.call(this, $$self, event);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ('row_list' in $$props) $$invalidate(0, row_list = $$props.row_list);
+    		if ('col' in $$props) $$invalidate(1, col = $$props.col);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		LetterContainer,
+    		row_list,
+    		col,
+    		flipDurationMs
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('row_list' in $$props) $$invalidate(0, row_list = $$props.row_list);
+    		if ('col' in $$props) $$invalidate(1, col = $$props.col);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [row_list, col, DRAGGED_FROM_handler, DRAGGED_TO_handler];
+    }
+
+    class Row extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$e, create_fragment$e, safe_not_equal, { row_list: 0, col: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Row",
+    			options,
+    			id: create_fragment$e.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*row_list*/ ctx[0] === undefined && !('row_list' in props)) {
+    			console.warn("<Row> was created without expected prop 'row_list'");
+    		}
+
+    		if (/*col*/ ctx[1] === undefined && !('col' in props)) {
+    			console.warn("<Row> was created without expected prop 'col'");
+    		}
+    	}
+
+    	get row_list() {
+    		throw new Error("<Row>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set row_list(value) {
+    		throw new Error("<Row>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get col() {
+    		throw new Error("<Row>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set col(value) {
+    		throw new Error("<Row>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    class Letter {
+        constructor(id, letter, state="incorrect") {
+            this.id = id;
+            this.letter = letter;
+            this.state = state;
+            this.game_state = state;
+        }
+    }
+
+    /* src\Popups\SolModal\SolPopup.svelte generated by Svelte v3.49.0 */
+    const file$d = "src\\Popups\\SolModal\\SolPopup.svelte";
+
+    function get_each_context$2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[1] = list[i];
+    	child_ctx[3] = i;
+    	return child_ctx;
+    }
+
+    // (10:12) {#each board as row, i}
+    function create_each_block$2(ctx) {
+    	let row;
+    	let current;
+
+    	row = new Row({
+    			props: {
+    				row_list: /*row*/ ctx[1],
+    				col: /*i*/ ctx[3]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(row.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(row, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const row_changes = {};
+    			if (dirty & /*board*/ 1) row_changes.row_list = /*row*/ ctx[1];
+    			row.$set(row_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(row.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(row.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(row, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$2.name,
+    		type: "each",
+    		source: "(10:12) {#each board as row, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$d(ctx) {
+    	let div2;
+    	let h1;
+    	let t1;
+    	let div1;
+    	let div0;
+    	let current;
+    	let each_value = /*board*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div2 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Solution";
+    			t1 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(h1, "class", "svelte-1br9232");
+    			add_location(h1, file$d, 6, 4, 132);
+    			attr_dev(div0, "class", "game-board svelte-1br9232");
+    			add_location(div0, file$d, 8, 8, 200);
+    			attr_dev(div1, "class", "board-container flexx svelte-1br9232");
+    			add_location(div1, file$d, 7, 4, 155);
+    			attr_dev(div2, "class", "main-popup flexx svelte-1br9232");
+    			add_location(div2, file$d, 5, 0, 96);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, h1);
+    			append_dev(div2, t1);
+    			append_dev(div2, div1);
+    			append_dev(div1, div0);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div0, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*board*/ 1) {
+    				each_value = /*board*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$2(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div0, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div2);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$d.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$d($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('SolPopup', slots, []);
+    	let { board } = $$props;
+    	const writable_props = ['board'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SolPopup> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('board' in $$props) $$invalidate(0, board = $$props.board);
+    	};
+
+    	$$self.$capture_state = () => ({ board, Row });
+
+    	$$self.$inject_state = $$props => {
+    		if ('board' in $$props) $$invalidate(0, board = $$props.board);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [board];
+    }
+
+    class SolPopup extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$d, create_fragment$d, safe_not_equal, { board: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "SolPopup",
+    			options,
+    			id: create_fragment$d.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*board*/ ctx[0] === undefined && !('board' in props)) {
+    			console.warn("<SolPopup> was created without expected prop 'board'");
+    		}
+    	}
+
+    	get board() {
+    		throw new Error("<SolPopup>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set board(value) {
+    		throw new Error("<SolPopup>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\Popups\SolModal\SolModalManager.svelte generated by Svelte v3.49.0 */
+    const file$c = "src\\Popups\\SolModal\\SolModalManager.svelte";
+
+    function create_fragment$c(ctx) {
+    	let button;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			button.textContent = "show solution";
+    			attr_dev(button, "class", "show-sol-button svelte-for4t0");
+    			add_location(button, file$c, 10, 0, 241);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*openPopup*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$c.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$c($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('SolModalManager', slots, []);
+    	let { board } = $$props;
+    	const { open } = getContext('simple-modal');
+    	const openPopup = () => open(SolPopup, { board });
+    	const writable_props = ['board'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SolModalManager> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('board' in $$props) $$invalidate(1, board = $$props.board);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		getContext,
+    		Popup: SolPopup,
+    		board,
+    		open,
+    		openPopup
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('board' in $$props) $$invalidate(1, board = $$props.board);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [openPopup, board];
+    }
+
+    class SolModalManager extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$c, create_fragment$c, safe_not_equal, { board: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "SolModalManager",
+    			options,
+    			id: create_fragment$c.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*board*/ ctx[1] === undefined && !('board' in props)) {
+    			console.warn("<SolModalManager> was created without expected prop 'board'");
+    		}
+    	}
+
+    	get board() {
+    		throw new Error("<SolModalManager>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set board(value) {
+    		throw new Error("<SolModalManager>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function fade(node, { delay = 0, duration = 400, easing = identity } = {}) {
+        const o = +getComputedStyle(node).opacity;
+        return {
+            delay,
+            duration,
+            easing,
+            css: t => `opacity: ${t * o}`
+        };
+    }
+    function fly(node, { delay = 0, duration = 400, easing = cubicOut, x = 0, y = 0, opacity = 0 } = {}) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (t, u) => `
+			transform: ${transform} translate(${(1 - t) * x}px, ${(1 - t) * y}px);
+			opacity: ${target_opacity - (od * u)}`
+        };
+    }
+
+    /* node_modules\svelte-simple-modal\src\Modal.svelte generated by Svelte v3.49.0 */
+
+    const { Object: Object_1$2, window: window_1 } = globals;
+    const file$b = "node_modules\\svelte-simple-modal\\src\\Modal.svelte";
+
+    // (423:0) {#if Component}
+    function create_if_block$4(ctx) {
+    	let div3;
+    	let div2;
+    	let div1;
+    	let t;
+    	let div0;
+    	let switch_instance;
+    	let div0_class_value;
+    	let div1_class_value;
+    	let div1_aria_label_value;
+    	let div1_aria_labelledby_value;
+    	let div1_transition;
+    	let div2_class_value;
+    	let div3_class_value;
+    	let div3_transition;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*state*/ ctx[1].closeButton && create_if_block_1$3(ctx);
+    	var switch_value = /*Component*/ ctx[2];
+
+    	function switch_props(ctx) {
+    		return { $$inline: true };
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props());
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			div2 = element("div");
+    			div1 = element("div");
+    			if (if_block) if_block.c();
+    			t = space();
+    			div0 = element("div");
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			attr_dev(div0, "class", div0_class_value = "" + (null_to_empty(/*state*/ ctx[1].classContent) + " svelte-g4wg3a"));
+    			attr_dev(div0, "style", /*cssContent*/ ctx[9]);
+    			toggle_class(div0, "content", !/*unstyled*/ ctx[0]);
+    			add_location(div0, file$b, 466, 8, 11854);
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty(/*state*/ ctx[1].classWindow) + " svelte-g4wg3a"));
+    			attr_dev(div1, "role", "dialog");
+    			attr_dev(div1, "aria-modal", "true");
+
+    			attr_dev(div1, "aria-label", div1_aria_label_value = /*state*/ ctx[1].ariaLabelledBy
+    			? null
+    			: /*state*/ ctx[1].ariaLabel || null);
+
+    			attr_dev(div1, "aria-labelledby", div1_aria_labelledby_value = /*state*/ ctx[1].ariaLabelledBy || null);
+    			attr_dev(div1, "style", /*cssWindow*/ ctx[8]);
+    			toggle_class(div1, "window", !/*unstyled*/ ctx[0]);
+    			add_location(div1, file$b, 438, 6, 10907);
+    			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty(/*state*/ ctx[1].classWindowWrap) + " svelte-g4wg3a"));
+    			attr_dev(div2, "style", /*cssWindowWrap*/ ctx[7]);
+    			toggle_class(div2, "wrap", !/*unstyled*/ ctx[0]);
+    			add_location(div2, file$b, 432, 4, 10774);
+    			attr_dev(div3, "class", div3_class_value = "" + (null_to_empty(/*state*/ ctx[1].classBg) + " svelte-g4wg3a"));
+    			attr_dev(div3, "style", /*cssBg*/ ctx[6]);
+    			toggle_class(div3, "bg", !/*unstyled*/ ctx[0]);
+    			add_location(div3, file$b, 423, 2, 10528);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div2);
+    			append_dev(div2, div1);
+    			if (if_block) if_block.m(div1, null);
+    			append_dev(div1, t);
+    			append_dev(div1, div0);
+
+    			if (switch_instance) {
+    				mount_component(switch_instance, div0, null);
+    			}
+
+    			/*div1_binding*/ ctx[49](div1);
+    			/*div2_binding*/ ctx[50](div2);
+    			/*div3_binding*/ ctx[51](div3);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(
+    						div1,
+    						"introstart",
+    						function () {
+    							if (is_function(/*onOpen*/ ctx[13])) /*onOpen*/ ctx[13].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(
+    						div1,
+    						"outrostart",
+    						function () {
+    							if (is_function(/*onClose*/ ctx[14])) /*onClose*/ ctx[14].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(
+    						div1,
+    						"introend",
+    						function () {
+    							if (is_function(/*onOpened*/ ctx[15])) /*onOpened*/ ctx[15].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(
+    						div1,
+    						"outroend",
+    						function () {
+    							if (is_function(/*onClosed*/ ctx[16])) /*onClosed*/ ctx[16].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(div3, "mousedown", /*handleOuterMousedown*/ ctx[20], false, false, false),
+    					listen_dev(div3, "mouseup", /*handleOuterMouseup*/ ctx[21], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (/*state*/ ctx[1].closeButton) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*state*/ 2) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_1$3(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div1, t);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (switch_value !== (switch_value = /*Component*/ ctx[2])) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props());
+    					create_component(switch_instance.$$.fragment);
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, div0, null);
+    				} else {
+    					switch_instance = null;
+    				}
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div0_class_value !== (div0_class_value = "" + (null_to_empty(/*state*/ ctx[1].classContent) + " svelte-g4wg3a"))) {
+    				attr_dev(div0, "class", div0_class_value);
+    			}
+
+    			if (!current || dirty[0] & /*cssContent*/ 512) {
+    				attr_dev(div0, "style", /*cssContent*/ ctx[9]);
+    			}
+
+    			if (dirty[0] & /*state, unstyled*/ 3) {
+    				toggle_class(div0, "content", !/*unstyled*/ ctx[0]);
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty(/*state*/ ctx[1].classWindow) + " svelte-g4wg3a"))) {
+    				attr_dev(div1, "class", div1_class_value);
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div1_aria_label_value !== (div1_aria_label_value = /*state*/ ctx[1].ariaLabelledBy
+    			? null
+    			: /*state*/ ctx[1].ariaLabel || null)) {
+    				attr_dev(div1, "aria-label", div1_aria_label_value);
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div1_aria_labelledby_value !== (div1_aria_labelledby_value = /*state*/ ctx[1].ariaLabelledBy || null)) {
+    				attr_dev(div1, "aria-labelledby", div1_aria_labelledby_value);
+    			}
+
+    			if (!current || dirty[0] & /*cssWindow*/ 256) {
+    				attr_dev(div1, "style", /*cssWindow*/ ctx[8]);
+    			}
+
+    			if (dirty[0] & /*state, unstyled*/ 3) {
+    				toggle_class(div1, "window", !/*unstyled*/ ctx[0]);
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div2_class_value !== (div2_class_value = "" + (null_to_empty(/*state*/ ctx[1].classWindowWrap) + " svelte-g4wg3a"))) {
+    				attr_dev(div2, "class", div2_class_value);
+    			}
+
+    			if (!current || dirty[0] & /*cssWindowWrap*/ 128) {
+    				attr_dev(div2, "style", /*cssWindowWrap*/ ctx[7]);
+    			}
+
+    			if (dirty[0] & /*state, unstyled*/ 3) {
+    				toggle_class(div2, "wrap", !/*unstyled*/ ctx[0]);
+    			}
+
+    			if (!current || dirty[0] & /*state*/ 2 && div3_class_value !== (div3_class_value = "" + (null_to_empty(/*state*/ ctx[1].classBg) + " svelte-g4wg3a"))) {
+    				attr_dev(div3, "class", div3_class_value);
+    			}
+
+    			if (!current || dirty[0] & /*cssBg*/ 64) {
+    				attr_dev(div3, "style", /*cssBg*/ ctx[6]);
+    			}
+
+    			if (dirty[0] & /*state, unstyled*/ 3) {
+    				toggle_class(div3, "bg", !/*unstyled*/ ctx[0]);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+
+    			add_render_callback(() => {
+    				if (!div1_transition) div1_transition = create_bidirectional_transition(div1, /*currentTransitionWindow*/ ctx[12], /*state*/ ctx[1].transitionWindowProps, true);
+    				div1_transition.run(1);
+    			});
+
+    			add_render_callback(() => {
+    				if (!div3_transition) div3_transition = create_bidirectional_transition(div3, /*currentTransitionBg*/ ctx[11], /*state*/ ctx[1].transitionBgProps, true);
+    				div3_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			if (!div1_transition) div1_transition = create_bidirectional_transition(div1, /*currentTransitionWindow*/ ctx[12], /*state*/ ctx[1].transitionWindowProps, false);
+    			div1_transition.run(0);
+    			if (!div3_transition) div3_transition = create_bidirectional_transition(div3, /*currentTransitionBg*/ ctx[11], /*state*/ ctx[1].transitionBgProps, false);
+    			div3_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div3);
+    			if (if_block) if_block.d();
+    			if (switch_instance) destroy_component(switch_instance);
+    			/*div1_binding*/ ctx[49](null);
+    			if (detaching && div1_transition) div1_transition.end();
+    			/*div2_binding*/ ctx[50](null);
+    			/*div3_binding*/ ctx[51](null);
+    			if (detaching && div3_transition) div3_transition.end();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$4.name,
+    		type: "if",
+    		source: "(423:0) {#if Component}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (454:8) {#if state.closeButton}
+    function create_if_block_1$3(ctx) {
+    	let show_if;
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block_2$1, create_else_block$4];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (dirty[0] & /*state*/ 2) show_if = null;
+    		if (show_if == null) show_if = !!/*isFunction*/ ctx[17](/*state*/ ctx[1].closeButton);
+    		if (show_if) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx, [-1, -1, -1]);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx, dirty);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$3.name,
+    		type: "if",
+    		source: "(454:8) {#if state.closeButton}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (457:10) {:else}
+    function create_else_block$4(ctx) {
+    	let button;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			attr_dev(button, "class", button_class_value = "" + (null_to_empty(/*state*/ ctx[1].classCloseButton) + " svelte-g4wg3a"));
+    			attr_dev(button, "aria-label", "Close modal");
+    			attr_dev(button, "style", /*cssCloseButton*/ ctx[10]);
+    			toggle_class(button, "close", !/*unstyled*/ ctx[0]);
+    			add_location(button, file$b, 457, 12, 11603);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*close*/ ctx[18], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty[0] & /*state*/ 2 && button_class_value !== (button_class_value = "" + (null_to_empty(/*state*/ ctx[1].classCloseButton) + " svelte-g4wg3a"))) {
+    				attr_dev(button, "class", button_class_value);
+    			}
+
+    			if (dirty[0] & /*cssCloseButton*/ 1024) {
+    				attr_dev(button, "style", /*cssCloseButton*/ ctx[10]);
+    			}
+
+    			if (dirty[0] & /*state, unstyled*/ 3) {
+    				toggle_class(button, "close", !/*unstyled*/ ctx[0]);
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$4.name,
+    		type: "else",
+    		source: "(457:10) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (455:10) {#if isFunction(state.closeButton)}
+    function create_if_block_2$1(ctx) {
+    	let switch_instance;
+    	let switch_instance_anchor;
+    	let current;
+    	var switch_value = /*state*/ ctx[1].closeButton;
+
+    	function switch_props(ctx) {
+    		return {
+    			props: { onClose: /*close*/ ctx[18] },
+    			$$inline: true
+    		};
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props(ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			switch_instance_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (switch_value !== (switch_value = /*state*/ ctx[1].closeButton)) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props(ctx));
+    					create_component(switch_instance.$$.fragment);
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(switch_instance_anchor);
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(455:10) {#if isFunction(state.closeButton)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$b(ctx) {
+    	let t;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*Component*/ ctx[2] && create_if_block$4(ctx);
+    	const default_slot_template = /*#slots*/ ctx[48].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[47], null);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			t = space();
+    			if (default_slot) default_slot.c();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, t, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(window_1, "keydown", /*handleKeydown*/ ctx[19], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*Component*/ ctx[2]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*Component*/ 4) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$4(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(t.parentNode, t);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (default_slot) {
+    				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 65536)) {
+    					update_slot_base(
+    						default_slot,
+    						default_slot_template,
+    						ctx,
+    						/*$$scope*/ ctx[47],
+    						!current
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[47])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[47], dirty, null),
+    						null
+    					);
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(t);
+    			if (default_slot) default_slot.d(detaching);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$b.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function bind(Component, props = {}) {
+    	return function ModalComponent(options) {
+    		return new Component({
+    				...options,
+    				props: { ...props, ...options.props }
+    			});
+    	};
+    }
+
+    function instance$b($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Modal', slots, ['default']);
+    	const dispatch = createEventDispatcher();
+    	const baseSetContext = setContext;
+
+    	/**
+     * A basic function that checks if a node is tabbale
+     */
+    	const baseIsTabbable = node => node.tabIndex >= 0 && !node.hidden && !node.disabled && node.style.display !== 'none' && node.type !== 'hidden' && Boolean(node.offsetWidth || node.offsetHeight || node.getClientRects().length);
+
+    	let { isTabbable = baseIsTabbable } = $$props;
+    	let { show = null } = $$props;
+    	let { key = 'simple-modal' } = $$props;
+    	let { ariaLabel = null } = $$props;
+    	let { ariaLabelledBy = null } = $$props;
+    	let { closeButton = true } = $$props;
+    	let { closeOnEsc = true } = $$props;
+    	let { closeOnOuterClick = true } = $$props;
+    	let { styleBg = {} } = $$props;
+    	let { styleWindowWrap = {} } = $$props;
+    	let { styleWindow = {} } = $$props;
+    	let { styleContent = {} } = $$props;
+    	let { styleCloseButton = {} } = $$props;
+    	let { classBg = null } = $$props;
+    	let { classWindowWrap = null } = $$props;
+    	let { classWindow = null } = $$props;
+    	let { classContent = null } = $$props;
+    	let { classCloseButton = null } = $$props;
+    	let { unstyled = false } = $$props;
+    	let { setContext: setContext$1 = baseSetContext } = $$props;
+    	let { transitionBg = fade } = $$props;
+    	let { transitionBgProps = { duration: 250 } } = $$props;
+    	let { transitionWindow = transitionBg } = $$props;
+    	let { transitionWindowProps = transitionBgProps } = $$props;
+    	let { disableFocusTrap = false } = $$props;
+
+    	const defaultState = {
+    		ariaLabel,
+    		ariaLabelledBy,
+    		closeButton,
+    		closeOnEsc,
+    		closeOnOuterClick,
+    		styleBg,
+    		styleWindowWrap,
+    		styleWindow,
+    		styleContent,
+    		styleCloseButton,
+    		classBg,
+    		classWindowWrap,
+    		classWindow,
+    		classContent,
+    		classCloseButton,
+    		transitionBg,
+    		transitionBgProps,
+    		transitionWindow,
+    		transitionWindowProps,
+    		disableFocusTrap,
+    		isTabbable,
+    		unstyled
+    	};
+
+    	let state = { ...defaultState };
+    	let Component = null;
+    	let background;
+    	let wrap;
+    	let modalWindow;
+    	let scrollY;
+    	let cssBg;
+    	let cssWindowWrap;
+    	let cssWindow;
+    	let cssContent;
+    	let cssCloseButton;
+    	let currentTransitionBg;
+    	let currentTransitionWindow;
+    	let prevBodyPosition;
+    	let prevBodyOverflow;
+    	let prevBodyWidth;
+    	let outerClickTarget;
+    	const camelCaseToDash = str => str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+
+    	const toCssString = props => props
+    	? Object.keys(props).reduce((str, key) => `${str}; ${camelCaseToDash(key)}: ${props[key]}`, '')
+    	: '';
+
+    	const isFunction = f => !!(f && f.constructor && f.call && f.apply);
+
+    	const updateStyleTransition = () => {
+    		$$invalidate(6, cssBg = toCssString(Object.assign(
+    			{},
+    			{
+    				width: window.innerWidth,
+    				height: window.innerHeight
+    			},
+    			state.styleBg
+    		)));
+
+    		$$invalidate(7, cssWindowWrap = toCssString(state.styleWindowWrap));
+    		$$invalidate(8, cssWindow = toCssString(state.styleWindow));
+    		$$invalidate(9, cssContent = toCssString(state.styleContent));
+    		$$invalidate(10, cssCloseButton = toCssString(state.styleCloseButton));
+    		$$invalidate(11, currentTransitionBg = state.transitionBg);
+    		$$invalidate(12, currentTransitionWindow = state.transitionWindow);
+    	};
+
+    	const toVoid = () => {
+    		
+    	};
+
+    	let onOpen = toVoid;
+    	let onClose = toVoid;
+    	let onOpened = toVoid;
+    	let onClosed = toVoid;
+
+    	const open = (NewComponent, newProps = {}, options = {}, callback = {}) => {
+    		$$invalidate(2, Component = bind(NewComponent, newProps));
+    		$$invalidate(1, state = { ...defaultState, ...options });
+    		updateStyleTransition();
+    		disableScroll();
+
+    		$$invalidate(13, onOpen = event => {
+    			if (callback.onOpen) callback.onOpen(event);
+
+    			/**
+     * The open event is fired right before the modal opens
+     * @event {void} open
+     */
+    			dispatch('open');
+
+    			/**
+     * The opening event is fired right before the modal opens
+     * @event {void} opening
+     * @deprecated Listen to the `open` event instead
+     */
+    			dispatch('opening'); // Deprecated. Do not use!
+    		});
+
+    		$$invalidate(14, onClose = event => {
+    			if (callback.onClose) callback.onClose(event);
+
+    			/**
+     * The close event is fired right before the modal closes
+     * @event {void} close
+     */
+    			dispatch('close');
+
+    			/**
+     * The closing event is fired right before the modal closes
+     * @event {void} closing
+     * @deprecated Listen to the `close` event instead
+     */
+    			dispatch('closing'); // Deprecated. Do not use!
+    		});
+
+    		$$invalidate(15, onOpened = event => {
+    			if (callback.onOpened) callback.onOpened(event);
+
+    			/**
+     * The opened event is fired after the modal's opening transition
+     * @event {void} opened
+     */
+    			dispatch('opened');
+    		});
+
+    		$$invalidate(16, onClosed = event => {
+    			if (callback.onClosed) callback.onClosed(event);
+
+    			/**
+     * The closed event is fired after the modal's closing transition
+     * @event {void} closed
+     */
+    			dispatch('closed');
+    		});
+    	};
+
+    	const close = (callback = {}) => {
+    		if (!Component) return;
+    		$$invalidate(14, onClose = callback.onClose || onClose);
+    		$$invalidate(16, onClosed = callback.onClosed || onClosed);
+    		$$invalidate(2, Component = null);
+    		enableScroll();
+    	};
+
+    	const handleKeydown = event => {
+    		if (state.closeOnEsc && Component && event.key === 'Escape') {
+    			event.preventDefault();
+    			close();
+    		}
+
+    		if (Component && event.key === 'Tab' && !state.disableFocusTrap) {
+    			// trap focus
+    			const nodes = modalWindow.querySelectorAll('*');
+
+    			const tabbable = Array.from(nodes).filter(state.isTabbable).sort((a, b) => a.tabIndex - b.tabIndex);
+    			let index = tabbable.indexOf(document.activeElement);
+    			if (index === -1 && event.shiftKey) index = 0;
+    			index += tabbable.length + (event.shiftKey ? -1 : 1);
+    			index %= tabbable.length;
+    			tabbable[index].focus();
+    			event.preventDefault();
+    		}
+    	};
+
+    	const handleOuterMousedown = event => {
+    		if (state.closeOnOuterClick && (event.target === background || event.target === wrap)) outerClickTarget = event.target;
+    	};
+
+    	const handleOuterMouseup = event => {
+    		if (state.closeOnOuterClick && event.target === outerClickTarget) {
+    			event.preventDefault();
+    			close();
+    		}
+    	};
+
+    	const disableScroll = () => {
+    		scrollY = window.scrollY;
+    		prevBodyPosition = document.body.style.position;
+    		prevBodyOverflow = document.body.style.overflow;
+    		prevBodyWidth = document.body.style.width;
+    		document.body.style.position = 'fixed';
+    		document.body.style.top = `-${scrollY}px`;
+    		document.body.style.overflow = 'hidden';
+    		document.body.style.width = '100%';
+    	};
+
+    	const enableScroll = () => {
+    		document.body.style.position = prevBodyPosition || '';
+    		document.body.style.top = '';
+    		document.body.style.overflow = prevBodyOverflow || '';
+    		document.body.style.width = prevBodyWidth || '';
+    		window.scrollTo(0, scrollY);
+    	};
+
+    	setContext$1(key, { open, close });
+    	let isMounted = false;
+
+    	onDestroy(() => {
+    		if (isMounted) close();
+    	});
+
+    	onMount(() => {
+    		$$invalidate(46, isMounted = true);
+    	});
+
+    	const writable_props = [
+    		'isTabbable',
+    		'show',
+    		'key',
+    		'ariaLabel',
+    		'ariaLabelledBy',
+    		'closeButton',
+    		'closeOnEsc',
+    		'closeOnOuterClick',
+    		'styleBg',
+    		'styleWindowWrap',
+    		'styleWindow',
+    		'styleContent',
+    		'styleCloseButton',
+    		'classBg',
+    		'classWindowWrap',
+    		'classWindow',
+    		'classContent',
+    		'classCloseButton',
+    		'unstyled',
+    		'setContext',
+    		'transitionBg',
+    		'transitionBgProps',
+    		'transitionWindow',
+    		'transitionWindowProps',
+    		'disableFocusTrap'
+    	];
+
+    	Object_1$2.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Modal> was created with unknown prop '${key}'`);
+    	});
+
+    	function div1_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			modalWindow = $$value;
+    			$$invalidate(5, modalWindow);
+    		});
+    	}
+
+    	function div2_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			wrap = $$value;
+    			$$invalidate(4, wrap);
+    		});
+    	}
+
+    	function div3_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			background = $$value;
+    			$$invalidate(3, background);
+    		});
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ('isTabbable' in $$props) $$invalidate(22, isTabbable = $$props.isTabbable);
+    		if ('show' in $$props) $$invalidate(23, show = $$props.show);
+    		if ('key' in $$props) $$invalidate(24, key = $$props.key);
+    		if ('ariaLabel' in $$props) $$invalidate(25, ariaLabel = $$props.ariaLabel);
+    		if ('ariaLabelledBy' in $$props) $$invalidate(26, ariaLabelledBy = $$props.ariaLabelledBy);
+    		if ('closeButton' in $$props) $$invalidate(27, closeButton = $$props.closeButton);
+    		if ('closeOnEsc' in $$props) $$invalidate(28, closeOnEsc = $$props.closeOnEsc);
+    		if ('closeOnOuterClick' in $$props) $$invalidate(29, closeOnOuterClick = $$props.closeOnOuterClick);
+    		if ('styleBg' in $$props) $$invalidate(30, styleBg = $$props.styleBg);
+    		if ('styleWindowWrap' in $$props) $$invalidate(31, styleWindowWrap = $$props.styleWindowWrap);
+    		if ('styleWindow' in $$props) $$invalidate(32, styleWindow = $$props.styleWindow);
+    		if ('styleContent' in $$props) $$invalidate(33, styleContent = $$props.styleContent);
+    		if ('styleCloseButton' in $$props) $$invalidate(34, styleCloseButton = $$props.styleCloseButton);
+    		if ('classBg' in $$props) $$invalidate(35, classBg = $$props.classBg);
+    		if ('classWindowWrap' in $$props) $$invalidate(36, classWindowWrap = $$props.classWindowWrap);
+    		if ('classWindow' in $$props) $$invalidate(37, classWindow = $$props.classWindow);
+    		if ('classContent' in $$props) $$invalidate(38, classContent = $$props.classContent);
+    		if ('classCloseButton' in $$props) $$invalidate(39, classCloseButton = $$props.classCloseButton);
+    		if ('unstyled' in $$props) $$invalidate(0, unstyled = $$props.unstyled);
+    		if ('setContext' in $$props) $$invalidate(40, setContext$1 = $$props.setContext);
+    		if ('transitionBg' in $$props) $$invalidate(41, transitionBg = $$props.transitionBg);
+    		if ('transitionBgProps' in $$props) $$invalidate(42, transitionBgProps = $$props.transitionBgProps);
+    		if ('transitionWindow' in $$props) $$invalidate(43, transitionWindow = $$props.transitionWindow);
+    		if ('transitionWindowProps' in $$props) $$invalidate(44, transitionWindowProps = $$props.transitionWindowProps);
+    		if ('disableFocusTrap' in $$props) $$invalidate(45, disableFocusTrap = $$props.disableFocusTrap);
+    		if ('$$scope' in $$props) $$invalidate(47, $$scope = $$props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		bind,
+    		svelte,
+    		fade,
+    		createEventDispatcher,
+    		dispatch,
+    		baseSetContext,
+    		baseIsTabbable,
+    		isTabbable,
+    		show,
+    		key,
+    		ariaLabel,
+    		ariaLabelledBy,
+    		closeButton,
+    		closeOnEsc,
+    		closeOnOuterClick,
+    		styleBg,
+    		styleWindowWrap,
+    		styleWindow,
+    		styleContent,
+    		styleCloseButton,
+    		classBg,
+    		classWindowWrap,
+    		classWindow,
+    		classContent,
+    		classCloseButton,
+    		unstyled,
+    		setContext: setContext$1,
+    		transitionBg,
+    		transitionBgProps,
+    		transitionWindow,
+    		transitionWindowProps,
+    		disableFocusTrap,
+    		defaultState,
+    		state,
+    		Component,
+    		background,
+    		wrap,
+    		modalWindow,
+    		scrollY,
+    		cssBg,
+    		cssWindowWrap,
+    		cssWindow,
+    		cssContent,
+    		cssCloseButton,
+    		currentTransitionBg,
+    		currentTransitionWindow,
+    		prevBodyPosition,
+    		prevBodyOverflow,
+    		prevBodyWidth,
+    		outerClickTarget,
+    		camelCaseToDash,
+    		toCssString,
+    		isFunction,
+    		updateStyleTransition,
+    		toVoid,
+    		onOpen,
+    		onClose,
+    		onOpened,
+    		onClosed,
+    		open,
+    		close,
+    		handleKeydown,
+    		handleOuterMousedown,
+    		handleOuterMouseup,
+    		disableScroll,
+    		enableScroll,
+    		isMounted
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('isTabbable' in $$props) $$invalidate(22, isTabbable = $$props.isTabbable);
+    		if ('show' in $$props) $$invalidate(23, show = $$props.show);
+    		if ('key' in $$props) $$invalidate(24, key = $$props.key);
+    		if ('ariaLabel' in $$props) $$invalidate(25, ariaLabel = $$props.ariaLabel);
+    		if ('ariaLabelledBy' in $$props) $$invalidate(26, ariaLabelledBy = $$props.ariaLabelledBy);
+    		if ('closeButton' in $$props) $$invalidate(27, closeButton = $$props.closeButton);
+    		if ('closeOnEsc' in $$props) $$invalidate(28, closeOnEsc = $$props.closeOnEsc);
+    		if ('closeOnOuterClick' in $$props) $$invalidate(29, closeOnOuterClick = $$props.closeOnOuterClick);
+    		if ('styleBg' in $$props) $$invalidate(30, styleBg = $$props.styleBg);
+    		if ('styleWindowWrap' in $$props) $$invalidate(31, styleWindowWrap = $$props.styleWindowWrap);
+    		if ('styleWindow' in $$props) $$invalidate(32, styleWindow = $$props.styleWindow);
+    		if ('styleContent' in $$props) $$invalidate(33, styleContent = $$props.styleContent);
+    		if ('styleCloseButton' in $$props) $$invalidate(34, styleCloseButton = $$props.styleCloseButton);
+    		if ('classBg' in $$props) $$invalidate(35, classBg = $$props.classBg);
+    		if ('classWindowWrap' in $$props) $$invalidate(36, classWindowWrap = $$props.classWindowWrap);
+    		if ('classWindow' in $$props) $$invalidate(37, classWindow = $$props.classWindow);
+    		if ('classContent' in $$props) $$invalidate(38, classContent = $$props.classContent);
+    		if ('classCloseButton' in $$props) $$invalidate(39, classCloseButton = $$props.classCloseButton);
+    		if ('unstyled' in $$props) $$invalidate(0, unstyled = $$props.unstyled);
+    		if ('setContext' in $$props) $$invalidate(40, setContext$1 = $$props.setContext);
+    		if ('transitionBg' in $$props) $$invalidate(41, transitionBg = $$props.transitionBg);
+    		if ('transitionBgProps' in $$props) $$invalidate(42, transitionBgProps = $$props.transitionBgProps);
+    		if ('transitionWindow' in $$props) $$invalidate(43, transitionWindow = $$props.transitionWindow);
+    		if ('transitionWindowProps' in $$props) $$invalidate(44, transitionWindowProps = $$props.transitionWindowProps);
+    		if ('disableFocusTrap' in $$props) $$invalidate(45, disableFocusTrap = $$props.disableFocusTrap);
+    		if ('state' in $$props) $$invalidate(1, state = $$props.state);
+    		if ('Component' in $$props) $$invalidate(2, Component = $$props.Component);
+    		if ('background' in $$props) $$invalidate(3, background = $$props.background);
+    		if ('wrap' in $$props) $$invalidate(4, wrap = $$props.wrap);
+    		if ('modalWindow' in $$props) $$invalidate(5, modalWindow = $$props.modalWindow);
+    		if ('scrollY' in $$props) scrollY = $$props.scrollY;
+    		if ('cssBg' in $$props) $$invalidate(6, cssBg = $$props.cssBg);
+    		if ('cssWindowWrap' in $$props) $$invalidate(7, cssWindowWrap = $$props.cssWindowWrap);
+    		if ('cssWindow' in $$props) $$invalidate(8, cssWindow = $$props.cssWindow);
+    		if ('cssContent' in $$props) $$invalidate(9, cssContent = $$props.cssContent);
+    		if ('cssCloseButton' in $$props) $$invalidate(10, cssCloseButton = $$props.cssCloseButton);
+    		if ('currentTransitionBg' in $$props) $$invalidate(11, currentTransitionBg = $$props.currentTransitionBg);
+    		if ('currentTransitionWindow' in $$props) $$invalidate(12, currentTransitionWindow = $$props.currentTransitionWindow);
+    		if ('prevBodyPosition' in $$props) prevBodyPosition = $$props.prevBodyPosition;
+    		if ('prevBodyOverflow' in $$props) prevBodyOverflow = $$props.prevBodyOverflow;
+    		if ('prevBodyWidth' in $$props) prevBodyWidth = $$props.prevBodyWidth;
+    		if ('outerClickTarget' in $$props) outerClickTarget = $$props.outerClickTarget;
+    		if ('onOpen' in $$props) $$invalidate(13, onOpen = $$props.onOpen);
+    		if ('onClose' in $$props) $$invalidate(14, onClose = $$props.onClose);
+    		if ('onOpened' in $$props) $$invalidate(15, onOpened = $$props.onOpened);
+    		if ('onClosed' in $$props) $$invalidate(16, onClosed = $$props.onClosed);
+    		if ('isMounted' in $$props) $$invalidate(46, isMounted = $$props.isMounted);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty[0] & /*show*/ 8388608 | $$self.$$.dirty[1] & /*isMounted*/ 32768) {
+    			{
+    				if (isMounted) {
+    					if (isFunction(show)) {
+    						open(show);
+    					} else {
+    						close();
+    					}
+    				}
+    			}
+    		}
+    	};
+
+    	return [
+    		unstyled,
+    		state,
+    		Component,
+    		background,
+    		wrap,
+    		modalWindow,
+    		cssBg,
+    		cssWindowWrap,
+    		cssWindow,
+    		cssContent,
+    		cssCloseButton,
+    		currentTransitionBg,
+    		currentTransitionWindow,
+    		onOpen,
+    		onClose,
+    		onOpened,
+    		onClosed,
+    		isFunction,
+    		close,
+    		handleKeydown,
+    		handleOuterMousedown,
+    		handleOuterMouseup,
+    		isTabbable,
+    		show,
+    		key,
+    		ariaLabel,
+    		ariaLabelledBy,
+    		closeButton,
+    		closeOnEsc,
+    		closeOnOuterClick,
+    		styleBg,
+    		styleWindowWrap,
+    		styleWindow,
+    		styleContent,
+    		styleCloseButton,
+    		classBg,
+    		classWindowWrap,
+    		classWindow,
+    		classContent,
+    		classCloseButton,
+    		setContext$1,
+    		transitionBg,
+    		transitionBgProps,
+    		transitionWindow,
+    		transitionWindowProps,
+    		disableFocusTrap,
+    		isMounted,
+    		$$scope,
+    		slots,
+    		div1_binding,
+    		div2_binding,
+    		div3_binding
+    	];
+    }
+
+    class Modal extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init(
+    			this,
+    			options,
+    			instance$b,
+    			create_fragment$b,
+    			safe_not_equal,
+    			{
+    				isTabbable: 22,
+    				show: 23,
+    				key: 24,
+    				ariaLabel: 25,
+    				ariaLabelledBy: 26,
+    				closeButton: 27,
+    				closeOnEsc: 28,
+    				closeOnOuterClick: 29,
+    				styleBg: 30,
+    				styleWindowWrap: 31,
+    				styleWindow: 32,
+    				styleContent: 33,
+    				styleCloseButton: 34,
+    				classBg: 35,
+    				classWindowWrap: 36,
+    				classWindow: 37,
+    				classContent: 38,
+    				classCloseButton: 39,
+    				unstyled: 0,
+    				setContext: 40,
+    				transitionBg: 41,
+    				transitionBgProps: 42,
+    				transitionWindow: 43,
+    				transitionWindowProps: 44,
+    				disableFocusTrap: 45
+    			},
+    			null,
+    			[-1, -1, -1]
+    		);
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Modal",
+    			options,
+    			id: create_fragment$b.name
+    		});
+    	}
+
+    	get isTabbable() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set isTabbable(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get show() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set show(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get key() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set key(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ariaLabel() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ariaLabel(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ariaLabelledBy() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ariaLabelledBy(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get closeButton() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set closeButton(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get closeOnEsc() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set closeOnEsc(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get closeOnOuterClick() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set closeOnOuterClick(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get styleBg() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set styleBg(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get styleWindowWrap() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set styleWindowWrap(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get styleWindow() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set styleWindow(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get styleContent() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set styleContent(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get styleCloseButton() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set styleCloseButton(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get classBg() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set classBg(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get classWindowWrap() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set classWindowWrap(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get classWindow() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set classWindow(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get classContent() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set classContent(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get classCloseButton() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set classCloseButton(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get unstyled() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set unstyled(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get setContext() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set setContext(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get transitionBg() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set transitionBg(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get transitionBgProps() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set transitionBgProps(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get transitionWindow() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set transitionWindow(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get transitionWindowProps() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set transitionWindowProps(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get disableFocusTrap() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set disableFocusTrap(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    function saveObj(key, obj) {
+        window.localStorage.setItem(key, JSON.stringify(obj));
+    }
+
+    function getObj$1(key) {
+        try {
+            let json = JSON.parse(window.localStorage.getItem(key));
+            return json
+        } catch {
+            return null
+        }
+    }
+
+    /* src\GameBoard\GameBoard.svelte generated by Svelte v3.49.0 */
+    const file$a = "src\\GameBoard\\GameBoard.svelte";
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[22] = list[i];
+    	child_ctx[24] = i;
+    	return child_ctx;
+    }
+
+    // (290:12) {#each board as row, i}
+    function create_each_block$1(ctx) {
+    	let row;
+    	let current;
+
+    	row = new Row({
+    			props: {
+    				row_list: /*row*/ ctx[22],
+    				col: /*i*/ ctx[24]
+    			},
+    			$$inline: true
+    		});
+
+    	row.$on("DRAGGED_FROM", /*handleCustomEvent*/ ctx[4]);
+    	row.$on("DRAGGED_TO", /*handleCustomEvent*/ ctx[4]);
+
+    	const block = {
+    		c: function create() {
+    			create_component(row.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(row, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const row_changes = {};
+    			if (dirty & /*board*/ 4) row_changes.row_list = /*row*/ ctx[22];
+    			row.$set(row_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(row.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(row.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(row, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$1.name,
+    		type: "each",
+    		source: "(290:12) {#each board as row, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (289:8) {#key board}
+    function create_key_block(ctx) {
+    	let each_1_anchor;
+    	let current;
+    	let each_value = /*board*/ ctx[2];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*board, handleCustomEvent*/ 20) {
+    				each_value = /*board*/ ctx[2];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_key_block.name,
+    		type: "key",
+    		source: "(289:8) {#key board}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (303:8) {:else}
+    function create_else_block$3(ctx) {
+    	let p;
+    	let strong0;
+    	let t0;
+    	let t1;
+    	let strong1;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			strong0 = element("strong");
+    			t0 = text(/*MOVES*/ ctx[3]);
+    			t1 = text(" ಚಲನೆಗಳು ಉಳಿದಿರುವಾಗ ಆಟವನ್ನು ");
+    			strong1 = element("strong");
+    			strong1.textContent = "ಗೆದ್ದಿದ್ದೀರಿ";
+    			t3 = text("!");
+    			attr_dev(strong0, "class", "svelte-n6pppp");
+    			add_location(strong0, file$a, 303, 15, 9815);
+    			attr_dev(strong1, "class", "svelte-n6pppp");
+    			add_location(strong1, file$a, 303, 67, 9867);
+    			add_location(p, file$a, 303, 12, 9812);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, strong0);
+    			append_dev(strong0, t0);
+    			append_dev(p, t1);
+    			append_dev(p, strong1);
+    			append_dev(p, t3);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*MOVES*/ 8) set_data_dev(t0, /*MOVES*/ ctx[3]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$3.name,
+    		type: "else",
+    		source: "(303:8) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (301:40) 
+    function create_if_block_3(ctx) {
+    	let p;
+    	let t0;
+    	let strong;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			t0 = text("ಆಟವನ್ನು ");
+    			strong = element("strong");
+    			strong.textContent = "ಕಳೆದುಕೊಂಡಿದ್ದೀರಿ";
+    			attr_dev(strong, "class", "svelte-n6pppp");
+    			add_location(strong, file$a, 301, 23, 9744);
+    			add_location(p, file$a, 301, 12, 9733);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, strong);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3.name,
+    		type: "if",
+    		source: "(301:40) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (299:8) {#if GAME_STATE === "playing"}
+    function create_if_block_2(ctx) {
+    	let p;
+    	let t0;
+    	let strong;
+    	let t1;
+    	let t2;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			t0 = text("ಬಾಕಿ ಇರುವ ಚಲನೆಗಳು ");
+    			strong = element("strong");
+    			t1 = text(/*MOVES*/ ctx[3]);
+    			t2 = text("!");
+    			attr_dev(strong, "class", "svelte-n6pppp");
+    			add_location(strong, file$a, 299, 33, 9648);
+    			add_location(p, file$a, 299, 12, 9627);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, strong);
+    			append_dev(strong, t1);
+    			append_dev(p, t2);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*MOVES*/ 8) set_data_dev(t1, /*MOVES*/ ctx[3]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(299:8) {#if GAME_STATE === \\\"playing\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (310:8) {#if GAME_STATE === "lost"}
+    function create_if_block_1$2(ctx) {
+    	let content;
+    	let current;
+
+    	content = new SolModalManager({
+    			props: { board: /*ans_board*/ ctx[6] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(content.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(content, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(content.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(content.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(content, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$2.name,
+    		type: "if",
+    		source: "(310:8) {#if GAME_STATE === \\\"lost\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (313:8) {#if GAME_STATE != "playing"}
+    function create_if_block$3(ctx) {
+    	let button;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			button.textContent = "share";
+    			attr_dev(button, "class", "share-btn svelte-n6pppp");
+    			add_location(button, file$a, 313, 12, 10124);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*shareButton*/ ctx[5], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(313:8) {#if GAME_STATE != \\\"playing\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (307:4) <Modal          classContent="modal"      >
+    function create_default_slot$1(ctx) {
+    	let t;
+    	let if_block1_anchor;
+    	let current;
+    	let if_block0 = /*GAME_STATE*/ ctx[1] === "lost" && create_if_block_1$2(ctx);
+    	let if_block1 = /*GAME_STATE*/ ctx[1] != "playing" && create_if_block$3(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block0) if_block0.c();
+    			t = space();
+    			if (if_block1) if_block1.c();
+    			if_block1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block0) if_block0.m(target, anchor);
+    			insert_dev(target, t, anchor);
+    			if (if_block1) if_block1.m(target, anchor);
+    			insert_dev(target, if_block1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*GAME_STATE*/ ctx[1] === "lost") {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+
+    					if (dirty & /*GAME_STATE*/ 2) {
+    						transition_in(if_block0, 1);
+    					}
+    				} else {
+    					if_block0 = create_if_block_1$2(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(t.parentNode, t);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (/*GAME_STATE*/ ctx[1] != "playing") {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block$3(ctx);
+    					if_block1.c();
+    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block0) if_block0.d(detaching);
+    			if (detaching) detach_dev(t);
+    			if (if_block1) if_block1.d(detaching);
+    			if (detaching) detach_dev(if_block1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$1.name,
+    		type: "slot",
+    		source: "(307:4) <Modal          classContent=\\\"modal\\\"      >",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$a(ctx) {
+    	let div3;
+    	let div0;
+    	let p;
+    	let t0;
+    	let strong;
+    	let t1;
+    	let t2;
+    	let t3;
+    	let div1;
+    	let previous_key = /*board*/ ctx[2];
+    	let t4;
+    	let div2;
+    	let t5;
+    	let modal;
+    	let current;
+    	let key_block = create_key_block(ctx);
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*GAME_STATE*/ ctx[1] === "playing") return create_if_block_2;
+    		if (/*GAME_STATE*/ ctx[1] === "lost") return create_if_block_3;
+    		return create_else_block$3;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	modal = new Modal({
+    			props: {
+    				classContent: "modal",
+    				$$slots: { default: [create_default_slot$1] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			div0 = element("div");
+    			p = element("p");
+    			t0 = text("daily obbattu ");
+    			strong = element("strong");
+    			t1 = text("#");
+    			t2 = text(/*OBBATTU_COUNT*/ ctx[0]);
+    			t3 = space();
+    			div1 = element("div");
+    			key_block.c();
+    			t4 = space();
+    			div2 = element("div");
+    			if_block.c();
+    			t5 = space();
+    			create_component(modal.$$.fragment);
+    			attr_dev(strong, "class", "svelte-n6pppp");
+    			add_location(strong, file$a, 285, 25, 9194);
+    			add_location(p, file$a, 285, 8, 9177);
+    			attr_dev(div0, "class", "daily-obbattu-count svelte-n6pppp");
+    			add_location(div0, file$a, 284, 4, 9134);
+    			attr_dev(div1, "class", "game-board svelte-n6pppp");
+    			add_location(div1, file$a, 287, 4, 9249);
+    			attr_dev(div2, "class", "moves-counter flexx svelte-n6pppp");
+    			add_location(div2, file$a, 297, 4, 9540);
+    			attr_dev(div3, "class", "board-container flexx svelte-n6pppp");
+    			add_location(div3, file$a, 283, 0, 9093);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div0);
+    			append_dev(div0, p);
+    			append_dev(p, t0);
+    			append_dev(p, strong);
+    			append_dev(strong, t1);
+    			append_dev(strong, t2);
+    			append_dev(div3, t3);
+    			append_dev(div3, div1);
+    			key_block.m(div1, null);
+    			append_dev(div3, t4);
+    			append_dev(div3, div2);
+    			if_block.m(div2, null);
+    			append_dev(div3, t5);
+    			mount_component(modal, div3, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (!current || dirty & /*OBBATTU_COUNT*/ 1) set_data_dev(t2, /*OBBATTU_COUNT*/ ctx[0]);
+
+    			if (dirty & /*board*/ 4 && safe_not_equal(previous_key, previous_key = /*board*/ ctx[2])) {
+    				group_outros();
+    				transition_out(key_block, 1, 1, noop);
+    				check_outros();
+    				key_block = create_key_block(ctx);
+    				key_block.c();
+    				transition_in(key_block, 1);
+    				key_block.m(div1, null);
+    			} else {
+    				key_block.p(ctx, dirty);
+    			}
+
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div2, null);
+    				}
+    			}
+
+    			const modal_changes = {};
+
+    			if (dirty & /*$$scope, GAME_STATE*/ 33554434) {
+    				modal_changes.$$scope = { dirty, ctx };
+    			}
+
+    			modal.$set(modal_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(key_block);
+    			transition_in(modal.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(key_block);
+    			transition_out(modal.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div3);
+    			key_block.d(detaching);
+    			if_block.d();
+    			destroy_component(modal);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$a.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function debounce(func, timeout = 300) {
+    	let timer;
+
+    	return (...args) => {
+    		clearTimeout(timer);
+
+    		timer = setTimeout(
+    			() => {
+    				func.apply(this, args);
+    			},
+    			timeout
+    		);
+    	};
+    }
+
+    function instance$a($$self, $$props, $$invalidate) {
+    	let MOVES;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('GameBoard', slots, []);
+    	const dispatch = createEventDispatcher();
+
+    	let { questions = [
+    		["a", "d", "f", "t", "e"],
+    		["o", "", "j", "", "h"],
+    		["c", "r", "m", "p", "k"],
+    		["w", "", "l", "", "b"],
+    		["u", "x", "n", "v", "y"]
+    	] } = $$props;
+
+    	let { answers = [
+    		["a", "b", "c", "d", "e"],
+    		["e", "j", "o", "t", "y"],
+    		["a", "f", "k", "p", "u"],
+    		["u", "v", "w", "x", "y"],
+    		["c", "h", "m", "r", "w"],
+    		["k", "l", "m", "n", "o"]
+    	] } = $$props;
+
+    	let { ans_to_show = [
+    		["a", "b", "c", "d", "e"],
+    		["f", "", "h", "", "j"],
+    		["k", "l", "m", "n", "o"],
+    		["p", "", "r", "", "t"],
+    		["u", "v", "w", "x", "y"]
+    	] } = $$props;
+
+    	let { TOTAL_MOVES = 20 } = $$props;
+    	let { OBBATTU_COUNT = 0 } = $$props;
+    	let GAME_STATE = "playing";
+    	let char_num = 0;
+
+    	function getRow(row_num, ans = false) {
+    		let arr = [];
+    		let state = "incorrect";
+
+    		for (let i = 0; i < 5; i++) {
+    			if (ans === false) {
+    				if ((i === 0 || i === 4) && (row_num === 0 || row_num === 4) || i === 2 && row_num === 2) {
+    					state = "correct";
+    				} else if (questions[row_num][i] === "") {
+    					state = "blocked";
+    				} else {
+    					state = "incorrect";
+    				}
+
+    				arr.push(new Letter(char_num, questions[row_num][i], state));
+    			} else {
+    				if (ans_to_show[row_num][i] === "") {
+    					state = "blocked";
+    				} else {
+    					state = "correct";
+    				}
+
+    				arr.push(new Letter(char_num, ans_to_show[row_num][i], state));
+    			}
+
+    			char_num++;
+    		}
+
+    		return arr;
+    	}
+
+    	function getBoard(ans = false) {
+    		let board = [];
+
+    		for (let i = 0; i < 5; i++) {
+    			board.push(getRow(i, ans));
+    		}
+
+    		return board;
+    	}
+
+    	let events = [];
+
+    	function handleCustomEvent(event) {
+    		//console.log(event.detail)
+    		for (let i = 0; i < events.length; i++) {
+    			if (events[i].type === event.detail.type) {
+    				$$invalidate(11, events = []);
+    				return;
+    			}
+    		}
+
+    		$$invalidate(11, events = [...events, event.detail]);
+
+    		//console.log("An event occured", events.length, events)
+    		setTimeout(
+    			() => {
+    				if (events.length > 0) {
+    					//console.log("No double event occured")
+    					$$invalidate(11, events = []);
+    				}
+    			},
+    			500
+    		);
+    	}
+
+    	function checkPosition(x, y, temp) {
+    		if (temp.state === "blocked") {
+    			return temp;
+    		}
+
+    		if (y === 0 && answers[0].includes(temp.letter)) {
+    			if (answers[0][x] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else if (x === 0 && answers[2].includes(temp.letter)) {
+    			if (answers[2][y] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else if (y === 4 && answers[3].includes(temp.letter)) {
+    			if (answers[3][x] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else if (x === 4 && answers[1].includes(temp.letter)) {
+    			if (answers[1][y] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else if (x === 2 && answers[4].includes(temp.letter)) {
+    			if (answers[4][y] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else if (y === 2 && answers[5].includes(temp.letter)) {
+    			if (answers[5][x] === temp.letter) {
+    				temp.state = "correct";
+    			} else {
+    				temp.state = "misplaced";
+    			}
+    		} else {
+    			temp.state = "incorrect";
+    		}
+
+    		return temp;
+    	}
+
+    	function saveSnapshot() {
+    		//console.log("saving snapshot...")
+    		let GAME_BOARD = { questions, MOVES };
+
+    		saveObj("GAME_BOARD", GAME_BOARD);
+    	}
+
+    	let debounceSave = debounce(saveSnapshot, 500);
+
+    	function checkGameState(extra = true) {
+    		//console.log("checking state...")
+    		//console.log(board)
+    		for (let i = 0; i < board.length; i++) {
+    			for (let j = 0; j < board[i].length; j++) {
+    				if (board[i][j].state === "incorrect" || board[i][j].state === "misplaced") {
+    					if (MOVES <= 0) {
+    						$$invalidate(2, board = endGame(board, false));
+    						dispatch('GAME_LOST', { extra });
+    						saveSnapshot();
+    					} //console.log(board)
+
+    					return;
+    				}
+    			}
+    		}
+
+    		$$invalidate(2, board = endGame(board, true));
+    		dispatch('GAME_WON', { extra });
+    		saveSnapshot();
+    	} //console.log("extra from checkGameState", extra)
+
+    	function swapElements(x1, y1, x2, y2) {
+    		if (x1 === x2 && y1 === y2) {
+    			return;
+    		}
+
+    		$$invalidate(3, MOVES -= 1);
+    		let temp = checkPosition(y2, x2, board[x1][y1]);
+    		let temp2 = checkPosition(y1, x1, board[x2][y2]);
+
+    		// I dont know why its like (y, x), even if its designed to be like (x, y), it works, so im not going to question this
+    		$$invalidate(2, board[x1][y1] = temp2, board);
+
+    		$$invalidate(2, board[x2][y2] = temp, board);
+    		let questionsTemp = questions[x2][y2];
+    		$$invalidate(7, questions[x2][y2] = questions[x1][y1], questions);
+    		$$invalidate(7, questions[x1][y1] = questionsTemp, questions);
+    		debounceSave();
+    		checkGameState();
+    	}
+
+    	function endGame(board, won = false) {
+    		if (won === false) {
+    			$$invalidate(1, GAME_STATE = "lost");
+    		} else {
+    			$$invalidate(1, GAME_STATE = "won");
+    		}
+
+    		for (let i = 0; i < board.length; i++) {
+    			for (let j = 0; j < board[i].length; j++) {
+    				if (board[i][j].state != "blocked") {
+    					if (won === true) {
+    						board[i][j].game_state = "game_won";
+    					} else {
+    						board[i][j].game_state = "game_lost";
+    					}
+    				}
+    			}
+    		}
+
+    		return board;
+    	}
+
+    	function shareButton() {
+    		let mainText = "DAILY OBBATTU #" + OBBATTU_COUNT + "\n\n";
+    		let board_emoji = "";
+
+    		if (GAME_STATE === "won") {
+    			board_emoji = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n";
+    		} else {
+    			for (let i = 0; i < board.length; i++) {
+    				for (let j = 0; j < board[i].length; j++) {
+    					if (board[i][j].state === "incorrect") {
+    						board_emoji += "⬛";
+    					} else if (board[i][j].state === "misplaced") {
+    						board_emoji += "🟨";
+    					} else if (board[i][j].state === "correct") {
+    						board_emoji += "🟩";
+    					} else {
+    						board_emoji += "⬜";
+    					}
+    				}
+
+    				board_emoji += "\n";
+    			}
+    		}
+
+    		mainText += board_emoji + "\nPlay today's game on https://obbattu.xyz";
+    		navigator.clipboard.writeText(mainText);
+    		navigator.share({ title: 'Obbattu', text: mainText });
+    	}
+
+    	let board = getBoard();
+    	let ans_board = getBoard(true);
+
+    	for (let i = 0; i < board.length; i++) {
+    		for (let j = 0; j < board[i].length; j++) {
+    			checkPosition(j, i, board[i][j]);
+    		}
+    	}
+
+    	setTimeout(() => checkGameState(false), 1);
+    	const writable_props = ['questions', 'answers', 'ans_to_show', 'TOTAL_MOVES', 'OBBATTU_COUNT'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<GameBoard> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('questions' in $$props) $$invalidate(7, questions = $$props.questions);
+    		if ('answers' in $$props) $$invalidate(8, answers = $$props.answers);
+    		if ('ans_to_show' in $$props) $$invalidate(9, ans_to_show = $$props.ans_to_show);
+    		if ('TOTAL_MOVES' in $$props) $$invalidate(10, TOTAL_MOVES = $$props.TOTAL_MOVES);
+    		if ('OBBATTU_COUNT' in $$props) $$invalidate(0, OBBATTU_COUNT = $$props.OBBATTU_COUNT);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Row,
+    		Letter,
+    		Content: SolModalManager,
+    		Modal,
+    		saveObj,
+    		createEventDispatcher,
+    		dispatch,
+    		questions,
+    		answers,
+    		ans_to_show,
+    		TOTAL_MOVES,
+    		OBBATTU_COUNT,
+    		GAME_STATE,
+    		char_num,
+    		getRow,
+    		getBoard,
+    		events,
+    		handleCustomEvent,
+    		checkPosition,
+    		saveSnapshot,
+    		debounce,
+    		debounceSave,
+    		checkGameState,
+    		swapElements,
+    		endGame,
+    		shareButton,
+    		board,
+    		ans_board,
+    		MOVES
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('questions' in $$props) $$invalidate(7, questions = $$props.questions);
+    		if ('answers' in $$props) $$invalidate(8, answers = $$props.answers);
+    		if ('ans_to_show' in $$props) $$invalidate(9, ans_to_show = $$props.ans_to_show);
+    		if ('TOTAL_MOVES' in $$props) $$invalidate(10, TOTAL_MOVES = $$props.TOTAL_MOVES);
+    		if ('OBBATTU_COUNT' in $$props) $$invalidate(0, OBBATTU_COUNT = $$props.OBBATTU_COUNT);
+    		if ('GAME_STATE' in $$props) $$invalidate(1, GAME_STATE = $$props.GAME_STATE);
+    		if ('char_num' in $$props) char_num = $$props.char_num;
+    		if ('events' in $$props) $$invalidate(11, events = $$props.events);
+    		if ('debounceSave' in $$props) debounceSave = $$props.debounceSave;
+    		if ('board' in $$props) $$invalidate(2, board = $$props.board);
+    		if ('ans_board' in $$props) $$invalidate(6, ans_board = $$props.ans_board);
+    		if ('MOVES' in $$props) $$invalidate(3, MOVES = $$props.MOVES);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*TOTAL_MOVES*/ 1024) {
+    			$$invalidate(3, MOVES = TOTAL_MOVES);
+    		}
+
+    		if ($$self.$$.dirty & /*events*/ 2048) {
+    			{
+    				if (events.length >= 2) {
+    					let dragged_from = events.find(event => event.type === "DRAGGED_FROM");
+    					let dragged_to = events.find(event => event.type === "DRAGGED_TO");
+    					$$invalidate(11, events = []);
+    					swapElements(dragged_from.yPos, dragged_from.xPos, dragged_to.yPos, dragged_to.xPos);
+    				} // I dont know why its like (y1, x1; y2, x2), even if its designed to be like (x1, y1; x2, y2), it works, so im not going to question this
+    			}
+    		}
+    	};
+
+    	return [
+    		OBBATTU_COUNT,
+    		GAME_STATE,
+    		board,
+    		MOVES,
+    		handleCustomEvent,
+    		shareButton,
+    		ans_board,
+    		questions,
+    		answers,
+    		ans_to_show,
+    		TOTAL_MOVES,
+    		events
+    	];
+    }
+
+    class GameBoard extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init(this, options, instance$a, create_fragment$a, safe_not_equal, {
+    			questions: 7,
+    			answers: 8,
+    			ans_to_show: 9,
+    			TOTAL_MOVES: 10,
+    			OBBATTU_COUNT: 0
+    		});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "GameBoard",
+    			options,
+    			id: create_fragment$a.name
+    		});
+    	}
+
+    	get questions() {
+    		throw new Error("<GameBoard>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set questions(value) {
+    		throw new Error("<GameBoard>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get answers() {
+    		throw new Error("<GameBoard>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set answers(value) {
+    		throw new Error("<GameBoard>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ans_to_show() {
+    		throw new Error("<GameBoard>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ans_to_show(value) {
+    		throw new Error("<GameBoard>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get TOTAL_MOVES() {
+    		throw new Error("<GameBoard>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set TOTAL_MOVES(value) {
+    		throw new Error("<GameBoard>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get OBBATTU_COUNT() {
+    		throw new Error("<GameBoard>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set OBBATTU_COUNT(value) {
+    		throw new Error("<GameBoard>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\Popups\HelpPopup\HelpPopup.svelte generated by Svelte v3.49.0 */
+    const file$9 = "src\\Popups\\HelpPopup\\HelpPopup.svelte";
+
+    function create_fragment$9(ctx) {
+    	let div11;
+    	let h10;
+    	let t1;
+    	let p0;
+    	let t3;
+    	let hr0;
+    	let t4;
+    	let div0;
+    	let lettercomponenet0;
+    	let t5;
+    	let p1;
+    	let t7;
+    	let div1;
+    	let lettercomponenet1;
+    	let t8;
+    	let p2;
+    	let t10;
+    	let div2;
+    	let lettercomponenet2;
+    	let t11;
+    	let p3;
+    	let t13;
+    	let hr1;
+    	let t14;
+    	let h11;
+    	let t16;
+    	let div10;
+    	let div9;
+    	let div3;
+    	let p4;
+    	let t18;
+    	let div4;
+    	let a0;
+    	let t20;
+    	let div5;
+    	let p5;
+    	let t22;
+    	let div6;
+    	let a1;
+    	let t24;
+    	let a2;
+    	let t26;
+    	let a3;
+    	let t28;
+    	let div7;
+    	let p6;
+    	let t30;
+    	let div8;
+    	let a4;
+    	let current;
+
+    	lettercomponenet0 = new Letter$1({
+    			props: {
+    				letter: new Letter(undefined, "ಅ", "correct")
+    			},
+    			$$inline: true
+    		});
+
+    	lettercomponenet1 = new Letter$1({
+    			props: {
+    				letter: new Letter(undefined, "ಅ", "misplaced")
+    			},
+    			$$inline: true
+    		});
+
+    	lettercomponenet2 = new Letter$1({
+    			props: {
+    				letter: new Letter(undefined, "ಅ", "incorrect")
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div11 = element("div");
+    			h10 = element("h1");
+    			h10.textContent = "ಆಟದ ಬಗ್ಗೆ";
+    			t1 = space();
+    			p0 = element("p");
+    			p0.textContent = "ಒಬ್ಬಟ್ಟು ಆಡುವ ವಿಧಾನ. ಪ್ರತಿಯೊಂದು ಆಟವನ್ನು 20 ಅಥವಾ ಕಡಿಮೆ ಚಲನೆಗಳಲ್ಲಿ ಮುಗಿಸಬಹುದು. ಅಕ್ಷರಗಳನ್ನು ಸರಿಯಾಗಿ ಜೋಡಿಸಿ ಪದಗಳನ್ನು ಮಾಡಿ, ಅಡ್ಡವಾಗಿ ಮತ್ತು ಉದ್ದವಾಗಿ. ನಿಮ್ಮ ಅನಿಸಿಕೆಗಳನ್ನು \"skandabhairava@gmail.com\"ಗೆ ಕಳಿಸಿ.";
+    			t3 = space();
+    			hr0 = element("hr");
+    			t4 = space();
+    			div0 = element("div");
+    			create_component(lettercomponenet0.$$.fragment);
+    			t5 = space();
+    			p1 = element("p");
+    			p1.textContent = "ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇದೆ. ಹಸಿರು ಬಣ್ಣದ ಅಕ್ಷರಗಳನ್ನು ಬಿಟ್ಟು ಬೇರೆ ಅಕ್ಷರಗಳನ್ನು ಬೇರೆ ಜಾಗಕ್ಕೆ ಚಲಿಸಬಹುದು.";
+    			t7 = space();
+    			div1 = element("div");
+    			create_component(lettercomponenet1.$$.fragment);
+    			t8 = space();
+    			p2 = element("p");
+    			p2.textContent = "ಹಳದಿ ಬಣ್ಣದ ಅಕ್ಷರ ಪದದಲ್ಲಿ ಇದೆ ಆದರೆ ಸರಿಯಾದ ಜಾಗದಲ್ಲಿ ಇಲ್ಲ.";
+    			t10 = space();
+    			div2 = element("div");
+    			create_component(lettercomponenet2.$$.fragment);
+    			t11 = space();
+    			p3 = element("p");
+    			p3.textContent = "ಬೂದು ಬಣ್ಣದ ಅಕ್ಷರಗಳು ಪದದಲ್ಲಿಲ್ಲ.";
+    			t13 = space();
+    			hr1 = element("hr");
+    			t14 = space();
+    			h11 = element("h1");
+    			h11.textContent = "Credits";
+    			t16 = space();
+    			div10 = element("div");
+    			div9 = element("div");
+    			div3 = element("div");
+    			p4 = element("p");
+    			p4.textContent = "ಮಾಡಿದ್ದು";
+    			t18 = space();
+    			div4 = element("div");
+    			a0 = element("a");
+    			a0.textContent = "ಸ್ಕಂದ ಭೈರವ";
+    			t20 = space();
+    			div5 = element("div");
+    			p5 = element("p");
+    			p5.textContent = "ಸ್ಫೂರ್ತಿ";
+    			t22 = space();
+    			div6 = element("div");
+    			a1 = element("a");
+    			a1.textContent = "WaffleGame";
+    			t24 = space();
+    			a2 = element("a");
+    			a2.textContent = "Wordle";
+    			t26 = space();
+    			a3 = element("a");
+    			a3.textContent = "Wordalla";
+    			t28 = space();
+    			div7 = element("div");
+    			p6 = element("p");
+    			p6.textContent = "ಮೂಲ ಕೋಡ್";
+    			t30 = space();
+    			div8 = element("div");
+    			a4 = element("a");
+    			a4.textContent = "Github";
+    			attr_dev(h10, "class", "svelte-1egjh85");
+    			add_location(h10, file$9, 6, 4, 193);
+    			add_location(p0, file$9, 7, 4, 217);
+    			attr_dev(hr0, "class", "svelte-1egjh85");
+    			add_location(hr0, file$9, 8, 4, 429);
+    			attr_dev(div0, "class", "limit-letter svelte-1egjh85");
+    			add_location(div0, file$9, 9, 4, 439);
+    			add_location(p1, file$9, 12, 4, 559);
+    			attr_dev(div1, "class", "limit-letter svelte-1egjh85");
+    			add_location(div1, file$9, 13, 4, 690);
+    			add_location(p2, file$9, 16, 4, 812);
+    			attr_dev(div2, "class", "limit-letter svelte-1egjh85");
+    			add_location(div2, file$9, 17, 4, 881);
+    			add_location(p3, file$9, 20, 4, 1003);
+    			attr_dev(hr1, "class", "svelte-1egjh85");
+    			add_location(hr1, file$9, 21, 4, 1048);
+    			attr_dev(h11, "class", "svelte-1egjh85");
+    			add_location(h11, file$9, 22, 4, 1058);
+    			add_location(p4, file$9, 26, 16, 1179);
+    			attr_dev(div3, "class", "item svelte-1egjh85");
+    			add_location(div3, file$9, 25, 12, 1143);
+    			attr_dev(a0, "class", "a-tag svelte-1egjh85");
+    			attr_dev(a0, "target", "_blank");
+    			attr_dev(a0, "href", "https://github.com/skandabhairava");
+    			add_location(a0, file$9, 29, 16, 1264);
+    			attr_dev(div4, "class", "item svelte-1egjh85");
+    			add_location(div4, file$9, 28, 12, 1228);
+    			add_location(p5, file$9, 32, 16, 1422);
+    			attr_dev(div5, "class", "item svelte-1egjh85");
+    			add_location(div5, file$9, 31, 12, 1386);
+    			attr_dev(a1, "class", "a-tag svelte-1egjh85");
+    			attr_dev(a1, "target", "_blank");
+    			attr_dev(a1, "href", "https://wafflegame.net/");
+    			add_location(a1, file$9, 35, 16, 1507);
+    			attr_dev(a2, "class", "a-tag svelte-1egjh85");
+    			attr_dev(a2, "target", "_blank");
+    			attr_dev(a2, "href", "https://www.nytimes.com/games/wordle/index.html");
+    			add_location(a2, file$9, 36, 16, 1603);
+    			attr_dev(a3, "class", "a-tag svelte-1egjh85");
+    			attr_dev(a3, "target", "_blank");
+    			attr_dev(a3, "href", "https://wordalla.online/");
+    			add_location(a3, file$9, 37, 16, 1719);
+    			attr_dev(div6, "class", "item svelte-1egjh85");
+    			add_location(div6, file$9, 34, 12, 1471);
+    			add_location(p6, file$9, 40, 16, 1866);
+    			attr_dev(div7, "class", "item svelte-1egjh85");
+    			add_location(div7, file$9, 39, 12, 1830);
+    			attr_dev(a4, "class", "a-tag svelte-1egjh85");
+    			attr_dev(a4, "target", "_blank");
+    			attr_dev(a4, "href", "https://github.com/skandabhairava/Oxidised-Obbattu");
+    			add_location(a4, file$9, 43, 16, 1951);
+    			attr_dev(div8, "class", "item svelte-1egjh85");
+    			add_location(div8, file$9, 42, 12, 1915);
+    			attr_dev(div9, "class", "dict svelte-1egjh85");
+    			add_location(div9, file$9, 24, 8, 1111);
+    			attr_dev(div10, "class", "credits");
+    			add_location(div10, file$9, 23, 4, 1080);
+    			attr_dev(div11, "class", "main-popup flexx svelte-1egjh85");
+    			add_location(div11, file$9, 5, 0, 157);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div11, anchor);
+    			append_dev(div11, h10);
+    			append_dev(div11, t1);
+    			append_dev(div11, p0);
+    			append_dev(div11, t3);
+    			append_dev(div11, hr0);
+    			append_dev(div11, t4);
+    			append_dev(div11, div0);
+    			mount_component(lettercomponenet0, div0, null);
+    			append_dev(div11, t5);
+    			append_dev(div11, p1);
+    			append_dev(div11, t7);
+    			append_dev(div11, div1);
+    			mount_component(lettercomponenet1, div1, null);
+    			append_dev(div11, t8);
+    			append_dev(div11, p2);
+    			append_dev(div11, t10);
+    			append_dev(div11, div2);
+    			mount_component(lettercomponenet2, div2, null);
+    			append_dev(div11, t11);
+    			append_dev(div11, p3);
+    			append_dev(div11, t13);
+    			append_dev(div11, hr1);
+    			append_dev(div11, t14);
+    			append_dev(div11, h11);
+    			append_dev(div11, t16);
+    			append_dev(div11, div10);
+    			append_dev(div10, div9);
+    			append_dev(div9, div3);
+    			append_dev(div3, p4);
+    			append_dev(div9, t18);
+    			append_dev(div9, div4);
+    			append_dev(div4, a0);
+    			append_dev(div9, t20);
+    			append_dev(div9, div5);
+    			append_dev(div5, p5);
+    			append_dev(div9, t22);
+    			append_dev(div9, div6);
+    			append_dev(div6, a1);
+    			append_dev(div6, t24);
+    			append_dev(div6, a2);
+    			append_dev(div6, t26);
+    			append_dev(div6, a3);
+    			append_dev(div9, t28);
+    			append_dev(div9, div7);
+    			append_dev(div7, p6);
+    			append_dev(div9, t30);
+    			append_dev(div9, div8);
+    			append_dev(div8, a4);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(lettercomponenet0.$$.fragment, local);
+    			transition_in(lettercomponenet1.$$.fragment, local);
+    			transition_in(lettercomponenet2.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(lettercomponenet0.$$.fragment, local);
+    			transition_out(lettercomponenet1.$$.fragment, local);
+    			transition_out(lettercomponenet2.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div11);
+    			destroy_component(lettercomponenet0);
+    			destroy_component(lettercomponenet1);
+    			destroy_component(lettercomponenet2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$9.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$9($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('HelpPopup', slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<HelpPopup> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ LetterComponenet: Letter$1, Letter });
+    	return [];
+    }
+
+    class HelpPopup extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$9, create_fragment$9, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "HelpPopup",
+    			options,
+    			id: create_fragment$9.name
+    		});
+    	}
+    }
+
+    /* src\Popups\HelpPopup\HelpModalManager.svelte generated by Svelte v3.49.0 */
+    const file$8 = "src\\Popups\\HelpPopup\\HelpModalManager.svelte";
+
+    function create_fragment$8(ctx) {
+    	let button;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			button.textContent = "?";
+    			attr_dev(button, "class", "help-button svelte-1cragtd");
+    			add_location(button, file$8, 8, 0, 211);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*openPopup*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$8.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$8($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('HelpModalManager', slots, []);
+    	const { open } = getContext('simple-modal');
+    	const openPopup = () => open(HelpPopup, {});
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<HelpModalManager> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ getContext, Popup: HelpPopup, open, openPopup });
+    	return [openPopup];
+    }
+
+    class HelpModalManager extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$8, create_fragment$8, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "HelpModalManager",
+    			options,
+    			id: create_fragment$8.name
+    		});
+    	}
+    }
+
+    /* src\Popups\StatPopup\StatPopup.svelte generated by Svelte v3.49.0 */
+
+    const file$7 = "src\\Popups\\StatPopup\\StatPopup.svelte";
+
+    function create_fragment$7(ctx) {
+    	let div7;
+    	let h1;
+    	let t1;
+    	let hr;
+    	let t2;
+    	let div6;
+    	let div0;
+    	let p0;
+    	let t4;
+    	let div1;
+    	let p1;
+    	let t5;
+    	let t6;
+    	let div2;
+    	let p2;
+    	let t8;
+    	let div3;
+    	let p3;
+    	let t9;
+    	let t10;
+    	let div4;
+    	let p4;
+    	let t12;
+    	let div5;
+    	let p5;
+    	let t13;
+
+    	const block = {
+    		c: function create() {
+    			div7 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Statistics";
+    			t1 = space();
+    			hr = element("hr");
+    			t2 = space();
+    			div6 = element("div");
+    			div0 = element("div");
+    			p0 = element("p");
+    			p0.textContent = "Played";
+    			t4 = space();
+    			div1 = element("div");
+    			p1 = element("p");
+    			t5 = text(/*GAMES_PLAYED*/ ctx[0]);
+    			t6 = space();
+    			div2 = element("div");
+    			p2 = element("p");
+    			p2.textContent = "Games Won";
+    			t8 = space();
+    			div3 = element("div");
+    			p3 = element("p");
+    			t9 = text(/*GAMES_WON*/ ctx[1]);
+    			t10 = space();
+    			div4 = element("div");
+    			p4 = element("p");
+    			p4.textContent = "Games Lost";
+    			t12 = space();
+    			div5 = element("div");
+    			p5 = element("p");
+    			t13 = text(/*GAMES_LOST*/ ctx[2]);
+    			attr_dev(h1, "class", "svelte-lon2u1");
+    			add_location(h1, file$7, 45, 4, 1088);
+    			attr_dev(hr, "class", "svelte-lon2u1");
+    			add_location(hr, file$7, 46, 4, 1113);
+    			add_location(p0, file$7, 49, 12, 1188);
+    			attr_dev(div0, "class", "item left svelte-lon2u1");
+    			add_location(div0, file$7, 48, 8, 1151);
+    			add_location(p1, file$7, 52, 12, 1265);
+    			attr_dev(div1, "class", "item right svelte-lon2u1");
+    			add_location(div1, file$7, 51, 8, 1227);
+    			add_location(p2, file$7, 55, 12, 1349);
+    			attr_dev(div2, "class", "item left svelte-lon2u1");
+    			add_location(div2, file$7, 54, 8, 1312);
+    			add_location(p3, file$7, 58, 12, 1429);
+    			attr_dev(div3, "class", "item right svelte-lon2u1");
+    			add_location(div3, file$7, 57, 8, 1391);
+    			add_location(p4, file$7, 61, 12, 1510);
+    			attr_dev(div4, "class", "item left svelte-lon2u1");
+    			add_location(div4, file$7, 60, 8, 1473);
+    			add_location(p5, file$7, 64, 12, 1591);
+    			attr_dev(div5, "class", "item right svelte-lon2u1");
+    			add_location(div5, file$7, 63, 8, 1553);
+    			attr_dev(div6, "class", "dict svelte-lon2u1");
+    			add_location(div6, file$7, 47, 4, 1123);
+    			attr_dev(div7, "class", "main-popup flexx svelte-lon2u1");
+    			add_location(div7, file$7, 44, 0, 1052);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div7, anchor);
+    			append_dev(div7, h1);
+    			append_dev(div7, t1);
+    			append_dev(div7, hr);
+    			append_dev(div7, t2);
+    			append_dev(div7, div6);
+    			append_dev(div6, div0);
+    			append_dev(div0, p0);
+    			append_dev(div6, t4);
+    			append_dev(div6, div1);
+    			append_dev(div1, p1);
+    			append_dev(p1, t5);
+    			append_dev(div6, t6);
+    			append_dev(div6, div2);
+    			append_dev(div2, p2);
+    			append_dev(div6, t8);
+    			append_dev(div6, div3);
+    			append_dev(div3, p3);
+    			append_dev(p3, t9);
+    			append_dev(div6, t10);
+    			append_dev(div6, div4);
+    			append_dev(div4, p4);
+    			append_dev(div6, t12);
+    			append_dev(div6, div5);
+    			append_dev(div5, p5);
+    			append_dev(p5, t13);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*GAMES_PLAYED*/ 1) set_data_dev(t5, /*GAMES_PLAYED*/ ctx[0]);
+    			if (dirty & /*GAMES_WON*/ 2) set_data_dev(t9, /*GAMES_WON*/ ctx[1]);
+    			if (dirty & /*GAMES_LOST*/ 4) set_data_dev(t13, /*GAMES_LOST*/ ctx[2]);
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div7);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$7.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function saveObject(key, obj) {
+    	window.localStorage.setItem(key, JSON.stringify(obj));
+    }
+
+    function getObj(key) {
+    	// console.log("Shits going on...")
+    	try {
+    		let json = JSON.parse(window.localStorage.getItem(key));
+
+    		// console.log("found item", json)
+    		return json;
+    	} catch {
+    		return null;
+    	}
+    }
+
+    function instance$7($$self, $$props, $$invalidate) {
+    	let GAMES_LOST;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('StatPopup', slots, []);
+    	let GAMES_PLAYED = 0;
+    	let GAMES_WON = 0;
+    	let game_stats = getObj("GAME_STATS");
+
+    	// console.log("found stats", game_stats)
+    	function load() {
+    		if (game_stats === null) {
+    			game_stats = { GAMES_PLAYED: 0, GAMES_WON: 0 };
+    			saveObject("GAME_STATS", game_stats);
+    		} else {
+    			($$invalidate(0, GAMES_PLAYED = game_stats.GAMES_PLAYED), $$invalidate(1, GAMES_WON = game_stats.GAMES_WON));
+    		}
+    	}
+
+    	load();
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<StatPopup> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({
+    		GAMES_PLAYED,
+    		GAMES_WON,
+    		saveObject,
+    		getObj,
+    		game_stats,
+    		load,
+    		GAMES_LOST
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('GAMES_PLAYED' in $$props) $$invalidate(0, GAMES_PLAYED = $$props.GAMES_PLAYED);
+    		if ('GAMES_WON' in $$props) $$invalidate(1, GAMES_WON = $$props.GAMES_WON);
+    		if ('game_stats' in $$props) game_stats = $$props.game_stats;
+    		if ('GAMES_LOST' in $$props) $$invalidate(2, GAMES_LOST = $$props.GAMES_LOST);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*GAMES_PLAYED, GAMES_WON*/ 3) {
+    			$$invalidate(2, GAMES_LOST = GAMES_PLAYED - GAMES_WON);
+    		}
+    	};
+
+    	return [GAMES_PLAYED, GAMES_WON, GAMES_LOST];
+    }
+
+    class StatPopup extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "StatPopup",
+    			options,
+    			id: create_fragment$7.name
+    		});
+    	}
+    }
+
+    /* src\Popups\StatPopup\StatModalManager.svelte generated by Svelte v3.49.0 */
+    const file$6 = "src\\Popups\\StatPopup\\StatModalManager.svelte";
+
+    function create_fragment$6(ctx) {
+    	let button;
+    	let img;
+    	let img_src_value;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			img = element("img");
+    			if (!src_url_equal(img.src, img_src_value = "./stats.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "statistics");
+    			attr_dev(img, "class", "stats-img svelte-1maplsy");
+    			add_location(img, file$6, 12, 4, 280);
+    			attr_dev(button, "class", "stats-button svelte-1maplsy");
+    			add_location(button, file$6, 8, 0, 211);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+    			append_dev(button, img);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*openPopup*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$6.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$6($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('StatModalManager', slots, []);
+    	const { open } = getContext('simple-modal');
+    	const openPopup = () => open(StatPopup, {});
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<StatModalManager> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ getContext, Popup: StatPopup, open, openPopup });
+    	return [openPopup];
+    }
+
+    class StatModalManager extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "StatModalManager",
+    			options,
+    			id: create_fragment$6.name
+    		});
+    	}
+    }
+
+    /* src\Header.svelte generated by Svelte v3.49.0 */
+    const file$5 = "src\\Header.svelte";
+
+    // (9:4) <Modal classContent="modal">
+    function create_default_slot_1(ctx) {
+    	let helpmodal;
+    	let current;
+    	helpmodal = new HelpModalManager({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(helpmodal.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(helpmodal, target, anchor);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(helpmodal.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(helpmodal.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(helpmodal, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1.name,
+    		type: "slot",
+    		source: "(9:4) <Modal classContent=\\\"modal\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (15:4) <Modal classContent="modal">
+    function create_default_slot(ctx) {
+    	let statpopup;
+    	let current;
+    	statpopup = new StatModalManager({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(statpopup.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(statpopup, target, anchor);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(statpopup.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(statpopup.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(statpopup, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot.name,
+    		type: "slot",
+    		source: "(15:4) <Modal classContent=\\\"modal\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$5(ctx) {
+    	let div1;
+    	let modal0;
+    	let t0;
+    	let div0;
+    	let h1;
+    	let t2;
+    	let modal1;
+    	let current;
+
+    	modal0 = new Modal({
+    			props: {
+    				classContent: "modal",
+    				$$slots: { default: [create_default_slot_1] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	modal1 = new Modal({
+    			props: {
+    				classContent: "modal",
+    				$$slots: { default: [create_default_slot] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			create_component(modal0.$$.fragment);
+    			t0 = space();
+    			div0 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "ಒಬ್ಬಟ್ಟು";
+    			t2 = space();
+    			create_component(modal1.$$.fragment);
+    			attr_dev(h1, "class", "svelte-qlj59i");
+    			add_location(h1, file$5, 12, 8, 340);
+    			attr_dev(div0, "class", "title svelte-qlj59i");
+    			add_location(div0, file$5, 11, 4, 311);
+    			attr_dev(div1, "class", "flexx");
+    			add_location(div1, file$5, 7, 0, 215);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			mount_component(modal0, div1, null);
+    			append_dev(div1, t0);
+    			append_dev(div1, div0);
+    			append_dev(div0, h1);
+    			append_dev(div1, t2);
+    			mount_component(modal1, div1, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			const modal0_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				modal0_changes.$$scope = { dirty, ctx };
+    			}
+
+    			modal0.$set(modal0_changes);
+    			const modal1_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				modal1_changes.$$scope = { dirty, ctx };
+    			}
+
+    			modal1.$set(modal1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(modal0.$$.fragment, local);
+    			transition_in(modal1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(modal0.$$.fragment, local);
+    			transition_out(modal1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			destroy_component(modal0);
+    			destroy_component(modal1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$5.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Header', slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Header> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ HelpModal: HelpModalManager, StatPopup: StatModalManager, Modal });
+    	return [];
+    }
+
+    class Header extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Header",
+    			options,
+    			id: create_fragment$5.name
+    		});
+    	}
+    }
+
+    function flip(node, { from, to }, params = {}) {
+        const style = getComputedStyle(node);
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const [ox, oy] = style.transformOrigin.split(' ').map(parseFloat);
+        const dx = (from.left + from.width * ox / to.width) - (to.left + ox);
+        const dy = (from.top + from.height * oy / to.height) - (to.top + oy);
+        const { delay = 0, duration = (d) => Math.sqrt(d) * 120, easing = cubicOut } = params;
+        return {
+            delay,
+            duration: is_function(duration) ? duration(Math.sqrt(dx * dx + dy * dy)) : duration,
+            easing,
+            css: (t, u) => {
+                const x = u * dx;
+                const y = u * dy;
+                const sx = t + u * from.width / to.width;
+                const sy = t + u * from.height / to.height;
+                return `transform: ${transform} translate(${x}px, ${y}px) scale(${sx}, ${sy});`;
+            }
+        };
+    }
+
+    const subscriber_queue = [];
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = new Set();
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (const subscriber of subscribers) {
+                        subscriber[1]();
+                        subscriber_queue.push(subscriber, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.add(subscriber);
+            if (subscribers.size === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                subscribers.delete(subscriber);
+                if (subscribers.size === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    const defaults = {
+      duration: 4000,
+      initial: 1,
+      next: 0,
+      pausable: false,
+      dismissable: true,
+      reversed: false,
+      intro: { x: 256 }
+    };
+
+    const createToast = () => {
+      const { subscribe, update } = writable([]);
+      let count = 0;
+      const options = {};
+      const _obj = (obj) => obj instanceof Object;
+      const push = (msg, opts = {}) => {
+        const param = { target: 'default', ...(_obj(msg) ? msg : { ...opts, msg }) };
+        const conf = options[param.target] || {};
+        const entry = {
+          ...defaults,
+          ...conf,
+          ...param,
+          theme: { ...conf.theme, ...param.theme },
+          classes: [...(conf.classes || []), ...(param.classes || [])],
+          id: ++count
+        };
+        update((n) => (entry.reversed ? [...n, entry] : [entry, ...n]));
+        return count
+      };
+      const pop = (id) => {
+        update((n) => {
+          if (!n.length || id === 0) return []
+          if (_obj(id)) return n.filter((i) => id(i))
+          const target = id || Math.max(...n.map((i) => i.id));
+          return n.filter((i) => i.id !== target)
+        });
+      };
+      const set = (id, opts = {}) => {
+        const param = _obj(id) ? { ...id } : { ...opts, id };
+        update((n) => {
+          const idx = n.findIndex((i) => i.id === param.id);
+          if (idx > -1) {
+            n[idx] = { ...n[idx], ...param };
+          }
+          return n
+        });
+      };
+      const _init = (target = 'default', opts = {}) => {
+        options[target] = opts;
+        return options
+      };
+      return { subscribe, push, pop, set, _init }
+    };
+
+    const toast = createToast();
+
+    function is_date(obj) {
+        return Object.prototype.toString.call(obj) === '[object Date]';
+    }
+
+    function get_interpolator(a, b) {
+        if (a === b || a !== a)
+            return () => a;
+        const type = typeof a;
+        if (type !== typeof b || Array.isArray(a) !== Array.isArray(b)) {
+            throw new Error('Cannot interpolate values of different type');
+        }
+        if (Array.isArray(a)) {
+            const arr = b.map((bi, i) => {
+                return get_interpolator(a[i], bi);
+            });
+            return t => arr.map(fn => fn(t));
+        }
+        if (type === 'object') {
+            if (!a || !b)
+                throw new Error('Object cannot be null');
+            if (is_date(a) && is_date(b)) {
+                a = a.getTime();
+                b = b.getTime();
+                const delta = b - a;
+                return t => new Date(a + t * delta);
+            }
+            const keys = Object.keys(b);
+            const interpolators = {};
+            keys.forEach(key => {
+                interpolators[key] = get_interpolator(a[key], b[key]);
+            });
+            return t => {
+                const result = {};
+                keys.forEach(key => {
+                    result[key] = interpolators[key](t);
+                });
+                return result;
+            };
+        }
+        if (type === 'number') {
+            const delta = b - a;
+            return t => a + t * delta;
+        }
+        throw new Error(`Cannot interpolate ${type} values`);
+    }
+    function tweened(value, defaults = {}) {
+        const store = writable(value);
+        let task;
+        let target_value = value;
+        function set(new_value, opts) {
+            if (value == null) {
+                store.set(value = new_value);
+                return Promise.resolve();
+            }
+            target_value = new_value;
+            let previous_task = task;
+            let started = false;
+            let { delay = 0, duration = 400, easing = identity, interpolate = get_interpolator } = assign(assign({}, defaults), opts);
+            if (duration === 0) {
+                if (previous_task) {
+                    previous_task.abort();
+                    previous_task = null;
+                }
+                store.set(value = target_value);
+                return Promise.resolve();
+            }
+            const start = now() + delay;
+            let fn;
+            task = loop$1(now => {
+                if (now < start)
+                    return true;
+                if (!started) {
+                    fn = interpolate(value, new_value);
+                    if (typeof duration === 'function')
+                        duration = duration(value, new_value);
+                    started = true;
+                }
+                if (previous_task) {
+                    previous_task.abort();
+                    previous_task = null;
+                }
+                const elapsed = now - start;
+                if (elapsed > duration) {
+                    store.set(value = new_value);
+                    return false;
+                }
+                // @ts-ignore
+                store.set(value = fn(easing(elapsed / duration)));
+                return true;
+            });
+            return task.promise;
+        }
+        return {
+            set,
+            update: (fn, opts) => set(fn(target_value, value), opts),
+            subscribe: store.subscribe
+        };
+    }
+
+    /* node_modules\@zerodevx\svelte-toast\src\ToastItem.svelte generated by Svelte v3.49.0 */
+    const file$4 = "node_modules\\@zerodevx\\svelte-toast\\src\\ToastItem.svelte";
+
+    // (67:4) {:else}
+    function create_else_block$2(ctx) {
+    	let html_tag;
+    	let raw_value = /*item*/ ctx[0].msg + "";
+    	let html_anchor;
+
+    	const block = {
+    		c: function create() {
+    			html_tag = new HtmlTag(false);
+    			html_anchor = empty();
+    			html_tag.a = html_anchor;
+    		},
+    		m: function mount(target, anchor) {
+    			html_tag.m(raw_value, target, anchor);
+    			insert_dev(target, html_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*item*/ 1 && raw_value !== (raw_value = /*item*/ ctx[0].msg + "")) html_tag.p(raw_value);
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(html_anchor);
+    			if (detaching) html_tag.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$2.name,
+    		type: "else",
+    		source: "(67:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (65:4) {#if item.component}
+    function create_if_block_1$1(ctx) {
+    	let switch_instance;
+    	let switch_instance_anchor;
+    	let current;
+    	const switch_instance_spread_levels = [/*getProps*/ ctx[6]()];
+    	var switch_value = /*item*/ ctx[0].component.src;
+
+    	function switch_props(ctx) {
+    		let switch_instance_props = {};
+
+    		for (let i = 0; i < switch_instance_spread_levels.length; i += 1) {
+    			switch_instance_props = assign(switch_instance_props, switch_instance_spread_levels[i]);
+    		}
+
+    		return {
+    			props: switch_instance_props,
+    			$$inline: true
+    		};
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props());
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			switch_instance_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_instance_changes = (dirty & /*getProps*/ 64)
+    			? get_spread_update(switch_instance_spread_levels, [get_spread_object(/*getProps*/ ctx[6]())])
+    			: {};
+
+    			if (switch_value !== (switch_value = /*item*/ ctx[0].component.src)) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props());
+    					create_component(switch_instance.$$.fragment);
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			} else if (switch_value) {
+    				switch_instance.$set(switch_instance_changes);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(switch_instance_anchor);
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(65:4) {#if item.component}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (71:2) {#if item.dismissable}
+    function create_if_block$2(ctx) {
+    	let div;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			div.textContent = "✕";
+    			attr_dev(div, "class", "_toastBtn pe svelte-5er0t9");
+    			attr_dev(div, "role", "button");
+    			attr_dev(div, "tabindex", "-1");
+    			add_location(div, file$4, 71, 4, 1703);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(div, "click", /*close*/ ctx[3], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(71:2) {#if item.dismissable}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let div1;
+    	let div0;
+    	let current_block_type_index;
+    	let if_block0;
+    	let t0;
+    	let t1;
+    	let progress_1;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	const if_block_creators = [create_if_block_1$1, create_else_block$2];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*item*/ ctx[0].component) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    	let if_block1 = /*item*/ ctx[0].dismissable && create_if_block$2(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			if_block0.c();
+    			t0 = space();
+    			if (if_block1) if_block1.c();
+    			t1 = space();
+    			progress_1 = element("progress");
+    			attr_dev(div0, "role", "status");
+    			attr_dev(div0, "class", "_toastMsg svelte-5er0t9");
+    			toggle_class(div0, "pe", /*item*/ ctx[0].component);
+    			add_location(div0, file$4, 63, 2, 1462);
+    			attr_dev(progress_1, "class", "_toastBar svelte-5er0t9");
+    			progress_1.value = /*$progress*/ ctx[1];
+    			add_location(progress_1, file$4, 73, 2, 1792);
+    			attr_dev(div1, "class", "_toastItem svelte-5er0t9");
+    			toggle_class(div1, "pe", /*item*/ ctx[0].pausable);
+    			add_location(div1, file$4, 62, 0, 1365);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			if_blocks[current_block_type_index].m(div0, null);
+    			append_dev(div1, t0);
+    			if (if_block1) if_block1.m(div1, null);
+    			append_dev(div1, t1);
+    			append_dev(div1, progress_1);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(div1, "mouseenter", /*pause*/ ctx[4], false, false, false),
+    					listen_dev(div1, "mouseleave", /*resume*/ ctx[5], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block0 = if_blocks[current_block_type_index];
+
+    				if (!if_block0) {
+    					if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block0.c();
+    				} else {
+    					if_block0.p(ctx, dirty);
+    				}
+
+    				transition_in(if_block0, 1);
+    				if_block0.m(div0, null);
+    			}
+
+    			if (dirty & /*item*/ 1) {
+    				toggle_class(div0, "pe", /*item*/ ctx[0].component);
+    			}
+
+    			if (/*item*/ ctx[0].dismissable) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block$2(ctx);
+    					if_block1.c();
+    					if_block1.m(div1, t1);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (!current || dirty & /*$progress*/ 2) {
+    				prop_dev(progress_1, "value", /*$progress*/ ctx[1]);
+    			}
+
+    			if (dirty & /*item*/ 1) {
+    				toggle_class(div1, "pe", /*item*/ ctx[0].pausable);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			if_blocks[current_block_type_index].d();
+    			if (if_block1) if_block1.d();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let $progress;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('ToastItem', slots, []);
+    	let { item } = $$props;
+    	const progress = tweened(item.initial, { duration: item.duration, easing: identity });
+    	validate_store(progress, 'progress');
+    	component_subscribe($$self, progress, value => $$invalidate(1, $progress = value));
+    	const close = () => toast.pop(item.id);
+
+    	const autoclose = () => {
+    		if ($progress === 1 || $progress === 0) {
+    			close();
+    		}
+    	};
+
+    	let next = item.initial;
+    	let prev = next;
+    	let paused = false;
+
+    	const pause = () => {
+    		if (item.pausable && !paused && $progress !== next) {
+    			progress.set($progress, { duration: 0 });
+    			paused = true;
+    		}
+    	};
+
+    	const resume = () => {
+    		if (paused) {
+    			const d = item.duration;
+    			const duration = d - d * (($progress - prev) / (next - prev));
+    			progress.set(next, { duration }).then(autoclose);
+    			paused = false;
+    		}
+    	};
+
+    	const getProps = () => {
+    		const { props = {}, sendIdTo } = item.component;
+
+    		if (sendIdTo) {
+    			props[sendIdTo] = item.id;
+    		}
+
+    		return props;
+    	};
+
+    	onDestroy(() => {
+    		if (typeof item.onpop === 'function') {
+    			item.onpop(item.id);
+    		}
+    	});
+
+    	const writable_props = ['item'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<ToastItem> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('item' in $$props) $$invalidate(0, item = $$props.item);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		onDestroy,
+    		tweened,
+    		linear: identity,
+    		toast,
+    		item,
+    		progress,
+    		close,
+    		autoclose,
+    		next,
+    		prev,
+    		paused,
+    		pause,
+    		resume,
+    		getProps,
+    		$progress
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('item' in $$props) $$invalidate(0, item = $$props.item);
+    		if ('next' in $$props) $$invalidate(7, next = $$props.next);
+    		if ('prev' in $$props) prev = $$props.prev;
+    		if ('paused' in $$props) paused = $$props.paused;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*item*/ 1) {
+    			// `progress` has been renamed to `next`; shim included for backward compatibility, to remove in next major
+    			if (typeof item.progress !== 'undefined') {
+    				$$invalidate(0, item.next = item.progress, item);
+    			}
+    		}
+
+    		if ($$self.$$.dirty & /*next, item, $progress*/ 131) {
+    			if (next !== item.next) {
+    				$$invalidate(7, next = item.next);
+    				prev = $progress;
+    				paused = false;
+    				progress.set(next).then(autoclose);
+    			}
+    		}
+    	};
+
+    	return [item, $progress, progress, close, pause, resume, getProps, next];
+    }
+
+    class ToastItem extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { item: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ToastItem",
+    			options,
+    			id: create_fragment$4.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*item*/ ctx[0] === undefined && !('item' in props)) {
+    			console.warn("<ToastItem> was created without expected prop 'item'");
+    		}
+    	}
+
+    	get item() {
+    		throw new Error("<ToastItem>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set item(value) {
+    		throw new Error("<ToastItem>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* node_modules\@zerodevx\svelte-toast\src\SvelteToast.svelte generated by Svelte v3.49.0 */
+
+    const { Object: Object_1$1 } = globals;
+    const file$3 = "node_modules\\@zerodevx\\svelte-toast\\src\\SvelteToast.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[5] = list[i];
+    	return child_ctx;
+    }
+
+    // (19:2) {#each items as item (item.id)}
+    function create_each_block(key_1, ctx) {
+    	let li;
+    	let toastitem;
+    	let t;
+    	let li_class_value;
+    	let li_style_value;
+    	let li_intro;
+    	let li_outro;
+    	let rect;
+    	let stop_animation = noop;
+    	let current;
+
+    	toastitem = new ToastItem({
+    			props: { item: /*item*/ ctx[5] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			li = element("li");
+    			create_component(toastitem.$$.fragment);
+    			t = space();
+    			attr_dev(li, "class", li_class_value = "" + (null_to_empty(/*item*/ ctx[5].classes.join(' ')) + " svelte-yh90az"));
+    			attr_dev(li, "style", li_style_value = /*getCss*/ ctx[1](/*item*/ ctx[5].theme));
+    			add_location(li, file$3, 19, 4, 494);
+    			this.first = li;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			mount_component(toastitem, li, null);
+    			append_dev(li, t);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const toastitem_changes = {};
+    			if (dirty & /*items*/ 1) toastitem_changes.item = /*item*/ ctx[5];
+    			toastitem.$set(toastitem_changes);
+
+    			if (!current || dirty & /*items*/ 1 && li_class_value !== (li_class_value = "" + (null_to_empty(/*item*/ ctx[5].classes.join(' ')) + " svelte-yh90az"))) {
+    				attr_dev(li, "class", li_class_value);
+    			}
+
+    			if (!current || dirty & /*items*/ 1 && li_style_value !== (li_style_value = /*getCss*/ ctx[1](/*item*/ ctx[5].theme))) {
+    				attr_dev(li, "style", li_style_value);
+    			}
+    		},
+    		r: function measure() {
+    			rect = li.getBoundingClientRect();
+    		},
+    		f: function fix() {
+    			fix_position(li);
+    			stop_animation();
+    			add_transform(li, rect);
+    		},
+    		a: function animate() {
+    			stop_animation();
+    			stop_animation = create_animation(li, rect, flip, { duration: 200 });
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(toastitem.$$.fragment, local);
+
+    			add_render_callback(() => {
+    				if (li_outro) li_outro.end(1);
+    				li_intro = create_in_transition(li, fly, /*item*/ ctx[5].intro);
+    				li_intro.start();
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(toastitem.$$.fragment, local);
+    			if (li_intro) li_intro.invalidate();
+    			li_outro = create_out_transition(li, fade, {});
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    			destroy_component(toastitem);
+    			if (detaching && li_outro) li_outro.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(19:2) {#each items as item (item.id)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let ul;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let current;
+    	let each_value = /*items*/ ctx[0];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*item*/ ctx[5].id;
+    	validate_each_keys(ctx, each_value, get_each_context, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			ul = element("ul");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(ul, "class", "_toastContainer svelte-yh90az");
+    			add_location(ul, file$3, 17, 0, 427);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, ul, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(ul, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*items, getCss*/ 3) {
+    				each_value = /*items*/ ctx[0];
+    				validate_each_argument(each_value);
+    				group_outros();
+    				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
+    				validate_each_keys(ctx, each_value, get_each_context, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, ul, fix_and_outro_and_destroy_block, create_each_block, null, get_each_context);
+    				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].a();
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(ul);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let $toast;
+    	validate_store(toast, 'toast');
+    	component_subscribe($$self, toast, $$value => $$invalidate(4, $toast = $$value));
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('SvelteToast', slots, []);
+    	let { options = {} } = $$props;
+    	let { target = 'default' } = $$props;
+    	let items;
+    	const getCss = theme => Object.keys(theme).reduce((a, c) => `${a}${c}:${theme[c]};`, '');
+    	const writable_props = ['options', 'target'];
+
+    	Object_1$1.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SvelteToast> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('options' in $$props) $$invalidate(2, options = $$props.options);
+    		if ('target' in $$props) $$invalidate(3, target = $$props.target);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		fade,
+    		fly,
+    		flip,
+    		toast,
+    		ToastItem,
+    		options,
+    		target,
+    		items,
+    		getCss,
+    		$toast
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('options' in $$props) $$invalidate(2, options = $$props.options);
+    		if ('target' in $$props) $$invalidate(3, target = $$props.target);
+    		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*target, options*/ 12) {
+    			toast._init(target, options);
+    		}
+
+    		if ($$self.$$.dirty & /*$toast, target*/ 24) {
+    			$$invalidate(0, items = $toast.filter(i => i.target === target));
+    		}
+    	};
+
+    	return [items, getCss, options, target, $toast];
+    }
+
+    class SvelteToast extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { options: 2, target: 3 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "SvelteToast",
+    			options,
+    			id: create_fragment$3.name
+    		});
+    	}
+
+    	get options() {
+    		throw new Error("<SvelteToast>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set options(value) {
+    		throw new Error("<SvelteToast>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get target() {
+    		throw new Error("<SvelteToast>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set target(value) {
+    		throw new Error("<SvelteToast>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\RefreshNotif.svelte generated by Svelte v3.49.0 */
+    const file$2 = "src\\RefreshNotif.svelte";
+
+    function create_fragment$2(ctx) {
+    	let div;
+    	let h3;
+    	let t1;
+    	let button;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "New Obbattu Has been served";
+    			t1 = space();
+    			button = element("button");
+    			button.textContent = "Refresh";
+    			add_location(h3, file$2, 12, 4, 198);
+    			attr_dev(button, "class", "buttn svelte-1qcmkrb");
+    			add_location(button, file$2, 13, 4, 240);
+    			attr_dev(div, "class", "main svelte-1qcmkrb");
+    			add_location(div, file$2, 11, 0, 174);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h3);
+    			append_dev(div, t1);
+    			append_dev(div, button);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*refreshPage*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$2.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('RefreshNotif', slots, []);
+    	let { toastId } = $$props;
+
+    	function refreshPage() {
+    		toast.pop(toastId);
+    	}
+
+    	const writable_props = ['toastId'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<RefreshNotif> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('toastId' in $$props) $$invalidate(1, toastId = $$props.toastId);
+    	};
+
+    	$$self.$capture_state = () => ({ toast, toastId, refreshPage });
+
+    	$$self.$inject_state = $$props => {
+    		if ('toastId' in $$props) $$invalidate(1, toastId = $$props.toastId);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [refreshPage, toastId];
+    }
+
+    class RefreshNotif extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { toastId: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "RefreshNotif",
+    			options,
+    			id: create_fragment$2.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*toastId*/ ctx[1] === undefined && !('toastId' in props)) {
+    			console.warn("<RefreshNotif> was created without expected prop 'toastId'");
+    		}
+    	}
+
+    	get toastId() {
+    		throw new Error("<RefreshNotif>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set toastId(value) {
+    		throw new Error("<RefreshNotif>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\Countdown.svelte generated by Svelte v3.49.0 */
+    const file$1 = "src\\Countdown.svelte";
+
+    // (47:4) {:else}
+    function create_else_block$1(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(/*finishMsg*/ ctx[0]);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*finishMsg*/ 1) set_data_dev(t, /*finishMsg*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(47:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (45:4) {#if finished === false}
+    function create_if_block$1(ctx) {
+    	let t0_value = (/*hr*/ ctx[4].length === 1 ? "0" : "") + "";
+    	let t0;
+    	let t1;
+    	let t2;
+    	let t3_value = (/*min*/ ctx[3].length === 1 ? "0" : "") + "";
+    	let t3;
+    	let t4;
+    	let t5;
+    	let t6_value = (/*sec*/ ctx[2].length === 1 ? "0" : "") + "";
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			t0 = text(t0_value);
+    			t1 = text(/*hr*/ ctx[4]);
+    			t2 = text(":");
+    			t3 = text(t3_value);
+    			t4 = text(/*min*/ ctx[3]);
+    			t5 = text(":");
+    			t6 = text(t6_value);
+    			t7 = text(/*sec*/ ctx[2]);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, t4, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, t7, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*hr*/ 16 && t0_value !== (t0_value = (/*hr*/ ctx[4].length === 1 ? "0" : "") + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*hr*/ 16) set_data_dev(t1, /*hr*/ ctx[4]);
+    			if (dirty & /*min*/ 8 && t3_value !== (t3_value = (/*min*/ ctx[3].length === 1 ? "0" : "") + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*min*/ 8) set_data_dev(t4, /*min*/ ctx[3]);
+    			if (dirty & /*sec*/ 4 && t6_value !== (t6_value = (/*sec*/ ctx[2].length === 1 ? "0" : "") + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*sec*/ 4) set_data_dev(t7, /*sec*/ ctx[2]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(t7);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(45:4) {#if finished === false}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	let div;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*finished*/ ctx[1] === false) return create_if_block$1;
+    		return create_else_block$1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if_block.c();
+    			attr_dev(div, "class", "timer");
+    			add_location(div, file$1, 43, 0, 1198);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if_block.m(div, null);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div, null);
+    				}
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_block.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let hr;
+    	let min;
+    	let sec;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Countdown', slots, []);
+    	const dispatch = createEventDispatcher();
+    	let { endDate } = $$props;
+    	let { finishMsg } = $$props;
+
+    	//console.log(endDate(false))
+    	endDate = endDate();
+
+    	let finished = false;
+
+    	let x = setInterval(
+    		() => {
+    			$$invalidate(5, endDate -= 1000);
+    			let hrss = Math.floor(endDate / (1000 * 60 * 60) % 24);
+    			let minss = Math.floor(Math.abs(endDate / (1000 * 60) % 60));
+    			let secss = Math.floor(Math.abs(endDate / 1000 % 60));
+
+    			if (endDate <= 0) {
+    				clearInterval(x);
+    				$$invalidate(1, finished = true);
+    				dispatch("REFRESH_BOARD");
+    				return;
+    			} else {
+    				$$invalidate(4, hr = Math.abs(hrss).toString());
+    				$$invalidate(3, min = minss.toString());
+    				$$invalidate(2, sec = secss.toString());
+    			}
+    		},
+    		1000
+    	);
+
+    	const writable_props = ['endDate', 'finishMsg'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Countdown> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('endDate' in $$props) $$invalidate(5, endDate = $$props.endDate);
+    		if ('finishMsg' in $$props) $$invalidate(0, finishMsg = $$props.finishMsg);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		createEventDispatcher,
+    		dispatch,
+    		endDate,
+    		finishMsg,
+    		finished,
+    		x,
+    		sec,
+    		min,
+    		hr
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('endDate' in $$props) $$invalidate(5, endDate = $$props.endDate);
+    		if ('finishMsg' in $$props) $$invalidate(0, finishMsg = $$props.finishMsg);
+    		if ('finished' in $$props) $$invalidate(1, finished = $$props.finished);
+    		if ('x' in $$props) x = $$props.x;
+    		if ('sec' in $$props) $$invalidate(2, sec = $$props.sec);
+    		if ('min' in $$props) $$invalidate(3, min = $$props.min);
+    		if ('hr' in $$props) $$invalidate(4, hr = $$props.hr);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*endDate*/ 32) {
+    			//console.log(endDate)
+    			$$invalidate(4, hr = Math.floor(endDate / (1000 * 60 * 60) % 24).toString());
+    		}
+
+    		if ($$self.$$.dirty & /*endDate*/ 32) {
+    			$$invalidate(3, min = Math.floor(Math.abs(endDate / (1000 * 60) % 60)).toString());
+    		}
+
+    		if ($$self.$$.dirty & /*endDate*/ 32) {
+    			$$invalidate(2, sec = Math.floor(Math.abs(endDate / 1000 % 60)).toString());
+    		}
+    	};
+
+    	return [finishMsg, finished, sec, min, hr, endDate];
+    }
+
+    class Countdown extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { endDate: 5, finishMsg: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Countdown",
+    			options,
+    			id: create_fragment$1.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*endDate*/ ctx[5] === undefined && !('endDate' in props)) {
+    			console.warn("<Countdown> was created without expected prop 'endDate'");
+    		}
+
+    		if (/*finishMsg*/ ctx[0] === undefined && !('finishMsg' in props)) {
+    			console.warn("<Countdown> was created without expected prop 'finishMsg'");
+    		}
+    	}
+
+    	get endDate() {
+    		throw new Error("<Countdown>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set endDate(value) {
+    		throw new Error("<Countdown>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get finishMsg() {
+    		throw new Error("<Countdown>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set finishMsg(value) {
+    		throw new Error("<Countdown>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    // canvas-confetti v1.5.1 built on 2022-02-08T22:20:40.944Z
+    var module = {};
+
+    // source content
+    (function main(global, module, isWorker, workerSize) {
+      var canUseWorker = !!(
+        global.Worker &&
+        global.Blob &&
+        global.Promise &&
+        global.OffscreenCanvas &&
+        global.OffscreenCanvasRenderingContext2D &&
+        global.HTMLCanvasElement &&
+        global.HTMLCanvasElement.prototype.transferControlToOffscreen &&
+        global.URL &&
+        global.URL.createObjectURL);
+
+      function noop() {}
+
+      // create a promise if it exists, otherwise, just
+      // call the function directly
+      function promise(func) {
+        var ModulePromise = module.exports.Promise;
+        var Prom = ModulePromise !== void 0 ? ModulePromise : global.Promise;
+
+        if (typeof Prom === 'function') {
+          return new Prom(func);
+        }
+
+        func(noop, noop);
+
+        return null;
+      }
+
+      var raf = (function () {
+        var TIME = Math.floor(1000 / 60);
+        var frame, cancel;
+        var frames = {};
+        var lastFrameTime = 0;
+
+        if (typeof requestAnimationFrame === 'function' && typeof cancelAnimationFrame === 'function') {
+          frame = function (cb) {
+            var id = Math.random();
+
+            frames[id] = requestAnimationFrame(function onFrame(time) {
+              if (lastFrameTime === time || lastFrameTime + TIME - 1 < time) {
+                lastFrameTime = time;
+                delete frames[id];
+
+                cb();
+              } else {
+                frames[id] = requestAnimationFrame(onFrame);
+              }
+            });
+
+            return id;
+          };
+          cancel = function (id) {
+            if (frames[id]) {
+              cancelAnimationFrame(frames[id]);
+            }
+          };
+        } else {
+          frame = function (cb) {
+            return setTimeout(cb, TIME);
+          };
+          cancel = function (timer) {
+            return clearTimeout(timer);
+          };
+        }
+
+        return { frame: frame, cancel: cancel };
+      }());
+
+      var getWorker = (function () {
+        var worker;
+        var prom;
+        var resolves = {};
+
+        function decorate(worker) {
+          function execute(options, callback) {
+            worker.postMessage({ options: options || {}, callback: callback });
+          }
+          worker.init = function initWorker(canvas) {
+            var offscreen = canvas.transferControlToOffscreen();
+            worker.postMessage({ canvas: offscreen }, [offscreen]);
+          };
+
+          worker.fire = function fireWorker(options, size, done) {
+            if (prom) {
+              execute(options, null);
+              return prom;
+            }
+
+            var id = Math.random().toString(36).slice(2);
+
+            prom = promise(function (resolve) {
+              function workerDone(msg) {
+                if (msg.data.callback !== id) {
+                  return;
+                }
+
+                delete resolves[id];
+                worker.removeEventListener('message', workerDone);
+
+                prom = null;
+                done();
+                resolve();
+              }
+
+              worker.addEventListener('message', workerDone);
+              execute(options, id);
+
+              resolves[id] = workerDone.bind(null, { data: { callback: id }});
+            });
+
+            return prom;
+          };
+
+          worker.reset = function resetWorker() {
+            worker.postMessage({ reset: true });
+
+            for (var id in resolves) {
+              resolves[id]();
+              delete resolves[id];
+            }
+          };
+        }
+
+        return function () {
+          if (worker) {
+            return worker;
+          }
+
+          if (!isWorker && canUseWorker) {
+            var code = [
+              'var CONFETTI, SIZE = {}, module = {};',
+              '(' + main.toString() + ')(this, module, true, SIZE);',
+              'onmessage = function(msg) {',
+              '  if (msg.data.options) {',
+              '    CONFETTI(msg.data.options).then(function () {',
+              '      if (msg.data.callback) {',
+              '        postMessage({ callback: msg.data.callback });',
+              '      }',
+              '    });',
+              '  } else if (msg.data.reset) {',
+              '    CONFETTI.reset();',
+              '  } else if (msg.data.resize) {',
+              '    SIZE.width = msg.data.resize.width;',
+              '    SIZE.height = msg.data.resize.height;',
+              '  } else if (msg.data.canvas) {',
+              '    SIZE.width = msg.data.canvas.width;',
+              '    SIZE.height = msg.data.canvas.height;',
+              '    CONFETTI = module.exports.create(msg.data.canvas);',
+              '  }',
+              '}',
+            ].join('\n');
+            try {
+              worker = new Worker(URL.createObjectURL(new Blob([code])));
+            } catch (e) {
+              // eslint-disable-next-line no-console
+              typeof console !== undefined && typeof console.warn === 'function' ? console.warn('🎊 Could not load worker', e) : null;
+
+              return null;
+            }
+
+            decorate(worker);
+          }
+
+          return worker;
+        };
+      })();
+
+      var defaults = {
+        particleCount: 50,
+        angle: 90,
+        spread: 45,
+        startVelocity: 45,
+        decay: 0.9,
+        gravity: 1,
+        drift: 0,
+        ticks: 200,
+        x: 0.5,
+        y: 0.5,
+        shapes: ['square', 'circle'],
+        zIndex: 100,
+        colors: [
+          '#26ccff',
+          '#a25afd',
+          '#ff5e7e',
+          '#88ff5a',
+          '#fcff42',
+          '#ffa62d',
+          '#ff36ff'
+        ],
+        // probably should be true, but back-compat
+        disableForReducedMotion: false,
+        scalar: 1
+      };
+
+      function convert(val, transform) {
+        return transform ? transform(val) : val;
+      }
+
+      function isOk(val) {
+        return !(val === null || val === undefined);
+      }
+
+      function prop(options, name, transform) {
+        return convert(
+          options && isOk(options[name]) ? options[name] : defaults[name],
+          transform
+        );
+      }
+
+      function onlyPositiveInt(number){
+        return number < 0 ? 0 : Math.floor(number);
+      }
+
+      function randomInt(min, max) {
+        // [min, max)
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function toDecimal(str) {
+        return parseInt(str, 16);
+      }
+
+      function colorsToRgb(colors) {
+        return colors.map(hexToRgb);
+      }
+
+      function hexToRgb(str) {
+        var val = String(str).replace(/[^0-9a-f]/gi, '');
+
+        if (val.length < 6) {
+            val = val[0]+val[0]+val[1]+val[1]+val[2]+val[2];
+        }
+
+        return {
+          r: toDecimal(val.substring(0,2)),
+          g: toDecimal(val.substring(2,4)),
+          b: toDecimal(val.substring(4,6))
+        };
+      }
+
+      function getOrigin(options) {
+        var origin = prop(options, 'origin', Object);
+        origin.x = prop(origin, 'x', Number);
+        origin.y = prop(origin, 'y', Number);
+
+        return origin;
+      }
+
+      function setCanvasWindowSize(canvas) {
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+      }
+
+      function setCanvasRectSize(canvas) {
+        var rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      }
+
+      function getCanvas(zIndex) {
+        var canvas = document.createElement('canvas');
+
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0px';
+        canvas.style.left = '0px';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = zIndex;
+
+        return canvas;
+      }
+
+      function ellipse(context, x, y, radiusX, radiusY, rotation, startAngle, endAngle, antiClockwise) {
+        context.save();
+        context.translate(x, y);
+        context.rotate(rotation);
+        context.scale(radiusX, radiusY);
+        context.arc(0, 0, 1, startAngle, endAngle, antiClockwise);
+        context.restore();
+      }
+
+      function randomPhysics(opts) {
+        var radAngle = opts.angle * (Math.PI / 180);
+        var radSpread = opts.spread * (Math.PI / 180);
+
+        return {
+          x: opts.x,
+          y: opts.y,
+          wobble: Math.random() * 10,
+          wobbleSpeed: Math.min(0.11, Math.random() * 0.1 + 0.05),
+          velocity: (opts.startVelocity * 0.5) + (Math.random() * opts.startVelocity),
+          angle2D: -radAngle + ((0.5 * radSpread) - (Math.random() * radSpread)),
+          tiltAngle: (Math.random() * (0.75 - 0.25) + 0.25) * Math.PI,
+          color: opts.color,
+          shape: opts.shape,
+          tick: 0,
+          totalTicks: opts.ticks,
+          decay: opts.decay,
+          drift: opts.drift,
+          random: Math.random() + 2,
+          tiltSin: 0,
+          tiltCos: 0,
+          wobbleX: 0,
+          wobbleY: 0,
+          gravity: opts.gravity * 3,
+          ovalScalar: 0.6,
+          scalar: opts.scalar
+        };
+      }
+
+      function updateFetti(context, fetti) {
+        fetti.x += Math.cos(fetti.angle2D) * fetti.velocity + fetti.drift;
+        fetti.y += Math.sin(fetti.angle2D) * fetti.velocity + fetti.gravity;
+        fetti.wobble += fetti.wobbleSpeed;
+        fetti.velocity *= fetti.decay;
+        fetti.tiltAngle += 0.1;
+        fetti.tiltSin = Math.sin(fetti.tiltAngle);
+        fetti.tiltCos = Math.cos(fetti.tiltAngle);
+        fetti.random = Math.random() + 2;
+        fetti.wobbleX = fetti.x + ((10 * fetti.scalar) * Math.cos(fetti.wobble));
+        fetti.wobbleY = fetti.y + ((10 * fetti.scalar) * Math.sin(fetti.wobble));
+
+        var progress = (fetti.tick++) / fetti.totalTicks;
+
+        var x1 = fetti.x + (fetti.random * fetti.tiltCos);
+        var y1 = fetti.y + (fetti.random * fetti.tiltSin);
+        var x2 = fetti.wobbleX + (fetti.random * fetti.tiltCos);
+        var y2 = fetti.wobbleY + (fetti.random * fetti.tiltSin);
+
+        context.fillStyle = 'rgba(' + fetti.color.r + ', ' + fetti.color.g + ', ' + fetti.color.b + ', ' + (1 - progress) + ')';
+        context.beginPath();
+
+        if (fetti.shape === 'circle') {
+          context.ellipse ?
+            context.ellipse(fetti.x, fetti.y, Math.abs(x2 - x1) * fetti.ovalScalar, Math.abs(y2 - y1) * fetti.ovalScalar, Math.PI / 10 * fetti.wobble, 0, 2 * Math.PI) :
+            ellipse(context, fetti.x, fetti.y, Math.abs(x2 - x1) * fetti.ovalScalar, Math.abs(y2 - y1) * fetti.ovalScalar, Math.PI / 10 * fetti.wobble, 0, 2 * Math.PI);
+        } else {
+          context.moveTo(Math.floor(fetti.x), Math.floor(fetti.y));
+          context.lineTo(Math.floor(fetti.wobbleX), Math.floor(y1));
+          context.lineTo(Math.floor(x2), Math.floor(y2));
+          context.lineTo(Math.floor(x1), Math.floor(fetti.wobbleY));
+        }
+
+        context.closePath();
+        context.fill();
+
+        return fetti.tick < fetti.totalTicks;
+      }
+
+      function animate(canvas, fettis, resizer, size, done) {
+        var animatingFettis = fettis.slice();
+        var context = canvas.getContext('2d');
+        var animationFrame;
+        var destroy;
+
+        var prom = promise(function (resolve) {
+          function onDone() {
+            animationFrame = destroy = null;
+
+            context.clearRect(0, 0, size.width, size.height);
+
+            done();
+            resolve();
+          }
+
+          function update() {
+            if (isWorker && !(size.width === workerSize.width && size.height === workerSize.height)) {
+              size.width = canvas.width = workerSize.width;
+              size.height = canvas.height = workerSize.height;
+            }
+
+            if (!size.width && !size.height) {
+              resizer(canvas);
+              size.width = canvas.width;
+              size.height = canvas.height;
+            }
+
+            context.clearRect(0, 0, size.width, size.height);
+
+            animatingFettis = animatingFettis.filter(function (fetti) {
+              return updateFetti(context, fetti);
+            });
+
+            if (animatingFettis.length) {
+              animationFrame = raf.frame(update);
+            } else {
+              onDone();
+            }
+          }
+
+          animationFrame = raf.frame(update);
+          destroy = onDone;
+        });
+
+        return {
+          addFettis: function (fettis) {
+            animatingFettis = animatingFettis.concat(fettis);
+
+            return prom;
+          },
+          canvas: canvas,
+          promise: prom,
+          reset: function () {
+            if (animationFrame) {
+              raf.cancel(animationFrame);
+            }
+
+            if (destroy) {
+              destroy();
+            }
+          }
+        };
+      }
+
+      function confettiCannon(canvas, globalOpts) {
+        var isLibCanvas = !canvas;
+        var allowResize = !!prop(globalOpts || {}, 'resize');
+        var globalDisableForReducedMotion = prop(globalOpts, 'disableForReducedMotion', Boolean);
+        var shouldUseWorker = canUseWorker && !!prop(globalOpts || {}, 'useWorker');
+        var worker = shouldUseWorker ? getWorker() : null;
+        var resizer = isLibCanvas ? setCanvasWindowSize : setCanvasRectSize;
+        var initialized = (canvas && worker) ? !!canvas.__confetti_initialized : false;
+        var preferLessMotion = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion)').matches;
+        var animationObj;
+
+        function fireLocal(options, size, done) {
+          var particleCount = prop(options, 'particleCount', onlyPositiveInt);
+          var angle = prop(options, 'angle', Number);
+          var spread = prop(options, 'spread', Number);
+          var startVelocity = prop(options, 'startVelocity', Number);
+          var decay = prop(options, 'decay', Number);
+          var gravity = prop(options, 'gravity', Number);
+          var drift = prop(options, 'drift', Number);
+          var colors = prop(options, 'colors', colorsToRgb);
+          var ticks = prop(options, 'ticks', Number);
+          var shapes = prop(options, 'shapes');
+          var scalar = prop(options, 'scalar');
+          var origin = getOrigin(options);
+
+          var temp = particleCount;
+          var fettis = [];
+
+          var startX = canvas.width * origin.x;
+          var startY = canvas.height * origin.y;
+
+          while (temp--) {
+            fettis.push(
+              randomPhysics({
+                x: startX,
+                y: startY,
+                angle: angle,
+                spread: spread,
+                startVelocity: startVelocity,
+                color: colors[temp % colors.length],
+                shape: shapes[randomInt(0, shapes.length)],
+                ticks: ticks,
+                decay: decay,
+                gravity: gravity,
+                drift: drift,
+                scalar: scalar
+              })
+            );
+          }
+
+          // if we have a previous canvas already animating,
+          // add to it
+          if (animationObj) {
+            return animationObj.addFettis(fettis);
+          }
+
+          animationObj = animate(canvas, fettis, resizer, size , done);
+
+          return animationObj.promise;
+        }
+
+        function fire(options) {
+          var disableForReducedMotion = globalDisableForReducedMotion || prop(options, 'disableForReducedMotion', Boolean);
+          var zIndex = prop(options, 'zIndex', Number);
+
+          if (disableForReducedMotion && preferLessMotion) {
+            return promise(function (resolve) {
+              resolve();
+            });
+          }
+
+          if (isLibCanvas && animationObj) {
+            // use existing canvas from in-progress animation
+            canvas = animationObj.canvas;
+          } else if (isLibCanvas && !canvas) {
+            // create and initialize a new canvas
+            canvas = getCanvas(zIndex);
+            document.body.appendChild(canvas);
+          }
+
+          if (allowResize && !initialized) {
+            // initialize the size of a user-supplied canvas
+            resizer(canvas);
+          }
+
+          var size = {
+            width: canvas.width,
+            height: canvas.height
+          };
+
+          if (worker && !initialized) {
+            worker.init(canvas);
+          }
+
+          initialized = true;
+
+          if (worker) {
+            canvas.__confetti_initialized = true;
+          }
+
+          function onResize() {
+            if (worker) {
+              // TODO this really shouldn't be immediate, because it is expensive
+              var obj = {
+                getBoundingClientRect: function () {
+                  if (!isLibCanvas) {
+                    return canvas.getBoundingClientRect();
+                  }
+                }
+              };
+
+              resizer(obj);
+
+              worker.postMessage({
+                resize: {
+                  width: obj.width,
+                  height: obj.height
+                }
+              });
+              return;
+            }
+
+            // don't actually query the size here, since this
+            // can execute frequently and rapidly
+            size.width = size.height = null;
+          }
+
+          function done() {
+            animationObj = null;
+
+            if (allowResize) {
+              global.removeEventListener('resize', onResize);
+            }
+
+            if (isLibCanvas && canvas) {
+              document.body.removeChild(canvas);
+              canvas = null;
+              initialized = false;
+            }
+          }
+
+          if (allowResize) {
+            global.addEventListener('resize', onResize, false);
+          }
+
+          if (worker) {
+            return worker.fire(options, size, done);
+          }
+
+          return fireLocal(options, size, done);
+        }
+
+        fire.reset = function () {
+          if (worker) {
+            worker.reset();
+          }
+
+          if (animationObj) {
+            animationObj.reset();
+          }
+        };
+
+        return fire;
+      }
+
+      // Make default export lazy to defer worker creation until called.
+      var defaultFire;
+      function getDefaultFire() {
+        if (!defaultFire) {
+          defaultFire = confettiCannon(null, { useWorker: true, resize: true });
+        }
+        return defaultFire;
+      }
+
+      module.exports = function() {
+        return getDefaultFire().apply(this, arguments);
+      };
+      module.exports.reset = function() {
+        getDefaultFire().reset();
+      };
+      module.exports.create = confettiCannon;
+    }((function () {
+      if (typeof window !== 'undefined') {
+        return window;
+      }
+
+      if (typeof self !== 'undefined') {
+        return self;
+      }
+
+      return this || {};
+    })(), module, false));
+
+    // end source content
+
+    var confetti = module.exports;
+    module.exports.create;
+
+    /* src\App.svelte generated by Svelte v3.49.0 */
+
+    const { Object: Object_1, console: console_1 } = globals;
+    const file = "src\\App.svelte";
+
+    // (322:4) {:else}
+    function create_else_block(ctx) {
+    	let div6;
+    	let h1;
+    	let t1;
+    	let h3;
+    	let t3;
+    	let div5;
+    	let div4;
+    	let div0;
+    	let div1;
+    	let div2;
+    	let div3;
+
+    	const block = {
+    		c: function create() {
+    			div6 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Generating a new game...";
+    			t1 = space();
+    			h3 = element("h3");
+    			h3.textContent = "Please wait...";
+    			t3 = space();
+    			div5 = element("div");
+    			div4 = element("div");
+    			div0 = element("div");
+    			div1 = element("div");
+    			div2 = element("div");
+    			div3 = element("div");
+    			attr_dev(h1, "class", "svelte-19i2ufz");
+    			add_location(h1, file, 323, 12, 9689);
+    			add_location(h3, file, 324, 12, 9736);
+    			attr_dev(div0, "class", "svelte-19i2ufz");
+    			add_location(div0, file, 326, 16, 9832);
+    			attr_dev(div1, "class", "svelte-19i2ufz");
+    			add_location(div1, file, 326, 27, 9843);
+    			attr_dev(div2, "class", "svelte-19i2ufz");
+    			add_location(div2, file, 326, 38, 9854);
+    			attr_dev(div3, "class", "svelte-19i2ufz");
+    			add_location(div3, file, 326, 49, 9865);
+    			attr_dev(div4, "class", "ldio svelte-19i2ufz");
+    			add_location(div4, file, 325, 35, 9796);
+    			attr_dev(div5, "class", "loadingio svelte-19i2ufz");
+    			add_location(div5, file, 325, 12, 9773);
+    			attr_dev(div6, "class", "notice flexx svelte-19i2ufz");
+    			add_location(div6, file, 322, 8, 9649);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, h1);
+    			append_dev(div6, t1);
+    			append_dev(div6, h3);
+    			append_dev(div6, t3);
+    			append_dev(div6, div5);
+    			append_dev(div5, div4);
+    			append_dev(div4, div0);
+    			append_dev(div4, div1);
+    			append_dev(div4, div2);
+    			append_dev(div4, div3);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div6);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(322:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (305:4) {#if show_loading === false}
+    function create_if_block(ctx) {
+    	let gameboard;
+    	let t;
+    	let if_block_anchor;
+    	let current;
+
+    	gameboard = new GameBoard({
+    			props: {
+    				questions: /*questions*/ ctx[0],
+    				answers: /*answers*/ ctx[2],
+    				ans_to_show: /*ansToShow*/ ctx[1],
+    				TOTAL_MOVES: /*moves*/ ctx[3],
+    				OBBATTU_COUNT: /*OBBATTU_COUNT*/ ctx[4]
+    			},
+    			$$inline: true
+    		});
+
+    	gameboard.$on("GAME_WON", /*handleGameWin*/ ctx[8]);
+    	gameboard.$on("GAME_LOST", /*handleGameLost*/ ctx[9]);
+    	let if_block = /*reminderStatus*/ ctx[5] === "timer" && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			create_component(gameboard.$$.fragment);
+    			t = space();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(gameboard, target, anchor);
+    			insert_dev(target, t, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const gameboard_changes = {};
+    			if (dirty & /*questions*/ 1) gameboard_changes.questions = /*questions*/ ctx[0];
+    			if (dirty & /*answers*/ 4) gameboard_changes.answers = /*answers*/ ctx[2];
+    			if (dirty & /*ansToShow*/ 2) gameboard_changes.ans_to_show = /*ansToShow*/ ctx[1];
+    			if (dirty & /*moves*/ 8) gameboard_changes.TOTAL_MOVES = /*moves*/ ctx[3];
+    			if (dirty & /*OBBATTU_COUNT*/ 16) gameboard_changes.OBBATTU_COUNT = /*OBBATTU_COUNT*/ ctx[4];
+    			gameboard.$set(gameboard_changes);
+
+    			if (/*reminderStatus*/ ctx[5] === "timer") {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*reminderStatus*/ 32) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(gameboard.$$.fragment, local);
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(gameboard.$$.fragment, local);
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(gameboard, detaching);
+    			if (detaching) detach_dev(t);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(305:4) {#if show_loading === false}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (315:8) {#if reminderStatus === "timer"}
+    function create_if_block_1(ctx) {
+    	let div;
+    	let h2;
+    	let t1;
+    	let countdown;
+    	let t2;
+    	let hr;
+    	let current;
+
+    	countdown = new Countdown({
+    			props: {
+    				endDate: /*getDurationTillMidnight*/ ctx[7],
+    				finishMsg: "Serving new Obbattu..."
+    			},
+    			$$inline: true
+    		});
+
+    	countdown.$on("REFRESH_BOARD", /*refreshBoard*/ ctx[10]);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			h2 = element("h2");
+    			h2.textContent = "ಮುಂದಿನ ಒಬ್ಬಟ್ಟು";
+    			t1 = space();
+    			create_component(countdown.$$.fragment);
+    			t2 = space();
+    			hr = element("hr");
+    			add_location(h2, file, 316, 20, 9399);
+    			attr_dev(div, "class", "timer notice flexx svelte-19i2ufz");
+    			add_location(div, file, 315, 12, 9345);
+    			attr_dev(hr, "class", "spacer svelte-19i2ufz");
+    			add_location(hr, file, 319, 12, 9592);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h2);
+    			append_dev(div, t1);
+    			mount_component(countdown, div, null);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, hr, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(countdown.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(countdown.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(countdown);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(hr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(315:8) {#if reminderStatus === \\\"timer\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let main;
+    	let header;
+    	let t0;
+    	let current_block_type_index;
+    	let if_block;
+    	let t1;
+    	let sveltetoast;
+    	let current;
+    	header = new Header({ $$inline: true });
+    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*show_loading*/ ctx[6] === false) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    	sveltetoast = new SvelteToast({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			create_component(header.$$.fragment);
+    			t0 = space();
+    			if_block.c();
+    			t1 = space();
+    			create_component(sveltetoast.$$.fragment);
+    			attr_dev(main, "class", "svelte-19i2ufz");
+    			add_location(main, file, 302, 0, 8932);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			mount_component(header, main, null);
+    			append_dev(main, t0);
+    			if_blocks[current_block_type_index].m(main, null);
+    			insert_dev(target, t1, anchor);
+    			mount_component(sveltetoast, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(main, null);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(header.$$.fragment, local);
+    			transition_in(if_block);
+    			transition_in(sveltetoast.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(header.$$.fragment, local);
+    			transition_out(if_block);
+    			transition_out(sveltetoast.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(main);
+    			destroy_component(header);
+    			if_blocks[current_block_type_index].d();
+    			if (detaching) detach_dev(t1);
+    			destroy_component(sveltetoast, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const duration = 5000; //Fire work duration
+
+    function randomInRange(min, max) {
+    	return Math.random() * (max - min) + min;
+    }
+
+    async function incrementWonStat() {
+    	let obj = window.localStorage.getItem("GAME_STATS");
+    	let json;
+
+    	if (obj === null) {
+    		json = { GAMES_PLAYED: 0, GAMES_WON: 0 };
+    	} else {
+    		json = JSON.parse(obj);
+    	}
+
+    	json.GAMES_WON += 1;
+    	json.GAMES_PLAYED += 1;
+    	window.localStorage.setItem("GAME_STATS", JSON.stringify(json));
+    	await fetch("/played/true");
+    }
+
+    async function incrementPlayedStat() {
+    	let obj = window.localStorage.getItem("GAME_STATS");
+    	let json;
+
+    	if (obj === null) {
+    		json = { GAMES_PLAYED: 0, GAMES_WON: 0 };
+    	} else {
+    		json = JSON.parse(obj);
+    	}
+
+    	json.GAMES_PLAYED += 1;
+    	window.localStorage.setItem("GAME_STATS", JSON.stringify(json));
+    	await fetch("/played/false");
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let show_loading;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('App', slots, []);
+
+    	const defaults = {
+    		startVelocity: 30,
+    		spread: 360,
+    		ticks: 60,
+    		zIndex: 0
+    	};
+
+    	/* let questions_from_server = [["a", "d", "f", "t", "e"], ["o", "", "j", "", "h"], ["c", "r", "m", "p", "k"], ["w", "", "l", "", "b"], ["u", "x", "n", "v", "y"]]
+    let ansToShow_from_server = [["a", "b", "c", "d", "e"], ["f", "", "h", "", "j"], ["k", "l", "m", "n", "o"], ["p", "", "r", "", "t"], ["u", "v", "w", "x", "y"]]
+    let answers_from_server = [["a", "b", "c", "d", "e"], ["e", "j", "o", "t", "y"], ["a", "f", "k", "p", "u"], ["u", "v", "w", "x", "y"], ["c", "h", "m", "r", "w"], ["k", "l", "m", "n", "o"]]
+    let OBBATTU_COUNT_from_server = 0 */
+    	let questions;
+
+    	let ansToShow;
+    	let answers;
+    	let TOTAL_MOVES = 20;
+    	let moves = TOTAL_MOVES;
+    	let OBBATTU_COUNT = 0;
+
+    	// SET RESFRESH TIME HERE!
+    	const refreshTime = { hour: 23, min: 59, sec: 59 };
+
+    	/* function timeout(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    } */
+    	async function QUERY_SERVER() {
+    		let return_val;
+    		let date = new Date().getDate();
+
+    		await fetch("/get-board/" + date).then(response => response.json()).then(data => {
+    			$$invalidate(2, answers = data.answers);
+    			$$invalidate(1, ansToShow = data.answers_to_show);
+    			$$invalidate(0, questions = data.questions);
+    			$$invalidate(4, OBBATTU_COUNT = data.OBBATTU_COUNT);
+
+    			//console.log(data)
+    			return_val = data;
+    		}).catch(err => {
+    			console.log("an err occured while setting data", err);
+    			return_val = false;
+    		});
+
+    		return return_val;
+    	} /* questions = questions_from_server
+    ansToShow = ansToShow_from_server
+    answers = answers_from_server
+    OBBATTU_COUNT = OBBATTU_COUNT_from_server */
+
+    	let reminderStatus = null; // to show if timer or alert should be displayed
+
+    	function getDurationTillMidnight(duration = true) {
+    		let end_time = new Date();
+    		end_time.setHours(refreshTime.hour, refreshTime.min, refreshTime.sec);
+    		let now = new Date();
+    		let dur = end_time - now;
+
+    		//return dur
+    		if (dur < 0) {
+    			end_time.setDate(end_time.getDate() + 1);
+    			dur = Math.abs(end_time - now); // + 86400000
+    		}
+
+    		//console.log(dur)
+    		if (duration === true) {
+    			return dur;
+    		} else {
+    			return end_time;
+    		}
+    	}
+
+    	function refreshAlertCheck() {
+    		if (reminderStatus === null) {
+    			displayRefreshToast();
+    		}
+    	}
+
+    	let refreshTimeout = setTimeout(refreshAlertCheck, getDurationTillMidnight());
+
+    	async function handleGameWin(e) {
+    		let animationEnd = Date.now() + duration;
+    		let increment = e.detail.extra;
+
+    		//console.log("game won, but... extra?", increment)
+    		if (reminderStatus === null) {
+    			$$invalidate(5, reminderStatus = "timer");
+    		}
+
+    		if (increment === true) {
+    			console.log("YAY, You won the game. Thanks a lot for playing Obbattu. It means a lot to me :D");
+    			navigator.vibrate(200);
+    			await incrementWonStat();
+
+    			let interval = setInterval(
+    				function () {
+    					let timeLeft = animationEnd - Date.now();
+
+    					if (timeLeft <= 0) {
+    						return clearInterval(interval);
+    					}
+
+    					let particleCount = 50 * (timeLeft / duration);
+
+    					// since particles fall down, start a bit higher than random
+    					confetti(Object.assign({}, defaults, {
+    						particleCount,
+    						origin: {
+    							x: randomInRange(0.1, 0.3),
+    							y: Math.random() - 0.2
+    						}
+    					}));
+
+    					confetti(Object.assign({}, defaults, {
+    						particleCount,
+    						origin: {
+    							x: randomInRange(0.7, 0.9),
+    							y: Math.random() - 0.2
+    						}
+    					}));
+    				},
+    				250
+    			);
+    		}
+    	}
+
+    	async function handleGameLost(e) {
+    		let increment = e.detail.extra;
+
+    		if (increment === true) {
+    			console.log("Aww :(. You Lost. Thanks a lot for playing Obbattu. It means a lot to me :D");
+    			await incrementPlayedStat();
+    		}
+
+    		if (reminderStatus === null) {
+    			$$invalidate(5, reminderStatus = "timer");
+    		}
+    	}
+
+    	function refreshBoard(_) {
+    		//console.log("refreshing board....")
+    		setTimeout(
+    			() => {
+    				$$invalidate(5, reminderStatus = null);
+    			},
+    			1000
+    		);
+
+    		window.localStorage.removeItem("GAME_META");
+    		window.localStorage.removeItem("GAME_BOARD");
+    		$$invalidate(0, questions = undefined);
+    		load(true);
+    		refreshTimeout = setTimeout(refreshAlertCheck, getDurationTillMidnight());
+    	}
+
+    	function displayRefreshToast() {
+    		toast.push({
+    			component: {
+    				src: RefreshNotif, // where `src` is a Svelte component
+    				sendIdTo: 'toastId', // send toast id to `toastId` prop
+    				
+    			},
+    			dismissable: true,
+    			initial: 0,
+    			onpop: refreshBoard
+    		}); /* theme: {
+        '--toastPadding': '0',
+        '--toastMsgPadding': '1em'
+    } */
+    	}
+
+    	async function load(time_wait = false) {
+    		let now = new Date();
+
+    		if (time_wait === true) {
+    			now = new Date(now.getTime() + 2 * 60000);
+    		}
+
+    		let board = getObj$1("GAME_BOARD");
+    		let gameMeta = getObj$1("GAME_META");
+
+    		if (board === null || gameMeta === null) {
+    			// console.log("query started")
+    			let result = await QUERY_SERVER();
+
+    			// console.log("query finished")
+    			//QUERYING THE BACKEND SERVER HERE
+    			if (result === false) {
+    				return;
+    			}
+
+    			let timecreated = new Date();
+    			timecreated.setHours(0, 0, 0);
+
+    			let GAME_META = {
+    				timecreated,
+    				ansToShow: result.answers_to_show,
+    				answers: result.answers,
+    				count: result.OBBATTU_COUNT
+    			};
+
+    			saveObj("GAME_META", GAME_META);
+
+    			let GAME_BOARD = {
+    				questions: result.questions,
+    				MOVES: TOTAL_MOVES
+    			};
+
+    			$$invalidate(3, moves = TOTAL_MOVES);
+    			saveObj("GAME_BOARD", GAME_BOARD);
+    		} else {
+    			let timeCreated = new Date(gameMeta.timecreated);
+
+    			if (now - timeCreated > 86400000) {
+    				//console.log("new board... Bail loading old board")
+    				//questions = questions_from_server
+    				window.localStorage.removeItem("GAME_META");
+
+    				window.localStorage.removeItem("GAME_BOARD");
+    				return load();
+    			}
+
+    			$$invalidate(0, questions = board.questions);
+    			$$invalidate(3, moves = board.MOVES);
+    			$$invalidate(1, ansToShow = gameMeta.ansToShow);
+    			$$invalidate(2, answers = gameMeta.answers);
+    			$$invalidate(4, OBBATTU_COUNT = gameMeta.count);
+    		} // reminderStatus = "timer"
+    	}
+
+    	load();
+    	const writable_props = [];
+
+    	Object_1.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({
+    		GameBoard,
+    		Header,
+    		SvelteToast,
+    		toast,
+    		RefreshNotif,
+    		Countdown,
+    		confetti,
+    		saveObj,
+    		getObj: getObj$1,
+    		duration,
+    		defaults,
+    		questions,
+    		ansToShow,
+    		answers,
+    		TOTAL_MOVES,
+    		moves,
+    		OBBATTU_COUNT,
+    		refreshTime,
+    		QUERY_SERVER,
+    		reminderStatus,
+    		getDurationTillMidnight,
+    		refreshAlertCheck,
+    		refreshTimeout,
+    		randomInRange,
+    		incrementWonStat,
+    		incrementPlayedStat,
+    		handleGameWin,
+    		handleGameLost,
+    		refreshBoard,
+    		displayRefreshToast,
+    		load,
+    		show_loading
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('questions' in $$props) $$invalidate(0, questions = $$props.questions);
+    		if ('ansToShow' in $$props) $$invalidate(1, ansToShow = $$props.ansToShow);
+    		if ('answers' in $$props) $$invalidate(2, answers = $$props.answers);
+    		if ('TOTAL_MOVES' in $$props) TOTAL_MOVES = $$props.TOTAL_MOVES;
+    		if ('moves' in $$props) $$invalidate(3, moves = $$props.moves);
+    		if ('OBBATTU_COUNT' in $$props) $$invalidate(4, OBBATTU_COUNT = $$props.OBBATTU_COUNT);
+    		if ('reminderStatus' in $$props) $$invalidate(5, reminderStatus = $$props.reminderStatus);
+    		if ('refreshTimeout' in $$props) refreshTimeout = $$props.refreshTimeout;
+    		if ('show_loading' in $$props) $$invalidate(6, show_loading = $$props.show_loading);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*questions, ansToShow, answers*/ 7) {
+    			$$invalidate(6, show_loading = questions === undefined || ansToShow === undefined || answers === undefined
+    			? true
+    			: false);
+    		}
+    	};
+
+    	return [
+    		questions,
+    		ansToShow,
+    		answers,
+    		moves,
+    		OBBATTU_COUNT,
+    		reminderStatus,
+    		show_loading,
+    		getDurationTillMidnight,
+    		handleGameWin,
+    		handleGameLost,
+    		refreshBoard
+    	];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
+    }
+
+    const app = new App({
+    	target: document.body,
+    	props: {
+    	}
+    });
+
+    if ("serviceWorker" in navigator) {
+    	navigator.serviceWorker.register("./service-worker.js")
+    	.then((data) => console.log("Service worker registered", data))
+    	.catch((err) => console.log("err occurred while loading service worker", err));
+    }
+
+    return app;
+
+})();
 //# sourceMappingURL=bundle.js.map
