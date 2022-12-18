@@ -8,7 +8,7 @@ use rocket::Config;
 
 use std::{path::Path, collections::VecDeque, sync::Arc};
 use chrono::Utc;
-use rocket::{State, fs::NamedFile, http::ContentType, tokio::sync::Mutex, fairing::AdHoc, response::{content::{RawJson}}};
+use rocket::{State, fs::NamedFile, http::ContentType, tokio::sync::Mutex, fairing::AdHoc, response::{Redirect, content::{RawJson}}};
 use serde_json::{json, to_string};
 use tokio_cron_scheduler::{JobScheduler, Job};
 
@@ -46,6 +46,11 @@ async fn played_counter(solved: bool, game_state: &State<GameManagerPointer>) {
     } else {
         locked.increment_played().await;
     }
+}
+
+#[get("/claim")]
+async fn claim_rickroll() {
+    Redirect::to(uri!("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 }
 
 #[get("/game_stats")]
@@ -267,6 +272,7 @@ async fn rocket() -> _ {
                                     global_css, bundled_css, bundled_js, favicon, favicon_ico, bundled_js_map, //HTML and other elements
                                     stats, played_counter, game_stats, robots, //Stats and SEO related
                                     manifest, service_worker, icon_small, icon_big,
+                                    claim_rickroll, //redirect
                                     //boards
                                 ])
 }
