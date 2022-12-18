@@ -49,8 +49,8 @@ async fn played_counter(solved: bool, game_state: &State<GameManagerPointer>) {
 }
 
 #[get("/claim")]
-async fn claim_rickroll() {
-    Redirect::to(uri!("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+async fn claim_rickroll() -> Redirect {
+    Redirect::to(uri!("https://www.youtube.com/watch?v=dQw4w9WgXcQ"))
 }
 
 #[get("/game_stats")]
